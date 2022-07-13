@@ -23,8 +23,8 @@ export default function LandingImageCarousel() {
                 <p></p>
               </div>
             </div>
-            <button className='forward-btn'></button>
-            <button className='back-btn'></button>
+            <button className='forward-btn'>Forwards</button>
+            <button className='back-btn'>Backwards</button>
           </div>
           <div className='dots'>
             <p className='dot'></p>
