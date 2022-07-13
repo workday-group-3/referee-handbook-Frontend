@@ -1,7 +1,7 @@
 import React from 'react'
 import './LandingPage.css'
 
-import ImageCarousel from '../ImageCarousel/ImageCarousel'
+import LandingImageCarousel from '../LandingImageCarousel/LandingImageCarousel'
 
 import heroImg from "../../assets/pexels-steshka-willems-1661950.jpg"
 
@@ -19,7 +19,7 @@ export default function LandingPage() {
           <button className='signup-btn'>Sign Up</button>
         </div>
       </div>
-      <ImageCarousel/>
+      <LandingImageCarousel/>
     </div>
   )
 }

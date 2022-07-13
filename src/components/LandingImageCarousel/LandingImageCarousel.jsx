@@ -1,9 +1,9 @@
 import React from 'react'
-import './ImageCarousel.css'
+import './LandingImageCarousel.css'
 
-export default function ImageCarousel() {
+export default function LandingImageCarousel() {
     return(
-      <div className='image-carousel'>
+      <div className='landing-image-carousel'>
           <div className='slide-container'>
             <div className='slide'>
               <img className='slide-img'></img>
