@@ -1,2 +1,0 @@
-# referee-handbook-Frontend
-
