@@ -9,10 +9,25 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 
 //react imports
-import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react"
 
 export default function LoginPage(props) {
+
+
+  //global variables
+  let emptyLoginForm = {email: "", password: ""}
+
+  //state variables
+  const [userLoginForm, setUserLoginForm] = useState(emptyLoginForm)
+
+  //login form handler
+  function handleOnInputChange (evt) {
+    setUserLoginForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
+    console.log("userLoginForm", userLoginForm)
+  }
+
+
+
   return (
     <Box
     component="form"
@@ -32,6 +47,9 @@ export default function LoginPage(props) {
               id="outlined-email-input"
               label="Email"
               type="email"
+              name="email"
+              value = {userLoginForm.email}
+              onChange={handleOnInputChange}
               />
           </div>
           <div className="password-input-container">
@@ -40,10 +58,13 @@ export default function LoginPage(props) {
               id="outlined-password-input"
               label="Password"
               type="password"
+              name = "password"
+              value = {userLoginForm.password}
+              onChange={handleOnInputChange}
               autoComplete="current-password"/>
           </div>
           <div className="submit-login-btn-container">
-            <Button className="submit-btn" variant="contained" size="large" endIcon={<SendIcon/>}>SUBMIT</Button>
+            <Button className="submit-login-btn" variant="contained" size="large" endIcon={<SendIcon/>}>SUBMIT</Button>
           </div>
         </div>
 
