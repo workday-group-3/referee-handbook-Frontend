@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Logo.css"
-import logoImg from "../../assets/handbook-logo-cropped.png"
+import logoImg from "../../assets/navbar-logo.png"
 
 export default function Logo() {
   return (
