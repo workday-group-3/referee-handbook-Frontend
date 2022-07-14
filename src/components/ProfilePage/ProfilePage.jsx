@@ -15,7 +15,7 @@ export default function ProfilePage(props) {
                     <img className="profile-picture"src={profilePicturePlaceholder} alt="User profile picture"/>
                 </div>
                 <div className="profile-user-info">
-                    <h1 className="profile-picture-username">dogcage</h1>
+                    <h1 className="profile-picture-username"><em>dogcage</em></h1>
                     <h3 className="profile-picture-name">Doug Case</h3>
                     <h3 className="profile-location">Pleasanton, CA</h3>
                 </div>
