@@ -21,13 +21,14 @@
 
 .cta h1{
     font-family: 'Frijole', "Arial Black", cursive;
-    font-size: 70px;
+    font-size: 5vw;
     font-weight: 200;
     color: white;
 }
 
 .cta h2{
     color: white;
+    font-size: 2vw;
 }
 
 
