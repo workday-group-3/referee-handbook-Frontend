@@ -1,0 +1,39 @@
+
+
+/* remove this later when globals.css font-styles are defined */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+.login-page-title {
+    margin-top: 12.5%;
+    display: flex;
+    justify-content: center;
+    font-size: 56px;
+}
+
+.login-form-container {
+    margin-top: 2.5%;
+    display: block;
+    text-align: center;
+
+}
+
+.submit-login-btn-container {
+    margin-top: 1%;
+}
+
+.submit-btn{
+    width: 200px;
+}
+
+.register-redirect {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5%;
+}
