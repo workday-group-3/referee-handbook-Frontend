@@ -18,7 +18,7 @@
     transition: all .3s ease-in-out;
 }
 
-a{
+.nav-links a{
     text-decoration: none;
     color: white
 }
@@ -28,15 +28,14 @@ a{
     align-items: center;
 }
 
-.nav-links li:hover{
-    
+.nav-links a:hover{
     color: #F1D433;
     border-bottom: 2px;
     border-style:outset;
     border-color: #F1D433;
 }
 
-.nav-links li:active{
+.nav-links a:active{
     color: #F1D433;
     text-decoration: underline;
 }

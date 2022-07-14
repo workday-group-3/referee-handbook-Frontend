@@ -1,0 +1,62 @@
+.landing-page{
+    height: 130px;
+}
+
+.hero-img{
+    width: 100%;
+    height: 130vh;
+    object-fit: cover;
+    object-position: center center;
+    filter: brightness(43%)
+}
+
+.cta{
+    position: absolute;
+    z-index: 5;
+    top: 35%;
+    text-align: center;
+    left: 30%;
+    right: 30%;
+}
+
+.cta h1{
+    font-family: 'Frijole', "Arial Black", cursive;
+    font-size: 70px;
+    font-weight: 200;
+    color: white;
+}
+
+.cta h2{
+    color: white;
+}
+
+
+.landing-btn{
+    position: absolute;
+    z-index: 5;
+    top: 80%;
+    text-align: center;
+    left: 30%;
+    right: 30%;
+}
+
+.landing-btn button{
+    padding: 5px;
+    width: 100px;
+    margin: 20px;
+    font-size: medium;
+    background: linear-gradient(to right, #ffffff 50%, #F1D433 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    transition: background-position 0.3s;
+}
+
+.landing-btn a{
+    text-decoration: none;
+    color: black;
+}
+
+.landing-btn button:hover{
+    background-position:0 0;
+}
+

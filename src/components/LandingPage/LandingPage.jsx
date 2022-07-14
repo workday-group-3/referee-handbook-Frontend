@@ -1,9 +1,11 @@
 import React from 'react'
 import './LandingPage.css'
+import { Link } from 'react-router-dom'
+import Button from '@mui/material/Button';
 
 import LandingImageCarousel from '../LandingImageCarousel/LandingImageCarousel'
 
-import heroImg from "../../assets/pexels-steshka-willems-1661950.jpg"
+import heroImg from "../../assets/hero-img.jpg"
 
 export default function LandingPage() {
   return (
@@ -15,8 +17,8 @@ export default function LandingPage() {
           <h2>Play smarter, not harder</h2>
         </div>
         <div className='landing-btn'>
-          <button className='login-btn'>Login</button>
-          <button className='signup-btn'>Sign Up</button>
+          <Button className='login-btn'><Link to="/login">Login</Link></Button>
+          <Button className='signup-btn'><Link to="/register">Sign Up</Link></Button>
         </div>
       </div>
       <LandingImageCarousel/>
