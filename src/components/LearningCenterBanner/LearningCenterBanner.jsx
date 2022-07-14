@@ -1,9 +1,13 @@
 import React from 'react'
 
+//styling and images
+
+import SportsBanner from "../../Images/sports.jpg"
+
 function LearningCenterBanner() {
   return (
     <div className='learning-center-banner'>
-        <h1>Replace me with a material UI Banner</h1>
+        <img className="sports-img" src={SportsBanner} alt="Sports banner"></img>
     </div>
   )
 }

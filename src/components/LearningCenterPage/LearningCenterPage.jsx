@@ -18,17 +18,17 @@ function LearningCenterPage() {
   return (
     <div className='learning-center-page'>
 
-        <h1>Learning center</h1>
+        
 
         {/* Display the learning center's banner */}
         <LearningCenterBanner/>
 
         {/* Creates an an image and title card for each sport in the "sports" state variable */}
-        {sports.map((item) => {return (
-          <Link to={`/${item}`}>
-            <LearningCenterCard sport={item}/>
-          </Link>
-        )})}
+        {sports.map((item) => {
+          return (
+            <Link to={`/learning/${item}`}><LearningCenterCard sport={item}/></Link>
+          )
+        })}
 
     </div>
   )
