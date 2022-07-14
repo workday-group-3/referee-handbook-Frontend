@@ -11,7 +11,7 @@ export default function NavLinks() {
         <li><Link to="/learning" label="learning">Learning Center</Link></li>
         <li><Link to="/profile" label="profile">Profile</Link></li>
         {/* TODO: Conditional rendering: If logged in, show Logout button. */}
-        <li><Link to="/login" label="Login"></Link>Login</li>
+        <li><Link to="/login" label="Login">Login</Link></li>
         <li><Link to="/register" label="Sign up">Sign Up</Link></li>
       </ul>
     </div>
