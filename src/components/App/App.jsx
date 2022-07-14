@@ -11,6 +11,7 @@ import LandingPage from '../LandingPage/LandingPage'
 import ProfilePage from '../ProfilePage/ProfilePage'
 import Navbar from '../Navbar/Navbar'
 import LearningCenterPage from '../LearningCenterPage/LearningCenterPage';
+import NotFound from "../NotFound/NotFound"
 
 export default function App() {
 
