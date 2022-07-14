@@ -1,0 +1,39 @@
+
+
+.profile-page{
+    color: whitesmoke;
+}
+
+
+.profile-page-header {
+    margin: 1%;
+    display: block;
+    justify-content: center;
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    
+}
+
+
+.user-section {
+    display: flex;
+    align-items: center;
+
+}
+
+.profile-picture-container {
+    margin: 1%;
+}
+
+.profile-picture{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+
+
+.profile-picture-name, .profile-location {
+    margin: 0;
+    padding: 0;
+}
