@@ -38,7 +38,8 @@ export default function ProfilePage(props) {
             <Box
             component="form"
             sx={{
-            '& .MuiTextField-root': { m: 2, width: '45ch' },
+            '& .MuiTextField-root': { m: 2, width: '45ch', color: 'white' },
+    
             }}
             noValidate
             autoComplete="off">
@@ -52,6 +53,7 @@ export default function ProfilePage(props) {
                         name = "username"
                         value = "dogcage"
                         variant="filled"
+                        disabled="true"
                         readOnly
                         />
                     </div>
