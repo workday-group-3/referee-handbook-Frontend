@@ -19,7 +19,7 @@ export default function RegisterPage(props) {
 
 
   //global variables
-  let emptyRegisterForm = {email: "", username: "", location: "", firstName: "", lastName: "",  password: "", confirmPassword: ""}
+  let emptyRegisterForm = {email: "", username: "", location: "", firstName: "", lastName: "",  profileImageUrl: "", password: "", confirmPassword: ""}
 
   //state variables
   const [userRegisterForm, setUserRegisterForm ] = useState(emptyRegisterForm)
