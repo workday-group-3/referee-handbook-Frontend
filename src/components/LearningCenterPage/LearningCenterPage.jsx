@@ -13,7 +13,9 @@ function LearningCenterPage() {
 
   //for now, we'll be saving the sport names displayed in the learning center
   //in the following use state
-  const [sports, setSports] = useState(["Soccer", "Basketball", "Tennis", "Hockey", "Ping Pong", "Badminton"])
+  const [sports, setSports] = useState([])
+
+  //fetch all beginnner sports information from the database 
 
   return (
     <div className='learning-center-page'>
