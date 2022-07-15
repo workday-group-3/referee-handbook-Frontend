@@ -1,6 +1,28 @@
 
 
+.register-page {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
 
+.register-page-box {
+    display: block;
+    background-color: #383838;
+    width: 800px;
+    height: 850px;
+    border-radius: 10%;
+}
+
+.register-page-logo{
+    display: flex;
+    justify-content: center;
+}
+
+.register-logo {
+    width: 150px;
+    height: 150px;
+}
 
 
 .register-page-title {
@@ -17,9 +39,15 @@
     text-align: center;
 }
 
+.name-input-container {
+    display: flex;
+    width: 58%;
+    margin-left: 21%;
+    justify-content: center;
+}
 
 .submit-register-btn-container {
-    margin-top: 1%;
+    margin-top: 4%;
 }
 
 .submit-register-btn{
@@ -30,6 +58,7 @@
     display: flex;
     justify-content: center;
     margin-top: 2.5%;
+    color: whitesmoke
 }
 
 

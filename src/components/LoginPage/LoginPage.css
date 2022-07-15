@@ -10,11 +10,31 @@ body {
 
 
 
-.login-page-title {
-    margin-top: 5%;
+.login-page {
     display: flex;
     justify-content: center;
-    font-size: 56px;
+    margin-top: 10%;
+}
+
+.login-page-box {
+    display: block;
+    background-color: #383838;
+    width: 500px;
+    height: 500px;
+    border-radius: 10%;
+}
+
+
+
+
+.login-page-logo{
+    display: flex;
+    justify-content: center;
+}
+
+.login-logo {
+    width: 150px;
+    height: 150px;
 }
 
 .login-form-container {
@@ -24,15 +44,25 @@ body {
 }
 
 .submit-login-btn-container {
-    margin-top: 1%;
+    margin-top: 5%;
 }
 
-.submit-login-btn{
-    width: 200px;
-}
+
 
 .register-redirect {
+    color: white;
     display: flex;
     justify-content: center;
-    margin-top: 2.5%;
+    margin-top: 10%;
+    bottom: 0;
+}
+
+.redirect-link {
+    color:#F1D433
+}
+
+
+
+.email-label, .password-label {
+    color: whitesmoke;
 }
