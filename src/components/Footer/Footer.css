@@ -1,0 +1,38 @@
+.footer{
+    display: grid;
+    grid-template-columns: 30vw 20vw 20vw;
+    justify-content: center;
+    align-items: center;
+    background-color: #383838;
+    font-size: large;
+    color: white;
+    height: 40vh;
+}
+
+.footer-img{
+    height: 30vh;
+}
+
+.footer ul{
+    list-style-type: none;
+}
+
+.footer .icons{
+    color: #F1D433;
+    padding: 10px;
+}
+
+.footer li{
+    padding: 5px;
+}
+
+.footer-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer .icon{
+    padding: 3px;
+}
