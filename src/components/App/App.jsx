@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <ProfilePage/>
+      <LoginPage/>
 
     </div>
   )
