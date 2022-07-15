@@ -15,6 +15,8 @@ import ProfilePage from '../ProfilePage/ProfilePage'
 import Navbar from '../Navbar/Navbar'
 import LearningCenterPage from '../LearningCenterPage/LearningCenterPage';
 import NotFound from "../NotFound/NotFound"
+import Footer from "../Footer/Footer"
+
 
 
 //returns our context providers with our App component nested inside.
@@ -42,6 +44,7 @@ function App() {
           <Route path="/learning" element={<LearningCenterPage/>}></Route>
           <Route path="*" element={<NotFound/>}></Route>
         </Routes>
+        <Footer/>
       </BrowserRouter>
 
       
