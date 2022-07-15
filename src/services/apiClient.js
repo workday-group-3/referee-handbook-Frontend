@@ -46,6 +46,14 @@ class ApiClient {
         this.setToken(null)
         localStorage.setItem(this.tokenName, "")
     }
+
+    async fetchBeginnerCourses() {
+        return await this.request({endpoint: `learning`, method: `GET`, data:null})
+    }
+
+    async fetchBeginnerCourseByName(name) {
+        return await this.request({endpoint: `learning/${name}/beginner`, method: `GET`})
+    }
 }
 
 export default new ApiClient(process.env.REACT_APP_REMOTE_HOST_URL || "http://localhost:3001")
