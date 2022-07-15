@@ -37,19 +37,22 @@ export default function LoginPage(props) {
 
 
   return (
-    <Box
-    component="form"
-    sx={{
-      '& .MuiTextField-root': { m: 2, width: '50ch', backgroundColor: 'white' },
-    }}
-    noValidate
-    autoComplete="off">
+
     <div className="login-page">
+      <img className = "login-background-image" src="https://images.unsplash.com/photo-1457470572216-1240fac24b37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt=""></img>
       <div className="login-page-box">
         <div className = "login-page-logo">
           <img className="login-logo" src={logo} alt="Referee's Handbook logo" />
         </div>
+
         <div className="login-form-container">
+        <Box
+          component="form"
+          sx={{
+            '& .MuiTextField-root': { m: 2, width: '50ch', backgroundColor: 'white' },
+          }}
+          noValidate
+          autoComplete="off">
           <div className="email-input-container">
             <TextField
               className="input-field"
@@ -78,8 +81,8 @@ export default function LoginPage(props) {
               variant="filled"
               autoComplete="current-password"
               />
-
           </div>
+          </Box>
           <div className="submit-login-btn-container">
             <Button className="submit-login-btn" variant="contained" size="large" endIcon={<SendIcon/>}  onClick= {() => {console.log("Click")}}shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >LOGIN</Button>
           </div>
@@ -92,6 +95,6 @@ export default function LoginPage(props) {
         </div>
       </div>
     </div>
-    </Box>
+
   )
 }
