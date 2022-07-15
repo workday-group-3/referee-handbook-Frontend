@@ -53,8 +53,7 @@ export default function ProfilePage(props) {
                         name = "username"
                         value = "dogcage"
                         variant="filled"
-                        disabled="true"
-                        readOnly
+                        InputProps={{ readOnly: true }}
                         />
                     </div>
                     <div className ="user-detail-name">
@@ -66,7 +65,7 @@ export default function ProfilePage(props) {
                         name = "firstName"
                         value = "Doug"
                         variant="filled"
-                        readOnly
+                        InputProps={{ readOnly: true }}
                         /> 
                         <TextField
                         sx={{backgroundColor : 'white'}}
@@ -76,7 +75,7 @@ export default function ProfilePage(props) {
                         name = "lastName"
                         value = "Case"
                         variant="filled"
-                        readOnly
+                        InputProps={{ readOnly: true }}
                         />
                     </div>
                     <div className ="user-detail">
@@ -88,7 +87,7 @@ export default function ProfilePage(props) {
                             name = "email"
                             value = "dog@cage.io"
                             variant="filled"
-                            readOnly
+                            InputProps={{ readOnly: true }}
                         />
                     </div>
                 </div> 
