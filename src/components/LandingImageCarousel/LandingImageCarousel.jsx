@@ -23,6 +23,12 @@ export default function LandingImageCarousel() {
                 <p></p>
               </div>
             </div>
+            <div className='slide'>
+              <img className='slide-img'></img>
+              <div className='slide-description'>
+                <p></p>
+              </div>
+            </div>
             <button className='forward-btn'>Forwards</button>
             <button className='back-btn'>Backwards</button>
           </div>
