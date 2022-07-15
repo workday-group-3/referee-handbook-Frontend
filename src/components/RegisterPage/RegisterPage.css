@@ -3,15 +3,34 @@
 .register-page {
     display: flex;
     justify-content: center;
-    margin-top: 5%;
+    overflow: hidden;
+}
+
+
+
+.register-background-image {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center center;
+    filter: blur(8px);
+    -webkit-filter: blur(3px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    transform: scale(1.1);
 }
 
 .register-page-box {
     display: block;
+    position: absolute;
+    z-index: 5;
     background-color: #383838;
-    width: 800px;
+    width: 650px;
     height: 850px;
     border-radius: 10%;
+    margin-top: 5%;
 }
 
 .register-page-logo{
@@ -41,8 +60,8 @@
 
 .name-input-container {
     display: flex;
-    width: 58%;
-    margin-left: 21%;
+    width: 72%;
+    margin-left: 14%;
     justify-content: center;
 }
 
