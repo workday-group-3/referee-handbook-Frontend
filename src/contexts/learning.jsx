@@ -10,8 +10,8 @@ const LearningContext = createContext(null)
 
 
 export const LearningContextProvider = ({children}) => {
-    const [courses, setCourses] = useState([])  //creates a simple course array state variable 
-    
+    const [beginnerCourses, setBeginnerCourses] = useState([])  //creates a simple course array state variable 
+
     const [initialized, setInitialized] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -22,8 +22,7 @@ export const LearningContextProvider = ({children}) => {
         setError(null)
         const {data, error} = await ApiClient.fetchBeginnerCourses()
         if(data) {
-            console.log("our data is: ", data.beginnerCourses) //testing 
-            setCourses(data)
+            setBeginnerCourses(data.beginnerCourses)
         }
         if (error) {
             setError(error)
@@ -33,14 +32,16 @@ export const LearningContextProvider = ({children}) => {
         setIsLoading(false)
     }
 
+    //callback function fetches courses and updates our setBeginnerCourses state variable
     useEffect(() => {
 
         fetchCourses()
 
-    }, [setCourses] )
+    }, [setBeginnerCourses] )
     
     
-    const learningValue = { courses, setCourses }
+    //value to be passed into the child component in the return statement
+    const learningValue = { beginnerCourses, setBeginnerCourses }
     
     //renders children propes previosly defined in LearningContextProvider using the values in learningValue
     return (
