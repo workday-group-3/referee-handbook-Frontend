@@ -10,13 +10,9 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 
 
-
-
-
-
 //react imports
 import { useState } from "react"
-import { bgcolor } from '@mui/system';
+import { Link } from "react-router-dom"
 
 export default function LoginPage(props) {
 
@@ -92,11 +88,10 @@ export default function LoginPage(props) {
 
         {/* add Link tag here to redirect to register page once routes are established in App.jsx */}
         <div className="register-redirect">
-          <p>Don't have an account? Sign up here</p>
+          <p >Don't have an account? Sign up <Link className="redirect-link" to ="/register">here</Link></p>
         </div>
       </div>
     </div>
     </Box>
   )
 }
-

@@ -22,7 +22,6 @@ body {
     width: 500px;
     height: 500px;
     border-radius: 10%;
-
 }
 
 
@@ -45,7 +44,7 @@ body {
 }
 
 .submit-login-btn-container {
-    margin-top: 1%;
+    margin-top: 5%;
 }
 
 
@@ -54,8 +53,12 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-    margin-top: 2.5%;
+    margin-top: 10%;
     bottom: 0;
+}
+
+.redirect-link {
+    color:#F1D433
 }
 
 
