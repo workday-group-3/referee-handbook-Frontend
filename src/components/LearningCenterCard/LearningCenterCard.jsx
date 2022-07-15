@@ -6,7 +6,7 @@ import "./LearningCenterCard.css"
 function LearningCenterCard(props) {
   return (
     <div className='sport-card'>
-      <h1>{props.sport}</h1>
+      <h1>{props.beginnerCourse.sport_name}</h1>
     </div>
   )
 }
