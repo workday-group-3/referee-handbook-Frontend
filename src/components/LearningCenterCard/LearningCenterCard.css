@@ -1,6 +1,25 @@
 .sport-card {
-    margin:100px;
-    background-color: red;
-    height: 100px;
-    width: 200px;
+    margin-right: 50px;
+
+    justify-content: center;
+    
+    margin-bottom: 20px;
+
+    color: white;
+
+    display: block;
+
+}
+
+
+.sport-img {
+    width: 350px;
+    height: 200px;
+    border-radius: 50px;
+}
+
+.sport-description {
+    width: 350px;
+    margin: auto;
+
 }

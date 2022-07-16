@@ -1,8 +1,9 @@
 import React from 'react'
 
 //styling and images
-
 import SportsBanner from "../../Images/sports.jpg"
+import "./LearningCenterBanner.css"
+
 
 function LearningCenterBanner() {
   return (

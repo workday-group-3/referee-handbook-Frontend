@@ -9,9 +9,6 @@ import LearningCenterCard from '../LearningCenterCard/LearningCenterCard'
 //contexts
 import { useLearningContext } from '../../contexts/learning'
 
-//Routing
-import { Link } from "react-router-dom"
-
 //Styling
 import "./LearningCenterPage.css"
 
@@ -27,13 +24,16 @@ function LearningCenterPage() {
         
 
         {/* Display the learning center's banner */}
-        <LearningCenterBanner/>
+        <div className='learning-banner'>
+          <LearningCenterBanner/>
+        </div>
+        
 
         {/* Creates an an image and title card for each sport in the "beginnerCourse" state variable */}
         <div className='learning-cards'>
 
           {beginnerCourses.map((item) => {
-            return ( <Link to={`/learning/${item.sport_name}`}><LearningCenterCard beginnerCourse={item}/></Link> )
+            return ( <LearningCenterCard beginnerCourse={item}/> )
           })}
 
         </div>
