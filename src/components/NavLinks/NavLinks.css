@@ -45,17 +45,16 @@
 }
 
 .logout-li {
+    display: flex;
     color: white;
 }
 
-.logout-li:active{
+.logout-li p:active{
     color: #F1D433;
-    border-bottom: 2px;
-    border-style:outset;
-    border-color: #F1D433;
+    text-decoration: underline;
 }
 
-.logout-li:hover {
+.logout-li p:hover {
     color: #F1D433;
     border-bottom: 2px;
     border-style:outset;
