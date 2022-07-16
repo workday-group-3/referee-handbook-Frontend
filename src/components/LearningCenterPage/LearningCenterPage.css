@@ -1,0 +1,18 @@
+.learning-center-page {
+    background-color: #363232;
+}
+
+.learning-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.learning-banner {
+    
+    display: flex;
+    justify-content: center;
+    
+}
+
+

@@ -1,21 +1,22 @@
 //Necessary dependencies
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 //Components
 import LearningCenterBanner from '../LearningCenterBanner/LearningCenterBanner'
 import LearningCenterCard from '../LearningCenterCard/LearningCenterCard'
+
+//contexts
+import { useLearningContext } from '../../contexts/learning'
+
 //Styling
 import "./LearningCenterPage.css"
 
 function LearningCenterPage() {
-
-  //for now, we'll be saving the sport names displayed in the learning center
-  //in the following use state
-  const [sports, setSports] = useState([])
-
-  //fetch all beginnner sports information from the database 
+  //extract state variables from learningContext
+  const { beginnerCourses, isLoading, error } = useLearningContext()
+  const [copy, setCopy] = useState([...beginnerCourses])
+  console.log("Beginner courses: ", beginnerCourses)
 
   return (
     <div className='learning-center-page'>
@@ -23,14 +24,20 @@ function LearningCenterPage() {
         
 
         {/* Display the learning center's banner */}
-        <LearningCenterBanner/>
+        <div className='learning-banner'>
+          <LearningCenterBanner/>
+        </div>
+        
 
-        {/* Creates an an image and title card for each sport in the "sports" state variable */}
-        {sports.map((item) => {
-          return (
-            <Link to={`/learning/${item}`}><LearningCenterCard sport={item}/></Link>
-          )
-        })}
+        {/* Creates an an image and title card for each sport in the "beginnerCourse" state variable */}
+        <div className='learning-cards'>
+
+          {beginnerCourses.map((item) => {
+            return ( <LearningCenterCard beginnerCourse={item}/> )
+          })}
+
+        </div>
+
 
     </div>
   )
