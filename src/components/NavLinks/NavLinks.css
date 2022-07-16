@@ -20,7 +20,7 @@
 
 .nav-links a{
     text-decoration: none;
-    color: white
+    color: white;
 }
 
 .nav-links{
@@ -38,4 +38,26 @@
 .nav-links a:active{
     color: #F1D433;
     text-decoration: underline;
+}
+
+.login-register-li {
+    display: flex;
+}
+
+.logout-li {
+    color: white;
+}
+
+.logout-li:active{
+    color: #F1D433;
+    border-bottom: 2px;
+    border-style:outset;
+    border-color: #F1D433;
+}
+
+.logout-li:hover {
+    color: #F1D433;
+    border-bottom: 2px;
+    border-style:outset;
+    border-color: #F1D433;
 }

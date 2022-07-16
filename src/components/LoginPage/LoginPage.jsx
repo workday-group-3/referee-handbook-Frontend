@@ -34,7 +34,7 @@ export default function LoginPage({ message }) {
       <img className = "login-background-image" src="https://images.unsplash.com/photo-1457470572216-1240fac24b37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt=""></img>
       <div className="login-page-box">
         <div className = "login-page-logo">
-          <img className="login-logo" src={logo} alt="Referee's Handbook logo" />
+          <Link to = "/"><img className="login-logo" src={logo} alt="Referee's Handbook logo" /></Link>
         </div>
         {message ? <p className ="unauthenticated-error">{message}</p> : null}
         <div className="login-form-container">

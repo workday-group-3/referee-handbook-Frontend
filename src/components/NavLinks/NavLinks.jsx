@@ -11,7 +11,7 @@ import { useAuthContext } from "../../contexts/auth"
 export default function NavLinks() {
 
 
- 
+  const { user, handleOnLogout } = useAuthContext()
 
 
   return (
@@ -21,9 +21,14 @@ export default function NavLinks() {
         <li><Link to="/learning" label="learning">Learning Center</Link></li>
         <li><Link to="/profile" label="profile">Profile</Link></li>
         {/* TODO: Conditional rendering: If logged in, show Logout button. */}
-        <li><Link to="/login" label="Login">Login</Link></li>
-        <li><Link to="/register" label="Sign up">Sign Up</Link></li>
+        {user?.email ? <li className = "logout-li" onClick={handleOnLogout}>Logout</li> 
+        : <span className ="login-register-li">
+            <li><Link to="/login" label="Login">Login</Link></li>
+            <li><Link to="/register" label="Sign up">Sign Up</Link></li>
+          </span>}
+
       </ul>
+              
     </div>
   )
 }
