@@ -25,7 +25,7 @@ export const useLoginForm = () => {
 
   //state variables
   const navigate = useNavigate()
-  const [userLoginForm, setUserLoginForm] = useState(emptyLoginForm)
+  const [userLoginForm, setUserLoginForm] = useState({})
   const [error, setError] = useState(null)
 
   // uncomment this when logout button is added

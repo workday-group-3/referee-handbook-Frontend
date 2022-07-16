@@ -19,7 +19,7 @@ export const useRegistrationForm = () => {
 
   //state variables
   const navigate = useNavigate()
-  const [userRegisterForm, setUserRegisterForm ] = useState(emptyRegisterForm)
+  const [userRegisterForm, setUserRegisterForm ] = useState({})
   const [error, setError] = useState(null)
 
 
@@ -46,6 +46,7 @@ export const useRegistrationForm = () => {
     if (userRegisterForm.password != userRegisterForm.confirmPassword){
       setError("Passwords don't match")
     }
+
     else {
       const {data, error} = await apiClient.signupUser(userRegisterForm)
       if (error) {
@@ -53,10 +54,10 @@ export const useRegistrationForm = () => {
       }
       if(data?.user) {
         apiClient.setToken(data.token)
-        navigate("/profile")
         setUser(data?.user)
         setUserRegisterForm(emptyRegisterForm)
         console.log("Successful Registration")
+        navigate("/learning")
       }
     }
   }
