@@ -13,6 +13,7 @@ body {
 .login-page {
     display: flex;
     justify-content: center;
+
 }
 
 
@@ -32,13 +33,16 @@ body {
     z-index: 5;
     background-color: #383838;
     width: 500px;
-    height: 500px;
+    height: 520px;
     margin-top: 10%;
     border-radius: 10%;
 }
 
 
-
+.login-error {
+    color: red;
+    margin-top: 2%;
+}
 
 .login-page-logo{
     display: flex;
@@ -57,18 +61,21 @@ body {
 }
 
 .submit-login-btn-container {
-    margin-top: 5%;
+    margin-top: 4%;
 }
 
 
 
 .register-redirect {
     color: white;
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
+    position: absolute;
     bottom: 0;
+    margin-left: 25%;
+    margin-bottom: 5%;
 }
+
+
+
 
 .redirect-link {
     color:#F1D433
@@ -78,4 +85,10 @@ body {
 
 .email-label, .password-label {
     color: whitesmoke;
+}
+
+.unauthenticated-error {
+    color: red;
+    display: flex;
+    justify-content: center;
 }

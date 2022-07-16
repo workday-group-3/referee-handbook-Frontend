@@ -1,7 +1,9 @@
 import React from 'react'
 import './LoginPage.css'
+
+//import assets
 import logo from '../../assets/handbook-logo.png'
-import backgroundImage from '../../assets/login-page-img.jpg'
+
 
 //MUI imports
 import Box from '@mui/material/Box';
@@ -11,26 +13,16 @@ import SendIcon from '@mui/icons-material/Send';
 
 
 //react imports
-import { useState } from "react"
 import { Link } from "react-router-dom"
 
-export default function LoginPage(props) {
+//custom hook
+import { useLoginForm } from '../../hooks/useLoginForm'
 
 
-  //global variables
-  let emptyLoginForm = {email: "", password: ""}
-
-  //state variables
-  const [userLoginForm, setUserLoginForm] = useState(emptyLoginForm)
-
-  //login form handler
-  function handleOnInputChange (evt) {
-    setUserLoginForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
-    console.log("userLoginForm", userLoginForm)
-  }
+export default function LoginPage({ message }) {
 
 
-  //create onSubmit handler here for login once backend is setup
+  const { userLoginForm, error, handleOnInputChange, handleOnSubmitLogin } = useLoginForm()    
 
 
 
@@ -44,7 +36,7 @@ export default function LoginPage(props) {
         <div className = "login-page-logo">
           <img className="login-logo" src={logo} alt="Referee's Handbook logo" />
         </div>
-
+        {message ? <p className ="unauthenticated-error">{message}</p> : null}
         <div className="login-form-container">
         <Box
           component="form"
@@ -84,14 +76,15 @@ export default function LoginPage(props) {
           </div>
           </Box>
           <div className="submit-login-btn-container">
-            <Button className="submit-login-btn" variant="contained" size="large" endIcon={<SendIcon/>}  onClick= {() => {console.log("Click")}}shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >LOGIN</Button>
+            <Button className="submit-login-btn"  onClick={handleOnSubmitLogin} variant="contained" size="large" endIcon={<SendIcon/>}  shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >LOGIN</Button>
+            {error? <p className ="login-error">{error}</p>: null}
           </div>
         </div>
 
 
         {/* add Link tag here to redirect to register page once routes are established in App.jsx */}
         <div className="register-redirect">
-          <p >Don't have an account? Sign up <Link className="redirect-link" to ="/register">here</Link></p>
+          <p className="register-redirect-text">Don't have an account? Sign up <Link className="redirect-link" to ="/register">here</Link></p>
         </div>
       </div>
     </div>
