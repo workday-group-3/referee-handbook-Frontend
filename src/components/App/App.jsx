@@ -1,11 +1,15 @@
+//react imports
 import React from 'react'
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 
 //styling
 import './App.css'
 
 //Contexts
 import { LearningContextProvider } from '../../contexts/learning';
+import { AuthContextProvider } from '../../contexts/auth'
 
 //component imports
 import LoginPage from '../LoginPage/LoginPage'
@@ -15,19 +19,27 @@ import ProfilePage from '../ProfilePage/ProfilePage'
 import Navbar from '../Navbar/Navbar'
 import LearningCenterPage from '../LearningCenterPage/LearningCenterPage';
 import NotFound from "../NotFound/NotFound"
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+
 
 
 //returns our context providers with our App component nested inside.
 export default function AppContainer() {
   return (
-    <LearningContextProvider>
-      <App />
-    </LearningContextProvider>
+    <AuthContextProvider>
+      <LearningContextProvider>
+        <App />
+      </LearningContextProvider>
+    </AuthContextProvider>
   )
 }
 
 
+
+
 function App() {
+
+
 
   return (
     <div className="app">
@@ -38,7 +50,7 @@ function App() {
           <Route path="/" element={<LandingPage/>}></Route>
           <Route path="/login" element={<LoginPage/>}></Route>
           <Route path="/register" element={<RegisterPage/>}></Route>
-          <Route path="/profile" element={<ProfilePage/>}></Route>
+          <Route path="/profile" element={<ProtectedRoute element = {<ProfilePage/>}/>}></Route>
           <Route path="/learning" element={<LearningCenterPage/>}></Route>
           <Route path="*" element={<NotFound/>}></Route>
         </Routes>

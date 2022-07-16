@@ -1,8 +1,8 @@
 import React from 'react'
 import './RegisterPage.css'
+
+//asset imports
 import logo from '../../assets/handbook-logo.png'
-
-
 
 //MUI imports
 import Box from '@mui/material/Box';
@@ -11,25 +11,17 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 
 //react imports
-import { useState } from "react"
 import { Link } from 'react-router-dom';
 
-
-export default function RegisterPage(props) {
-
-
-  //global variables
-  let emptyRegisterForm = {email: "", username: "", location: "", firstName: "", lastName: "",  profileImageUrl: "", password: "", confirmPassword: ""}
-
-  //state variables
-  const [userRegisterForm, setUserRegisterForm ] = useState(emptyRegisterForm)
+//custom hook
+import { useRegistrationForm } from '../../hooks/useRegistrationForm'
 
 
-  //register form handler
-  function handleOnInputChange (evt) {
-    setUserRegisterForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
-    console.log("userLoginForm", userRegisterForm)
-  }
+export default function RegisterPage() {
+            
+  const { userRegisterForm, error, handleOnInputChange, handleOnSubmitRegisterForm } = useRegistrationForm()                  
+
+
 
   return (
     <Box
@@ -53,6 +45,7 @@ export default function RegisterPage(props) {
               label="Email"
               type="email"
               name="email"
+              value={userRegisterForm.email}
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
               variant="filled"
@@ -65,6 +58,7 @@ export default function RegisterPage(props) {
               label="Username"
               type="text"
               name="username"
+              value={userRegisterForm.username}
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
               variant="filled"
@@ -77,6 +71,7 @@ export default function RegisterPage(props) {
               label="Location"
               type="text"
               name="location"
+              value={userRegisterForm.location}
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
               variant="filled"
@@ -89,6 +84,7 @@ export default function RegisterPage(props) {
               label="First Name"
               type="text"
               name="firstName"
+              value={userRegisterForm.firstName}
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
               variant="filled"
@@ -99,6 +95,7 @@ export default function RegisterPage(props) {
               label="Last Name"
               type="text"
               name="lastName"
+              value={userRegisterForm.lastName}
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
               variant="filled"
@@ -111,6 +108,7 @@ export default function RegisterPage(props) {
               label="Password"
               type="password"
               name="password"
+              value={userRegisterForm.password}
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
               variant="filled"
@@ -123,19 +121,18 @@ export default function RegisterPage(props) {
                 label="Confirm Password"
                 type="password"
                 name="confirmPassword"
+                value={userRegisterForm.confirmPassword}
                 onChange={handleOnInputChange}
                 sx={{backgroundColor : 'white'}}
                 variant="filled"
                 autoComplete="current-password"/>
             </div>
             <div className="submit-register-btn-container">
-            <Button className="submit-register-btn" variant="contained" size="large" endIcon={<SendIcon/>}  onClick= {() => {console.log("Click")}}shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >REGISTER</Button>
+              <Button className="submit-register-btn" variant="contained" size="large" endIcon={<SendIcon/>}  onClick={handleOnSubmitRegisterForm} shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >REGISTER</Button>
+              {error? <p className ="register-error">{error}</p>: null}
             </div>
-
-
-          {/* add Link tag here to redirect to register page once routes are established in App.jsx */}
           <div className="login-redirect">
-            <p>Already have an account? Login <Link className="redirect-link" to ="/login">here</Link></p>
+            <p className = "login-redirect-text">Already have an account? Login <Link className="redirect-link" to ="/login">here</Link></p>
           </div>
         </div>
         </div>
