@@ -11,7 +11,7 @@ import { useAuthContext } from "../../contexts/auth"
 export default function NavLinks() {
 
 
-  const { user, handleOnLogout } = useAuthContext()
+ 
 
 
   return (
