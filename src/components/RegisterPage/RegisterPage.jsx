@@ -101,6 +101,18 @@ export default function RegisterPage() {
               variant="filled"
               />
           </div>
+          <div className="profile-picture-url-input-container">
+            <TextField
+              className="input-field"
+              id="outlined-profile-picture-url-input"
+              label="Profile Picture Image URL"
+              type="text"
+              name="profileImageURL"
+              value={userRegisterForm.profileImageURL}
+              onChange={handleOnInputChange}
+              sx={{backgroundColor : 'white'}}
+              variant="filled"/>
+            </div>
           <div className="password-input-container">
             <TextField
               className="input-field"

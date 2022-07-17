@@ -35,7 +35,7 @@ export default function ProfilePage() {
     <div className="profile-page">
         <div className="profile-page-header">
             <div className ="profile-picture-container">
-                <img className="profile-picture"src={profilePicture} alt="User profile picture"/>
+                <img className="profile-picture" src= {user.profileImageUrl} alt="User profile picture"/>
             </div>
             <div className="user-section">
                 <div className="profile-user-info">
@@ -100,7 +100,7 @@ export default function ProfilePage() {
                             label="Email"
                             type="email"
                             name = "email"
-                            value = {user.username}
+                            value = {user.email}
                             variant="filled"
                             InputProps={{ readOnly: true }}
                         />
