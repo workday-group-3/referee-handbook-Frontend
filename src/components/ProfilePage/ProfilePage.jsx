@@ -27,7 +27,7 @@ export default function ProfilePage() {
 
     //checking if user has a profile picture, if not use placeholder
     let profilePicture;
-    {user.profileImageUrl === "" ? profilePicture = profilePicturePlaceholder : profilePicture = user.profileImageUrl}
+    {user.profileImageUrl === null ? profilePicture = profilePicturePlaceholder : profilePicture = user.profileImageUrl}
 
     
 
@@ -35,7 +35,7 @@ export default function ProfilePage() {
     <div className="profile-page">
         <div className="profile-page-header">
             <div className ="profile-picture-container">
-                <img className="profile-picture" src= {user.profileImageUrl} alt="User profile picture"/>
+                <img className="profile-picture" src= {profilePicture} alt="User profile picture"/>
             </div>
             <div className="user-section">
                 <div className="profile-user-info">

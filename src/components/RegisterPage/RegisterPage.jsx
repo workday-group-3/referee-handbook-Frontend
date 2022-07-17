@@ -105,7 +105,7 @@ export default function RegisterPage() {
             <TextField
               className="input-field"
               id="outlined-profile-picture-url-input"
-              label="Profile Picture Image URL"
+              label="Profile Picture Image URL (OPTIONAL)"
               type="text"
               name="profileImageURL"
               value={userRegisterForm.profileImageURL}
