@@ -18,7 +18,18 @@ function CoursesListPage(props) {
   return (
     <div className='courses-list'>
 
+      {/* Once the promise to add the current course to our currentCourse context variable has been
+          fulfilled, render the LearningBanner component */}
       { currentCourse ? <LearningBanner courseName={currentCourse.sport_name}/> : null}
+
+
+      <div className='beginner-course-option'>
+       
+          <img className='beginner-course-image' src={currentCourse.beginner_cover_image_url} alt={`${currentCourse.sport_name} image`} ></img>
+        
+
+      </div>
+
 
       <h1>Courses list</h1>
     </div>

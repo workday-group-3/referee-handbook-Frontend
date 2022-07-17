@@ -1,0 +1,18 @@
+.beginner-course-option {
+    margin: 80px;
+    height: 250px;
+    width: 1350px;
+    background-color: red;
+    display: flex;
+}
+
+.beginner-course-image {
+    height: 200px;
+    width: 300px;
+    position: absolute;
+    top: 26%;
+    right: 70%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
