@@ -11,7 +11,6 @@ const LearningContext = createContext(null)
 
 export const LearningContextProvider = ({children}) => {
     const [beginnerCourses, setBeginnerCourses] = useState([])  //creates a simple course array state variable 
-
     const [initialized, setInitialized] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
