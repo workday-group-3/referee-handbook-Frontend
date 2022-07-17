@@ -6,28 +6,43 @@ import profilePicturePlaceholder from '../../assets/profile-picture-placeholder.
 //MUI imports
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
+import ScheduleSharpIcon from '@mui/icons-material/ScheduleSharp';
+
+//import contexts
+import { useAuthContext } from "../../contexts/auth"
+
+
+//import for date formatting
+import Moment from "moment"
 
 
 
-export default function ProfilePage(props) {
 
+export default function ProfilePage() {
 
+    const { user } = useAuthContext()
+    console.log("user", user)
 
+    //checking if user has a profile picture, if not use placeholder
+    let profilePicture;
+    {user.profileImageUrl === "" ? profilePicture = profilePicturePlaceholder : profilePicture = user.profileImageUrl}
 
-    // replace dummy data with actual user info when backend is setup
+    
 
   return (
     <div className="profile-page">
         <div className="profile-page-header">
             <div className ="profile-picture-container">
-                <img className="profile-picture"src={profilePicturePlaceholder} alt="User profile picture"/>
+                <img className="profile-picture"src={profilePicture} alt="User profile picture"/>
             </div>
             <div className="user-section">
                 <div className="profile-user-info">
-                    <h1 className="profile-picture-username"><em>dogcage</em></h1>
-                    <h3 className="profile-picture-name">Doug Case</h3>
-                    <h3 className="profile-location">Pleasanton, CA</h3>
-                    <h3 className="profile-account-creation-date">Joined on 04/03/2002</h3>
+                    <h1 className="profile-picture-username"><em>{user.username}</em></h1>
+                    <h3 className="profile-picture-name"><AccountCircleIcon className ="profile-icon" color = "grey" />{user.firstName + " " + user.lastName}</h3>
+                    <h3 className="profile-location"><LocationOnSharpIcon className ="profile-icon" color ="grey" />{user.location}</h3>
+                    <h3 className="profile-account-creation-date"><ScheduleSharpIcon className="profile-icon" color ="grey"/> Joined on {Moment(new Date(user.createdAt)).format("MMMM Do, YYYY")}</h3> 
                 </div>
             </div>
         </div>
@@ -51,7 +66,7 @@ export default function ProfilePage(props) {
                         label="Username"
                         type="text"
                         name = "username"
-                        value = "dogcage"
+                        value = {user.username}
                         variant="filled"
                         InputProps={{ readOnly: true }}
                         />
@@ -63,7 +78,7 @@ export default function ProfilePage(props) {
                         label="First Name"
                         type="text"
                         name = "firstName"
-                        value = "Doug"
+                        value = {user.firstName}
                         variant="filled"
                         InputProps={{ readOnly: true }}
                         /> 
@@ -73,7 +88,7 @@ export default function ProfilePage(props) {
                         label="Last Name"
                         type="text"
                         name = "lastName"
-                        value = "Case"
+                        value = {user.lastName}
                         variant="filled"
                         InputProps={{ readOnly: true }}
                         />
@@ -85,7 +100,7 @@ export default function ProfilePage(props) {
                             label="Email"
                             type="email"
                             name = "email"
-                            value = "dog@cage.io"
+                            value = {user.username}
                             variant="filled"
                             InputProps={{ readOnly: true }}
                         />

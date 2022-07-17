@@ -23,8 +23,12 @@
     display: flex;
     justify-content: center;
     margin-top: 10%;
+}
 
-} 
+.profile-user-info {
+    text-align: center;
+}
+
 
 
 
@@ -40,11 +44,29 @@
     border-radius: 50%;
 }
 
+.profile-icon {
+    margin-left: 1.5%;
+    position: absolute;
+    left:0;
+}
 
-
-.profile-picture-name, .profile-location {
+.profile-picture-name, .profile-location, .profile-account-creation-date {
     margin: 0;
     padding: 0;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-picture-username {
+    margin: 0;
+    padding: 0;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 
