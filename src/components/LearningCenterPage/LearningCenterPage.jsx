@@ -15,8 +15,7 @@ import "./LearningCenterPage.css"
 function LearningCenterPage() {
   //extract state variables from learningContext
   const { beginnerCourses, isLoading, error } = useLearningContext()
-  const [copy, setCopy] = useState([...beginnerCourses])
-  console.log("Beginner courses: ", beginnerCourses)
+  const [copy, setCopy] = useState([...beginnerCourses]) //potentially useless
 
   return (
     <div className='learning-center-page'>
