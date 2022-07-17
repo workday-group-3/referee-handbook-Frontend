@@ -24,13 +24,13 @@ export const useRegistrationForm = () => {
 
 
 
-  // uncomment this when logout button is added
-  // useEffect(() => {
-  //   //if user is already logged in, then redirect to home page
-  //   if(user?.username) {
-  //     navigate("/profile")
-  //   }
-  // }, [user, navigate])
+
+  useEffect(() => {
+    //if user is already logged in, then redirect to home page
+    if(user?.username) {
+      navigate("/learning")
+    }
+  }, [user, navigate])
 
 
 
