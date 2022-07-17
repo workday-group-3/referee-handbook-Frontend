@@ -21,6 +21,7 @@ import LearningCenterPage from '../LearningCenterPage/LearningCenterPage';
 import NotFound from "../NotFound/NotFound"
 import Footer from "../Footer/Footer"
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import CoursesListPage from '../CoursesListPage/CoursesListPage';
 
 
 
@@ -53,6 +54,7 @@ function App() {
           <Route path="/register" element={<RegisterPage/>}></Route>
           <Route path="/profile" element={<ProtectedRoute element = {<ProfilePage/>}/>}></Route>
           <Route path="/learning" element={<LearningCenterPage/>}></Route>
+          <Route path="/learning/:sportsName" element={<CoursesListPage/>} />
           <Route path="*" element={<NotFound/>}></Route>
         </Routes>
         <Footer/>
