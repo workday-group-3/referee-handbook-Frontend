@@ -55,3 +55,12 @@
     0% { opacity: 0; }
     100% { opacity: 1; }
   }
+
+
+  .slide, .slide-img {
+    border-radius: 20px;
+  }
+
+  .slide-description {
+    font-weight: 600;
+  }
