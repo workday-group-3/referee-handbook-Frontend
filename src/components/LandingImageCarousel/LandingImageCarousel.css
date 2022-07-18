@@ -2,7 +2,7 @@
     width: 80vw;
     background: rgba(201, 199, 199, 0.7);
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 35% 45% 10%;
     align-items: center;
     grid-column-gap: 1.5vw;
     position: absolute;
@@ -16,7 +16,8 @@
     height: 25vh;
     object-fit: cover;
     object-position: center center;
-    margin: 1vw;
+    margin-left: 10%;
+    margin-top: 5%;
 }
 
 .slide-item{
@@ -32,6 +33,7 @@
 .dots{
     margin-left: 2vw;
     color: #383838;
+    margin-bottom: 0.5vw;
 }
 
 .forward-btn{
