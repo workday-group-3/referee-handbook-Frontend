@@ -8,13 +8,16 @@
     
 }
 
-.return-button {
-    position: absolute;
-    margin: 20px;
-    border-radius: 10px;
-    width: 100px;
-    right: 50px;
+.button-section {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: blue;
+    justify-content: right;
+    width: 100%;
 }
+
+
+
 
 .timeline {
     
@@ -27,6 +30,9 @@
 .rules-section {
     color: white;
     margin: 50px;
+    background-color: rgba(0, 0, 0, 0.13);
+    padding: 20px;
+    border-radius: 10px;
 }
 .rules-section h1 {
     margin-bottom: 5px;
@@ -34,19 +40,23 @@
 .video-and-diagram-section {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.13);
 }
-.diagram h1 {
+.diagram h1, .video h1 {
     text-align: center;
-}
-.diagram-img {
+    color: white;
+} 
+
+.diagram-img, .video {
     width: 500px;
     height: 300px;
-}
-.video {
-    background-color: blue;
-    width: 700px;
 }
 
 .rules-paragraph {
     white-space: pre-line;
+}
+
+.video, .diagram {
+    margin: 80px;
 }

@@ -2,6 +2,7 @@ import React from 'react'
 
 //stylign
 import "./BeginnerCoursePage.css"
+import Button from '@mui/material/Button';
 
 //routing
 import { useNavigate } from "react-router-dom"
@@ -35,8 +36,9 @@ function BeginnerCoursePage() {
             { currentCourse ? <LearningBanner courseName={currentCourse.sport_name}/> : null}
           
             <div className='button-section'>
-                <button className="return-button" onClick={handleReturn}>Return</button>
-
+                <div>
+                    <Button variant="contained" size="large" className="return-button" onClick={handleReturn}>Yes</Button>
+                </div>
             </div>
 
             <div className='timeline'>
@@ -45,24 +47,31 @@ function BeginnerCoursePage() {
 
             {currentCourse ? 
             <div>
+
                 <div className='rules-section'>
                     <h1>Rules : </h1>
                     <p className='rules-paragraph'>{formattedRules}</p>
                 </div>
+
                 <div className='video-and-diagram-section'>
+
                     <div className='video'>
-                    <iframe
-                        src={currentCourse.beginner_tutorial_video_url}
-                        width="500"
-                        height="300"
-                        allowFullScreen
-                    />{" "}
+                        <h1>Tutorial Video</h1>
+                        <iframe
+                            src={currentCourse.beginner_tutorial_video_url}
+                            width="500"
+                            height="300"
+                            allowFullScreen
+                        />{" "}
                     </div>
+
                     <div className='diagram'>
                         <h1>Diagram</h1>
                         <img className="diagram-img" src={currentCourse.beginner_field_diagram_url} alt="beginner field diagram" />
                     </div>
+                    
                 </div>
+
             </div> : null}
             
         </div>
