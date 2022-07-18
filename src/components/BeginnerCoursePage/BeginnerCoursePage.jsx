@@ -3,6 +3,8 @@ import React from 'react'
 //stylign
 import "./BeginnerCoursePage.css"
 import Button from '@mui/material/Button';
+import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 
 //routing
 import { useNavigate } from "react-router-dom"
@@ -11,7 +13,7 @@ import { useNavigate } from "react-router-dom"
 import { useLearningContext } from '../../contexts/learning'
 
 //components
-import LearningBanner from '../learningBanner/LearningBanner'
+import LearningSubBanner from '../LearningSubBanner/LearningSubBanner'
 
 
 function BeginnerCoursePage() {
@@ -33,26 +35,22 @@ function BeginnerCoursePage() {
 
     return (
         <div className='beginner-course-page'>
-            { currentCourse ? <LearningBanner courseName={currentCourse.sport_name}/> : null}
+            { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name}/> : null}
           
             <div className='button-section'>
-                <div>
-                    <Button variant="contained" size="large" className="return-button" onClick={handleReturn}>Yes</Button>
-                </div>
+                    <ul>
+                        <li><button onClick={handleReturn}><ArrowBackIosNewRoundedIcon className='button-icon'/></button></li>
+                        <li><button><FavoriteBorderRoundedIcon className='button-icon'/></button></li>
+                    </ul>
             </div>
 
             <div className='timeline'>
-                <h3>I am a timeline</h3>
+                <iframe src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1xuY4upIooEeszZ_lCmeNx24eSFWe0rHe9ZdqH2xqVNk&font=Default&lang=en&initial_zoom=2&height=100%" width="100%" frameborder="0"></iframe>
+                                
             </div>
 
             {currentCourse ? 
             <div>
-
-                <div className='rules-section'>
-                    <h1>Rules : </h1>
-                    <p className='rules-paragraph'>{formattedRules}</p>
-                </div>
-
                 <div className='video-and-diagram-section'>
 
                     <div className='video'>
@@ -71,6 +69,12 @@ function BeginnerCoursePage() {
                     </div>
                     
                 </div>
+                <div className='rules-section'>
+                    <h1>Rules : </h1>
+                    <p className='rules-paragraph'>{formattedRules}</p>
+                </div>
+
+                
 
             </div> : null}
             

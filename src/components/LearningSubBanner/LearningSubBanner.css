@@ -1,0 +1,8 @@
+.learning-sub-banner {
+    color: white;
+    display: flex;
+    justify-content: center;
+    background-color: darkgray;
+    padding: 10px;
+    width: 100%;
+}

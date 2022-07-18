@@ -4,7 +4,7 @@ import React from 'react'
 import "./CoursesListPage.css"
 
 //import components
-import LearningBanner from '../learningBanner/LearningBanner'
+import LearningBanner from '../LearningSubBanner/LearningSubBanner'
 
 //contexts
 import { useLearningContext } from '../../contexts/learning'
