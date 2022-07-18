@@ -42,7 +42,7 @@ export default function LoginPage({ message }) {
         <Box
           component="form"
           sx={{
-            '& .MuiTextField-root': { m: 2, width: '50ch', backgroundColor: 'white' },
+            '& .MuiTextField-root': { m: 1.25, width: '50ch', backgroundColor: 'white' },
           }}
           noValidate
           autoComplete="off">
