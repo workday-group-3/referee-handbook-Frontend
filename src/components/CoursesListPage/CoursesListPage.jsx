@@ -9,6 +9,9 @@ import LearningBanner from '../learningBanner/LearningBanner'
 //contexts
 import { useLearningContext } from '../../contexts/learning'
 
+//routing
+import { Link } from "react-router-dom"
+
 function CoursesListPage(props) {
   
   //context variables
@@ -22,18 +25,25 @@ function CoursesListPage(props) {
           fulfilled, render the LearningBanner component */}
       { currentCourse ? <LearningBanner courseName={currentCourse.sport_name}/> : null}
 
-
-      <div className='beginner-course-option'>
+      {/* Ensures a current course has been selected */}
+      { currentCourse ? 
       
+      <Link to={`/learning/${currentCourse.sport_name}/beginner`}>
+
+        <div className='beginner-course-option'>
+
           <div className='img'>
             <img className='course-image' src={currentCourse.beginner_cover_image_url} alt={`${currentCourse.sport_name} image`} ></img>
           </div>
           <div className='course-text'>
             <h1>Beginner course</h1>
             <p>Our beginner {currentCourse.sport_name} course offers an indepth as well as a big picture overview of the sport. Learn about it's history, rules and regulations, and objectives. To aid in your educational journey, we've included a how-to video as well as a diagram of the field to aid in visualization!</p>
-          </div>
+        </div>
 
-      </div>
+        </div>
+
+      </Link> : null}
+      
 
       {/* To be implemented when we get to the user courses feature */}
       {/* <div className='user-course-option'>
