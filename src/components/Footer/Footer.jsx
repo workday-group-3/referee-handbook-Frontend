@@ -17,7 +17,7 @@ export default function Footer() {
                 </div>
                 <div className="footer-header">
                     <h4 className ="footer-title">About Us</h4>
-                    <p className="footer-body">This website was created by three interns, Aileen Ji, Ernesto Enriquez, and Travis Navarro. This is our Capstone Project for CodePath's Summer 2022 Internship for Tech Excellence program, partnered with Workday.</p>
+                    <p className="footer-body">This website was created by three interns: Aileen Ji, Ernesto Enriquez, and Travis Navarro. This is our Capstone Project for CodePath's Summer 2022 Internship for Tech Excellence program, partnered with Workday.</p>
                 </div>
                 <div className="footer-header">
                     <h4 className ="footer-title">Socials</h4>
