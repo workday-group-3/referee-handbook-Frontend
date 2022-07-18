@@ -1,12 +1,13 @@
 .footer{
     background-color: #383838;
     color: whitesmoke;
-
+    height: 100%;
+    width: 100%;
 }
 
 .footer-logo{
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
 }
 
 .logo-container {
