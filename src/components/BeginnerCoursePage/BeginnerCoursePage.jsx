@@ -14,14 +14,19 @@ import LearningBanner from '../learningBanner/LearningBanner'
 
 
 function BeginnerCoursePage() {
+
     
     const navigate = useNavigate()
-
+    
     const { currentCourse, setcurrentCourse } = useLearningContext()
+    
+    const formattedRules = currentCourse ? currentCourse.beginner_rules.replaceAll("{b}", "•") : null
+    // formattedRules.splice()
+    
     
     //when the return button is clicked, user is redirected back to the course list page for their chosen sport
     async function handleReturn() { 
-        
+        console.log(currentCourse.beginner_tutorial_video_url)
         navigate("/learning/:sportName")
     }
 
@@ -42,7 +47,7 @@ function BeginnerCoursePage() {
             <div>
                 <div className='rules-section'>
                     <h1>Rules : </h1>
-                    <p>{currentCourse.beginner_rules}</p>
+                    <p className='rules-paragraph'>{formattedRules}</p>
                 </div>
                 <div className='video-and-diagram-section'>
                     <div className='video'>
@@ -50,10 +55,7 @@ function BeginnerCoursePage() {
                         src={currentCourse.beginner_tutorial_video_url}
                         width="500"
                         height="300"
-                        frameborder="0"
-                        allow="autoplay; encrypted-media"
-                        allowfullscreen
-                        title="video"
+                        allowFullScreen
                     />{" "}
                     </div>
                     <div className='diagram'>
