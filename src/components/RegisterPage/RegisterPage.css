@@ -74,13 +74,11 @@
     color: white;
     position: absolute;
     bottom: 0;
-    margin-left: 30%;
+    margin-left: 26%;
     margin-bottom: 5%;
 }
 
-.login-redirect-text {
 
-}
 
 .register-error {
     color: red;

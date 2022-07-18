@@ -16,6 +16,7 @@ export const LearningContextProvider = ({children}) => {
     const [initialized, setInitialized] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
+    const [expandedCourse, setExpandedCourse] = useState(null)
     
     //Uses api client to retrieve all beginner courses from the backend 
     const fetchCourses = async () => {
@@ -42,7 +43,7 @@ export const LearningContextProvider = ({children}) => {
     
     
     //value to be passed into the child component in the return statement
-    const learningValue = { beginnerCourses, setBeginnerCourses, currentCourse, setCurrentCourse }
+    const learningValue = { beginnerCourses, setBeginnerCourses, currentCourse, setCurrentCourse, expandedCourse, setExpandedCourse }
     
     //renders children propes previosly defined in LearningContextProvider using the values in learningValue
     return (

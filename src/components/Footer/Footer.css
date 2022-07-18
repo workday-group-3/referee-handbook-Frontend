@@ -1,38 +1,63 @@
 .footer{
-    display: grid;
-    grid-template-columns: 30vw 20vw 20vw;
-    justify-content: center;
-    align-items: center;
     background-color: #383838;
-    font-size: large;
-    color: white;
-    height: 40vh;
+    color: whitesmoke;
+    height: 100%;
+    width: 100%;
 }
 
-.footer-img{
-    height: 30vh;
+.footer-logo{
+    width: 200px;
+    height: 200px;
 }
 
-.footer ul{
-    list-style-type: none;
+.logo-container {
+    margin: 2%;
 }
 
-.footer .icons{
-    color: #F1D433;
-    padding: 10px;
-}
 
-.footer li{
-    padding: 5px;
-}
-
-.footer-item{
+.top-half-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+
+    
 }
 
-.footer .icon{
-    padding: 3px;
+.footer-header {
+    text-align: center;
+    width: 200px;
+    margin: 2%;
+}
+
+.footer-title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20%;
+
+}
+
+.footer-body {
+    margin-bottom: 5%;
+    display: block;
+    width: 200px;
+}
+
+
+
+.icon-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    margin-top: .5%;
+}
+
+.icon-item {
+    margin-right: 1%;
+}
+
+.github-anchor {
+    text-decoration: none;
+    color: white;
 }

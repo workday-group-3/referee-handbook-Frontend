@@ -1,7 +1,9 @@
 .sports-img {
-    width: 1300px;
-    height: 350px;
-    border-radius: 100px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 80vw;
+    height: 15vw;
+    border-radius: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    object-fit: cover;
+    justify-self: center;
 }
