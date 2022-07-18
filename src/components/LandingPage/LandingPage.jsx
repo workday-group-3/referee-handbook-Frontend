@@ -6,8 +6,12 @@ import Button from '@mui/material/Button';
 import LandingImageCarousel from '../LandingImageCarousel/LandingImageCarousel'
 
 import heroImg from "../../assets/hero-img.jpg"
+import { useAuthContext } from '../../contexts/auth';
 
 export default function LandingPage() {
+
+  const {user} = useAuthContext()
+
   return (
     <div className="landing-page">
       <div className='hero'>
@@ -16,10 +20,11 @@ export default function LandingPage() {
           <h1>Referee's Handbook</h1>
           <h2>Play smarter, not harder</h2>
         </div>
-        <div className='landing-btn'>
+        {user?.email ? null : <div className='landing-btn'>
           <Button className='login-btn'><Link to="/login">Login</Link></Button>
           <Button className='signup-btn'><Link to="/register">Sign Up</Link></Button>
-        </div>
+        </div>}
+        
       </div>
       <LandingImageCarousel/>
     </div>
