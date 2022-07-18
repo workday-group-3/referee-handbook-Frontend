@@ -24,14 +24,32 @@ function CoursesListPage(props) {
 
 
       <div className='beginner-course-option'>
-       
-          <img className='beginner-course-image' src={currentCourse.beginner_cover_image_url} alt={`${currentCourse.sport_name} image`} ></img>
-        
+      
+          <div className='img'>
+            <img className='course-image' src={currentCourse.beginner_cover_image_url} alt={`${currentCourse.sport_name} image`} ></img>
+          </div>
+          <div className='course-text'>
+            <h1>Beginner course</h1>
+            <p>Our beginner {currentCourse.sport_name} course offers an indepth as well as a big picture overview of the sport. Learn about it's history, rules and regulations, and objectives. To aid in your educational journey, we've included a how-to video as well as a diagram of the field to aid in visualization!</p>
+          </div>
 
       </div>
 
+      {/* To be implemented when we get to the user courses feature */}
+      {/* <div className='user-course-option'>
+      
+          <div className='img'>
+            <img className='course-image' src={currentCourse.beginner_cover_image_url} alt={`${currentCourse.sport_name} image`} ></img>
+          </div>
+          <div className='course-text'>
+            <h1>User courses</h1>
+            <p>Our user {currentCourse.sport_name} courses offer individualized and specific sports tips and tricks for beginner and intermediate players alike. Come see what the sports education community has to offer!</p>
+          </div>
 
-      <h1>Courses list</h1>
+      </div> */}
+
+
+      {/* <div>‎ </div> */}
     </div>
   )
 }
