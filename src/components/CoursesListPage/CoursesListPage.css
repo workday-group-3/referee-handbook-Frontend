@@ -1,4 +1,40 @@
-.beginner-course-option {
+.courses-list{
+    background-color: #363232;
+    padding-bottom: 20px;
+}
+
+.beginner-course-option, .user-course-option {
+    margin: 80px;
+    height: 250px;
+    width: 1350px;
+    background-color: rgba(0, 0, 0, 0.13);
+    display: flex;
+    border-radius: 10px;
+}
+
+
+
+.course-image {
+    height: 200px;
+    width: 300px;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.course-text {
+    margin: 50px;
+}
+.course-text h1 {
+    color: wheat;
+    font-weight: bolder;
+}
+.course-text p {
+    margin-top: 20px;
+    color: wheat;
+    font-weight: bolder;
+}
+
+.course-option {
     margin: 80px;
     height: 250px;
     width: 1350px;
@@ -6,13 +42,4 @@
     display: flex;
 }
 
-.beginner-course-image {
-    height: 200px;
-    width: 300px;
-    position: absolute;
-    top: 26%;
-    right: 70%;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-}
+
