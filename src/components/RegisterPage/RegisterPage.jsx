@@ -27,7 +27,7 @@ export default function RegisterPage() {
     <Box
     component="form"
     sx={{
-      '& .MuiTextField-root': { m: 2, width: '50ch' },
+      '& .MuiTextField-root': { m: 1.25, width: '50ch' },
     }}
     noValidate
     autoComplete="off">
@@ -77,30 +77,30 @@ export default function RegisterPage() {
               variant="filled"
               />
           </div>
-          <div className="name-input-container">
-            <TextField
-              className="first-name-input-field"
-              id="outlined-first-name-input"
-              label="First Name"
-              type="text"
-              name="firstName"
-              value={userRegisterForm.firstName}
-              onChange={handleOnInputChange}
-              sx={{backgroundColor : 'white'}}
-              variant="filled"
-              />
+            <div className="name-input-container">
               <TextField
-              className="last-name-input-field"
-              id="outlined-last-name-input"
-              label="Last Name"
-              type="text"
-              name="lastName"
-              value={userRegisterForm.lastName}
-              onChange={handleOnInputChange}
-              sx={{backgroundColor : 'white'}}
-              variant="filled"
-              />
-          </div>
+                className="first-name-input-field"
+                id="outlined-first-name-input"
+                label="First Name"
+                type="text"
+                name="firstName"
+                value={userRegisterForm.firstName}
+                onChange={handleOnInputChange}
+                sx={{backgroundColor : 'white'}}
+                variant="filled"
+                />
+                <TextField
+                className="last-name-input-field"
+                id="outlined-last-name-input"
+                label="Last Name"
+                type="text"
+                name="lastName"
+                value={userRegisterForm.lastName}
+                onChange={handleOnInputChange}
+                sx={{backgroundColor : 'white'}}
+                variant="filled"
+                />
+            </div>
           <div className="profile-picture-url-input-container">
             <TextField
               className="input-field"
