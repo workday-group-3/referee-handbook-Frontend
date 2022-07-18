@@ -32,7 +32,7 @@ function LearningCenterPage() {
         <div className='learning-cards'>
 
           {beginnerCourses.map((item) => {
-            return ( <LearningCenterCard beginnerCourse={item}/> )
+            return (<LearningCenterCard beginnerCourse={item}/>)
           })}
 
         </div>
