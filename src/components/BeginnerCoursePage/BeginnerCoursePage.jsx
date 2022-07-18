@@ -1,7 +1,7 @@
 import React from 'react'
 
 //stylign
-import "./BeginnerCoursePage.css"
+import "./BeginnerCoursePage.js"
 
 //import context 
 
