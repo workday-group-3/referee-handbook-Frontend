@@ -16,7 +16,6 @@ function CoursesListPage(props) {
   
   //context variables
   const { currentCourse } = useLearningContext()
-  console.log("current course is: ", currentCourse.sport_name)
 
   return (
     <div className='courses-list'>
@@ -25,9 +24,7 @@ function CoursesListPage(props) {
           fulfilled, render the LearningBanner component */}
       { currentCourse ? <LearningBanner courseName={currentCourse.sport_name}/> : null}
 
-      {/* Ensures a current course has been selected */}
-      { currentCourse ? 
-      
+     
       <Link to={`/learning/${currentCourse.sport_name}/beginner`}>
 
         <div className='beginner-course-option'>
@@ -42,7 +39,7 @@ function CoursesListPage(props) {
 
         </div>
 
-      </Link> : null}
+      </Link> 
       
 
       {/* To be implemented when we get to the user courses feature */}
