@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: auto auto auto;
     align-items: center;
-    grid-column-gap: 15px;
+    grid-column-gap: 1.5vw;
     position: absolute;
     top: 100%;
     right: 10%;
@@ -12,11 +12,11 @@
 }
 
 .slide-img{
-    width: 50vh;
+    width: 25vw;
     height: 25vh;
     object-fit: cover;
     object-position: center center;
-    margin: 20px;
+    margin: 1vw;
 }
 
 .slide-item{
@@ -30,7 +30,7 @@
 }
 
 .dots{
-    margin-left: 20vh;
+    margin-left: 2vw;
     color: #383838;
 }
 
@@ -39,7 +39,7 @@
     border: 2px;
     border-color: #383838;
     border-style: inset;
-    margin-right: 15px;
+    margin-right: 1.5vw;
     border-radius: 15px;
 }
 
