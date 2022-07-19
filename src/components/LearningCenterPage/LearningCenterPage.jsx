@@ -32,6 +32,7 @@ function LearningCenterPage() {
         <div className='learning-cards'>
 
           {beginnerCourses.map((item) => {
+            console.log(item)
             return (<LearningCenterCard beginnerCourse={item}/>)
           })}
 

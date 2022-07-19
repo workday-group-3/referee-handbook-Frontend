@@ -5,11 +5,18 @@ class ApiClient {
         this.remoteHostUrl = remoteHostUrl
         this.token = null
         this.tokenName = "my_token"
+        this.currCourse = null
+        this.currCourseName = "current_course"
     }
 
     setToken(token) {
         this.token = token
         localStorage.setItem(this.tokenName, token)
+    }
+
+    setCurrCourse(currCourse){
+        this.currCourse = currCourse
+        localStorage.setItem(this.currCourseName, currCourse)
     }
 
     async request({ endpoint, method = `GET`, data = {}}) {
