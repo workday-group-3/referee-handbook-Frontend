@@ -1,6 +1,6 @@
 import React from 'react'
 
-//stylign
+//styling
 import "./BeginnerCoursePage.css"
 
 //routing

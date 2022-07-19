@@ -23,6 +23,7 @@ import Footer from "../Footer/Footer"
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import CoursesListPage from '../CoursesListPage/CoursesListPage';
 import BeginnerCoursePage from '../BeginnerCoursePage/BeginnerCoursePage';
+import CreateCourseForm from '../CreateCourseForm/CreateCourseForm';
 
 
 
@@ -50,14 +51,15 @@ function App() {
 
         <Navbar/>
         <Routes>
-          <Route path="/" element={<LandingPage/>}></Route>
-          <Route path="/login" element={<LoginPage/>}></Route>
-          <Route path="/register" element={<RegisterPage/>}></Route>
-          <Route path="/profile" element={<ProtectedRoute element = {<ProfilePage/>}/>}></Route>
-          <Route path="/learning" element={<LearningCenterPage/>}></Route>
+          <Route path="/" element={<LandingPage/>} />
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/register" element={<RegisterPage/>} />
+          <Route path="/profile" element={<ProtectedRoute element = {<ProfilePage/>}/>} />
+          <Route path="/learning" element={<LearningCenterPage/>} />
           <Route path="/learning/:sportsName" element={<CoursesListPage/>} />
+          <Route path="/learning/:sportsName/create" element={<ProtectedRoute element = {<CreateCourseForm/>}/>} />
           <Route path="/learning/:sportsName/beginner" element={<BeginnerCoursePage/>} />
-          <Route path="*" element={<NotFound/>}></Route>
+          <Route path="*" element={<NotFound/>} />
         </Routes>
         <Footer/>
       </BrowserRouter>
