@@ -31,6 +31,8 @@
     flex-direction: row;
     justify-content: center;
     background-color: #383838;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
 }
 .diagram h1, .video h1 {
     text-align: center;
@@ -43,7 +45,10 @@
 }
 
 .rules-paragraph {
+    margin-top: 2vh;
     white-space: pre-line;
+    font-size: 18px;
+
 }
 
 .video, .diagram {
@@ -58,4 +63,14 @@
 .flag-img{
     height: 5vw;
  
+}
+
+.rules-section-title {
+    font-size: 48px;
+    font-weight: 700;
+
+}
+
+.video-header, .diagram-header{
+    margin-bottom: 1vh;
 }

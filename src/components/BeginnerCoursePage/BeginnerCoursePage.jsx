@@ -35,7 +35,7 @@ function BeginnerCoursePage() {
                 <div className='video-and-diagram-section'>
 
                     <div className='video'>
-                        <h1>Tutorial Video</h1>
+                        <h1 className="video-header">Tutorial Video</h1>
                         <iframe
                             src={currentCourse.beginner_tutorial_video_url}
                             width="500"
@@ -45,7 +45,7 @@ function BeginnerCoursePage() {
                     </div>
 
                     <div className='diagram'>
-                        <h1>Diagram</h1>
+                        <h1 className="diagram-header">Diagram</h1>
                         <img className="diagram-img" src={currentCourse.beginner_field_diagram_url} alt="beginner field diagram" />
                     </div>
                     
@@ -54,7 +54,7 @@ function BeginnerCoursePage() {
                 
                 <div className='rules-section'>
                     <div className='flag'><img src={flagImg} alt="flag image" className='flag-img'></img></div>
-                    <h1>Rules : </h1>
+                    <h1 className ="rules-section-title"><em>Rules</em></h1>
                     <p className='rules-paragraph'>{formattedRules}</p>
                 </div>
 
