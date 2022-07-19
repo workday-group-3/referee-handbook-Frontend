@@ -3,7 +3,9 @@ import "./HomeNews.css"
 
 function HomeNews() {
   return (
-    <div className='home-news'>HomeNews</div>
+    <div className='home-news'>
+        <h2 className='section-title'>HomeNews</h2>
+    </div>
   )
 }
 

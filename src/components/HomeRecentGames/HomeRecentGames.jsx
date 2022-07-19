@@ -3,7 +3,9 @@ import "./HomeRecentGames.css"
 
 function HomeRecentGames() {
   return (
-    <div className='home-recent-games'>HomeRecentGames</div>
+    <div className='home-recent-games'>
+        <h2 className='section-title'>HomeRecentGames</h2>
+    </div>
   )
 }
 
