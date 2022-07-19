@@ -1,6 +1,10 @@
 .courses-list{
     background-color: #363232;
     padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 60vh;
 }
 
 .beginner-course-option, .user-course-option {
@@ -19,6 +23,7 @@
     width: 300px;
     margin: 30px;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 .course-text {
