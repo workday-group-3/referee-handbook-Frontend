@@ -1,47 +1,36 @@
 .beginner-course-page {
-    background-color: #363232;
-    
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    
+    background-color: #383838;
+    min-height: 100vh;
 }
 
-.button-section {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: blue;
-    justify-content: right;
+.timeline {
     width: 100%;
 }
 
-
-
-
-.timeline {
-    
-    margin-top: 55px;
-    height: 200px;
-    width: 1500px;
-    background-color: red;
+.timeline iframe{
+    height: 80vh;
+    width: 100%;
 }
 
 .rules-section {
-    color: white;
-    margin: 50px;
-    background-color: rgba(0, 0, 0, 0.13);
+    color: black;
+    background: rgba(201, 199, 199, 0.7);
     padding: 20px;
     border-radius: 10px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding-bottom: 5vw;
+    font-size: large;
 }
 .rules-section h1 {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 .video-and-diagram-section {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.13);
+    background-color: #383838;
 }
 .diagram h1, .video h1 {
     text-align: center;
@@ -59,4 +48,14 @@
 
 .video, .diagram {
     margin: 80px;
+}
+
+.flag{
+    display: flex;
+    justify-content: center;
+}
+
+.flag-img{
+    height: 5vw;
+ 
 }

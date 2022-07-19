@@ -4,7 +4,7 @@ import React from 'react'
 import "./CoursesListPage.css"
 
 //import components
-import LearningBanner from '../learningBanner/LearningBanner'
+import LearningSubBanner from '../LearningSubBanner/LearningSubBanner'
 
 //contexts
 import { useLearningContext } from '../../contexts/learning'
@@ -22,7 +22,7 @@ function CoursesListPage(props) {
 
       {/* Once the promise to add the current course to our currentCourse context variable has been
           fulfilled, render the LearningBanner component */}
-      { currentCourse ? <LearningBanner courseName={currentCourse.sport_name}/> : null}
+      { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name} showButtons="false"/> : null}
 
      
       <Link to={`/learning/${currentCourse.sport_name}/beginner`}>

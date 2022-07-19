@@ -15,6 +15,7 @@
     width: 340px;
     height: 225px;
     border-radius: 50px;
+    object-fit: cover;
 }
 
 .sport-description {

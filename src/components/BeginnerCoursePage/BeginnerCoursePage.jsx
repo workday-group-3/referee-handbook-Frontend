@@ -2,7 +2,6 @@ import React from 'react'
 
 //stylign
 import "./BeginnerCoursePage.css"
-import Button from '@mui/material/Button';
 
 //routing
 import { useNavigate } from "react-router-dom"
@@ -11,48 +10,28 @@ import { useNavigate } from "react-router-dom"
 import { useLearningContext } from '../../contexts/learning'
 
 //components
-import LearningBanner from '../learningBanner/LearningBanner'
+import LearningSubBanner from '../LearningSubBanner/LearningSubBanner'
+
+import flagImg from "../../assets/flag.png"
 
 
 function BeginnerCoursePage() {
-
-    
-    const navigate = useNavigate()
     
     const { currentCourse, setcurrentCourse } = useLearningContext()
     
     const formattedRules = currentCourse ? currentCourse.beginner_rules.replaceAll("{b}", "•") : null
     // formattedRules.splice()
-    
-    
-    //when the return button is clicked, user is redirected back to the course list page for their chosen sport
-    async function handleReturn() { 
-        console.log(currentCourse.beginner_tutorial_video_url)
-        navigate("/learning/:sportName")
-    }
-
     return (
         <div className='beginner-course-page'>
-            { currentCourse ? <LearningBanner courseName={currentCourse.sport_name}/> : null}
-          
-            <div className='button-section'>
-                <div>
-                    <Button variant="contained" size="large" className="return-button" onClick={handleReturn}>Yes</Button>
-                </div>
-            </div>
+            { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name} showButtons="true"/> : null}
 
             <div className='timeline'>
-                <h3>I am a timeline</h3>
+            <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1r10YN6UYeytDANLa29ZbUmJr8eyyh1FzkQ4ttM0R0j8&font=Default&lang=en&initial_zoom=2' width='100%'  webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
+                                
             </div>
 
             {currentCourse ? 
             <div>
-
-                <div className='rules-section'>
-                    <h1>Rules : </h1>
-                    <p className='rules-paragraph'>{formattedRules}</p>
-                </div>
-
                 <div className='video-and-diagram-section'>
 
                     <div className='video'>
@@ -71,11 +50,19 @@ function BeginnerCoursePage() {
                     </div>
                     
                 </div>
+                
+                
+                <div className='rules-section'>
+                    <div className='flag'><img src={flagImg} alt="flag image" className='flag-img'></img></div>
+                    <h1>Rules : </h1>
+                    <p className='rules-paragraph'>{formattedRules}</p>
+                </div>
+
+                
 
             </div> : null}
             
         </div>
     )
 }
-
 export default BeginnerCoursePage
