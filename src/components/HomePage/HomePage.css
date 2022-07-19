@@ -1,0 +1,46 @@
+.home-page{
+    display: grid;
+    grid-template-areas:
+        'banner banner banner banner banner banner banner'
+        'sidebar teams teams teams game game game'
+        'sidebar teams teams teams news news news';
+        gap: 2%;
+    grid-template-columns: 12% 12% 12% 12% 12% 12% 12%;
+    grid-template-rows: 20% 35% 35%;
+    place-items: center;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.5) url("https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Checkerboard_pattern.svg/750px-Checkerboard_pattern.svg.png?20120227221412");
+    background-size:cover;
+    background-repeat: repeat;
+    background-blend-mode: darken;
+}
+
+.home-recent-games{
+    grid-area: game;
+}
+
+.home-banner{
+    grid-area: banner;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.home-side-navbar{
+    grid-area: sidebar;
+}
+
+.home-teams-grid{
+    grid-area: teams;
+}
+
+.home-news{
+    grid-area: news;
+}
+
+.section-title{
+    width: 100%;
+    background-color: #383838;
+    color: white;
+    font-weight: 400;
+}

@@ -1,0 +1,19 @@
+.home-side-navbar{
+    background-color: #383838;
+    height: 100%;
+    width: 10vh;
+    position: relative;
+    margin-left: auto
+}
+
+.home-side-navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.sport-icon{
+    color: #F1d433;
+    align-self: center;
+    justify-self: center;
+}
