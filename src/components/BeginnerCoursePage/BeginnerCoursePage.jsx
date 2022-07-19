@@ -17,6 +17,7 @@ import flagImg from "../../assets/flag.png"
 
 function BeginnerCoursePage() {
     
+    // pulling current course from local storage, parsing the string into json
     let currentCourse = JSON.parse(localStorage.getItem("current_course"))
     
     const formattedRules = currentCourse ? currentCourse.beginner_rules.replaceAll("{b}", "•") : null

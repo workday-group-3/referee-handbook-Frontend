@@ -12,7 +12,6 @@ const LearningContext = createContext(null)
 export const LearningContextProvider = ({children}) => {
     //state variables to be used/manipulated via useContext
     const [beginnerCourses, setBeginnerCourses] = useState([])  
-    const [currentCourse, setCurrentCourse] = useState(null)
     const [initialized, setInitialized] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -34,17 +33,6 @@ export const LearningContextProvider = ({children}) => {
         setIsLoading(false)
     }
 
-    // const fetchCurrCourse = async() => {
-    //     const name = localStorage.getItem("current_course")
-    //     const {data, error} = await ApiClient.fetchBeginnerCourseByName(name)
-    //     if(data) {
-    //         setCurrentCourse(data)
-    //     }
-    //     if (error) {
-    //         setError(error)
-    //     }
-    // }
-
     //callback function fetches courses and updates our setBeginnerCourses state variable
     useEffect(() => {
 
@@ -52,13 +40,10 @@ export const LearningContextProvider = ({children}) => {
 
     }, [setBeginnerCourses] )
 
-    // useEffect(() => {
-    //     fetchCurrCourse()
-    // }, [setCurrentCourse])
     
     
     //value to be passed into the child component in the return statement
-    const learningValue = { beginnerCourses, setBeginnerCourses, currentCourse, setCurrentCourse, expandedCourse, setExpandedCourse }
+    const learningValue = { beginnerCourses, setBeginnerCourses, expandedCourse, setExpandedCourse }
     
     //renders children propes previosly defined in LearningContextProvider using the values in learningValue
     return (

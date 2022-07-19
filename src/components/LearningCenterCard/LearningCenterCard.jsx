@@ -16,14 +16,13 @@ import { useLearningContext } from '../../contexts/learning'
 function LearningCenterCard(props) {
 
   //context variables
-  const { currentCourse, setCurrentCourse, expandedCourse, setExpandedCourse } = useLearningContext()
+  const { expandedCourse, setExpandedCourse } = useLearningContext()
   
   const setCourseHandler = async () => {
     console.log(props.beginnerCourse)
     
     localStorage.setItem("current_course", JSON.stringify(props.beginnerCourse))
     console.log("Current course is: ", localStorage.getItem("current_course"))
-    await setCurrentCourse(localStorage.getItem("current_course"))
     
   }
 

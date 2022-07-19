@@ -17,7 +17,7 @@ function CoursesListPage(props) {
   
   //context variables
 
-
+  // pulling current course from local storage, parsing the string into json
   let currentCourse = JSON.parse(localStorage.getItem("current_course"))
 
   
