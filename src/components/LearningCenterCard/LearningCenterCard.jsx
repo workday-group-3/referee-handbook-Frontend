@@ -36,12 +36,27 @@ function LearningCenterCard(props) {
   }
 
   return (
-    <div className='sport-card'>
-      <Link to={`/learning/${props.beginnerCourse.sport_name}`}> <img className ="sport-img" onClick={setCourseHandler} src={props.beginnerCourse.beginner_cover_image_url} alt={`${props.beginnerCourse.sport_name} image`} ></img> </Link>
+    <div onMouseEnter={setExpand} onMouseLeave={setFold} className='sport-card'>
+      
+        
+      <Link to={`/learning/${props.beginnerCourse.sport_name}`}> 
+        <img className ="sport-img" onClick={setCourseHandler} src={props.beginnerCourse.beginner_cover_image_url} alt={`${props.beginnerCourse.sport_name} image`} ></img> 
+      </Link>
+
+      {/* Sport name */}
       <h1>{props.beginnerCourse.sport_name}</h1>
+
+      {/* Sport description */}
       <div className='description'>
-      <p className={expandedCourse == props.beginnerCourse.sport_name ? "expanded sport-description" : "sport-description"}>{props.beginnerCourse.beginner_short_description}</p>
-      {expandedCourse !== props.beginnerCourse.sport_name ? (<KeyboardArrowDownIcon onClick={setExpand}/>) : (<KeyboardArrowUpIcon onClick={setFold}/>)}
+
+        <p className={expandedCourse == props.beginnerCourse.sport_name ? "expanded sport-description" : "sport-description"}>
+          {props.beginnerCourse.beginner_short_description}
+        </p>
+
+      {expandedCourse !== props.beginnerCourse.sport_name ? (<KeyboardArrowDownIcon/>) : (<KeyboardArrowUpIcon/>)}
+      
+      {/* {expandedCourse !== props.beginnerCourse.sport_name ? (<KeyboardArrowDownIcon onClick={setExpand}/>) : (<KeyboardArrowUpIcon onClick={setFold}/>)} */}
+      
       
       </div>
     </div>

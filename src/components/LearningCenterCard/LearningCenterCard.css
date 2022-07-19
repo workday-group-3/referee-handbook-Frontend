@@ -1,22 +1,56 @@
-.sport-card {
-    margin-left: 25px;
-    margin-right: 25px;    
+.sport-card { 
     margin-bottom: 20px;
-
+    
     color: white;
-    width: 300px;
+    
     display: inline-block;
     flex-direction: column;
     align-items: stretch;
+    
+    /* New css */
+    width: 380px;
+    overflow: hidden;
+    height: 315px;
+
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+
+    
+    
+    
 }
 
+
+.sport-card:hover {
+    
+    height: 485px;
+    color: yellow;
+    margin-bottom: 50px;
+}
 
 .sport-img {
     width: 340px;
     height: 225px;
     border-radius: 50px;
     object-fit: cover;
+
+    /* New new css */
+    -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+
+    
+    
 }
+
+.sport-img:hover {
+    /* New new css */
+    border-radius: 100%;
+}
+
 
 .sport-description {
     padding-top: 5px;
@@ -31,5 +65,5 @@
 
 .expanded{
     height: auto;
-
 }
+
