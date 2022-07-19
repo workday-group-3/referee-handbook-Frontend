@@ -2,9 +2,6 @@ import React from 'react'
 
 //stylign
 import "./BeginnerCoursePage.css"
-import Button from '@mui/material/Button';
-import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
-import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 
 //routing
 import { useNavigate } from "react-router-dom"
@@ -15,37 +12,21 @@ import { useLearningContext } from '../../contexts/learning'
 //components
 import LearningSubBanner from '../LearningSubBanner/LearningSubBanner'
 
+import flagImg from "../../assets/flag.png"
+
 
 function BeginnerCoursePage() {
-
-    
-    const navigate = useNavigate()
     
     const { currentCourse, setcurrentCourse } = useLearningContext()
     
     const formattedRules = currentCourse ? currentCourse.beginner_rules.replaceAll("{b}", "•") : null
     // formattedRules.splice()
-    
-    
-    //when the return button is clicked, user is redirected back to the course list page for their chosen sport
-    async function handleReturn() { 
-        console.log(currentCourse.beginner_tutorial_video_url)
-        navigate("/learning/:sportName")
-    }
-
     return (
         <div className='beginner-course-page'>
-            { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name}/> : null}
-          
-            <div className='button-section'>
-                    <ul>
-                        <li><button onClick={handleReturn}><ArrowBackIosNewRoundedIcon className='button-icon'/></button></li>
-                        <li><button><FavoriteBorderRoundedIcon className='button-icon'/></button></li>
-                    </ul>
-            </div>
+            { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name} showButtons="true"/> : null}
 
             <div className='timeline'>
-                <iframe src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1xuY4upIooEeszZ_lCmeNx24eSFWe0rHe9ZdqH2xqVNk&font=Default&lang=en&initial_zoom=2&height=100%" width="100%" frameborder="0"></iframe>
+            <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1r10YN6UYeytDANLa29ZbUmJr8eyyh1FzkQ4ttM0R0j8&font=Default&lang=en&initial_zoom=2' width='100%'  webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
                                 
             </div>
 
@@ -69,7 +50,10 @@ function BeginnerCoursePage() {
                     </div>
                     
                 </div>
+                
+                
                 <div className='rules-section'>
+                    <div className='flag'><img src={flagImg} alt="flag image" className='flag-img'></img></div>
                     <h1>Rules : </h1>
                     <p className='rules-paragraph'>{formattedRules}</p>
                 </div>
@@ -81,5 +65,4 @@ function BeginnerCoursePage() {
         </div>
     )
 }
-
 export default BeginnerCoursePage
