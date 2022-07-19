@@ -26,8 +26,7 @@ function BeginnerCoursePage() {
             { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name} showButtons="true"/> : null}
 
             <div className='timeline'>
-            <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1r10YN6UYeytDANLa29ZbUmJr8eyyh1FzkQ4ttM0R0j8&font=Default&lang=en&initial_zoom=2' width='100%'  webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
-                                
+                { currentCourse ? <iframe src={currentCourse.beginner_history_timeline} width='100%'  webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe> : null}                  
             </div>
 
             {currentCourse ? 
