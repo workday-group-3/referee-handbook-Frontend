@@ -18,6 +18,7 @@ export default function NavLinks() {
     <div className="nav-links">
       <ul>
         <li><Link to="/" label="Home">Home</Link></li>
+        <li><Link to="/home" label="sports">Sports Home</Link></li>
         <li><Link to="/learning" label="learning">Learning Center</Link></li>
         <li><Link to="/profile" label="profile">Profile</Link></li>
         {/* Logout button moves slightly up when hovered.. need to make it stay in place like other li elements */}
