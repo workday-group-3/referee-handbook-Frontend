@@ -25,7 +25,7 @@ function CoursesListPage(props) {
       { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name} showButtons="false"/> : null}
 
      
-      <Link to={`/learning/${currentCourse.sport_name}/beginner`}>
+      <Link className ="course-link" to={`/learning/${currentCourse.sport_name}/beginner`}>
 
         <div className='beginner-course-option'>
 
@@ -33,8 +33,8 @@ function CoursesListPage(props) {
             <img className='course-image' src={currentCourse.beginner_cover_image_url} alt={`${currentCourse.sport_name} image`} ></img>
           </div>
           <div className='course-text'>
-            <h1>Beginner course</h1>
-            <p>Our beginner {currentCourse.sport_name} course offers an indepth as well as a big picture overview of the sport. Learn about it's history, rules and regulations, and objectives. To aid in your educational journey, we've included a how-to video as well as a diagram of the field to aid in visualization!</p>
+            <h1 className="course-text-title"><em>Beginner Course</em></h1>
+            <p className="course-text-body">Our beginner {currentCourse.sport_name} course offers an indepth as well as a big picture overview of the sport. Learn about it's history, rules and regulations, and objectives. To aid in your educational journey, we've included a how-to video as well as a diagram of the field to aid in visualization!</p>
         </div>
 
         </div>

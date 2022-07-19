@@ -1,10 +1,12 @@
 .courses-list{
     background-color: #363232;
-    padding-bottom: 20px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 60vh;
+    height: 100vh;
+    width: 100%;
+
 }
 
 .beginner-course-option, .user-course-option {
@@ -28,15 +30,14 @@
 
 .course-text {
     margin: 50px;
+    
 }
 .course-text h1 {
-    color: wheat;
     font-weight: bolder;
 }
 .course-text p {
     margin-top: 20px;
-    color: wheat;
-    font-weight: bolder;
+    font-weight: 300;
 }
 
 .course-option {
@@ -46,5 +47,14 @@
     background-color: red;
     display: flex;
 }
+
+
+.course-link {
+    
+    color: whitesmoke;
+
+    text-decoration: none;
+}
+
 
 
