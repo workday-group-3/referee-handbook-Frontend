@@ -34,12 +34,27 @@ export const LearningContextProvider = ({children}) => {
         setIsLoading(false)
     }
 
+    // const fetchCurrCourse = async() => {
+    //     const name = localStorage.getItem("current_course")
+    //     const {data, error} = await ApiClient.fetchBeginnerCourseByName(name)
+    //     if(data) {
+    //         setCurrentCourse(data)
+    //     }
+    //     if (error) {
+    //         setError(error)
+    //     }
+    // }
+
     //callback function fetches courses and updates our setBeginnerCourses state variable
     useEffect(() => {
 
         fetchCourses()
 
     }, [setBeginnerCourses] )
+
+    // useEffect(() => {
+    //     fetchCurrCourse()
+    // }, [setCurrentCourse])
     
     
     //value to be passed into the child component in the return statement

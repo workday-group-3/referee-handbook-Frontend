@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 //styling
 import "./CoursesListPage.css"
@@ -11,11 +11,16 @@ import { useLearningContext } from '../../contexts/learning'
 
 //routing
 import { Link } from "react-router-dom"
+import apiClient from '../../services/apiClient'
 
 function CoursesListPage(props) {
   
   //context variables
-  const { currentCourse } = useLearningContext()
+
+
+  let currentCourse = JSON.parse(localStorage.getItem("current_course"))
+
+  
 
   return (
     <div className='courses-list'>
