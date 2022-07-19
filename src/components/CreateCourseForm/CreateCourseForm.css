@@ -1,0 +1,46 @@
+.create-course-form {
+    background-color: #363232;
+    width: 100%;
+    height: 100vh;
+
+}
+
+.create-course-title-container {
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    margin-bottom: 5vh;
+}
+
+.create-course-title {
+    margin-top: 5vh;
+    font-size: 36px;
+    border-bottom: 3px solid ;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+}
+
+.media-input-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 71vw;
+
+}
+
+.medias {
+    display: flex;
+    justify-content: center;
+}
+.submit-course-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+.create-course-btn {
+    align-items: center;
+}
