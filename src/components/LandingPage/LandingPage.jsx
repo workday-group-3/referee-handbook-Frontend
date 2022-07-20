@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button';
 
 import LandingImageCarousel from '../LandingImageCarousel/LandingImageCarousel'
+import Carousel from '../Carousel/Carousel';
 
 import heroImg from "../../assets/hero-img.jpg"
 import { useAuthContext } from '../../contexts/auth';
@@ -26,7 +27,8 @@ export default function LandingPage() {
         </div>}
         
       </div>
-      <LandingImageCarousel/>
+      {/* <LandingImageCarousel/> */}
+      <Carousel/>
     </div>
   )
 }
