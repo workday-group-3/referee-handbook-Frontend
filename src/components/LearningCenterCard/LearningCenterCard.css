@@ -24,7 +24,7 @@
 
 .sport-card:hover {
     
-    height: 485px;
+    height: 585px;
     color: yellow;
     margin-bottom: 50px;
 }
@@ -67,3 +67,8 @@
     height: auto;
 }
 
+
+
+.description {
+    font-size: 20px;
+}

@@ -56,9 +56,7 @@
 }
 
 
-.description {
-    color: green;
-}
+
 
 /* ----------------------------------- Bounce feature on hover ----------------------------------------  */
   .swiper-slide::before, .swiper-slide::after {
