@@ -9,6 +9,7 @@
 
   border-radius: 50px;
   opacity: 80%;
+  overflow: hidden;
 }
 
 .swiper-slide {
@@ -58,3 +59,103 @@
 .description {
     color: green;
 }
+
+/* ----------------------------------- new css ----------------------------------------  */
+/* 
+*{
+    box-sizing: border-box;
+  } */
+
+  /* container is swiper  */
+  /* Item is swiper-slide  */
+
+  .swiper-slide::before, .swiper-slide::after {
+    border-radius: 50px;
+    content: "";
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s;
+    transition-delay: 0.2s;
+    transform: translateY(0px) translateX(0px);
+    width: 100%;
+    z-index: -1;
+  }
+
+  .swiper-slide::after {
+    border-radius: 50px;
+  }
+  .swiper-slide:hover {
+    border-radius: 50px;
+    animation-name: hoverPop;
+    animation-duration: 0.4s;
+  }
+  .swiper-slide:hover img {
+    box-shadow: 2px 2px 4px 0px rgba(10, 12, 15, 0.27);
+    box-shadow: 0px 0px 30px 0px rgba(10, 12, 15, 0.27);
+  }
+  .swiper-slide:hover::before {
+    animation: slick-hover-2 3s 0.4s linear infinite;
+    transform: translateY(-20px) translateX(-20px);
+  }
+  .swiper-slide:hover::after {
+    animation: slick-hover 3s 0.4s linear infinite reverse;
+    transform: translateY(20px) translateX(20px);
+  }
+  
+  @keyframes hoverPop {
+    0%, 100% {
+      transform: scale(1);
+    }
+    33% {
+      transform: scale(1.05);
+    }
+    66% {
+      transform: scale(0.9);
+    }
+  }
+  @keyframes slick-hover {
+    0.00% {
+      transform: translateY(20px) translateX(20px);
+    }
+    16.67% {
+      transform: translateY(-13px) translateX(-9px);
+    }
+    33.33% {
+      transform: translateY(4px) translateX(12px);
+    }
+    50.00% {
+      transform: translateY(20px) translateX(-20px);
+    }
+    66.67% {
+      transform: translateY(-3px) translateX(8px);
+    }
+    83.33% {
+      transform: translateY(-15px) translateX(-11px);
+    }
+    100.00% {
+      transform: translateY(20px) translateX(20px);
+    }
+  }
+  @keyframes slick-hover-2 {
+    0.00% {
+      transform: translateY(-20px) translateX(-20px);
+    }
+    16.67% {
+      transform: translateY(3px) translateX(-5px);
+    }
+    33.33% {
+      transform: translateY(18px) translateX(-10px);
+    }
+    50.00% {
+      transform: translateY(-20px) translateX(20px);
+    }
+    66.67% {
+      transform: translateY(15px) translateX(-4px);
+    }
+    83.33% {
+      transform: translateY(-1px) translateX(15px);
+    }
+    100.00% {
+      transform: translateY(-20px) translateX(-20px);
+    }
+  }
