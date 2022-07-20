@@ -14,22 +14,23 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function CreateCourseForm() {
 
-   //global var
-   let emptyCourseForm = {courseName: "", shortDescription: "", detailedDescription: "", tutorialVideoURL: "", coverImageURL: "", tipsAndTricks: ""}
+    //global var
+    let emptyCourseForm = {courseName: "", shortDescription: "", detailedDescription: "", tutorialVideoURL: "", coverImageURL: "", tipsAndTricks: ""}
 
 
     //state variables
     const [courseForm, setCourseForm] = useState(emptyCourseForm)
 
 
-   function handleOnInputChange (evt) {
-    setCourseForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
-  }
+    function handleOnInputChange (evt) {
+        setCourseForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
+    }
 
 
+    //create onsubmit handler to call apiClient and post new user created course 
 
 
-
+    
 
   return (
     <Box
@@ -114,6 +115,8 @@ export default function CreateCourseForm() {
                     label="Tips and Tricks"
                     type="text"
                     name="tipsAndTricks"
+                    multiline={true}
+                    rows={3}
                     value = {courseForm.tipsAndTricks}
                     onChange = {handleOnInputChange}
                     sx={{backgroundColor : 'white'}}
