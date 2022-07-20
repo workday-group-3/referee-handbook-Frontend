@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
 // Import Swiper React components
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -9,23 +9,26 @@ import "swiper/css/navigation";
 
 import "./Carousel.css"
 
-// import required modules
+// import swiper specific modules 
 import { Pagination, Navigation } from "swiper";
 
 export default function Carousel() {
   return (
     <>
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={30}
-        loop={true}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
+        {/* Configure swiper widget's properties */}
+        <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            pagination={{
+            clickable: true,
+            }}
+            navigation={true}
+            modules={[Pagination, Navigation]}
+            className="mySwiper"
+        >
+        
+        {/* Create slides */}
         <SwiperSlide>
             <div className="image-container">
                 <img src="https://images.pexels.com/photos/209961/pexels-photo-209961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt='image pic'></img>
