@@ -8,6 +8,7 @@
     position: sticky;
     top: 60px;
     font-size: 22px;
+    z-index: 100;
 }
 
 .learning-sub-banner .button-section{

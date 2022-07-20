@@ -15,12 +15,11 @@
 .rules-section {
     color: black;
     background: rgba(201, 199, 199, 0.7);
-    padding: 20px;
+    padding: 50px;
     border-radius: 10px;
     margin-left: 5vw;
     margin-right: 5vw;
     padding-bottom: 5vw;
-    font-size: large;
 }
 .rules-section h1 {
     margin-bottom: 10px;
@@ -47,8 +46,7 @@
 .rules-paragraph {
     margin-top: 2vh;
     white-space: pre-line;
-    font-size: 18px;
-
+    font-size: x-large;
 }
 
 .video, .diagram {
