@@ -10,25 +10,53 @@ import CreateIcon from '@mui/icons-material/Create';
 
 //react imports
 import { useState } from "react"
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+
+
+//component imports
+import apiClient from '../../services/apiClient';
+
 
 export default function CreateCourseForm() {
 
+
+
+    const sportName = useParams();
+    console.log("Current Sport is", sportName.sportsName)
+
+
     //global var
-    let emptyCourseForm = {courseName: "", shortDescription: "", detailedDescription: "", tutorialVideoURL: "", coverImageURL: "", tipsAndTricks: ""}
+    let emptyCourseForm = {sportName: sportName.sportsName}
 
 
     //state variables
     const [courseForm, setCourseForm] = useState(emptyCourseForm)
+    const navigate = useNavigate()
+    const [error, setError] = useState(null)
+
+
+
 
 
     function handleOnInputChange (evt) {
         setCourseForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
+        console.log(courseForm)
     }
 
 
     //create onsubmit handler to call apiClient and post new user created course 
-
+    const handleOnSubmitCourseForm = async () => {
+        setError(null)
+        const {data, error} = await apiClient.createUserCourse(courseForm, sportName.sportsName)
+        if (error) {
+          setError(error)
+        }
+        if(data){
+          // navigate to the newly created user course
+          console.log("User Posted This Course:", data)  
+          console.log("Successfully Posted New User Course")
+        }
+      }
 
     
 
@@ -125,8 +153,9 @@ export default function CreateCourseForm() {
                 </div>
             </div>
             <div className="submit-course-btn-container">
-                <Button className="create-course-btn"  variant="contained" size="large" endIcon={<CreateIcon/>}  shrink="false" sx={{ color: 'black', padding: "14px 110px", fontSize: '17px', backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} > CREATE</Button>
+                <Button className="create-course-btn" onClick={handleOnSubmitCourseForm} variant="contained" size="large" endIcon={<CreateIcon/>}  shrink="false" sx={{ color: 'black', padding: "14px 110px", fontSize: '17px', backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} > CREATE</Button>
             </div>
+            {error? <p className ="course-submit-error">{error}</p>: null}
         </div>
     </Box>
   )

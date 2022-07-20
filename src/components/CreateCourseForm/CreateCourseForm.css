@@ -38,9 +38,17 @@
 .submit-course-btn-container {
     display: flex;
     justify-content: center;
-    margin-top: 10vh;
+    margin-top: 5vh;
 }
 
 .create-course-btn {
     align-items: center;
+}
+
+
+.course-submit-error {
+    color: red;
+    display: flex;
+    justify-content: center;
+    margin-top: 1vh;
 }

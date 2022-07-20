@@ -14,8 +14,7 @@ export const useRegistrationForm = () => {
 
   const { user, setUser } = useAuthContext()
 
-  //global variables
-  let emptyRegisterForm = {email: "", username: "", location: "", firstName: "", lastName: "",  profileImageUrl: "", password: "", confirmPassword: ""}
+
 
   //state variables
   const navigate = useNavigate()
