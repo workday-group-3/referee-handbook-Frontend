@@ -13,6 +13,7 @@ import { useHomeContext } from '../../contexts/home';
 function HomeSideNavbar() {
   const {setCurrentSport, getNews} = useHomeContext()
 
+  // sets current sport based on selected button
   const handleSetSport = (param)=>{
     setCurrentSport(param)
     console.log(param)

@@ -6,6 +6,8 @@ function HomeNewsCard(props) {
 
   const [time, setTime] = useState(null)
 
+
+  // uses moments to render the time depending on when the news was from
   function findTime(){
     let now = new Date()
     let then = new Date(props.time)
@@ -13,12 +15,6 @@ function HomeNewsCard(props) {
     const endTime = moment(now)
     const diff = endTime.diff(startTime)
     const diffDuration = moment.duration(diff);
-    
-    console.log(startTime);
-    console.log("Days:", diffDuration.days());
-    console.log("Hours:", diffDuration.hours());
-    console.log("Minutes:", diffDuration.minutes());
-    console.log("Seconds:", diffDuration.seconds());
 
     if(diffDuration.minutes() < 60){
       setTime(diffDuration.minutes()+" minutes ago")
@@ -34,6 +30,7 @@ function HomeNewsCard(props) {
     }
   }
 
+  // calculates time difference on load
   useEffect(()=>{
     findTime()
   }, [])

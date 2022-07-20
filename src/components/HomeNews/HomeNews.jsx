@@ -6,8 +6,6 @@ import HomeNewsCard from '../HomeNewsCard/HomeNewsCard'
 import { useHomeContext } from '../../contexts/home'
 
 function HomeNews() {
-  
-
   const {news, loading} = useHomeContext()
 
 

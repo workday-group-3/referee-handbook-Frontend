@@ -22,6 +22,7 @@ export const HomeContextProvider = ({ children }) => {
         setLoading(false)
     }
 
+    // renders different news as the currentSport changes
     useEffect(() => {
       getNews()
     }, [currentSport])
