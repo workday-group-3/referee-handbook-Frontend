@@ -11,7 +11,7 @@ import SportsRugbyIcon from '@mui/icons-material/SportsRugby';
 import { useHomeContext } from '../../contexts/home';
 
 function HomeSideNavbar() {
-  const {setCurrentSport, getNews} = useHomeContext()
+  const {setCurrentSport, currentSport} = useHomeContext()
 
   // sets current sport based on selected button
   const handleSetSport = (param)=>{
@@ -19,15 +19,14 @@ function HomeSideNavbar() {
     console.log(param)
   }
 
-
   return (
     <div className='home-side-navbar'>
-        <button onClick={()=>handleSetSport("soccer")}><SportsSoccerIcon fontSize="large" className="sport-icon"/></button>
-        <button onClick={()=>handleSetSport("basketball")}><SportsBasketballIcon fontSize="large" className="sport-icon" /></button>
-        <button onClick={()=>handleSetSport("baseball")}><SportsBaseballIcon fontSize="large" className="sport-icon"/></button>
-        <button onClick={()=>handleSetSport("hockey")}><SportsHockeyIcon fontSize="large" className="sport-icon"/></button>
-        <button onClick={()=>handleSetSport("volleyball")}><SportsVolleyballIcon fontSize="large" className="sport-icon"/></button>
-        <button onClick={()=>handleSetSport("rugby")}><SportsRugbyIcon fontSize="large" className="sport-icon"/></button>
+        <button onClick={()=>handleSetSport("soccer")} className={currentSport == "soccer" ? "active" : null}><SportsSoccerIcon fontSize="large" className="sport-icon"/></button>
+        <button onClick={()=>handleSetSport("basketball")} className={currentSport == "basketball" ? "active" : null}><SportsBasketballIcon fontSize="large" className="sport-icon" /></button>
+        <button onClick={()=>handleSetSport("baseball")} className={currentSport == "baseball" ? "active" : null}><SportsBaseballIcon fontSize="large" className="sport-icon"/></button>
+        <button onClick={()=>handleSetSport("hockey")} className={currentSport == "hockey" ? "active" : null}><SportsHockeyIcon fontSize="large" className="sport-icon"/></button>
+        <button onClick={()=>handleSetSport("volleyball")} className={currentSport == "volleyball" ? "active" : null}><SportsVolleyballIcon fontSize="large" className="sport-icon"/></button>
+        <button onClick={()=>handleSetSport("rugby")} className={currentSport == "rugby" ? "active" : null}><SportsRugbyIcon fontSize="large" className="sport-icon"/></button>
     </div>
   )
 }

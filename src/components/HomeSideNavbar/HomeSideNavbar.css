@@ -17,3 +17,16 @@
     align-self: center;
     justify-self: center;
 }
+
+.home-side-navbar button{
+    background: none;
+    height: 100%
+}
+
+.home-side-navbar button:hover{
+    background-color: white;
+}
+
+.home-side-navbar .active{
+    background-color: white !important;
+}
