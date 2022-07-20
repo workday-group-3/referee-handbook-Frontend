@@ -50,11 +50,12 @@
 
 
 .course-link {
-    
     color: whitesmoke;
-
     text-decoration: none;
 }
 
+.create-course-link {
+    text-decoration: none;
+}
 
 
