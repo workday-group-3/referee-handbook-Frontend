@@ -61,6 +61,13 @@ class ApiClient {
     async fetchBeginnerCourseByName(name) {
         return await this.request({endpoint: `learning/${name}/beginner`, method: `GET`})
     }
+
+    async createUserCourse(course, sportName) {
+        return await this.request({endpoint: `learning/${sportName}`, method: `POST`, data: course})
+    }
+
+
+
 }
 
 export default new ApiClient("http://localhost:3001")
