@@ -10,6 +10,7 @@ import './App.css'
 //Contexts
 import { LearningContextProvider } from '../../contexts/learning';
 import { AuthContextProvider } from '../../contexts/auth'
+import { HomeContextProvider } from '../../contexts/home';
 
 //component imports
 import LoginPage from '../LoginPage/LoginPage'
@@ -28,12 +29,15 @@ import CreateCourseForm from '../CreateCourseForm/CreateCourseForm';
 
 
 
+
 //returns our context providers with our App component nested inside.
 export default function AppContainer() {
   return (
     <AuthContextProvider>
       <LearningContextProvider>
-        <App />
+        <HomeContextProvider>
+          <App />
+        </HomeContextProvider>
       </LearningContextProvider>
     </AuthContextProvider>
   )

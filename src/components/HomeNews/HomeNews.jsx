@@ -1,30 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import "./HomeNews.css"
-import axios from 'axios'
+
 
 import HomeNewsCard from '../HomeNewsCard/HomeNewsCard'
+import { useHomeContext } from '../../contexts/home'
 
 function HomeNews() {
-  const [news, setNews] = useState([])
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const API_KEY = import.meta.env.VITE_NEWS_API_KEY
+  
 
-    async function getNews(){
-        try{
-          setLoading(true)
-          let json = await axios.get('https://api.thenewsapi.com/v1/news/top?api_token='+API_KEY+"&search=NBA+basketball&language=en&sort=published_at&limit=2&categories=sports")
-          setNews(json.data.data)
-          console.log(json.data.data)
-        } catch (error) {
-          setError(error)
-        }
-        setLoading(false)
-    }
+  const {news, loading} = useHomeContext()
 
-    useEffect(() => {
-      getNews()
-    }, [])
 
   return (
     <div className='home-news'>
