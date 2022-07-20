@@ -39,7 +39,7 @@ export default function ProfilePage() {
             </div>
             <div className="user-section">
                 <div className="profile-user-info">
-                    <h1 className="profile-picture-username"><em>{user.username}</em></h1>
+                    <h1 className="profile-picture-username">@<em>{user.username}</em></h1>
                     <h3 className="profile-picture-name"><AccountCircleIcon className ="profile-icon" color = "grey" />{user.firstName + " " + user.lastName}</h3>
                     <h3 className="profile-location"><LocationOnSharpIcon className ="profile-icon" color ="grey" />{user.location}</h3>
                     <h3 className="profile-account-creation-date"><ScheduleSharpIcon className="profile-icon" color ="grey"/> Joined on {Moment(new Date(user.createdAt)).format("MMMM Do, YYYY")}</h3> 

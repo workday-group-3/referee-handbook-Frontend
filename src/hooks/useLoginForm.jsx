@@ -57,7 +57,7 @@ export const useLoginForm = () => {
     if(data?.user){
       setUser(data.user)
       apiClient.setToken(data.token)
-      navigate("/profile")
+      navigate("/learning")
       console.log("Successful Login")
     }
   }
