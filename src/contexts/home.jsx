@@ -117,9 +117,9 @@ export const HomeContextProvider = ({ children }) => {
 
     // renders different info as the currentSport changes
     useEffect(() => {
-      getNews()
-    getTeams()
-      getGame()
+    //   getNews()
+    // getTeams()
+    //   getGame()
     }, [currentSport])
 
     const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame}
