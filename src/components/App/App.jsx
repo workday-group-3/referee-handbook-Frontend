@@ -1,18 +1,12 @@
-//react imports
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
-
-//styling
 import './App.css'
 
-//Contexts
 import { LearningContextProvider } from '../../contexts/learning';
 import { AuthContextProvider } from '../../contexts/auth'
 import { HomeContextProvider } from '../../contexts/home';
 
-//component imports
 import LoginPage from '../LoginPage/LoginPage'
 import RegisterPage from '../RegisterPage/RegisterPage'
 import LandingPage from '../LandingPage/LandingPage'
@@ -29,8 +23,6 @@ import CreateCourseForm from '../CreateCourseForm/CreateCourseForm';
 import UserCreatedCoursePage from '../UserCreatedCoursePage/UserCreatedCoursePage'
 
 
-
-
 //returns our context providers with our App component nested inside.
 export default function AppContainer() {
   return (
@@ -44,11 +36,7 @@ export default function AppContainer() {
   )
 }
 
-
-
-
 function App() {
-
 
   return (
     <div className="app">
@@ -70,9 +58,6 @@ function App() {
         </Routes>
         <Footer/>
       </BrowserRouter>
-
-      
-
 
     </div>
   )

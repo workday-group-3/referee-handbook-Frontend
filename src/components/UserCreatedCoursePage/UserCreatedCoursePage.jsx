@@ -1,16 +1,12 @@
 import React from 'react'
-import LearningCenterBanner from '../LearningCenterBanner/LearningCenterBanner'
 
-//Styling
 import "./UserCreatedCoursePage.css"
 
-//Components
 import LearningSubBanner from '../LearningSubBanner/LearningSubBanner'
 import { CenterFocusStrong } from '@mui/icons-material'
 
 function UserCreatedCoursePage() {
 
-    
     let currentCourse = JSON.parse(localStorage.getItem("current_course"))
 
     return (
@@ -101,8 +97,6 @@ function UserCreatedCoursePage() {
                     •Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>
                 </p>
             </div>
-
-
         </div>
     )
 }
