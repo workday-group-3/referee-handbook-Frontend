@@ -2,6 +2,7 @@ import React from 'react'
 import "./HomeBanner.css"
 import { useHomeContext } from '../../contexts/home'
 
+// contains all the image urls for different sports banners
 const bannerUrls = {
   "soccer": "https://images.pexels.com/photos/12486370/pexels-photo-12486370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   "basketball": "https://images.pexels.com/photos/1293265/pexels-photo-1293265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",

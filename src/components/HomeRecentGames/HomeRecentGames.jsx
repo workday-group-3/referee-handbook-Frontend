@@ -9,6 +9,7 @@ function HomeRecentGames() {
 
   console.log(loadingGame, game)
   return (
+    // sets the classname as the current sport to conditionally render background
     <div className={`home-recent-games ${currentSport}`}>
         <div className='section-title'><h2 className='title-name'>Latest game in {league}</h2></div>
         {/* if is still loading, render a message */}
