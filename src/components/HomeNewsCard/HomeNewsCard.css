@@ -5,17 +5,17 @@
     grid-template-areas:
         'image image time time time'
         'image image title title title';
-    grid-template-columns: 20% 18% 18% 18% 18%;
+    grid-template-columns: 20vh 12vh 12vh 20vh 10vh;
 
-    column-gap: 1%;
-    padding: 5px;
+    column-gap: 1vh;
+    padding: 3px;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
 
 .news-img{
-    width: 90%;
+    width: 27vh;
     height: 12vh;
     object-fit: cover;
     grid-area: image;
@@ -30,8 +30,7 @@
 
 .news-title{
     grid-area: title;
-    font-size: large;
-    font-weight: 600;
+    font-weight: 500;
     background-color: white;
     padding: 2px;
 }

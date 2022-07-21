@@ -6,11 +6,12 @@ import HomeNewsCard from '../HomeNewsCard/HomeNewsCard'
 import { useHomeContext } from '../../contexts/home'
 
 function HomeNews() {
-  const {news, loading} = useHomeContext()
+  const {news, loading, currentSport} = useHomeContext()
 
   return (
     <div className='home-news'>
-        <h2 className='section-title'>HomeNews</h2>
+        {/* conditionally render title based on current sport */}
+        <div className='section-title'><h2 className='title-name'>Latest news in {currentSport}</h2></div>
 
         {/* if news is still loading, render loading */}
         {loading ? (<h3>Loading news...</h3>) : (
