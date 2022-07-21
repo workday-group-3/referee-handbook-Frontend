@@ -78,7 +78,7 @@ export const HomeContextProvider = ({ children }) => {
 
         try{
             setLoadingGame(true)
-
+            // conditionally fetches by the league and season of the specific sport
             let json = await axios.get("https://"+apiSportString+".api-sports.io"+endpoint+"?league="+requestParams[currentSport].league+"&season="+requestParams[currentSport].season, {
                 "method": "GET",
                 "headers": {
