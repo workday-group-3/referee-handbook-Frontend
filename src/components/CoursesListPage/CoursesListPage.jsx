@@ -34,13 +34,13 @@ function CoursesListPage(props) {
   
 
 
-
+  //pulling list of all user made courses to render in components below
   useEffect(() => {
     const fetchUserCourses = async () => {
       const {data, error} = await apiClient.listUserCoursesBySport(currentCourse.sport_name)
       if(data){
         setUserCourses(data.userCourses)
-        console.log("userCourses", userCourses)
+        console.log("data.userCourses", data.userCourses)
       }
       if(error){
         setError(error)
