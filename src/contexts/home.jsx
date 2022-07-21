@@ -48,6 +48,7 @@ export const HomeContextProvider = ({ children }) => {
 
         try{
             setLoading(true)
+            setLeague(requestParams[currentSport].leagueName)
 
            // conditionally fetches by the league and season of the specific sport
             let json = await axios.get("https://"+apiSportString+".api-sports.io/teams?league="+requestParams[currentSport].league+"&season="+requestParams[currentSport].season, {
@@ -58,7 +59,7 @@ export const HomeContextProvider = ({ children }) => {
                 }
             })
             setTeams(json.data.response)
-            setLeague(requestParams[currentSport].leagueName)
+            
         } catch(error){
             setError(error)
         }
@@ -117,9 +118,9 @@ export const HomeContextProvider = ({ children }) => {
 
     // renders different info as the currentSport changes
     useEffect(() => {
-    //   getNews()
-    // getTeams()
-    //   getGame()
+      getNews()
+    getTeams()
+      getGame()
     }, [currentSport])
 
     const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame}

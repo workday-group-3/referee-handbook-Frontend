@@ -9,9 +9,6 @@ import HomeTeamsGrid from '../HomeTeamsGrid/HomeTeamsGrid'
 import HomeNews from '../HomeNews/HomeNews'
 
 function HomePage() {
-
-
-  
   return (
     <div className='home-page'>
         <HomeBanner/>
