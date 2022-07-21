@@ -8,12 +8,15 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
+//importing link to allow users to redirect to landing page through logo in footer
+import { Link } from "react-router-dom" 
+
 export default function Footer() {
     return(
         <div className="footer">
             <div className="top-half-container">
                 <div className="logo-container">
-                    <img className="footer-logo" src={logo} alt="Referee's Handbook logo"></img>
+                    <Link to="/"><img className="footer-logo" src={logo} alt="Referee's Handbook logo"></img></Link>
                 </div>
                 <div className="footer-header">
                     <h4 className ="footer-title">About Us</h4>
