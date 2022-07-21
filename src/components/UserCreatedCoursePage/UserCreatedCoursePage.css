@@ -1,0 +1,91 @@
+.user-create-course {
+    background-color: #383838;
+    
+}
+
+.sub-banner {
+    width: 98.70%;
+}
+
+/* ---------------------------------- Main content section ------------------------------------ */
+
+
+
+.main-user-content, .tips-and-tricks {
+    background: rgba(201, 199, 199, 0.7);
+    width: 90vw;
+    margin-left: 5%;
+    border-radius: 10px;
+    margin-top: 5px;
+
+    word-wrap: break-word;
+}
+
+.created-by {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    font-size: x-large;
+}
+
+.cb-username {
+    margin-left: 50px;
+}
+
+.cb-date {
+    margin-left: 45%;
+}
+
+.short-description, .long-description {
+    margin: 50px;
+    font-size: x-large;
+}
+
+.long-description p {
+    padding-bottom: 50px;
+}
+
+/* ---------------------------------- Line breaks ------------------------------------ */
+
+.line-break {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.line-break hr {
+    background-color: black;
+    width: 93%;
+}
+
+/* ---------------------------------- Video section ------------------------------------ */
+.video-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.video-container iframe {
+    border: 10px solid ;
+    border-color: rgb(215, 215, 0);
+}
+
+/* ---------------------------------- Further Tips and tricks styling ------------------------------------ */
+
+.tips-and-tricks h2 {
+
+    padding: 10px;
+    margin-left: 3%;
+
+}
+
+.tips-and-tricks p {
+    margin-left: 50px;
+    margin-top: 50px;
+    padding-bottom: 50px;
+    font-size: x-large;
+    white-space: pre-line;
+}
