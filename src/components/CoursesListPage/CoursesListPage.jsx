@@ -20,6 +20,11 @@ import Button from '@mui/material/Button';
 
 
 function CoursesListPage(props) {
+
+
+  //creating useState variables to store list of userCreated courses, so that we can easily render from each page, along with variable for error handling
+  const [userCourses, setUserCourses] = useState([])
+  const [error, setError] = useState(null)
   
   //context variables
 
@@ -27,6 +32,32 @@ function CoursesListPage(props) {
   let currentCourse = JSON.parse(localStorage.getItem("current_course"))
 
   
+
+
+
+  useEffect(() => {
+    const fetchUserCourses = async () => {
+      const {data, error} = await apiClient.listUserCoursesBySport(currentCourse.sport_name)
+      if(data){
+        setUserCourses(data.userCourses)
+        console.log("userCourses", userCourses)
+      }
+      if(error){
+        setError(error)
+        console.log(error)
+      }
+    }
+  
+    fetchUserCourses()
+  }, [])
+
+
+
+
+
+
+
+
 
   return (
     <div className='courses-list'>

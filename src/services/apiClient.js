@@ -66,7 +66,9 @@ class ApiClient {
         return await this.request({endpoint: `learning/${sportName}`, method: `POST`, data: course})
     }
 
-
+    async listUserCoursesBySport(sportName) {
+        return await this.request({endpoint: `learning/${sportName}`, method: `GET`})
+    }
 
 }
 
