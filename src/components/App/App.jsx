@@ -1,18 +1,12 @@
-//react imports
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
-
-//styling
 import './App.css'
 
-//Contexts
 import { LearningContextProvider } from '../../contexts/learning';
 import { AuthContextProvider } from '../../contexts/auth'
 import { HomeContextProvider } from '../../contexts/home';
 
-//component imports
 import LoginPage from '../LoginPage/LoginPage'
 import RegisterPage from '../RegisterPage/RegisterPage'
 import LandingPage from '../LandingPage/LandingPage'
@@ -26,8 +20,7 @@ import CoursesListPage from '../CoursesListPage/CoursesListPage';
 import BeginnerCoursePage from '../BeginnerCoursePage/BeginnerCoursePage';
 import HomePage from '../HomePage/HomePage';
 import CreateCourseForm from '../CreateCourseForm/CreateCourseForm';
-
-
+import UserCreatedCoursePage from '../UserCreatedCoursePage/UserCreatedCoursePage'
 
 
 //returns our context providers with our App component nested inside.
@@ -43,11 +36,7 @@ export default function AppContainer() {
   )
 }
 
-
-
-
 function App() {
-
 
   return (
     <div className="app">
@@ -63,14 +52,12 @@ function App() {
           <Route path="/learning/:sportsName" element={<CoursesListPage/>} />
           <Route path="/learning/:sportsName/create" element={<ProtectedRoute element = {<CreateCourseForm/>}/>} />
           <Route path="/learning/:sportsName/beginner" element={<BeginnerCoursePage/>} />
+          <Route path="/learning/:sportsName/user_created" element={<UserCreatedCoursePage/>} />
           <Route path="/home" element={<HomePage/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>
         <Footer/>
       </BrowserRouter>
-
-      
-
 
     </div>
   )
