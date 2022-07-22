@@ -9,6 +9,8 @@
     top: 60px;
     font-size: 22px;
     z-index: 100;
+    padding-bottom: 2vh;
+    align-items: center;
 }
 
 .learning-sub-banner .button-section{
