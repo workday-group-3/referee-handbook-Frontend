@@ -99,34 +99,28 @@ export const HomeContextProvider = ({ children }) => {
                 // filter to find the matches that finished/is in progress
                 let filtered_games = json.data.response.filter((item)=>item.fixture.date < new Date().toISOString())
 
-                 // reformat the most recent game
-                // change the key "goals" to "scores"
+                // reformat the most recent game
+                // change the key "goals" to "scores" to match the others
                 filtered_games[filtered_games.length - 1].scores = filtered_games[filtered_games.length - 1].goals
                 delete filtered_games[filtered_games.length - 1].goals
 
-                // remove fixture variable
+                // extract date and status variables to match others
                 filtered_games[filtered_games.length - 1].date = filtered_games[filtered_games.length - 1].fixture.date
                 filtered_games[filtered_games.length - 1].status = filtered_games[filtered_games.length - 1].fixture.status
                 delete filtered_games[filtered_games.length - 1].fixture
 
-                // select the most recent game
+                // set the updated game
                 setGame(filtered_games[filtered_games.length - 1])
-                setLoadingGame(false)
-            }
-
-            // basketball and baseball have differently formatted scores
-            else if(currentSport == "basketball" || currentSport == "baseball"){
-                let filtered_games_bb = json.data.response.filter((item)=>item.date < new Date().toISOString())
-                filtered_games_bb[filtered_games_bb.length - 1].scores.home = filtered_games_bb[filtered_games_bb.length - 1].scores.home.total
-                filtered_games_bb[filtered_games_bb.length - 1].scores.away = filtered_games_bb[filtered_games_bb.length - 1].scores.away.total
-
-                setGame(filtered_games_bb[filtered_games_bb.length - 1])
-                setLoadingGame(false)
             }
 
             // data filtering for all the other sports
             else{
                 let filtered_games_others = json.data.response.filter((item)=>item.date < new Date().toISOString())
+                if(currentSport == "basketball" || currentSport == "baseball"){
+                    // basketball and baseball are formatted differently, extract the total scores to match other formatting
+                    filtered_games_others[filtered_games_others.length - 1].scores.home = filtered_games_others[filtered_games_others.length - 1].scores.home.total
+                    filtered_games_others[filtered_games_others.length - 1].scores.away = filtered_games_others[filtered_games_others.length - 1].scores.away.total
+                }
                 setGame(filtered_games_others[filtered_games_others.length - 1])
             }
 
