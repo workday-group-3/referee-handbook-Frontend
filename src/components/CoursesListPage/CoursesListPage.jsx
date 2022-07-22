@@ -127,28 +127,30 @@ function CoursesListPage(props) {
         </div>
       </div>
 
-
+      
       {/* condtional rendering for user course list, alongside with filtering if necessary */}
+
       <div className="user-courses-list">
           {filterByDifficulty[0] ?
           filterByDifficulty.map((course) => {
             return(
-            <div className="user-created-course">
-              <div className="user-created-course-img-container">
+              <Link to={`/learning/${currentCourse.sport_name}/userCreated/${course.courseId}`}>
+                {console.log("course is: ", course)}
+                <div className="user-created-course">
+                    <div className="user-created-course-img-container">
+                      
+                      <img className="user-created-course-img" src={course.course_cover_image_url}/>
+                      <p className="user-created-course-creation-date"><em className="user-created-course-username">@{course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                    </div>
+                    <div className="user-created-course-content">
+                      <h1 className="user-created-course-title"><em>{course.course_title}</em></h1>
+                      <p className="user-created-course-short-description">{course.course_short_description}</p>
+                      <p className="user-created-course-difficulty"><em>{course.difficulty}</em></p>
+                    </div>  
+                  </div>
+              </Link>
                 
-                <img className="user-created-course-img" src={course.course_cover_image_url}/>
-                <p className="user-created-course-creation-date"><em className="user-created-course-username">@{course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
-              </div>
-              <div className="user-created-course-content">
-                <h1 className="user-created-course-title"><em>{course.course_title}</em></h1>
-                <p className="user-created-course-short-description">{course.course_short_description}</p>
-                <p className="user-created-course-difficulty"><em>{course.difficulty}</em></p>
-              </div>
-
-
-
-              
-          </div>)
+            )
           }) 
           
           : <h1 className="no-courses-message"><em>No user courses created yet</em></h1>}
