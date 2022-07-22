@@ -102,8 +102,30 @@ export const HomeContextProvider = ({ children }) => {
                 let filtered_games = json.data.response.filter((item)=>item.fixture.date < new Date().toISOString())
                 console.log(filtered_games)
 
+                 // reformat the most recent game
+                // change the key "goals" to "scores"
+                filtered_games[filtered_games.length - 1].scores = filtered_games[filtered_games.length - 1].goals
+                delete filtered_games[filtered_games.length - 1].goals
+
+                // remove fixture variable
+                filtered_games[filtered_games.length - 1].date = filtered_games[filtered_games.length - 1].fixture.date
+                filtered_games[filtered_games.length - 1].status = filtered_games[filtered_games.length - 1].fixture.status
+                delete filtered_games[filtered_games.length - 1].fixture
+
                 // select the most recent game
                 setGame(filtered_games[filtered_games.length - 1])
+                setLoadingGame(false)
+            }
+
+            // basketball and baseball have differently formatted scores
+            else if(currentSport == "basketball" || currentSport == "baseball"){
+                filtered_games[filtered_games.length - 1].scores.home = filtered_games[filtered_games.length - 1].scores.home.total
+                filtered_games[filtered_games.length - 1].scores.away = filtered_games[filtered_games.length - 1].scores.away.total
+
+                let filtered_games_bb = json.data.response.filter((item)=>item.date < new Date().toISOString())
+                console.log(filtered_games_bb)
+                setGame(filtered_games_bb[filtered_games_bb.length - 1])
+                setLoadingGame(false)
             }
 
             // data filtering for all the other sports
@@ -112,6 +134,7 @@ export const HomeContextProvider = ({ children }) => {
                 console.log(filtered_games_others)
                 setGame(filtered_games_others[filtered_games_others.length - 1])
             }
+
             setLoadingGame(false)
             
             
