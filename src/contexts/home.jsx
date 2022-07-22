@@ -119,11 +119,13 @@ export const HomeContextProvider = ({ children }) => {
 
             // basketball and baseball have differently formatted scores
             else if(currentSport == "basketball" || currentSport == "baseball"){
-                filtered_games[filtered_games.length - 1].scores.home = filtered_games[filtered_games.length - 1].scores.home.total
-                filtered_games[filtered_games.length - 1].scores.away = filtered_games[filtered_games.length - 1].scores.away.total
-
                 let filtered_games_bb = json.data.response.filter((item)=>item.date < new Date().toISOString())
                 console.log(filtered_games_bb)
+                console.log("filtering...")
+                filtered_games_bb[filtered_games_bb.length - 1].scores.home = filtered_games_bb[filtered_games_bb.length - 1].scores.home.total
+                filtered_games_bb[filtered_games_bb.length - 1].scores.away = filtered_games_bb[filtered_games_bb.length - 1].scores.away.total
+                console.log("filtered")
+
                 setGame(filtered_games_bb[filtered_games_bb.length - 1])
                 setLoadingGame(false)
             }
