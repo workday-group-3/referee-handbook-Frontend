@@ -12,8 +12,8 @@ const requestParams = {"basketball": {"league": 12, "season": "2021-2022", "leag
                     "rugby": {"league": 44, "season": "2022", "leagueName": "Major League Rugby"}}
 
 export const HomeContextProvider = ({ children }) => {
-    const [currentSport, setCurrentSport] = useState("rugby")
-    const [league, setLeague] = useState("Major League Rugby")
+    const [currentSport, setCurrentSport] = useState("volleyball")
+    const [league, setLeague] = useState("NVA")
 
     const [news, setNews] = useState([])
     const [teams, setTeams] = useState([])
@@ -138,8 +138,8 @@ export const HomeContextProvider = ({ children }) => {
 
     // renders different info as the currentSport changes
     useEffect(() => {
-      getNews()
-        getTeams()
+       getNews()
+         getTeams()
       getGame()
     }, [currentSport])
 
