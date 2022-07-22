@@ -81,7 +81,6 @@ export const HomeContextProvider = ({ children }) => {
         if(currentSport == "soccer"){
             apiSportString = "v3.football"
             endpoint = "/fixtures"
-            console.log("is soccer")
         }
 
         try{
@@ -94,13 +93,11 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
-            console.log("success", json.data.response)
 
             // soccer data is formatted differently, have to filter differently
             if(currentSport === "soccer"){
                 // filter to find the matches that finished/is in progress
                 let filtered_games = json.data.response.filter((item)=>item.fixture.date < new Date().toISOString())
-                console.log(filtered_games)
 
                  // reformat the most recent game
                 // change the key "goals" to "scores"
@@ -120,11 +117,8 @@ export const HomeContextProvider = ({ children }) => {
             // basketball and baseball have differently formatted scores
             else if(currentSport == "basketball" || currentSport == "baseball"){
                 let filtered_games_bb = json.data.response.filter((item)=>item.date < new Date().toISOString())
-                console.log(filtered_games_bb)
-                console.log("filtering...")
                 filtered_games_bb[filtered_games_bb.length - 1].scores.home = filtered_games_bb[filtered_games_bb.length - 1].scores.home.total
                 filtered_games_bb[filtered_games_bb.length - 1].scores.away = filtered_games_bb[filtered_games_bb.length - 1].scores.away.total
-                console.log("filtered")
 
                 setGame(filtered_games_bb[filtered_games_bb.length - 1])
                 setLoadingGame(false)
@@ -133,7 +127,6 @@ export const HomeContextProvider = ({ children }) => {
             // data filtering for all the other sports
             else{
                 let filtered_games_others = json.data.response.filter((item)=>item.date < new Date().toISOString())
-                console.log(filtered_games_others)
                 setGame(filtered_games_others[filtered_games_others.length - 1])
             }
 
@@ -157,8 +150,6 @@ export const HomeContextProvider = ({ children }) => {
     }, [currentSport])
 
     const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame}
-
-    console.log(currentSport)
 
     return(
         <HomeContext.Provider value = {homeValue}>

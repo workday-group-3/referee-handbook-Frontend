@@ -7,7 +7,6 @@ function HomeRecentGames() {
 
   const {league, game, loadingGame, currentSport} = useHomeContext()
 
-  console.log(loadingGame, game)
   return (
     // sets the classname as the current sport to conditionally render background
     <div className={`home-recent-games ${currentSport}`}>
