@@ -33,7 +33,14 @@ function CoursesListPage(props) {
   const [error, setError] = useState(null)
   const [difficulty, setDifficulty] = useState('')
 
-  //context variables
+  //function to set the current beginner course in local storage
+  async function setCourseHandler(userCourse) {
+    console.log("the user course inside this function is: ", userCourse)
+    
+    localStorage.setItem("current_user_course", JSON.stringify(userCourse))
+    console.log("Current user course is: ", localStorage.getItem("current_user_course"))
+    
+  }
 
   // pulling current course from local storage, parsing the string into json
   let currentCourse = JSON.parse(localStorage.getItem("current_course"))
@@ -69,6 +76,7 @@ function CoursesListPage(props) {
 
 
   return (
+    
     <div className='courses-list'>
       <div className='beginner-course-list'>
       {/* Once the promise to add the current course to our currentCourse context variable has been
@@ -91,7 +99,7 @@ function CoursesListPage(props) {
       </Link> 
       </div>
 
-
+{/* --------------------------------------- User created course section ------------------------------------- */}
 
       <div className="user-created-course-section">
         <div className="user-created-courses-title-container">
@@ -135,8 +143,7 @@ function CoursesListPage(props) {
           filterByDifficulty.map((course) => {
             return(
               <Link to={`/learning/${currentCourse.sport_name}/userCreated/${course.courseId}`}>
-                {console.log("course is: ", course)}
-                <div className="user-created-course">
+                <div className="user-created-course" onClick={() => setCourseHandler(course)}>
                     <div className="user-created-course-img-container">
                       
                       <img className="user-created-course-img" src={course.course_cover_image_url}/>
