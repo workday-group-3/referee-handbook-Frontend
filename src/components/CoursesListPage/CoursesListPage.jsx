@@ -102,7 +102,7 @@ function CoursesListPage(props) {
           
 
               <Box sx={{colorScheme: "white"}}>
-                <FormControl variant="filled" sx={{ m: 1, width: "15ch",  backgroundColor: "whitesmoke", color: "whitesmoke"}}>
+                <FormControl variant="filled" sx={{ m: 1, minWidth: "10ch", width: "15ch", borderRadius: "6px", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
                     <InputLabel>DIFFICULTY</InputLabel>
                     <Select
 
@@ -137,7 +137,7 @@ function CoursesListPage(props) {
               <div className="user-created-course-img-container">
                 
                 <img className="user-created-course-img" src={course.course_cover_image_url}/>
-                <p className="user-created-course-creation-date">@{course.username}  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                <p className="user-created-course-creation-date"><em className="user-created-course-username">@{course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
               </div>
               <div className="user-created-course-content">
                 <h1 className="user-created-course-title"><em>{course.course_title}</em></h1>
