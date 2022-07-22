@@ -74,6 +74,11 @@ class ApiClient {
         return await this.request({endpoint: `profile`, method: `GET`})
     }
 
+
+    async listUserCourseById(sportName, courseId) {
+        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `GET`})
+    }
+
 }
 
 export default new ApiClient("http://localhost:3001")
