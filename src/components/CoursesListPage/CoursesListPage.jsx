@@ -35,10 +35,7 @@ function CoursesListPage(props) {
 
   //function to set the current beginner course in local storage
   async function setCourseHandler(userCourse) {
-    console.log("the user course inside this function is: ", userCourse)
-    
     localStorage.setItem("current_user_course", JSON.stringify(userCourse))
-    console.log("Current user course is: ", localStorage.getItem("current_user_course"))
     
   }
 
