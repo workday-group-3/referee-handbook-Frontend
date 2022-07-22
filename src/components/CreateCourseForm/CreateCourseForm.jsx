@@ -62,6 +62,7 @@ export default function CreateCourseForm() {
           setError(error)
         }
         if(data){
+            navigate(`/learning/${sportName}`)
           // navigate to the newly created user course
           // reset frontend form data
         }
@@ -144,7 +145,7 @@ export default function CreateCourseForm() {
                             sx={{backgroundColor : 'white'}}
                             variant="filled"
                             />
-                        <FormControl variant="filled" sx={{ m: 1, width: "100ch", textAlign:"left", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
+                        <FormControl variant="filled" sx={{ m: 1, height: "6.5ch", minWidth: "10ch", width: "100ch", textAlign:"left", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
                             <InputLabel>DIFFICULTY</InputLabel>
                             <Select
                             value={difficulty}
