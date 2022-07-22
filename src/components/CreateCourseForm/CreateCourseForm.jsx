@@ -7,6 +7,10 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import CreateIcon from '@mui/icons-material/Create';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 //react imports
 import { useState } from "react"
@@ -31,17 +35,25 @@ export default function CreateCourseForm() {
 
     //state variables
     const [courseForm, setCourseForm] = useState(emptyCourseForm)
+    const [difficulty, setDifficulty] = useState('')
     const navigate = useNavigate()
     const [error, setError] = useState(null)
 
 
 
 
-
+    //handlers for form components
     function handleOnInputChange (evt) {
         setCourseForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
         console.log(courseForm)
     }
+
+    function handleDropdownChange (evt)  {
+        setDifficulty(evt.target.value)
+        setCourseForm((form) => ({ ...form, ["difficulty"]: evt.target.value }))
+        console.log(courseForm)
+    }
+
 
 
     //create onsubmit handler to call apiClient and post new user created course 
@@ -135,6 +147,21 @@ export default function CreateCourseForm() {
                             sx={{backgroundColor : 'white'}}
                             variant="filled"
                             />
+                        <FormControl variant="filled" sx={{ m: 1, width: "100ch", textAlign:"left", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
+                            <InputLabel>DIFFICULTY</InputLabel>
+                            <Select
+                            value={difficulty}
+                            onChange={handleDropdownChange}>
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            <MenuItem value={"Beginner"}>Beginner</MenuItem>
+                            <MenuItem value={"High School"}>High School</MenuItem>
+                            <MenuItem value={"Collegiate"}>Collegiate</MenuItem>
+                            <MenuItem value={"Amateur"}>Amateur</MenuItem>
+                            <MenuItem value={"Professional"}>Professional</MenuItem>
+                            </Select>
+                        </FormControl>
                     </div>
                 </div>
                 <div className="input-container">
