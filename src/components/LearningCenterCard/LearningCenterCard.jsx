@@ -19,16 +19,12 @@ function LearningCenterCard(props) {
   const { expandedCourse, setExpandedCourse } = useLearningContext()
   
   const setCourseHandler = async () => {
-    console.log(props.beginnerCourse)
     
     localStorage.setItem("current_course", JSON.stringify(props.beginnerCourse))
-    console.log("Current course is: ", localStorage.getItem("current_course"))
-    
   }
 
   const setExpand = async () => {
     await setExpandedCourse(props.beginnerCourse.sport_name)
-    console.log("set", expandedCourse)
   }
 
   const setFold = async () => {

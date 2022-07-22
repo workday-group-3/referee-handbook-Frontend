@@ -33,7 +33,11 @@ function CoursesListPage(props) {
   const [error, setError] = useState(null)
   const [difficulty, setDifficulty] = useState('')
 
-  //context variables
+  //function to set the current beginner course in local storage
+  async function setCourseHandler(userCourse) {
+    localStorage.setItem("current_user_course", JSON.stringify(userCourse))
+    
+  }
 
   // pulling current course from local storage, parsing the string into json
   let currentCourse = JSON.parse(localStorage.getItem("current_course"))
@@ -69,6 +73,7 @@ function CoursesListPage(props) {
 
 
   return (
+    
     <div className='courses-list'>
       <div className='beginner-course-list'>
       {/* Once the promise to add the current course to our currentCourse context variable has been
@@ -91,7 +96,7 @@ function CoursesListPage(props) {
       </Link> 
       </div>
 
-
+{/* --------------------------------------- User created course section ------------------------------------- */}
 
       <div className="user-created-course-section">
         <div className="user-created-courses-title-container">
@@ -127,28 +132,29 @@ function CoursesListPage(props) {
         </div>
       </div>
 
-
+      
       {/* condtional rendering for user course list, alongside with filtering if necessary */}
+
       <div className="user-courses-list">
           {filterByDifficulty[0] ?
           filterByDifficulty.map((course) => {
             return(
-            <div className="user-created-course">
-              <div className="user-created-course-img-container">
+              <Link to={`/learning/${currentCourse.sport_name}/userCreated/${course.courseId}`}>
+                <div className="user-created-course" onClick={() => setCourseHandler(course)}>
+                    <div className="user-created-course-img-container">
+                      
+                      <img className="user-created-course-img" src={course.course_cover_image_url}/>
+                      <p className="user-created-course-creation-date"><em className="user-created-course-username">@{course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                    </div>
+                    <div className="user-created-course-content">
+                      <h1 className="user-created-course-title"><em>{course.course_title}</em></h1>
+                      <p className="user-created-course-short-description">{course.course_short_description}</p>
+                      <p className="user-created-course-difficulty"><em>{course.difficulty}</em></p>
+                    </div>  
+                  </div>
+              </Link>
                 
-                <img className="user-created-course-img" src={course.course_cover_image_url}/>
-                <p className="user-created-course-creation-date"><em className="user-created-course-username">@{course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
-              </div>
-              <div className="user-created-course-content">
-                <h1 className="user-created-course-title"><em>{course.course_title}</em></h1>
-                <p className="user-created-course-short-description">{course.course_short_description}</p>
-                <p className="user-created-course-difficulty"><em>{course.difficulty}</em></p>
-              </div>
-
-
-
-              
-          </div>)
+            )
           }) 
           
           : <h1 className="no-courses-message"><em>No user courses created yet</em></h1>}
