@@ -9,7 +9,7 @@ function HomeTeamsGrid() {
 
   return (
     <div className='home-teams-grid'>
-        <div className='section-title'><h2 className='title-name'>Latest news in {currentSport}</h2></div>
+        <div className='section-title'><h2 className='title-name'>{league}</h2></div>
 
         {/* if teams are still loading, render loading */}
         {loading ? (<h3>Loading teams...</h3>) : (
