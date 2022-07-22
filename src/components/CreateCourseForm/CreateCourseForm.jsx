@@ -26,7 +26,7 @@ export default function CreateCourseForm() {
 
 
     const sportName = useParams();
-    console.log("Current Sport is", sportName.sportsName)
+
 
 
     //global var
@@ -45,13 +45,11 @@ export default function CreateCourseForm() {
     //handlers for form components
     function handleOnInputChange (evt) {
         setCourseForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
-        console.log(courseForm)
     }
 
     function handleDropdownChange (evt)  {
         setDifficulty(evt.target.value)
         setCourseForm((form) => ({ ...form, ["difficulty"]: evt.target.value }))
-        console.log(courseForm)
     }
 
 
@@ -65,8 +63,7 @@ export default function CreateCourseForm() {
         }
         if(data){
           // navigate to the newly created user course
-          console.log("User Posted This Course:", data)  
-          console.log("Successfully Posted New User Course")
+          // reset frontend form data
         }
       }
 

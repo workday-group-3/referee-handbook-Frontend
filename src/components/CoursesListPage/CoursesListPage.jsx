@@ -40,7 +40,6 @@ function CoursesListPage(props) {
 
   const handleDropdownChange = (evt) => {
     setDifficulty(evt.target.value)
-    console.log("difficulty", difficulty)
   }
 
 
@@ -50,11 +49,9 @@ function CoursesListPage(props) {
       const {data, error} = await apiClient.listUserCoursesBySport(currentCourse.sport_name)
       if(data){
         setUserCourses(data.userCourses)
-        console.log("data.userCourses", data.userCourses)
       }
       if(error){
         setError(error)
-        console.log(error)
       }
     }
   
@@ -66,15 +63,13 @@ function CoursesListPage(props) {
   const filterByDifficulty =
     difficulty != '' ? userCourses.filter((course) => course.difficulty === difficulty) : userCourses
 
-  console.log("filterByDifficulty", filterByDifficulty)
+
   
 
 
 
   return (
     <div className='courses-list'>
-
-
       <div className='beginner-course-list'>
       {/* Once the promise to add the current course to our currentCourse context variable has been
           fulfilled, render the LearningBanner component */}
