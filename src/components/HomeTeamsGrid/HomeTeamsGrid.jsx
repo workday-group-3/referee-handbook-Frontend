@@ -6,7 +6,6 @@ import "./HomeTeamsGrid.css"
 function HomeTeamsGrid() {
 
   const {league, teams, loading, currentSport} = useHomeContext()
-  console.log(teams)
 
   return (
     <div className='home-teams-grid'>
