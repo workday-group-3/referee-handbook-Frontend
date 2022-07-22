@@ -12,8 +12,8 @@ const requestParams = {"basketball": {"league": 12, "season": "2021-2022", "leag
                     "rugby": {"league": 44, "season": "2022", "leagueName": "Major League Rugby"}}
 
 export const HomeContextProvider = ({ children }) => {
-    const [currentSport, setCurrentSport] = useState("rugby")
-    const [league, setLeague] = useState("Major League Rugby")
+    const [currentSport, setCurrentSport] = useState("hockey")
+    const [league, setLeague] = useState("NHL")
 
     const [news, setNews] = useState([])
     const [teams, setTeams] = useState([])
@@ -58,6 +58,13 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
+
+            // soccer data is formatted differently, change json formatting here to avoid complications
+            if(currentSport == "soccer"){
+                for(let i = 0; i < json.data.response.length; i++){
+                    json.data.response[i] = json.data.response[i].team
+                }
+            }
             setTeams(json.data.response)
             
         } catch(error){
@@ -94,6 +101,7 @@ export const HomeContextProvider = ({ children }) => {
                 // filter to find the matches that finished/is in progress
                 let filtered_games = json.data.response.filter((item)=>item.fixture.date < new Date().toISOString())
                 console.log(filtered_games)
+
                 // select the most recent game
                 setGame(filtered_games[filtered_games.length - 1])
             }
@@ -119,7 +127,7 @@ export const HomeContextProvider = ({ children }) => {
     // renders different info as the currentSport changes
     useEffect(() => {
       getNews()
-    getTeams()
+        getTeams()
       getGame()
     }, [currentSport])
 
