@@ -165,7 +165,7 @@
 
 .user-created-course-creation-date {
     margin:0;
-    padding:0;
+    padding-top: 2px;
     display: flex;
     justify-content: center;
     font-size: 12px;
@@ -186,5 +186,9 @@
 
 .user-created-course-username {
     margin-right: 4px;
-    font-weight: 750;
+
+}
+
+.user-course-redirect {
+    text-decoration: none;
 }
