@@ -139,7 +139,7 @@ function CoursesListPage(props) {
           {filterByDifficulty[0] ?
           filterByDifficulty.map((course) => {
             return(
-              <Link to={`/learning/${currentCourse.sport_name}/userCreated/${course.courseId}`}>
+              <Link className="user-course-redirect" to={`/learning/${currentCourse.sport_name}/userCreated/${course.courseId}`}>
                 <div className="user-created-course" onClick={() => setCourseHandler(course)}>
                     <div className="user-created-course-img-container">
                       
