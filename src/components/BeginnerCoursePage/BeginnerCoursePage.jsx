@@ -1,18 +1,17 @@
 import React from 'react'
 
-//styling
-import "./BeginnerCoursePage.css"
-
-//routing
 import { useNavigate } from "react-router-dom"
-
-//import context 
 import { useLearningContext } from '../../contexts/learning'
+import { Pagination, Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-//components
 import LearningSubBanner from '../LearningSubBanner/LearningSubBanner'
 
+import "./BeginnerCoursePage.css"
 import flagImg from "../../assets/flag.png"
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 
 function BeginnerCoursePage() {
@@ -20,14 +19,18 @@ function BeginnerCoursePage() {
     // pulling current course from local storage, parsing the string into json
     let currentCourse = JSON.parse(localStorage.getItem("current_course"))
     
+    // breaks up rules into bullets. 
     const formattedRules = currentCourse ? currentCourse.beginner_rules.replaceAll("{b}", "•") : null
-    // formattedRules.splice()
+
+    // Splits the rules into an array of substrings based on the "{b}" characters. 
+    const splitRules = currentCourse ? currentCourse.beginner_rules.split("{b}") : null
+    
     return (
         <div className='beginner-course-page'>
             { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name} showButtons="true"/> : null}
 
             <div className='timeline'>
-                { currentCourse ? <iframe src={currentCourse.beginner_history_timeline} width='100%'  webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe> : null}                  
+                { currentCourse ? <iframe src={currentCourse.beginner_history_timeline} width='100%'    allowFullScreen frameBorder='0'></iframe> : null}                  
             </div>
 
             {currentCourse ? 
@@ -51,16 +54,46 @@ function BeginnerCoursePage() {
                     
                 </div>
                 
-                
+                {/* Rules slide deck. For each rule, we create a slide to be displayed in the carousel */}
                 <div className='rules-section'>
                     <div className='flag'><img src={flagImg} alt="flag image" className='flag-img'></img></div>
                     <h1 className ="rules-section-title"><em>Rules</em></h1>
                     <p className='rules-paragraph'>{formattedRules}</p>
                 </div>
 
-                
+                <div className='rules-carousel'>
+                    {splitRules ? 
+                        
+                        // configure properties of the rules carousel 
+                        <Swiper
+                            slidesPerView={1}
+                            spaceBetween={30}
+                            loop={true}
+                            pagination={{
+                            clickable: true,
+                            }}
+                            navigation={true}
+                            modules={[Pagination, Navigation]}
+                            className="testingClassName"
+                        > 
+                        
+                        {/* Render a slide for each rule of the current sport  */}
+                        {splitRules.map((rule, index) => {
+                            return (
+                                <SwiperSlide>
+                                    <div className='flag'><img src={flagImg} alt="flag image" className='flag-img'></img></div>
+                                    <h3>{splitRules[index+1]}</h3>
+                                </SwiperSlide>
+                            )
+                        })}
+                        
+                        </Swiper>
+                    :null}
 
+                </div>
+            
             </div> : null}
+
             
         </div>
     )
