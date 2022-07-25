@@ -39,6 +39,12 @@
     font-weight: 400;
 }
 
+.team-page-buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 /*----------------------- recent games section  --------------------------- */
 .recent-games-title{
     padding: 1vw;

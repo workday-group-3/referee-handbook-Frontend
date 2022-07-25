@@ -27,6 +27,8 @@ export const HomeContextProvider = ({ children }) => {
     const [team, setTeam] = useState(null)
     const [stats, setStats] = useState(null)
     const [teamGames, setTeamGames] = useState([])
+    const [limit, setLimit] = useState(false)
+    const [newsLimit, setNewsLimit] = useState(false)
 
     const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY
     const SPORTS_API_KEY = import.meta.env.VITE_SPORTS_API_KEY
@@ -37,8 +39,12 @@ export const HomeContextProvider = ({ children }) => {
           setLoading(true)
           let json = await axios.get('https://api.thenewsapi.com/v1/news/top?api_token='+NEWS_API_KEY+"&search="+currentSport+"&language=en&sort=published_at&limit=2&categories=sports")
           setNews(json.data.data)
+          console.log(json)
         } catch (error) {
           setError(error)
+          if(error.response.status == 402){
+            setNewsLimit(true)
+          }
         }
         setLoading(false)
     }
@@ -64,7 +70,10 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
-
+            
+            if(json.data.errors.rateLimit){
+                setLimit(true)
+              }
             // soccer data is formatted differently, change json formatting here to avoid complications
             if(currentSport == "soccer"){
                 for(let i = 0; i < json.data.response.length; i++){
@@ -99,6 +108,10 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
+
+            if(json.data.errors.rateLimit){
+                setLimit(true)
+              }
 
             // soccer data is formatted differently, have to filter differently
             if(currentSport === "soccer"){
@@ -158,6 +171,10 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
+
+            if(json.data.errors.rateLimit){
+                setLimit(true)
+              }
             // format soccer json data so it matches the others
             if(sportName === "soccer"){
                 json.data.response[0] = json.data.response[0].team
@@ -191,6 +208,10 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
+
+            if(json.data.errors.rateLimit){
+                setLimit(true)
+              }
             // soccer has a fixtures header unlike the others, change it to games
             if(sportName === "soccer"){
                 json.data.response.games = json.data.response.fixtures
@@ -230,6 +251,10 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
+
+            if(json.data.errors.rateLimit){
+                setLimit(true)
+              }
             // soccer data is formatted differently, have to filter differently
             if(sportName === "soccer"){
                 // filter to find the matches that finished/is in progress
@@ -342,7 +367,7 @@ export const HomeContextProvider = ({ children }) => {
         getGame()
     }, [currentSport])
 
-    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats, error, setError, loadingStats, getTeamGames, teamGames, loadingTeamGames}
+    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats, error, setError, loadingStats, getTeamGames, teamGames, loadingTeamGames, limit, newsLimit}
 
     return(
         <HomeContext.Provider value = {homeValue}>
