@@ -75,10 +75,11 @@ function BeginnerCoursePage() {
                         {/* Render a slide for each rule of the current sport  */}
                         {splitRules.map((rule, index) => {
                             return (
+                                rule ? 
                                 <SwiperSlide>
                                     <div className='flag'><img src={flagImg} alt="flag image" className='flag-img'></img></div>
-                                    <p>{splitRules[index+1]}</p>
-                                </SwiperSlide>
+                                    <p>{rule}</p>
+                                </SwiperSlide> : null
                             )
                         })}
                         
