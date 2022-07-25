@@ -33,34 +33,32 @@ export default function ProfilePage() {
 
     //creating state variables to store user created courses after they're pulled from the useEffect hook below
     const [userOwnedCourses, setUserOwnedCourses] = useState([]) 
+    const [userTeams, setUserTeams] = useState([])
     const [error, setError] = useState(null)
 
 
 
     //fetching user owned courses to display
     useEffect(() => {
-        const fetchUserOwnedCourses = async () => {
-          const {data, error} = await apiClient.listUserCoursesByUser()
+        const fetchUserOwnedObjects = async () => {
+          const {data, error} = await apiClient.listUserOwnedObjectsByUser()
           if(data){
-            console.log("userOwnedCourses", data.userOwnedCourses)
-            setUserOwnedCourses(data.userOwnedCourses)
+            setUserOwnedCourses(data.userCourses)
+            setUserTeams(data.userTeams)
           }
           if(error){
             setError(error)
-            console.log(error)
           }
         }
       
-        fetchUserOwnedCourses()
+        fetchUserOwnedObjects()
       }, [])
 
 
 
 
-
-
     const { user } = useAuthContext()
-    console.log("user", user)
+
 
     //checking if user has a profile picture, if not use placeholder
     let profilePicture;
@@ -147,38 +145,75 @@ export default function ProfilePage() {
                 </Box>
             </div>
         </div>
-        <div className ="user-courses-container">
-            <div className="user-courses-title-container">
-                <div className="title-container">
-                    <h1 className="user-courses-title"><em>My Created Courses</em></h1>
+        <div className="courses-teams-container">
+            <div className ="user-courses-container">
+                <div className="user-courses-title-container">
+                    <div className="title-container">
+                        <h1 className="user-courses-title"><em>My Created Courses</em></h1>
+                    </div>
+                    
                 </div>
-                
+
+                {/* condtional rendering to display either users created courses, or message that no courses created */}
+                <div className ="user-courses-cards">
+                    {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
+
+                        return (
+                            <div className ="user-course-card-container">
+                                <div className="thumbnail-container">
+                                    <div className="cover-image-category">
+                                        <img className ="course-card-cover-image" src={course.course_cover_image_url} alt={`Cover image for ${course.course_title}`}></img>
+                                    </div>
+                                    <div className="category-and-date">
+                                        <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                                    </div>
+                                </div>
+                                <div className="title-description-container">
+                                    <h1 className="user-course-card-title"><em>{course.course_title}</em></h1>
+                                    <p className="user-course-card-description">{course.course_short_description}</p>
+                                </div>
+                            </div>
+                        )
+                    }) : <h1 className="no-user-courses-message">No courses created, get started <Link  className ="learning-redirect" to ="/learning">here!</Link></h1>}
+                </div>
             </div>
 
-            {/* condtional rendering to display either users created courses, or message that no courses created */}
-            <div className ="user-courses-cards">
-                {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
 
-                    return (
-                        <div className ="user-course-card-container">
-                            <div className="thumbnail-container">
-                                <div className="cover-image-category">
-                                    <img className ="course-card-cover-image" src={course.course_cover_image_url} alt={`Cover image for ${course.course_title}`}></img>
+            <div className="user-teams-container">
+                <div className="user-teams-title-container">
+                    <h1 className="user-teams-title"><em>My Followed Teams</em></h1>
+                </div>
+
+
+            {/* condtional rendering to display either user's followed teams, or message that user is not following any teams */}
+
+                <div className="user-followed-team-cards">
+                    {userTeams[0] ? userTeams.map((team) => { 
+                
+                       return(
+                            <div className="user-followed-team-card">
+                                <div className="team-logo-container">
+                                    <img src ={team.team_logo}></img>
                                 </div>
-                                <div className="category-and-date">
-                                    <p className="course-card-date-category"><em>{course.sport_name}</em> | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                                <div className="team-information">
+                                    <div className="team-name-container">
+                                        <h1 className="team-name">{team.team_name}</h1>
+                                    </div>
+                                    <div className="team-content-container">
+                                        <p className="team-content">{team.team_sport_name} | {team.team_league} | Following since {Moment(new Date(team.following_at)).format("MMMM Do, YYYY")}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="title-description-container">
-                                <h1 className="user-course-card-title"><em>{course.course_title}</em></h1>
-                                <p className="user-course-card-description">{course.course_short_description}</p>
-                            </div>
-                        </div>
-                    )
-                }) : <h1 className="no-user-courses-message">No courses created, get started <Link  className ="learning-redirect" to ="/learning">here!</Link></h1>}
+
+
+                       ) 
+
+                    }) : <h1 className="no-teams-error-msg"> Not following any teams currently</h1>}
+
+                </div>
+
             </div>
         </div>
-
     </div>
   )
 }
