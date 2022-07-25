@@ -5,14 +5,14 @@ import moment from 'moment'
 
 function HomeRecentGames() {
 
-  const {league, game, loadingGame, currentSport} = useHomeContext()
+  const {league, game, loadingGame, currentSport, limit} = useHomeContext()
 
   return (
     // sets the classname as the current sport to conditionally render background
     <div className={`home-recent-games ${currentSport}`}>
         <div className='section-title'><h2 className='title-name'>Latest game in {league}</h2></div>
         {/* if is still loading, render a message */}
-        {game == null ? (<h3>Loading game...</h3>) : (<div className='section-content'> 
+        {limit ? (<><h3>Uh oh! The Sports API is at its limit. Try navigating to a different sport or come back in a minute.</h3></>):(game == null ? (<h3>Loading game...</h3>) : (<div className='section-content'> 
 
         <p className='game-date'>{moment(game.date).format("MMM DD YYYY HH:mm")}</p>
         <div className='game-grid'>
@@ -26,7 +26,7 @@ function HomeRecentGames() {
           </div>
         </div>
         <p className='game-status'>{game.status.short}</p>
-        </div>)}
+        </div>))}
 
        
     </div>
