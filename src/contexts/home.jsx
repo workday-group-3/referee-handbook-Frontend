@@ -230,7 +230,6 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
-            console.log(json)
             // soccer data is formatted differently, have to filter differently
             if(sportName === "soccer"){
                 // filter to find the matches that finished/is in progress
