@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import axios from 'axios'
+import { SettingsInputAntennaTwoTone } from "@mui/icons-material"
 
 const HomeContext = createContext(null)
 
@@ -12,8 +13,8 @@ const requestParams = {"basketball": {"league": 12, "season": "2021-2022", "leag
                     "rugby": {"league": 44, "season": "2022", "leagueName": "Major League Rugby"}}
 
 export const HomeContextProvider = ({ children }) => {
-    const [currentSport, setCurrentSport] = useState("basketball")
-    const [league, setLeague] = useState("NBA")
+    const [currentSport, setCurrentSport] = useState("hockey")
+    const [league, setLeague] = useState("NHL")
 
     const [news, setNews] = useState([])
     const [teams, setTeams] = useState([])
@@ -22,7 +23,9 @@ export const HomeContextProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
     const [loadingGame, setLoadingGame] = useState(true)
     const [loadingTeam, setLoadingTeam] = useState(true)
+    const [loadingStats, setLoadingStats] = useState(true)
     const [team, setTeam] = useState(null)
+    const [stats, setStats] = useState(null)
 
     const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY
     const SPORTS_API_KEY = import.meta.env.VITE_SPORTS_API_KEY
@@ -137,10 +140,10 @@ export const HomeContextProvider = ({ children }) => {
     }
 
     // fetches detailed information for one team
-    async function getTeam(teamId) {
-        let apiSportString = 'v1.'+currentSport
+    async function getTeam(sportName, teamId) {
+        let apiSportString = 'v1.'+sportName
         // the api version for soccer is v3, different from the rest
-        if(currentSport == "soccer"){
+        if(sportName == "soccer"){
             apiSportString = "v3.football"
         }
 
@@ -154,10 +157,8 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
-            console.log(json)
             // format soccer json data so it matches the others
-            if(currentSport === "soccer"){
-                console.log("formatting")
+            if(sportName === "soccer"){
                 json.data.response[0] = json.data.response[0].team
             }
             setTeam(json.data.response[0])
@@ -167,16 +168,56 @@ export const HomeContextProvider = ({ children }) => {
         setLoadingTeam(false)
     }
 
+    async function getStats(sportName, teamId) {
+        let apiSportString = 'v1.'+sportName
+        let endpoint = "/teams/statistics"
+        // the api version for soccer is v3, different from the rest
+        if(sportName === "soccer"){
+            apiSportString = "v3.football"
+        }
+        // endpoint for basketball is different
+        if(sportName === "basketball"){
+            endpoint = "/statistics"
+        }
+
+        try{
+            setLoadingStats(true)
+            let json = await axios.get("https://"+apiSportString+".api-sports.io"+endpoint+"?team="+teamId+"&league="+requestParams[sportName].league+"&season="+requestParams[sportName].season, {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": apiSportString+".api-sports.io",
+                    "x-rapidapi-key": SPORTS_API_KEY
+                }
+            })
+            // soccer has a fixtures header unlike the others, change it to games
+            if(sportName === "soccer"){
+                json.data.response.games = json.data.response.fixtures
+                delete json.data.response.fixtures
+                // soccer has total instead of all, format the json
+                json.data.response.games.played.all = json.data.response.games.played.all.total
+                delete json.data.response.games.played.total
+                json.data.response.games.wins.all.total = json.data.response.games.wins.total
+                delete json.data.response.games.wins.total
+                json.data.response.games.loses.all.total = json.data.response.games.loses.total
+                delete json.data.response.games.loses.total
+            }
+            setStats(json.data.response.games)
+        } catch(error) {
+            setError(error)
+        }
+        setLoadingStats(false)
+    }
+
     
 
     // renders different info as the currentSport changes
     useEffect(() => {
-    //    getNews()
+        getNews()
         getTeams()
-    //   getGame()
+       getGame()
     }, [currentSport])
 
-    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam}
+    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats}
 
     return(
         <HomeContext.Provider value = {homeValue}>
