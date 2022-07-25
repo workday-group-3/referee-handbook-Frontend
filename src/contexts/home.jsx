@@ -12,8 +12,8 @@ const requestParams = {"basketball": {"league": 12, "season": "2021-2022", "leag
                     "rugby": {"league": 44, "season": "2022", "leagueName": "Major League Rugby"}}
 
 export const HomeContextProvider = ({ children }) => {
-    const [currentSport, setCurrentSport] = useState("volleyball")
-    const [league, setLeague] = useState("NVA")
+    const [currentSport, setCurrentSport] = useState("basketball")
+    const [league, setLeague] = useState("NBA")
 
     const [news, setNews] = useState([])
     const [teams, setTeams] = useState([])
@@ -21,6 +21,8 @@ export const HomeContextProvider = ({ children }) => {
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
     const [loadingGame, setLoadingGame] = useState(true)
+    const [loadingTeam, setLoadingTeam] = useState(true)
+    const [team, setTeam] = useState(null)
 
     const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY
     const SPORTS_API_KEY = import.meta.env.VITE_SPORTS_API_KEY
@@ -134,16 +136,47 @@ export const HomeContextProvider = ({ children }) => {
        
     }
 
+    // fetches detailed information for one team
+    async function getTeam(teamId) {
+        let apiSportString = 'v1.'+currentSport
+        // the api version for soccer is v3, different from the rest
+        if(currentSport == "soccer"){
+            apiSportString = "v3.football"
+        }
+
+        try{
+            setLoadingTeam(true)
+            // fetch team information using sportName and teamId
+            let json = await axios.get("https://"+apiSportString+".api-sports.io/teams?id="+teamId, {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": apiSportString+".api-sports.io",
+                    "x-rapidapi-key": SPORTS_API_KEY
+                }
+            })
+            console.log(json)
+            // format soccer json data so it matches the others
+            if(currentSport === "soccer"){
+                console.log("formatting")
+                json.data.response[0] = json.data.response[0].team
+            }
+            setTeam(json.data.response[0])
+        } catch(error){
+            setError(error)
+        }
+        setLoadingTeam(false)
+    }
+
     
 
     // renders different info as the currentSport changes
     useEffect(() => {
-       getNews()
-         getTeams()
-      getGame()
+    //    getNews()
+        getTeams()
+    //   getGame()
     }, [currentSport])
 
-    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame}
+    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam}
 
     return(
         <HomeContext.Provider value = {homeValue}>
