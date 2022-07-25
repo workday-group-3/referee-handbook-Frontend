@@ -1,9 +1,17 @@
 import React from 'react'
+import { useHomeContext } from '../../contexts/home'
+import TeamGamesCard from '../TeamGamesCard/TeamGamesCard'
 import "./TeamGamesGrid.css"
 
 function TeamGamesGrid() {
+  const {teamGames, getTeamGames, loadingTeamGames} = useHomeContext()
   return (
-    <div>TeamGamesGrid</div>
+    <div className='team-games-grid'>
+      {loadingTeamGames ? <h3>Loading most recent games...</h3> :
+      <>
+        {teamGames.map((item)=> {return <TeamGamesCard team={item}/>})}
+      </>}
+    </div>
   )
 }
 

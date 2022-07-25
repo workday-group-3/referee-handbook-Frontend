@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import axios from 'axios'
-import { SettingsInputAntennaTwoTone } from "@mui/icons-material"
 
 const HomeContext = createContext(null)
 
@@ -260,8 +259,8 @@ export const HomeContextProvider = ({ children }) => {
                     selected_games[j].status = selected_games[j].fixture.status
                     delete selected_games[j].fixture
                 }
-                
-
+                // add necessary json keys, location and result
+                determineStatus(selected_games)
                 // set the recent games
                 setTeamGames(selected_games)
             }
@@ -288,7 +287,7 @@ export const HomeContextProvider = ({ children }) => {
                     }
                     
                 }
-                
+                determineStatus(selected_games)
                 // set the recent games
                 setTeamGames(selected_games)
             }
@@ -296,8 +295,45 @@ export const HomeContextProvider = ({ children }) => {
         } catch(error) {
             setError(error)
         }
+        console.log(teamGames)
         setLoadingTeamGames(false)
     }
+
+    // helper function that determines if the current team is home or away, win or lose
+    function determineStatus(arr, teamId){
+
+        for(let i = 0; i < arr.length; i++){
+            // determine if the current team is the home team
+            if(arr[i].teams.home.id == teamId){
+                arr[i].location = "HOME"
+                // determine if the current team win, draw or lose
+                if(arr[i].scores.home.total > arr[i].scores.away.total){
+                    arr[i].WDL = "W"
+                }
+                else if(arr[i].scores.home.total == arr[i].scores.away.total){
+                    arr[i].WDL = "D"
+                }
+                else{
+                    arr[i].WDL = "L"
+                }
+            }
+            else{
+                arr[i].location = "AWAY"
+                // determine if the current team win, draw or lose
+                if(arr[i].scores.home.total > arr[i].scores.away.total){
+                    arr[i].WDL = "L"
+                }
+                else if(arr[i].scores.home.total == arr[i].scores.away.total){
+                    arr[i].WDL = "D"
+                }
+                else{
+                    arr[i].WDL = "W"
+                }
+            }
+        }
+    }
+
+    
 
     
 
