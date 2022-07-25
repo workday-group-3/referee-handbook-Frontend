@@ -12,7 +12,7 @@ function HomeRecentGames() {
     <div className={`home-recent-games ${currentSport}`}>
         <div className='section-title'><h2 className='title-name'>Latest game in {league}</h2></div>
         {/* if is still loading, render a message */}
-        {loadingGame ? (<h3>Loading game...</h3>) : (<div className='section-content'> 
+        {game == null ? (<h3>Loading game...</h3>) : (<div className='section-content'> 
 
         <p className='game-date'>{moment(game.date).format("MMM DD YYYY HH:mm")}</p>
         <div className='game-grid'>
