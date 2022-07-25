@@ -218,7 +218,7 @@ export const HomeContextProvider = ({ children }) => {
        getGame()
     }, [currentSport])
 
-    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats}
+    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats, error, setError}
 
     return(
         <HomeContext.Provider value = {homeValue}>
