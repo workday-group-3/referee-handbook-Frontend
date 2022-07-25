@@ -1,0 +1,47 @@
+/*----------------------- general component css --------------------------- */
+.team-page{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #252525;
+    color: white;
+}
+
+.team-page-name{
+    font-weight: 400;
+}
+
+.team-page-stats{
+    display: flex;
+}
+
+/*----------------------- component header section --------------------------- */
+.team-page-header{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 1vw;
+}
+
+.team-page-logo{
+    height: 20vh;
+}
+
+.team-page-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.5vw;
+}
+
+
+.team-page-league{
+    font-weight: 400;
+}
+
+/*----------------------- recent games section  --------------------------- */
+.recent-games-title{
+    padding: 1vw;
+    font-size: 1.7vw;
+    font-weight: 400;
+}

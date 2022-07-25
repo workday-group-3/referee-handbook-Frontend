@@ -1,0 +1,73 @@
+/*----------------------- general component css --------------------------- */
+.team-games-card{
+    width: 18vw;
+    height: max-content;
+    background-color: black;
+    color: white;
+    margin: 1vw;
+    font-size: 1.2vw;
+    border-radius: 20px;
+}
+
+.teams-card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 2vw;
+}
+
+/*----------------------- text formatting --------------------------- */
+
+.opponent-logo{
+    height: 20vh;
+}
+
+.header-line{
+    display: flex;
+}
+
+.team-page-stats{
+    font-size: 1.2vw;
+}
+
+/*----------------------- Win Draw Lose color rendering--------------------------- */
+
+.WDL{
+    border-top-right-radius: 20px;
+    padding: 10px;
+    font-size: 1.5vw;
+    float: right;
+    width: 3vw;
+    display: flex;
+    justify-content: center;
+}
+
+.W{
+    background-color: green;
+}
+
+.result-W{
+    color: green;
+}
+
+.L{
+    background-color: red;
+}
+
+.result-L{
+    color: red;
+}
+
+.D{
+    background-color: grey;
+    
+}
+
+.result-D{
+    color: grey;
+}
+
+
+

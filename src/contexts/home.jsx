@@ -339,7 +339,7 @@ export const HomeContextProvider = ({ children }) => {
     useEffect(() => {
         getNews()
         getTeams()
-        // getGame()
+        getGame()
     }, [currentSport])
 
     const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats, error, setError, loadingStats, getTeamGames, teamGames, loadingTeamGames}
