@@ -1,5 +1,5 @@
 .user-create-course {
-    background-color: #383838;
+    background-color: #1F1F1F;
     
 }
 
@@ -12,7 +12,8 @@
 
 
 .main-user-content, .tips-and-tricks {
-    background: rgba(201, 199, 199, 0.7);
+    background: #F8F8F8;
+    
     width: 90vw;
     margin-left: 5%;
     border-radius: 10px;
@@ -26,10 +27,18 @@
     padding: 10px;
     width: 100%;
     font-size: x-large;
+    display: grid;
 }
 
+.cb-title {
+    margin-left: 50px;
+    font-size: 60px;
+    font-family: 'Montserrat';
+    font-weight: 800;
+}
 .cb-username {
     margin-left: 50px;
+    font-family: 'Cormorant';
 }
 
 .cb-date {
@@ -39,6 +48,7 @@
 .short-description, .long-description {
     margin: 50px;
     font-size: x-large;
+    font-family: 'Cormorant';
 }
 
 .long-description p {
@@ -55,7 +65,7 @@
 
 .line-break hr {
     background-color: black;
-    width: 93%;
+    width: 91%;
 }
 
 /* ---------------------------------- Video section ------------------------------------ */

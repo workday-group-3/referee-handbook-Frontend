@@ -29,7 +29,8 @@ function UserCreatedCoursePage() {
 
                 {/* Title and date */}
                 <span className='created-by'>
-                    <h3 className='cb-username'>{currentCourse.course_title} <br/> Created by username</h3>
+                    <h3 className='cb-title'>{currentCourse.course_title}</h3>
+                    <h3 className='cb-username'>Created by username</h3>
                 </span>
 
                 {/* Line separator */}
