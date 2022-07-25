@@ -27,7 +27,6 @@ function LearningSubBanner(props) {
         {props.showButtons == "true" ? (
             <div className='button-section'>
               <Button onClick={handleReturn}><ArrowBackIosNewRoundedIcon className='button-icon'/></Button>
-              <Button><FavoriteBorderRoundedIcon className='button-icon'/></Button>
             </div>) : null}
     </div>
   )

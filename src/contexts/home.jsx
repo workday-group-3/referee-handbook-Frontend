@@ -73,6 +73,7 @@ export const HomeContextProvider = ({ children }) => {
             
             if(json.data.errors.rateLimit){
                 setLimit(true)
+                return
               }
             // soccer data is formatted differently, change json formatting here to avoid complications
             if(currentSport == "soccer"){
@@ -111,6 +112,7 @@ export const HomeContextProvider = ({ children }) => {
 
             if(json.data.errors.rateLimit){
                 setLimit(true)
+                return
               }
 
             // soccer data is formatted differently, have to filter differently
@@ -174,6 +176,7 @@ export const HomeContextProvider = ({ children }) => {
 
             if(json.data.errors.rateLimit){
                 setLimit(true)
+                return
               }
             // format soccer json data so it matches the others
             if(sportName === "soccer"){
@@ -211,6 +214,7 @@ export const HomeContextProvider = ({ children }) => {
 
             if(json.data.errors.rateLimit){
                 setLimit(true)
+                return
               }
             // soccer has a fixtures header unlike the others, change it to games
             if(sportName === "soccer"){
@@ -254,6 +258,7 @@ export const HomeContextProvider = ({ children }) => {
 
             if(json.data.errors.rateLimit){
                 setLimit(true)
+                return
               }
             // soccer data is formatted differently, have to filter differently
             if(sportName === "soccer"){
