@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHomeContext } from '../../contexts/home'
 import TeamGamesCard from '../TeamGamesCard/TeamGamesCard'
 import "./TeamGamesGrid.css"
 
 function TeamGamesGrid() {
-  const {teamGames, getTeamGames, loadingTeamGames} = useHomeContext()
+  const {teamGames, loadingTeamGames} = useHomeContext()
+
   return (
     <div className='team-games-grid'>
       {loadingTeamGames ? <h3>Loading most recent games...</h3> :

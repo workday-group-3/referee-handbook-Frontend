@@ -9,23 +9,22 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 // apiClient import to be able to post new user following entry
 import apiClient from '../../services/apiClient';
+import TeamGamesGrid from '../TeamGamesGrid/TeamGamesGrid';
 
 
 
 
 function TeamPage() {
 
-  const {league, team, loadingTeam, getTeam, loadingStats, getStats, stats, error, setError} = useHomeContext()
+  const {league, team, loadingTeam, getTeam, loadingStats, getStats, stats, error, setError, getTeamGames} = useHomeContext()
   const {sportName, teamId} = useParams()
   const [followSuccess, setFollowSuccess] = useState(false)
 
   useEffect(() => {
     getTeam(sportName, teamId)
     getStats(sportName, teamId)
+    getTeamGames(sportName, teamId)
   }, [])
-
-
- 
 
 
   //create onsubmit handler to call apiClient and post new user following entry
@@ -44,16 +43,6 @@ function TeamPage() {
 
   }
 
-
-  
-
-
-
-
-
-
-
-  
   return (
     <div className='team-page'>
       <Button className="create-course-btn"  variant="contained" size="large"  endIcon={<BookmarkIcon/>} onClick={handleOnFollow} shrink="false" sx={{ color: 'black',  height:"6ch", fontSize:"16px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >Follow</Button>
@@ -68,6 +57,7 @@ function TeamPage() {
         <p>Total: {stats.played.all}</p>
         <p>{stats.wins.all.total}W {stats.loses.all.total}L </p>    
       </div>}
+      <TeamGamesGrid />
       
     </div>
   )

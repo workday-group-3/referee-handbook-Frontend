@@ -12,8 +12,8 @@ const requestParams = {"basketball": {"league": 12, "season": "2021-2022", "leag
                     "rugby": {"league": 44, "season": "2022", "leagueName": "Major League Rugby"}}
 
 export const HomeContextProvider = ({ children }) => {
-    const [currentSport, setCurrentSport] = useState("hockey")
-    const [league, setLeague] = useState("NHL")
+    const [currentSport, setCurrentSport] = useState("rugby")
+    const [league, setLeague] = useState("NVA")
 
     const [news, setNews] = useState([])
     const [teams, setTeams] = useState([])
@@ -215,7 +215,7 @@ export const HomeContextProvider = ({ children }) => {
         let apiSportString = 'v1.'+sportName
         let endpoint = "/games"
         // the api version for soccer is v3, endpoint is fixtures, different from the rest
-        if(currentSport == "soccer"){
+        if(sportName == "soccer"){
             apiSportString = "v3.football"
             endpoint = "/fixtures"
         }
@@ -230,15 +230,14 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
-            console.log(json)
             // soccer data is formatted differently, have to filter differently
-            if(currentSport === "soccer"){
+            if(sportName === "soccer"){
                 // filter to find the matches that finished/is in progress
                 let filtered_games = json.data.response.filter((item)=>item.fixture.date < new Date().toISOString())
                 let selected_games = []
 
                 // select the 3 most recent games
-                if(selected_games.length >= 3){
+                if(filtered_games.length >= 3){
                     selected_games = [filtered_games[filtered_games.length - 1], filtered_games[filtered_games.length - 2], filtered_games[filtered_games.length - 3]]
                 }
                 else{
@@ -260,7 +259,7 @@ export const HomeContextProvider = ({ children }) => {
                     delete selected_games[j].fixture
                 }
                 // add necessary json keys, location and result
-                determineStatus(selected_games)
+                determineStatus(selected_games, teamId)
                 // set the recent games
                 setTeamGames(selected_games)
             }
@@ -270,16 +269,16 @@ export const HomeContextProvider = ({ children }) => {
                 let selected_games = []
 
                 // select the 3 most recent games
-                if(selected_games.length >= 3){
+                if(filtered_games_others.length >= 3){
                     selected_games = [filtered_games_others[filtered_games_others.length - 1], filtered_games_others[filtered_games_others.length - 2], filtered_games_others[filtered_games_others.length - 3]]
                 }
+                
                 else{
                     for(let i = 0; i < filtered_games_others.length; i++){
                         selected_games.push(filtered_games_others[i])
                     }
                 }
-                
-                if(currentSport == "basketball" || currentSport == "baseball"){
+                if(sportName  == "basketball" || sportName == "baseball"){
                     // basketball and baseball are formatted differently, extract the total scores to match other formatting
                     for(let j = 0; j < selected_games.length; j++){
                         selected_games[j].scores.home = selected_games[j].scores.home.total
@@ -287,7 +286,7 @@ export const HomeContextProvider = ({ children }) => {
                     }
                     
                 }
-                determineStatus(selected_games)
+                determineStatus(selected_games, teamId)
                 // set the recent games
                 setTeamGames(selected_games)
             }
@@ -295,7 +294,6 @@ export const HomeContextProvider = ({ children }) => {
         } catch(error) {
             setError(error)
         }
-        console.log(teamGames)
         setLoadingTeamGames(false)
     }
 
@@ -341,7 +339,7 @@ export const HomeContextProvider = ({ children }) => {
     useEffect(() => {
         getNews()
         getTeams()
-        getGame()
+        // getGame()
     }, [currentSport])
 
     const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats, error, setError, loadingStats, getTeamGames, teamGames, loadingTeamGames}
