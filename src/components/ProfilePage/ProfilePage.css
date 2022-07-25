@@ -230,6 +230,8 @@
 
 
 .team-content {
+    display: flex;
+    justify-content: center;
     text-transform: capitalize;
 }
 
