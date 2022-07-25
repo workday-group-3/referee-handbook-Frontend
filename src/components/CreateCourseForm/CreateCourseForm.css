@@ -54,3 +54,10 @@
     justify-content: center;
     margin-top: 1vh;
 }
+
+/* ----------------------------------- open Modal popup button --------------------------------  */
+
+.main-content-input p{
+    color: grey;
+    margin-left: 222px;
+}
