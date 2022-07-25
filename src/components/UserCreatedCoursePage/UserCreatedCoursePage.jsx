@@ -11,10 +11,14 @@ function UserCreatedCoursePage() {
 
     let currentCourse = JSON.parse(localStorage.getItem("current_user_course"))
 
-    //regular expression to extract youtube video code 
-    const regex = "watch\?v\=(.*)\&"
-    const match = currentCourse.course_tutorial_video_url.match(/watch\?v\=(.*)\&/)[1]
-    const ourUrl = "https://www.youtube.com/embed/" + match;
+
+    //regular expression to extract yo
+    const videoCode = currentCourse.course_tutorial_video_url.match(/watch\?v\=(.*)\&/)[1]
+    const ourUrl = "https://www.youtube.com/embed/" + videoCode;
+
+    //regular expression to extract timespan 
+    const condensedDate = currentCourse.created_at.match(/^(.*)T/)[1]
+
 
     return (
         <div className='user-create-course'>
@@ -29,7 +33,11 @@ function UserCreatedCoursePage() {
 
                 {/* Title and date */}
                 <span className='created-by'>
-                    <h3 className='cb-username'>{currentCourse.course_title} <br/> Created by username</h3>
+                    <span className='created-subtitle'>
+                        <h3 className='cb-title'>{currentCourse.course_title}</h3>
+                        <h3 className='cb-date'>{condensedDate}</h3>
+                    </span>
+                        <h3 className='cb-username'>Created by {currentCourse.username}</h3>
                 </span>
 
                 {/* Line separator */}

@@ -1,18 +1,19 @@
 .user-create-course {
-    background-color: #383838;
-    
+    background-color: #1F1F1F;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 
-.sub-banner {
-    width: 98.70%;
-}
 
 /* ---------------------------------- Main content section ------------------------------------ */
 
 
 
 .main-user-content, .tips-and-tricks {
-    background: rgba(201, 199, 199, 0.7);
+    background: #F8F8F8;
+    
     width: 90vw;
     margin-left: 5%;
     border-radius: 10px;
@@ -26,23 +27,55 @@
     padding: 10px;
     width: 100%;
     font-size: x-large;
+    display: grid;
 }
 
+.created-subtitle{
+    display: flex;
+}
+
+.cb-title {
+    margin-left: 50px;
+    font-size: 60px;
+    font-family: 'Montserrat';
+    font-weight: 800;
+}
 .cb-username {
     margin-left: 50px;
+    font-family: 'Cormorant';
 }
 
 .cb-date {
-    margin-left: 45%;
+    font-size: 20px;
+    margin-left: 16%;
+    opacity: 50%;
 }
 
 .short-description, .long-description {
-    margin: 50px;
+    margin-left: 60px;
+    
+    margin-right: 60px;
     font-size: x-large;
+    font-family: 'Cormorant';
+}
+
+.short-description p {
+    font-size: 35px;
+    font-weight: 100;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    opacity: 70%;
+
+    margin-left: 100px;
+    margin-right: 100px;
+    
 }
 
 .long-description p {
     padding-bottom: 50px;
+    margin-left: 10px;
+    font-size: 30px;
 }
 
 /* ---------------------------------- Line breaks ------------------------------------ */
@@ -55,37 +88,51 @@
 
 .line-break hr {
     background-color: black;
-    width: 93%;
+    width: 91%;
 }
 
 /* ---------------------------------- Video section ------------------------------------ */
 .video-container {
-    width: 100%;
-    display: flex;
     justify-content: center;
-    margin: 20px;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+    background-color: #F8F8F8;
+    display: flex;
+    width: 90vw;
+    justify-content: center;
+    border-radius: 10px;
+
+    margin-left: 75px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .video-container iframe {
     border: 10px solid ;
-    border-color: rgb(215, 215, 0);
+    border-color: rgba(240, 240, 206, 0.686);
+    border-radius: 25px;
 }
 
 /* ---------------------------------- Further Tips and tricks styling ------------------------------------ */
-
+.tips-and-tricks {
+    margin-bottom: 30px;
+}
 .tips-and-tricks h2 {
-
-    padding: 10px;
-    margin-left: 3%;
+    margin-left: 70px;
+    font-size: 60px;
+    font-family: 'Montserrat';
+    font-weight: 800;
+    padding-bottom: 5px;
 
 }
 
 .tips-and-tricks p {
-    margin-left: 50px;
+    margin-left: 70px;
     margin-top: 50px;
     padding-bottom: 50px;
-    font-size: x-large;
+    font-size: 40px;
     white-space: pre-line;
+    
+    font-family: 'Cormorant';
 }
