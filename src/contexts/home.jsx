@@ -168,6 +168,7 @@ export const HomeContextProvider = ({ children }) => {
         setLoadingTeam(false)
     }
 
+    // fetches basic stats for a team
     async function getStats(sportName, teamId) {
         let apiSportString = 'v1.'+sportName
         let endpoint = "/teams/statistics"
