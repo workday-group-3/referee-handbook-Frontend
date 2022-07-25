@@ -11,6 +11,7 @@ function UserCreatedCoursePage() {
 
     let currentCourse = JSON.parse(localStorage.getItem("current_user_course"))
 
+
     //regular expression to extract youtube video code 
     const regex = "watch\?v\=(.*)\&"
     const match = currentCourse.course_tutorial_video_url.match(/watch\?v\=(.*)\&/)[1]
@@ -30,7 +31,7 @@ function UserCreatedCoursePage() {
                 {/* Title and date */}
                 <span className='created-by'>
                     <h3 className='cb-title'>{currentCourse.course_title}</h3>
-                    <h3 className='cb-username'>Created by username</h3>
+                    <h3 className='cb-username'>Created by {currentCourse.username}</h3>
                 </span>
 
                 {/* Line separator */}
