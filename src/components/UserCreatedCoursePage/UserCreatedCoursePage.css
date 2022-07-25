@@ -1,11 +1,11 @@
 .user-create-course {
     background-color: #1F1F1F;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 
-.sub-banner {
-    width: 98.70%;
-}
 
 /* ---------------------------------- Main content section ------------------------------------ */
 
@@ -87,32 +87,46 @@
 
 /* ---------------------------------- Video section ------------------------------------ */
 .video-container {
-    width: 100%;
-    display: flex;
     justify-content: center;
-    margin: 20px;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+    background-color: #F8F8F8;
+    display: flex;
+    width: 90vw;
+    justify-content: center;
+    border-radius: 10px;
+
+    margin-left: 75px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .video-container iframe {
     border: 10px solid ;
-    border-color: rgb(215, 215, 0);
+    border-color: rgba(240, 240, 206, 0.686);
+    border-radius: 25px;
 }
 
 /* ---------------------------------- Further Tips and tricks styling ------------------------------------ */
-
+.tips-and-tricks {
+    margin-bottom: 30px;
+}
 .tips-and-tricks h2 {
-
-    padding: 10px;
-    margin-left: 3%;
+    margin-left: 70px;
+    font-size: 60px;
+    font-family: 'Montserrat';
+    font-weight: 800;
+    padding-bottom: 5px;
 
 }
 
 .tips-and-tricks p {
-    margin-left: 50px;
+    margin-left: 70px;
     margin-top: 50px;
     padding-bottom: 50px;
-    font-size: x-large;
+    font-size: 40px;
     white-space: pre-line;
+    
+    font-family: 'Cormorant';
 }
