@@ -8,11 +8,16 @@ function MarkdownModal({open, onClose}) {
     }
     
     return (
+        <>
+        
+        <div className='overlay'></div>
+
         <div className='modal'>
             <button onClick={onClose}>Close</button>
             <div>MarkdownModal</div>
 
         </div>
+        </>
     )
 }
 
