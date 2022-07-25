@@ -45,7 +45,7 @@ function UserCreatedCoursePage() {
                     <p>{currentCourse.course_short_description}</p>
                 </section>
                 <section className='long-description'>
-                    <p>{currentCourse.course_long_description}</p>
+                    <p>{currentCourse.course_content}</p>
                 </section>
             </div>
 

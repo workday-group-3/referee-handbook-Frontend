@@ -14,7 +14,7 @@ import { Pagination, Navigation } from "swiper";
 
 export default function Carousel() {
   return (
-    <>
+    <div className="landing-carousel">
         {/* Configure swiper widget's properties */}
         <Swiper
             slidesPerView={1}
@@ -54,6 +54,6 @@ export default function Carousel() {
             <h4>Share your passion and knowledge with other players and fans by creating a course.</h4>
         </SwiperSlide>
       </Swiper>
-    </>
+    </div>
   );
 }
