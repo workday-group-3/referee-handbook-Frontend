@@ -19,9 +19,6 @@ function BeginnerCoursePage() {
     // pulling current course from local storage, parsing the string into json
     let currentCourse = JSON.parse(localStorage.getItem("current_course"))
     
-    // breaks up rules into bullets. 
-    const formattedRules = currentCourse ? currentCourse.beginner_rules.replaceAll("{b}", "•") : null
-
     // Splits the rules into an array of substrings based on the "{b}" characters. 
     const splitRules = currentCourse ? currentCourse.beginner_rules.split("{b}") : null
     
@@ -39,29 +36,27 @@ function BeginnerCoursePage() {
 
                     <div className='video'>
                         <h1 className="video-header">Tutorial Video</h1>
-                        <iframe
-                            src={currentCourse.beginner_tutorial_video_url}
-                            width="500"
-                            height="300"
-                            allowFullScreen
-                        />{" "}
+                        <div className='white-frame'>
+                            <iframe
+                                src={currentCourse.beginner_tutorial_video_url}
+                                width="500"
+                                height="300"
+                                allowFullScreen
+                            />{" "}
+                        </div>
                     </div>
 
                     <div className='diagram'>
                         <h1 className="diagram-header">Diagram</h1>
-                        <img className="diagram-img" src={currentCourse.beginner_field_diagram_url} alt="beginner field diagram" />
+                        <div className='white-frame'><img className="diagram-img" src={currentCourse.beginner_field_diagram_url} alt="beginner field diagram" /></div>
+                        
                     </div>
                     
                 </div>
                 
                 {/* Rules slide deck. For each rule, we create a slide to be displayed in the carousel */}
-                <div className='rules-section'>
-                    <div className='flag'><img src={flagImg} alt="flag image" className='flag-img'></img></div>
-                    <h1 className ="rules-section-title"><em>Rules</em></h1>
-                    <p className='rules-paragraph'>{formattedRules}</p>
-                </div>
-
                 <div className='rules-carousel'>
+                <h4 className='rules-title'>Rules</h4>
                     {splitRules ? 
                         
                         // configure properties of the rules carousel 
@@ -74,7 +69,7 @@ function BeginnerCoursePage() {
                             }}
                             navigation={true}
                             modules={[Pagination, Navigation]}
-                            className="testingClassName"
+                            className="rules-swiper"
                         > 
                         
                         {/* Render a slide for each rule of the current sport  */}
@@ -82,7 +77,7 @@ function BeginnerCoursePage() {
                             return (
                                 <SwiperSlide>
                                     <div className='flag'><img src={flagImg} alt="flag image" className='flag-img'></img></div>
-                                    <h3>{splitRules[index+1]}</h3>
+                                    <p>{splitRules[index+1]}</p>
                                 </SwiperSlide>
                             )
                         })}
