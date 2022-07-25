@@ -30,6 +30,10 @@
     display: grid;
 }
 
+.created-subtitle{
+    display: flex;
+}
+
 .cb-title {
     margin-left: 50px;
     font-size: 60px;
@@ -42,7 +46,9 @@
 }
 
 .cb-date {
-    margin-left: 45%;
+    font-size: 20px;
+    margin-left: 16%;
+    opacity: 50%;
 }
 
 .short-description, .long-description {
