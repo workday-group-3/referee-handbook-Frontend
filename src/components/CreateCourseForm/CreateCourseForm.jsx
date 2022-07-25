@@ -115,7 +115,8 @@ export default function CreateCourseForm() {
                     variant="filled"
                     />
                 </div>
-                <button onClick={openModal}>Open</button>
+                {/* Conditionally render modal */}
+                <p className='modal-button' onClick={openModal}><u>Use Markdown?</u></p>
                 <MarkdownModal open={isOpen} onClose={closeModal}/>
                 
                 <div className='main-content-input'>

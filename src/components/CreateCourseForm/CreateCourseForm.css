@@ -57,7 +57,9 @@
 
 /* ----------------------------------- open Modal popup button --------------------------------  */
 
-.main-content-input p{
+.modal-button {
     color: grey;
     margin-left: 222px;
+    font-size: 20px;
+    cursor: pointer;
 }
