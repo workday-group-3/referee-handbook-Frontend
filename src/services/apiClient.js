@@ -70,7 +70,7 @@ class ApiClient {
         return await this.request({endpoint: `learning/${sportName}`, method: `GET`})
     }
 
-    async listUserCoursesByUser() {
+    async listUserOwnedObjectsByUser() {
         return await this.request({endpoint: `profile`, method: `GET`})
     }
 
