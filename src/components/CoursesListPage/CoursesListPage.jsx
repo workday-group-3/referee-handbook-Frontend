@@ -52,7 +52,6 @@ function CoursesListPage(props) {
     const fetchUserCourses = async () => {
       const {data, error} = await apiClient.listUserCoursesBySport(currentCourse.sport_name)
       if(data){
-        console.log(data)
         setUserCourses(data.userCourses)
       }
       if(error){
