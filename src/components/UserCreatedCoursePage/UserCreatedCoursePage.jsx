@@ -13,8 +13,22 @@ function UserCreatedCoursePage() {
     let currentCourse = JSON.parse(localStorage.getItem("current_user_course"))
 
 
-    //regular expression to extract yo
-    const videoCode = currentCourse.course_tutorial_video_url.match(/watch\?v\=(.*)\&/)[1]
+    //regular expression to extract youtube video code
+    const containsVideoCode = /watch\?v\=(.*)/
+    const containsAmpersand = /watch\?v\=(.*)\&/
+
+    //Check it contains the watch unto the ampersand
+    //if it does, check if it contains an ampersand
+        // yes, use regex /watch\?v\=(.*)\&/
+        // no, use regex /watch\?v\=(.*)/
+
+    const acceptableFormat = containsVideoCode.test(currentCourse.course_tutorial_video_url)
+    const acceptableAmpersand = containsAmpersand.test(currentCourse.course_tutorial_video_url)
+    
+    let videoCode = acceptableFormat ? currentCourse.course_tutorial_video_url.match(containsVideoCode)[1] : null  
+    videoCode = acceptableAmpersand ? currentCourse.course_tutorial_video_url.match(containsAmpersand)[1] : videoCode  
+    
+    
     const ourUrl = "https://www.youtube.com/embed/" + videoCode;
 
     //regular expression to extract timespan 
@@ -60,12 +74,12 @@ function UserCreatedCoursePage() {
 
             {/* Renders youtube video onto the screen  */}
             <div className='video-container'>
-                <iframe
+                {acceptableFormat ? <iframe
                     src={ourUrl}
                     width="750"
                     height="400"
                     allowFullScreen
-                />{" "}
+                /> : <h2>Please input an appropriate youtube link</h2>}
             </div>
             
             {/* Renders tips and tricks section  */}
