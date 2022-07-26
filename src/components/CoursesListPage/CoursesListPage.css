@@ -10,19 +10,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 
 .beginner-course-title-container {
-    margin-top: 4vh;
+    margin-top: 10vh;
+    padding:0;
+    width: 1350px;
+    display: flex;
     color: whitesmoke;
     font-size: 2vh;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.beginner-course-title {
+    
 }
 
 
-
 .beginner-course-option, .user-course-option {
-    margin: 40px;
+    margin-top: 1%;
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-bottom: 40px;
     height: 250px;
     width: 1350px;
     background-color: #201E1E;
@@ -63,6 +76,9 @@
 .course-link {
     color: whitesmoke;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-bottom: 2px solid #979393;
 }
 
@@ -135,7 +151,7 @@
     display: flex;
     border-radius: 10px;
     color: whitesmoke;
-    padding-bottom: 10px;
+    padding-bottom: 2vh;
     position: relative;
 }
 
@@ -169,12 +185,19 @@
     display: flex;
     justify-content: center;
     font-size: 12px;
+    align-items: center;
 
 }
 
+.user-created-profile-picture {
+
+    width: 1.5vw;
+    margin-right: 2.5px;
+    height: 3vh;
+    border-radius: 50%;
+}
 
 .user-created-course-difficulty {
-    
     position: absolute;
     bottom: 1%;
     right: 1%;

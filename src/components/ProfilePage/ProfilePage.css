@@ -85,7 +85,6 @@
 
 .details-title-container {
     margin: 1%;
-    border-bottom: 2px solid #383838
 }
 
 
@@ -174,6 +173,10 @@
     width: 100%;
 }
 
+.user-created-course-redirect-link {
+    text-decoration: none;
+}
+
 
 /* ----------------------------- MY TEAMS SECTION  ---------------------------------------*/
 .courses-teams-container {
@@ -204,6 +207,8 @@
 
 .user-teams-title, .user-courses-title, .details-title {
     font-size:  5ch;
+    border-bottom: 4px solid #383838
+    
 }
 
 .no-teams-error-msg, .no-user-courses-message{
@@ -219,6 +224,7 @@
     justify-content: center;
     align-items: center;
     margin: 1%;
+    width: auto;
     
     
 }
@@ -238,5 +244,5 @@
 
 
 .team-name {
-    font-size: 5ch;
+    font-size: 4.5ch;
 }
