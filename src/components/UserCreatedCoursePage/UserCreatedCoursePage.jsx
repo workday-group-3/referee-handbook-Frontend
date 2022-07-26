@@ -13,20 +13,20 @@ function UserCreatedCoursePage() {
     let currentCourse = JSON.parse(localStorage.getItem("current_user_course"))
 
 
-    //regular expression to extract youtube video code
+    //Regular expressions for video code section (dependent on inclusion of ampersand)
     const containsVideoCode = /watch\?v\=(.*)/
     const containsAmpersand = /watch\?v\=(.*)\&/
 
-    //Check it contains the watch unto the ampersand
-    //if it does, check if it contains an ampersand
-        // yes, use regex /watch\?v\=(.*)\&/
-        // no, use regex /watch\?v\=(.*)/
-
+    /* tests 
+        1. does the url contain ATLEAST the video code
+        2. does the url contain ATLEAST the video code AND the ampersand
+    */
     const acceptableFormat = containsVideoCode.test(currentCourse.course_tutorial_video_url)
     const acceptableAmpersand = containsAmpersand.test(currentCourse.course_tutorial_video_url)
     
-    let videoCode = acceptableFormat ? currentCourse.course_tutorial_video_url.match(containsVideoCode)[1] : null  
-    videoCode = acceptableAmpersand ? currentCourse.course_tutorial_video_url.match(containsAmpersand)[1] : videoCode  
+    //Sets out video code to the appropriate value based on the inclusion of the ampersand
+    let videoCode = acceptableFormat ? currentCourse.course_tutorial_video_url.match(containsVideoCode)[1] : null  //no ampersand
+    videoCode = acceptableAmpersand ? currentCourse.course_tutorial_video_url.match(containsAmpersand)[1] : videoCode   //ampersand
     
     
     const ourUrl = "https://www.youtube.com/embed/" + videoCode;
@@ -72,7 +72,7 @@ function UserCreatedCoursePage() {
                 </section>
             </div>
 
-            {/* Renders youtube video onto the screen  */}
+            {/* Renders youtube video onto the screen IF it contains a video code */}
             <div className='video-container'>
                 {acceptableFormat ? <iframe
                     src={ourUrl}
