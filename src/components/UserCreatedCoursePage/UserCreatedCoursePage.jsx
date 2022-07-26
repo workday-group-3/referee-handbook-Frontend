@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 
 import "./UserCreatedCoursePage.css"
 
@@ -53,7 +54,7 @@ function UserCreatedCoursePage() {
                     <p>{currentCourse.course_short_description}</p>
                 </section>
                 <section className='long-description'>
-                    <p>{currentCourse.course_content}</p>
+                    <ReactMarkdown>{currentCourse.course_content}</ReactMarkdown>
                 </section>
             </div>
 

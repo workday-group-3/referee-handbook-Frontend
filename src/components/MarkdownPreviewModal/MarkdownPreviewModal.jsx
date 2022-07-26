@@ -1,5 +1,9 @@
 import React from 'react'
 
+import "./MarkdownPreviewModal.css"
+
+import ReactMarkdown from 'react-markdown'
+
 
 function MarkdownPreviewModal({open, onClose, content}) {
     if (!open) {
@@ -15,7 +19,9 @@ function MarkdownPreviewModal({open, onClose, content}) {
 
             <button className='close-modal-button' onClick={onClose}>x</button>
 
-            <h1>I am text to be replaced</h1>
+            <div className='markdown-content'>
+                <ReactMarkdown>{content}</ReactMarkdown>
+            </div>
 
         </div>
         </>

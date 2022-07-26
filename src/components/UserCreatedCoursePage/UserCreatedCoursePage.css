@@ -72,10 +72,20 @@
     
 }
 
-.long-description p {
-    padding-bottom: 50px;
-    margin-left: 10px;
+/* ---------------------------- Markdown manipulation for proper rendering ------------------------------- */
+
+.long-description {
+    white-space: pre-wrap;
     font-size: 30px;
+}
+
+.long-description img {
+    max-width: 40vw;
+
+}
+
+.long-description ul {
+    padding-left: 40px;
 }
 
 /* ---------------------------------- Line breaks ------------------------------------ */
