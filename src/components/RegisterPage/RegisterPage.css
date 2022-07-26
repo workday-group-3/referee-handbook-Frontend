@@ -4,6 +4,8 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
+    
+    
 }
 
 
@@ -31,6 +33,7 @@
     height: 850px;
     border-radius: 10%;
     margin-top: 5%;
+
     
 }
 

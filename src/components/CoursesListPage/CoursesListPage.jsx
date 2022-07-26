@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import profilePicturePlaceholder from '../../assets/profile-picture-placeholder.jpg'
 
 //styling
 import "./CoursesListPage.css"
@@ -52,6 +52,7 @@ function CoursesListPage(props) {
     const fetchUserCourses = async () => {
       const {data, error} = await apiClient.listUserCoursesBySport(currentCourse.sport_name)
       if(data){
+        console.log(data)
         setUserCourses(data.userCourses)
       }
       if(error){
@@ -138,13 +139,19 @@ function CoursesListPage(props) {
       <div className="user-courses-list">
           {filterByDifficulty[0] ?
           filterByDifficulty.map((course) => {
+
+            
+            //checking if user has a profile picture, if not use placeholder
+            let profilePicture;
+            {course.profile_image_url === null ? profilePicture = profilePicturePlaceholder : profilePicture = course.profile_image_url}
+
             return(
               <Link className="user-course-redirect" to={`/learning/${currentCourse.sport_name}/userCreated/${course.courseId}`}>
                 <div className="user-created-course" onClick={() => setCourseHandler(course)}>
                     <div className="user-created-course-img-container">
                       
                       <img className="user-created-course-img" src={course.course_cover_image_url}/>
-                      <p className="user-created-course-creation-date"><em className="user-created-course-username">@{course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                      <p className="user-created-course-creation-date"><img className="user-created-profile-picture" src = {profilePicture} alt={`Profile Picture for ${course.username}`}></img><em className="user-created-course-username"> {course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
                     </div>
                     <div className="user-created-course-content">
                       <h1 className="user-created-course-title"><em>{course.course_title}</em></h1>

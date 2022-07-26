@@ -157,8 +157,9 @@ export default function ProfilePage() {
                 {/* condtional rendering to display either users created courses, or message that no courses created */}
                 <div className ="user-courses-cards">
                     {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
-
+                        console.log(course)
                         return (
+                            <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.id}`}>
                             <div className ="user-course-card-container">
                                 <div className="thumbnail-container">
                                     <div className="cover-image-category">
@@ -169,10 +170,11 @@ export default function ProfilePage() {
                                     </div>
                                 </div>
                                 <div className="title-description-container">
-                                    <h1 className="user-course-card-title"><em>{course.course_title}</em></h1>
+                                    <h1 className="user-course-card-title">{course.course_title}</h1>
                                     <p className="user-course-card-description">{course.course_short_description}</p>
                                 </div>
                             </div>
+                            </Link>
                         )
                     }) : <h1 className="no-user-courses-message">No courses created, get started <Link  className ="learning-redirect" to ="/learning">here!</Link></h1>}
                 </div>

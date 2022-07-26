@@ -145,7 +145,7 @@ export default function CreateCourseForm() {
                             sx={{backgroundColor : 'white'}}
                             variant="filled"
                             />
-                        <FormControl variant="filled" sx={{ m: 1, height: "6.5ch", minWidth: "10ch", width: "100ch", textAlign:"left", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
+                        <FormControl variant="filled" sx={{ m: 1, height: "6.5ch", minWidth: "15ch", width: "100ch", textAlign:"left", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
                             <InputLabel>DIFFICULTY</InputLabel>
                             <Select
                             value={difficulty}
