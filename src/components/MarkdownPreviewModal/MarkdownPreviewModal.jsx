@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function MarkdownPreviewModal({open, onClose}) {
+function MarkdownPreviewModal({open, onClose, content}) {
     if (!open) {
         return null
     }

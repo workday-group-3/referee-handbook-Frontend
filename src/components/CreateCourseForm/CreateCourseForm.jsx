@@ -137,7 +137,7 @@ export default function CreateCourseForm() {
 
                     {/* render components for modals */}
                     <MarkdownModal open={isOpen} onClose={closeModal}/>
-                    <MarkdownPreviewModal open={previewIsOpen} onClose={closePreviewModal} />
+                    <MarkdownPreviewModal content={courseForm.detailedDescription} open={previewIsOpen} onClose={closePreviewModal} />
                     
                     <div className="input-container">
                         <TextField
