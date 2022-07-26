@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 
 import "./UserCreatedCoursePage.css"
 
@@ -7,14 +8,39 @@ import { CenterFocusStrong } from '@mui/icons-material'
 
 function UserCreatedCoursePage() {
 
-    let currentCourse = JSON.parse(localStorage.getItem("current_course"))
+    let currentSport = JSON.parse(localStorage.getItem("current_course"))
+
+    let currentCourse = JSON.parse(localStorage.getItem("current_user_course"))
+
+
+    //Regular expressions for video code section (dependent on inclusion of ampersand)
+    const containsVideoCode = /watch\?v\=(.*)/
+    const containsAmpersand = /watch\?v\=(.*)\&/
+
+    /* tests 
+        1. does the url contain ATLEAST the video code
+        2. does the url contain ATLEAST the video code AND the ampersand
+    */
+    const acceptableFormat = containsVideoCode.test(currentCourse.course_tutorial_video_url)
+    const acceptableAmpersand = containsAmpersand.test(currentCourse.course_tutorial_video_url)
+    
+    //Sets out video code to the appropriate value based on the inclusion of the ampersand
+    let videoCode = acceptableFormat ? currentCourse.course_tutorial_video_url.match(containsVideoCode)[1] : null  //no ampersand
+    videoCode = acceptableAmpersand ? currentCourse.course_tutorial_video_url.match(containsAmpersand)[1] : videoCode   //ampersand
+    
+    
+    const ourUrl = "https://www.youtube.com/embed/" + videoCode;
+
+    //regular expression to extract timespan 
+    const condensedDate = currentCourse.created_at.match(/^(.*)T/)[1]
+
 
     return (
         <div className='user-create-course'>
             
             {/* Conditionally render Learning sub banner if the current course is stored locally (purpose: user persistance) */}
             <div className='sub-banner'>
-                { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name} showButtons="true"/> : null} 
+                { currentCourse ? <LearningSubBanner courseName={currentSport.sport_name} showButtons="true"/> : null} 
             </div>
 
             {/* Render chunk of user created course content  */}
@@ -22,8 +48,11 @@ function UserCreatedCoursePage() {
 
                 {/* Title and date */}
                 <span className='created-by'>
-                    <h3 className='cb-username'>Course name - <br/> Created by username</h3>
-                    <h3 className='cb-date'>Created on DD/MM/YYYY</h3>
+                    <span className='created-subtitle'>
+                        <h3 className='cb-title'>{currentCourse.course_title}</h3>
+                        <h3 className='cb-date'>{condensedDate}</h3>
+                    </span>
+                        <h3 className='cb-username'>Created by {currentCourse.username}</h3>
                 </span>
 
                 {/* Line separator */}
@@ -36,31 +65,21 @@ function UserCreatedCoursePage() {
 
                 {/* Course content descriptions, both short and long */}
                 <section className='short-description'>
-                    <p>
-                        Short Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Short Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Short Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Short Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Short Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
+                    <p>{currentCourse.course_short_description}</p>
                 </section>
                 <section className='long-description'>
-                    <p>
-                    Long Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue orci sem, ac eleifend ligula sollicitudin sed. Vestibulum venenatis consectetur lorem id fringilla. Phasellus cursus tempor nunc, ut tincidunt ante luctus nec. Aenean porttitor, nulla eget cursus feugiat, arcu mi tempor eros, sed dignissim ante orci vel tellus. Cras maximus mattis justo. Praesent consequat enim sed elit ultricies congue. Suspendisse a ante vel quam semper mollis. Suspendisse potenti. Maecenas et mi volutpat, viverra lacus et, dictum sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In at lorem id ante fermentum ornare.
-                    Long Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue orci sem, ac eleifend ligula sollicitudin sed. Vestibulum venenatis consectetur lorem id fringilla. Phasellus cursus tempor nunc, ut tincidunt ante luctus nec. Aenean porttitor, nulla eget cursus feugiat, arcu mi tempor eros, sed dignissim ante orci vel tellus. Cras maximus mattis justo. Praesent consequat enim sed elit ultricies congue. Suspendisse a ante vel quam semper mollis. Suspendisse potenti. Maecenas et mi volutpat, viverra lacus et, dictum sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In at lorem id ante fermentum ornare.
-                    Long Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue orci sem, ac eleifend ligula sollicitudin sed. Vestibulum venenatis consectetur lorem id fringilla. Phasellus cursus tempor nunc, ut tincidunt ante luctus nec. Aenean porttitor, nulla eget cursus feugiat, arcu mi tempor eros, sed dignissim ante orci vel tellus. Cras maximus mattis justo. Praesent consequat enim sed elit ultricies congue. Suspendisse a ante vel quam semper mollis. Suspendisse potenti. Maecenas et mi volutpat, viverra lacus et, dictum sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In at lorem id ante fermentum ornare.
-                    </p>
+                    <ReactMarkdown>{currentCourse.course_content}</ReactMarkdown>
                 </section>
             </div>
 
-            {/* Renders youtube video onto the screen  */}
+            {/* Renders youtube video onto the screen IF it contains a video code */}
             <div className='video-container'>
-                <iframe
-                    src='https://www.youtube.com/embed/XxPK9utUq5o'
+                {acceptableFormat ? <iframe
+                    src={ourUrl}
                     width="750"
                     height="400"
                     allowFullScreen
-                />{" "}
+                /> : <h2>Please input an appropriate youtube link</h2>}
             </div>
             
             {/* Renders tips and tricks section  */}
@@ -78,24 +97,7 @@ function UserCreatedCoursePage() {
                 </span>
                 
                 {/* Tips and tricks text section */}
-                <p className='tips-and-tricks-text'>
-                    •Lorem ipsum dolor sit amet, consectetur adipiscing elit <br/>
-                    •Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br/>
-                    •Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
-                    •Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>
-                    •Lorem ipsum dolor sit amet, consectetur adipiscing elit <br/>
-                    •Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br/>
-                    •Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
-                    •Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>
-                    •Lorem ipsum dolor sit amet, consectetur adipiscing elit <br/>
-                    •Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br/>
-                    •Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
-                    •Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>
-                    •Lorem ipsum dolor sit amet, consectetur adipiscing elit <br/>
-                    •Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br/>
-                    •Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
-                    •Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>
-                </p>
+                <p className='tips-and-tricks-text'>{currentCourse.course_tips_tricks}</p>
             </div>
         </div>
     )

@@ -21,6 +21,7 @@ import BeginnerCoursePage from '../BeginnerCoursePage/BeginnerCoursePage';
 import HomePage from '../HomePage/HomePage';
 import CreateCourseForm from '../CreateCourseForm/CreateCourseForm';
 import UserCreatedCoursePage from '../UserCreatedCoursePage/UserCreatedCoursePage'
+import TeamPage from '../TeamPage/TeamPage';
 
 
 //returns our context providers with our App component nested inside.
@@ -52,8 +53,9 @@ function App() {
           <Route path="/learning/:sportsName" element={<CoursesListPage/>} />
           <Route path="/learning/:sportsName/create" element={<ProtectedRoute element = {<CreateCourseForm/>}/>} />
           <Route path="/learning/:sportsName/beginner" element={<BeginnerCoursePage/>} />
-          <Route path="/learning/:sportsName/user_created" element={<UserCreatedCoursePage/>} />
+          <Route path="/learning/:sportsName/userCreated/:sportsId" element={<UserCreatedCoursePage/>} />
           <Route path="/home" element={<HomePage/>}/>
+          <Route path="/home/:sportName/:teamId" element={<TeamPage/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>
         <Footer/>

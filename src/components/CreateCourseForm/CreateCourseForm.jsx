@@ -1,28 +1,28 @@
 import React from 'react'
 import './CreateCourseForm.css'
+import { useState } from "react"
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
-
-//MUI imports
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import CreateIcon from '@mui/icons-material/Create';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
-//react imports
-import { useState } from "react"
-import { Link, useNavigate, useParams } from 'react-router-dom';
-
-
-//component imports
 import apiClient from '../../services/apiClient';
 
+import MarkdownModal from '../MarkdownModal/MarkdownModal';
+import MarkdownPreviewModal from '../MarkdownPreviewModal/MarkdownPreviewModal';
 
 export default function CreateCourseForm() {
 
 
 
     const sportName = useParams();
-    console.log("Current Sport is", sportName.sportsName)
+
 
 
     //global var
@@ -31,17 +31,44 @@ export default function CreateCourseForm() {
 
     //state variables
     const [courseForm, setCourseForm] = useState(emptyCourseForm)
+    const [difficulty, setDifficulty] = useState('')
     const navigate = useNavigate()
     const [error, setError] = useState(null)
+    const [isOpen, setIsOpen] = useState(false)
+    const [previewIsOpen, setPreviewIsOpen] = useState(false)
 
 
+    //handlers for opening and closing our markdown help modal
+    function openModal (event) {
+        event.preventDefault()
+        setIsOpen(true)
+    }
+
+    function closeModal (event) {
+        setIsOpen(false)
+    }
+
+    //handlers for opening and closing our markdown preview modal
+    function openPreviewModal (event) {
+        event.preventDefault()
+        setPreviewIsOpen(true)
+    }
+
+    function closePreviewModal (event) {
+        setPreviewIsOpen(false)
+    }
 
 
-
+    //handlers for form components
     function handleOnInputChange (evt) {
         setCourseForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
-        console.log(courseForm)
     }
+
+    function handleDropdownChange (evt)  {
+        setDifficulty(evt.target.value)
+        setCourseForm((form) => ({ ...form, ["difficulty"]: evt.target.value }))
+    }
+
 
 
     //create onsubmit handler to call apiClient and post new user created course 
@@ -52,9 +79,9 @@ export default function CreateCourseForm() {
           setError(error)
         }
         if(data){
+            navigate(`/learning/${sportName}`)
           // navigate to the newly created user course
-          console.log("User Posted This Course:", data)  
-          console.log("Successfully Posted New User Course")
+          // reset frontend form data
         }
       }
 
@@ -99,19 +126,33 @@ export default function CreateCourseForm() {
                     variant="filled"
                     />
                 </div>
-                <div className="input-container">
-                    <TextField
-                    className="input-field"
-                    label="Detailed Description"
-                    type="text"
-                    name="detailedDescription"
-                    multiline={true}
-                    rows={4}
-                    value = {courseForm.detailedDescription}
-                    onChange = {handleOnInputChange}
-                    sx={{backgroundColor : 'white'}}
-                    variant="filled"
-                    />
+
+                {/* Open and close modal buttons */}
+                <div className='open-modals'>
+                    <p className='modal-button' onClick={openModal}><u>Markdown cheat-sheet</u></p>
+                    <p className='modal-button' onClick={openPreviewModal}><u>Preview Markdown</u></p>
+                </div>
+                
+                <div className='main-content-input'>
+
+                    {/* render components for modals */}
+                    <MarkdownModal open={isOpen} onClose={closeModal}/>
+                    <MarkdownPreviewModal content={courseForm.detailedDescription} open={previewIsOpen} onClose={closePreviewModal} />
+                    
+                    <div className="input-container">
+                        <TextField
+                        className="input-field"
+                        label="Detailed Description"
+                        type="text"
+                        name="detailedDescription"
+                        multiline={true}
+                        rows={4}
+                        value = {courseForm.detailedDescription}
+                        onChange = {handleOnInputChange}
+                        sx={{backgroundColor : 'white'}}
+                        variant="filled"
+                        />
+                    </div>
                 </div>
                 <div className ="medias">
                     <div className="media-input-container">
@@ -135,6 +176,21 @@ export default function CreateCourseForm() {
                             sx={{backgroundColor : 'white'}}
                             variant="filled"
                             />
+                        <FormControl variant="filled" sx={{ m: 1, height: "6.5ch", minWidth: "15ch", width: "100ch", textAlign:"left", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
+                            <InputLabel>DIFFICULTY</InputLabel>
+                            <Select
+                            value={difficulty}
+                            onChange={handleDropdownChange}>
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            <MenuItem value={"Beginner"}>Beginner</MenuItem>
+                            <MenuItem value={"High School"}>High School</MenuItem>
+                            <MenuItem value={"Collegiate"}>Collegiate</MenuItem>
+                            <MenuItem value={"Amateur"}>Amateur</MenuItem>
+                            <MenuItem value={"Professional"}>Professional</MenuItem>
+                            </Select>
+                        </FormControl>
                     </div>
                 </div>
                 <div className="input-container">

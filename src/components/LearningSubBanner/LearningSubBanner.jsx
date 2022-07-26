@@ -23,11 +23,10 @@ function LearningSubBanner(props) {
 
   return (
     <div className='learning-sub-banner'>
-        <h2>Welcome to the World of <em>{props.courseName}</em></h2>
+        <p>Welcome to the world of {props.courseName}</p>
         {props.showButtons == "true" ? (
             <div className='button-section'>
               <Button onClick={handleReturn}><ArrowBackIosNewRoundedIcon className='button-icon'/></Button>
-              <Button><FavoriteBorderRoundedIcon className='button-icon'/></Button>
             </div>) : null}
     </div>
   )

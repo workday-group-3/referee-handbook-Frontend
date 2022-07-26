@@ -1,20 +1,22 @@
 
 
 .profile-page{
-    display: flex;
     background-color: #363232;
-    width: 100%;
-    height: 100vh;
-
+    height: 100%;
+    padding-bottom: 20vh;
 }
 
+.profile-page-user{
+    display:flex;
+    width: 100%;
+}
 
 .profile-page-header {
     margin: 1%;
     display: block;
     width: 400px;
     height: 450px;
-    border-radius: 25px;
+    border-radius: 10px;
     background-color: #D9D9D9;
 }
 
@@ -77,13 +79,12 @@
     display: block;
     width: 100%;
     height: 450px;
-    border-radius: 25px;
+    border-radius: 10px;
     background-color: #D9D9D9;
 }
 
 .details-title-container {
     margin: 1%;
-    border-bottom: 2px solid #383838
 }
 
 
@@ -94,4 +95,154 @@
 .user-detail-name {
     display: flex;
     width: 420px;
+}
+
+
+/* ----------------------------USER CREATED COURSES SECTION------------------------- */
+
+
+.user-courses-container {
+    background-color: #D9D9D9;
+    margin: 1%;
+    border-radius: 10px;
+    width: 40vw;
+    height: fit-content;
+    padding-bottom: 25px;
+    padding-top: 10px;
+}
+
+
+
+
+
+.user-courses-title-container {
+
+    margin: 1%;
+}
+
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+    padding-bottom: 25px;
+
+}
+
+
+
+
+.learning-redirect {
+    margin-left: 0.25vw;
+}
+
+
+.thumbnail-container {
+    margin: 1%;
+    padding-left: 5px;
+    justify-content: center;
+}
+
+.course-card-cover-image {
+    width: 10vw;
+    height: 10vh;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 25px;
+
+}
+
+.user-course-card-container {
+    display: flex;
+    margin: 2%;
+    background-color: #363232;
+    border-radius: 25px;
+    color: whitesmoke;
+    padding-left: 2px;
+    
+}
+
+
+.title-description-container {
+    margin: 2%;
+}
+
+.course-card-date-category {
+    margin-left: 5%;
+    font-size: 13px;
+    width: 100%;
+}
+
+.user-created-course-redirect-link {
+    text-decoration: none;
+}
+
+
+/* ----------------------------- MY TEAMS SECTION  ---------------------------------------*/
+.courses-teams-container {
+    display: flex;
+}
+
+
+
+.user-teams-container {
+    background-color: #D9D9D9;
+    margin: 1%;
+    border-radius: 10px;
+    width: 60vw;
+
+
+    padding-top: 10px;
+}
+
+
+
+
+.user-teams-title-container {
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+    padding-bottom: 25px;
+}
+
+.user-teams-title, .user-courses-title, .details-title {
+    font-size:  5ch;
+    border-bottom: 4px solid #383838
+    
+}
+
+.no-teams-error-msg, .no-user-courses-message{
+    display: flex;
+    justify-content: center;
+    font-size: 2.2ch;
+    margin-top: 6vh;
+    font-weight: 500;
+}
+
+.user-followed-team-card{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+    width: auto;
+    
+    
+}
+
+.team-name-container{
+    display: flex;
+    margin-left: 1vh;
+}
+
+
+.team-content {
+    display: flex;
+    justify-content: center;
+    text-transform: capitalize;
+}
+
+
+
+.team-name {
+    font-size: 4.5ch;
 }

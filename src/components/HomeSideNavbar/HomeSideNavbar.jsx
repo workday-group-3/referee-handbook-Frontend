@@ -16,7 +16,6 @@ function HomeSideNavbar() {
   // sets current sport based on selected button
   const handleSetSport = (param)=>{
     setCurrentSport(param)
-    console.log(param)
   }
 
   return (
