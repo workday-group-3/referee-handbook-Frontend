@@ -39,7 +39,6 @@ export const HomeContextProvider = ({ children }) => {
           setLoading(true)
           let json = await axios.get('https://api.thenewsapi.com/v1/news/top?api_token='+NEWS_API_KEY+"&search="+currentSport+"&language=en&sort=published_at&limit=2&categories=sports")
           setNews(json.data.data)
-          console.log(json)
         } catch (error) {
           setError(error)
           if(error.response.status == 402){
