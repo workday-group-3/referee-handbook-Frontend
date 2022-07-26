@@ -14,7 +14,7 @@ function MarkdownModal({open, onClose}) {
 
         <div className='modal'>
 
-            <button onClick={onClose}>Close</button>
+            <button className='close-modal-button' onClick={onClose}>x</button>
 
             {/* Modal display text */}
             <div className='modal-content'>
@@ -22,22 +22,25 @@ function MarkdownModal({open, onClose}) {
                 <br />
                 <h3>Text enhancements</h3>
                 <p>
-                    {`<b>`}  &nbsp; &nbsp;(some text here) {`</b>`} &nbsp;&nbsp;&nbsp;- Bolden <br />
-                    {`<em>`} (some text here) {`</em>`} - Italicize <br />
-                    {`<u>`}  &nbsp;&nbsp;&nbsp;(some text here) {`</u>`} &nbsp;&nbsp;&nbsp;- Underline <br />
+                    *(text)* - Italics <br />    
+                    **(text)** - Bold   <br />
+                    * (text) - Bullet point(s)
                 </p>
                 <br />
                 <h3>Titles</h3>
                 <p>
-                    {`<h1>`} (some text) {`</h1>`} - Main header <br />
-                    {`<h2>`} (sometext) {`</h2>`} - Sub header
+                    # - Heading 1 <br />
+                    ## - Heading 2 <br />
+                    ### - Heading 3
                 </p>
                 <br />
-                <h3>Misc.</h3>
+                <h3>Miscellaneous</h3>
                 <p>
-                    {`<img src=’img url’ alt=’alternativetext’ >`} - Add an image <br />
-                    (some text here) {`<br />`} - newline <br />
+                    {'>'}(text) - Block quote <br />
+                    ![alt_text](https://example.com/image.jpg) - image
                 </p>
+                <br />
+                <u><a href='https://www.markdownguide.org/basic-syntax/' target='_blank'>More on Markdown...</a></u>
             </div>
 
 
