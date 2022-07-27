@@ -96,7 +96,9 @@ function UserCreatedCoursePage() {
                     </span>
                     
                     {/* Tips and tricks text section */}
-                    <p className='tips-and-tricks-text'>{currentCourse.course_tips_tricks}</p>
+                    <span className='tips-and-tricks-text'>
+                        <ReactMarkdown>{currentCourse.course_tips_tricks}</ReactMarkdown>
+                    </span>
                 </div>
             </div>
         </div>

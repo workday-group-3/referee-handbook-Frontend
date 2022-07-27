@@ -77,17 +77,17 @@
 
 /* ---------------------------- Markdown manipulation for proper rendering ------------------------------- */
 
-.long-description {
+.long-description, .tips-and-tricks-text {
     white-space: pre-wrap;
     font-size: 30px;
 }
 
-.long-description img {
+.long-description img, .tips-and-tricks-text img {
     max-width: 40vw;
 
 }
 
-.long-description ul {
+.long-description ul, .tips-and-tricks-text ul {
     padding-left: 40px;
 }
 
