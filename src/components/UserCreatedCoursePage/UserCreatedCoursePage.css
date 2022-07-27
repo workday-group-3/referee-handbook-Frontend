@@ -1,9 +1,11 @@
-.user-create-course {
+
+
+
+.user-content {
     background-color: #1F1F1F;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
 
 
@@ -30,24 +32,25 @@
     display: grid;
 }
 
-.created-subtitle{
+.course-information{
     display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin-left: 4vw;
 }
 
 .cb-title {
-    margin-left: 50px;
-    font-size: 60px;
+    font-size: 3em;
     font-family: 'Montserrat';
     font-weight: 800;
 }
 .cb-username {
-    margin-left: 50px;
     font-family: 'Cormorant';
+    font-size: 2em;
 }
 
 .cb-date {
-    font-size: 20px;
-    margin-left: 16%;
+    font-size: 1em;
     opacity: 50%;
 }
 
