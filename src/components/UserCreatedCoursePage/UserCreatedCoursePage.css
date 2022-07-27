@@ -122,6 +122,8 @@
 /* ---------------------------------- Further Tips and tricks styling ------------------------------------ */
 .tips-and-tricks {
     margin-bottom: 5vh;
+    max-height: 50vh;
+    overflow-y: auto;
 }
 .tips-and-tricks-title {
     margin-left: 4vw;
