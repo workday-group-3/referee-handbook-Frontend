@@ -343,7 +343,6 @@ export const HomeContextProvider = ({ children }) => {
         for(let i = 0; i < arr.length; i++){
             // determine if the current team is the home team
             if(arr[i].teams.home.id == teamId){
-                console.log(arr[i].scores.home.total, arr[i].scores.away.total)
                 arr[i].location = "HOME"
                 // determine if the current team win, draw or lose
                 if(arr[i].scores.home > arr[i].scores.away){

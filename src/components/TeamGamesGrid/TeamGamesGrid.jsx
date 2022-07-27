@@ -6,7 +6,6 @@ import "./TeamGamesGrid.css"
 function TeamGamesGrid() {
   // uncomment this line below to use api instead of hardcoded data
   const {teamGames, loadingTeamGames} = useHomeContext()
-  console.log(teamGames)
 
   // hardcoded data just to test, ran out of API calls
 //   let loadingTeamGames = false
