@@ -72,7 +72,7 @@
 .long-description, .tips-and-tricks-text {
     white-space: pre-wrap;
     font-size: 1.5em;
-    max-width: 90%;
+    max-width: 80vw;
 }
 
 .long-description img, .tips-and-tricks-text img {
@@ -133,6 +133,6 @@
     font-family: 'Cormorant';
     font-size: 1.5em;
     white-space: pre-line;
-    max-width: 90%;
+    max-width: 80vw;
     margin-left: 4vw;
 }
