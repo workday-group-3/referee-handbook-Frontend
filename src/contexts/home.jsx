@@ -80,6 +80,17 @@ export const HomeContextProvider = ({ children }) => {
                     json.data.response[i] = json.data.response[i].team
                 }
             }
+            // delete the league from the list of baseball teams
+            if(currentSport == "baseball"){
+                delete json.data.response[0]
+            }
+
+            //delete the divisions from the list of hockey teams
+            if(currentSport == "hockey"){
+                delete json.data.response[2]
+                delete json.data.response[7]
+            }
+            
             setTeams(json.data.response)
             
         } catch(error){
@@ -334,10 +345,10 @@ export const HomeContextProvider = ({ children }) => {
             if(arr[i].teams.home.id == teamId){
                 arr[i].location = "HOME"
                 // determine if the current team win, draw or lose
-                if(arr[i].scores.home.total > arr[i].scores.away.total){
+                if(arr[i].scores.home > arr[i].scores.away){
                     arr[i].WDL = "W"
                 }
-                else if(arr[i].scores.home.total == arr[i].scores.away.total){
+                else if(arr[i].scores.home == arr[i].scores.away){
                     arr[i].WDL = "D"
                 }
                 else{
@@ -347,10 +358,10 @@ export const HomeContextProvider = ({ children }) => {
             else{
                 arr[i].location = "AWAY"
                 // determine if the current team win, draw or lose
-                if(arr[i].scores.home.total > arr[i].scores.away.total){
+                if(arr[i].scores.home > arr[i].scores.away){
                     arr[i].WDL = "L"
                 }
-                else if(arr[i].scores.home.total == arr[i].scores.away.total){
+                else if(arr[i].scores.home == arr[i].scores.away){
                     arr[i].WDL = "D"
                 }
                 else{

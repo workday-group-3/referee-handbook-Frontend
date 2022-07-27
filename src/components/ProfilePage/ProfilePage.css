@@ -229,6 +229,10 @@
     
 }
 
+.profile-team-logo{
+    width: 10vw;
+}
+
 .team-name-container{
     display: flex;
     margin-left: 1vh;

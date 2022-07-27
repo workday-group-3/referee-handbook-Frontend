@@ -22,6 +22,7 @@ import HomePage from '../HomePage/HomePage';
 import CreateCourseForm from '../CreateCourseForm/CreateCourseForm';
 import UserCreatedCoursePage from '../UserCreatedCoursePage/UserCreatedCoursePage'
 import TeamPage from '../TeamPage/TeamPage';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 
 //returns our context providers with our App component nested inside.
@@ -42,23 +43,26 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
+        <ScrollToTop>
 
-        <Navbar/>
-        <Routes>
-          <Route path="/" element={<LandingPage/>} />
-          <Route path="/login" element={<LoginPage/>} />
-          <Route path="/register" element={<RegisterPage/>} />
-          <Route path="/profile" element={<ProtectedRoute element = {<ProfilePage/>}/>} />
-          <Route path="/learning" element={<LearningCenterPage/>} />
-          <Route path="/learning/:sportsName" element={<CoursesListPage/>} />
-          <Route path="/learning/:sportsName/create" element={<ProtectedRoute element = {<CreateCourseForm/>}/>} />
-          <Route path="/learning/:sportsName/beginner" element={<BeginnerCoursePage/>} />
-          <Route path="/learning/:sportsName/userCreated/:sportsId" element={<UserCreatedCoursePage/>} />
-          <Route path="/home" element={<HomePage/>}/>
-          <Route path="/home/:sportName/:teamId" element={<TeamPage/>}/>
-          <Route path="*" element={<NotFound/>} />
-        </Routes>
-        <Footer/>
+          <Navbar/>
+          <Routes>
+            <Route path="/" element={<LandingPage/>} />
+            <Route path="/login" element={<LoginPage/>} />
+            <Route path="/register" element={<RegisterPage/>} />
+            <Route path="/profile" element={<ProtectedRoute element = {<ProfilePage/>}/>} />
+            <Route path="/learning" element={<LearningCenterPage/>} />
+            <Route path="/learning/:sportsName" element={<CoursesListPage/>} />
+            <Route path="/learning/:sportsName/create" element={<ProtectedRoute element = {<CreateCourseForm/>}/>} />
+            <Route path="/learning/:sportsName/beginner" element={<BeginnerCoursePage/>} />
+            <Route path="/learning/:sportsName/userCreated/:sportsId" element={<UserCreatedCoursePage/>} />
+            <Route path="/home" element={<HomePage/>}/>
+            <Route path="/home/:sportName/:teamId" element={<TeamPage/>}/>
+            <Route path="*" element={<NotFound/>} />
+          </Routes>
+          <Footer/>
+        </ScrollToTop>
+
       </BrowserRouter>
 
     </div>

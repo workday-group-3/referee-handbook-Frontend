@@ -194,7 +194,7 @@ export default function ProfilePage() {
                        return(
                             <div className="user-followed-team-card">
                                 <div className="team-logo-container">
-                                    <img src ={team.team_logo}></img>
+                                    <img src ={team.team_logo} className="profile-team-logo"></img>
                                 </div>
                                 <div className="team-information">
                                     <div className="team-name-container">

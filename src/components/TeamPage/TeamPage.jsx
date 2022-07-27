@@ -18,36 +18,36 @@ import { ArrowBack } from '@mui/icons-material';
 function TeamPage() {
 
   // uncomment this line to use api
-  //const {league, team, loadingTeam, getTeam, loadingStats, getStats, stats, error, setError, getTeamGames} = useHomeContext()
+  const {league, team, loadingTeam, getTeam, loadingStats, getStats, stats, error, setError, getTeamGames} = useHomeContext()
 
   // temporary hardcode data for testing
-  const loadingTeam = false;
-  const team = {"name": "Golden State Warriors", "logo": "https://logos-download.com/wp-content/uploads/2016/04/Golden_State_Warriors_logo_logotype.png"}
-  let league = "NBA"
-  const stats = {"played": {
-    "home": 1,
-    "away": 1,
-    "all": 2
-  },
-"wins":{
-  "all":{
-    "total": 2
-  }
-},
-"loses":{
-  "all":{
-    "total": 0
-  }
-}}
+//   const loadingTeam = false;
+//   const team = {"name": "Golden State Warriors", "logo": "https://logos-download.com/wp-content/uploads/2016/04/Golden_State_Warriors_logo_logotype.png"}
+//   let league = "NBA"
+//   const stats = {"played": {
+//     "home": 1,
+//     "away": 1,
+//     "all": 2
+//   },
+// "wins":{
+//   "all":{
+//     "total": 2
+//   }
+// },
+// "loses":{
+//   "all":{
+//     "total": 0
+//   }
+// }}
   const {sportName, teamId} = useParams()
   const [followSuccess, setFollowSuccess] = useState(false)
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   getTeam(sportName, teamId)
-  //   getStats(sportName, teamId)
-  //   getTeamGames(sportName, teamId)
-  // }, [])
+  useEffect(() => {
+    getTeam(sportName, teamId)
+    getStats(sportName, teamId)
+    getTeamGames(sportName, teamId)
+  }, [])
 
 
   //create onsubmit handler to call apiClient and post new user following entry
