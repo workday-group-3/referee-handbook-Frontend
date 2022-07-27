@@ -80,6 +80,17 @@ export const HomeContextProvider = ({ children }) => {
                     json.data.response[i] = json.data.response[i].team
                 }
             }
+            // delete the league from the list of baseball teams
+            if(currentSport == "baseball"){
+                delete json.data.response[0]
+            }
+
+            //delete the divisions from the list of hockey teams
+            if(currentSport == "hockey"){
+                delete json.data.response[2]
+                delete json.data.response[7]
+            }
+            
             setTeams(json.data.response)
             
         } catch(error){
