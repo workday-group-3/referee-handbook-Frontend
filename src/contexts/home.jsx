@@ -126,6 +126,11 @@ export const HomeContextProvider = ({ children }) => {
                 }
             })
 
+            if(json.data.errors.request){
+                setRequestLimit(true)
+                return
+            }
+
             if(json.data.errors.rateLimit){
                 setLimit(true)
                 return
