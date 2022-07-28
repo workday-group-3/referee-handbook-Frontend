@@ -12,7 +12,7 @@ function HomeTeamsGrid() {
         <div className='section-title'><h2 className='title-name'>{league}</h2></div>
 
         {/* if teams are still loading, render loading */}
-        {limit ? (<><h3>Uh oh! The Sports API is at its limit. Try navigating to a different sport or come back in a minute.</h3><iframe className="api-limit" src="https://c.tenor.com/JnSCV9rWhcIAAAAM/minecraft-minecraft-memes.gif"/></>) : 
+        {limit ? (<><h3>Uh oh! The Sports API is at its limit. Try refreshing or come back in a minute.</h3><iframe className="api-limit" src="https://c.tenor.com/JnSCV9rWhcIAAAAM/minecraft-minecraft-memes.gif"/></>) : 
         (loading ? (<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>) : (
 
         // for each team, render a team card
