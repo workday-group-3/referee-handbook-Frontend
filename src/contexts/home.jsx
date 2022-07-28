@@ -37,7 +37,7 @@ export const HomeContextProvider = ({ children }) => {
     async function getNews(){
         try{
           setLoading(true)
-          let json = await axios.get('https://api.thenewsapi.com/v1/news/top?api_token='+NEWS_API_KEY+"&search="+currentSport+"&language=en&sort=published_at&limit=2&categories=sports")
+          let json = await axios.get('https://api.thenewsapi.com/v1/news/all?api_token='+NEWS_API_KEY+"&search="+currentSport+"&language=en&sort=published_at&limit=2&categories=sports")
           setNews(json.data.data)
         } catch (error) {
           setError(error)
