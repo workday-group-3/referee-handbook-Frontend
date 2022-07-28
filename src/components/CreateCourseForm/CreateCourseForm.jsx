@@ -121,6 +121,7 @@ export default function CreateCourseForm() {
                     onChange = {handleOnInputChange}
                     sx={{backgroundColor : 'white'}}
                     variant="filled"
+                    inputProps={{ maxLength: 250 }}
                     />
                 </div>
                 <div className="input-container">
@@ -135,6 +136,7 @@ export default function CreateCourseForm() {
                     onChange = {handleOnInputChange}
                     sx={{backgroundColor : 'white'}}
                     variant="filled"
+                    inputProps={{ maxLength: 500 }}
                     />
                 </div>
 
@@ -162,6 +164,7 @@ export default function CreateCourseForm() {
                         onChange = {handleOnInputChange}
                         sx={{backgroundColor : 'white'}}
                         variant="filled"
+                        inputProps={{ maxLength: 5000 }}
                         />
                     </div>
                 </div>
@@ -176,6 +179,7 @@ export default function CreateCourseForm() {
                             onChange = {handleOnInputChange}
                             sx={{backgroundColor : 'white'}}
                             variant="filled"
+                            inputProps={{ maxLength: 500 }}
                             />
                             <TextField
                             className="cover-image-input-field"
@@ -186,6 +190,7 @@ export default function CreateCourseForm() {
                             onChange = {handleOnInputChange}
                             sx={{backgroundColor : 'white'}}
                             variant="filled"
+                            inputProps={{ maxLength: 500 }}
                             />
                         <FormControl variant="filled" sx={{ m: 1, height: "6.5ch", minWidth: "15ch", width: "100ch", textAlign:"left", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
                             <InputLabel>DIFFICULTY</InputLabel>
@@ -225,6 +230,7 @@ export default function CreateCourseForm() {
                     onChange = {handleOnInputChange}
                     sx={{backgroundColor : 'white'}}
                     variant="filled"
+                    inputProps={{ maxLength: 2500 }}
                     />
                 </div>
             </div>
