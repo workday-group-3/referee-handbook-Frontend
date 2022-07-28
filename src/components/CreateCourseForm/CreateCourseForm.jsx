@@ -22,7 +22,7 @@ export default function CreateCourseForm() {
 
 
     const sportName = useParams();
-
+    
 
 
     //global var
@@ -108,7 +108,7 @@ export default function CreateCourseForm() {
     autoComplete="off">
         <div className="create-course-form">
             <div className="create-course-title-container">
-                <h1 className="create-course-title"><em>Create a New Course</em></h1>
+                { sportName? <h1 className="create-course-title"><em>Create a New Course for {sportName.sportsName}</em></h1> : null}
             </div>
             <div className="create-course-form-container">
                 <div className="input-container">
@@ -157,7 +157,8 @@ export default function CreateCourseForm() {
                         type="text"
                         name="detailedDescription"
                         multiline={true}
-                        rows={4}
+                        minRows={4}
+                        maxRows={20}
                         value = {courseForm.detailedDescription}
                         onChange = {handleOnInputChange}
                         sx={{backgroundColor : 'white'}}
