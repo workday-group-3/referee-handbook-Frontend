@@ -80,7 +80,6 @@ function UserCreatedCoursePage() {
                             height="400"
                             allowFullScreen
                         />
-                        {console.log("our yt is: ", currentCourse.course_tutorial_video_url)}
                     </div> : 
                     <div className='empty-space'></div>
                     }
