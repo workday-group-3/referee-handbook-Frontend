@@ -169,7 +169,7 @@ export default function CreateCourseForm() {
                     <div className="media-input-container">
                         <TextField
                             className="tutorial-video-input-field"
-                            label="Youtube Video URL"
+                            label="YouTube Video URL"
                             type="text"
                             name="tutorialVideoURL"
                             value = {courseForm.tutorialVideoURL}
