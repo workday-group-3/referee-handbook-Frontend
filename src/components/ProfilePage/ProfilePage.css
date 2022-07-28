@@ -173,10 +173,12 @@
     width: 100%;
 }
 
-.user-created-course-redirect-link {
+.user-created-course-redirect-link, .followed-team-redirect {
     text-decoration: none;
 }
-
+.followed-team-redirect {
+    color: black;
+}
 
 /* ----------------------------- MY TEAMS SECTION  ---------------------------------------*/
 .courses-teams-container {

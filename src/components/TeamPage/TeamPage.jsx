@@ -68,7 +68,7 @@ function TeamPage() {
 
   const handleOnReturn = async() => {
     
-    navigate("/home")
+    navigate("/sports")
   }
 
   return (
