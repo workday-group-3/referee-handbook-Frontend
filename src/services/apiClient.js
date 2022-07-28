@@ -19,30 +19,22 @@ class ApiClient {
         localStorage.setItem(this.currCourseName, currCourse)
     }
 
-    async request({endpoint, method = `GET`, data = {}}) {
+    async request({ endpoint, method = `GET`, data = {}}) {
         const url = `${this.remoteHostUrl}/${endpoint}`
 
         const headers = {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Authorization: this.token ? `Bearer ${this.token}` : "",
         }
 
-
-        if(this.token) {
-            headers["Authorization"] = `Bearer ${this.token}`
-        }
-
-
-
-        try{
+        try {
             const res = await axios({ url, method, data, headers })
-            return {data: res.data, error: null}
-        }
-        catch (error) {
-            console.error({errorResponse: error.response})
+            return { data: res.data, error: null }
+        } catch (error) {
+            console.error({ errorResponse: error.response })
             const message = error?.response?.data?.error?.message
-            return {data: null, error: message || String(error)}
+            return { data: null, error: message || String(error) }
         }
-
     }
 
     async loginUser(credentials) {
@@ -100,4 +92,4 @@ class ApiClient {
 
 }
 
-export default new ApiClient("http://localhost:3001")
+export default new ApiClient("https://refereeshandbook.herokuapp.com")

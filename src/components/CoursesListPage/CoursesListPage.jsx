@@ -151,7 +151,7 @@ function CoursesListPage(props) {
                 <div className="user-created-course" onClick={() => setCourseHandler(course)}>
                     <div className="user-created-course-img-container">
                       
-                      <img className="user-created-course-img" src={course.course_cover_image_url}/>
+                      <img className="user-created-course-img" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }}/>
                       <p className="user-created-course-creation-date"><img className="user-created-profile-picture" src = {profilePicture} onError={e => { e.currentTarget.src = profilePicturePlaceholder; }} alt={`Profile Picture for ${course.username}`}></img><em className="user-created-course-username"> {course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
                     </div>
                     <div className="user-created-course-content">
