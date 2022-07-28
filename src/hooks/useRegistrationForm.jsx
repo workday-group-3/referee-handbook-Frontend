@@ -1,22 +1,23 @@
-//react imports
+//react imports to hold register form state and useEffect to check if user is already signed in
 import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom';
 
-//component imports
+//importing apiClient to communicate with backend for registering new users
 import apiClient from '../services/apiClient'
 
-//contexts
+//contexts to grab user data, to be used in useEffect for already signed in users
 import { useAuthContext } from "../contexts/auth"
 
 
 
 export const useRegistrationForm = () => {
 
+  //grabbing currently signed in user data, if any
   const { user, setUser } = useAuthContext()
 
 
 
-  //state variables
+  //creating navigation to different pages for successful register, and form to submit to backend
   const navigate = useNavigate()
   const [userRegisterForm, setUserRegisterForm ] = useState({})
   const [error, setError] = useState(null)
@@ -36,7 +37,6 @@ export const useRegistrationForm = () => {
   //register form handler
   function handleOnInputChange (evt) {
     setUserRegisterForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
-    console.log("userLoginForm", userRegisterForm)
   }
 
 
@@ -55,7 +55,6 @@ export const useRegistrationForm = () => {
         apiClient.setToken(data.token)
         setUser(data?.user)
         setUserRegisterForm(emptyRegisterForm)
-        console.log("Successful Registration")
         navigate("/learning")
       }
     }

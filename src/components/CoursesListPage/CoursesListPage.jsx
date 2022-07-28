@@ -35,8 +35,7 @@ function CoursesListPage(props) {
 
   //function to set the current beginner course in local storage
   async function setCourseHandler(userCourse) {
-    localStorage.setItem("current_user_course", JSON.stringify(userCourse))
-    
+    localStorage.setItem("current_user_course", JSON.stringify(userCourse)) 
   }
 
   // pulling current course from local storage, parsing the string into json
@@ -46,7 +45,7 @@ function CoursesListPage(props) {
     setDifficulty(evt.target.value)
   }
 
-
+  
   //pulling list of all user made courses to render in components below
   useEffect(() => {
     const fetchUserCourses = async () => {
@@ -75,10 +74,12 @@ function CoursesListPage(props) {
   return (
     
     <div className='courses-list'>
+      
+      { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name} showButtons="false"/> : null}
+      
       <div className='beginner-course-list'>
       {/* Once the promise to add the current course to our currentCourse context variable has been
           fulfilled, render the LearningBanner component */}
-      { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name} showButtons="false"/> : null}
 
       <div className="beginner-course-title-container">
             <h1 className="beginner-course-title">Start Your Journey Here</h1>
@@ -108,7 +109,7 @@ function CoursesListPage(props) {
 
               <Box sx={{colorScheme: "white"}}>
                 <FormControl variant="filled" sx={{ m: 1, minWidth: "10ch", width: "15ch", borderRadius: "6px", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
-                    <InputLabel>DIFFICULTY</InputLabel>
+                    <InputLabel>FILTER BY</InputLabel>
                     <Select
 
                       value={difficulty}
@@ -149,8 +150,8 @@ function CoursesListPage(props) {
                 <div className="user-created-course" onClick={() => setCourseHandler(course)}>
                     <div className="user-created-course-img-container">
                       
-                      <img className="user-created-course-img" src={course.course_cover_image_url}/>
-                      <p className="user-created-course-creation-date"><img className="user-created-profile-picture" src = {profilePicture} alt={`Profile Picture for ${course.username}`}></img><em className="user-created-course-username"> {course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                      <img className="user-created-course-img" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }}/>
+                      <p className="user-created-course-creation-date"><img className="user-created-profile-picture" src = {profilePicture} onError={e => { e.currentTarget.src = profilePicturePlaceholder; }} alt={`Profile Picture for ${course.username}`}></img><em className="user-created-course-username"> {course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
                     </div>
                     <div className="user-created-course-content">
                       <h1 className="user-created-course-title"><em>{course.course_title}</em></h1>

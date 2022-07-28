@@ -1,15 +1,16 @@
 .learning-sub-banner {
     text-align: center;
-    display: grid;
     background-color: #252525;
-    padding: 10px;
-    width: 98.7%;
-    position: sticky;
-    top: 60px;
     font-size: 22px;
-    z-index: 100;
+
+    position: sticky;
+    top: 8vh;
+    z-index: 99;
+    
+    padding-top: 1vh;
     padding-bottom: 2vh;
     align-items: center;
+    width: 98.8vw;
 }
 /* --------------------------- Text --------------------------- */
 .learning-sub-banner {
@@ -20,9 +21,8 @@
 
 /* --------------------------- Buttons --------------------------- */
 .learning-sub-banner .button-section{
-    float: right;
+    float: left;
 }
-
 .button-icon{
     padding: 5px;
     color: #F5F5DC;

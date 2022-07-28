@@ -12,8 +12,8 @@ const requestParams = {"basketball": {"league": 12, "season": "2021-2022", "leag
                     "rugby": {"league": 44, "season": "2022", "leagueName": "Major League Rugby"}}
 
 export const HomeContextProvider = ({ children }) => {
-    const [currentSport, setCurrentSport] = useState("rugby")
-    const [league, setLeague] = useState("NVA")
+    const [currentSport, setCurrentSport] = useState("soccer")
+    const [league, setLeague] = useState("Major League Soccer")
 
     const [news, setNews] = useState([])
     const [teams, setTeams] = useState([])
@@ -29,6 +29,7 @@ export const HomeContextProvider = ({ children }) => {
     const [teamGames, setTeamGames] = useState([])
     const [limit, setLimit] = useState(false)
     const [newsLimit, setNewsLimit] = useState(false)
+    const [requestLimit, setRequestLimit] = useState(false)
 
     const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY
     const SPORTS_API_KEY = import.meta.env.VITE_SPORTS_API_KEY
@@ -37,7 +38,7 @@ export const HomeContextProvider = ({ children }) => {
     async function getNews(){
         try{
           setLoading(true)
-          let json = await axios.get('https://api.thenewsapi.com/v1/news/top?api_token='+NEWS_API_KEY+"&search="+currentSport+"&language=en&sort=published_at&limit=2&categories=sports")
+          let json = await axios.get('https://api.thenewsapi.com/v1/news/all?api_token='+NEWS_API_KEY+"&search="+currentSport+"&language=en&sort=published_at&limit=2&categories=sports")
           setNews(json.data.data)
         } catch (error) {
           setError(error)
@@ -69,6 +70,11 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
+
+            if(json.data.errors.request){
+                setRequestLimit(true)
+                return
+            }
             
             if(json.data.errors.rateLimit){
                 setLimit(true)
@@ -80,6 +86,17 @@ export const HomeContextProvider = ({ children }) => {
                     json.data.response[i] = json.data.response[i].team
                 }
             }
+            // delete the league from the list of baseball teams
+            if(currentSport == "baseball"){
+                delete json.data.response[0]
+            }
+
+            //delete the divisions from the list of hockey teams
+            if(currentSport == "hockey"){
+                delete json.data.response[2]
+                delete json.data.response[7]
+            }
+            
             setTeams(json.data.response)
             
         } catch(error){
@@ -108,6 +125,11 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
+
+            if(json.data.errors.request){
+                setRequestLimit(true)
+                return
+            }
 
             if(json.data.errors.rateLimit){
                 setLimit(true)
@@ -334,10 +356,10 @@ export const HomeContextProvider = ({ children }) => {
             if(arr[i].teams.home.id == teamId){
                 arr[i].location = "HOME"
                 // determine if the current team win, draw or lose
-                if(arr[i].scores.home.total > arr[i].scores.away.total){
+                if(arr[i].scores.home > arr[i].scores.away){
                     arr[i].WDL = "W"
                 }
-                else if(arr[i].scores.home.total == arr[i].scores.away.total){
+                else if(arr[i].scores.home == arr[i].scores.away){
                     arr[i].WDL = "D"
                 }
                 else{
@@ -347,10 +369,10 @@ export const HomeContextProvider = ({ children }) => {
             else{
                 arr[i].location = "AWAY"
                 // determine if the current team win, draw or lose
-                if(arr[i].scores.home.total > arr[i].scores.away.total){
+                if(arr[i].scores.home > arr[i].scores.away){
                     arr[i].WDL = "L"
                 }
-                else if(arr[i].scores.home.total == arr[i].scores.away.total){
+                else if(arr[i].scores.home == arr[i].scores.away){
                     arr[i].WDL = "D"
                 }
                 else{
@@ -371,7 +393,7 @@ export const HomeContextProvider = ({ children }) => {
         getGame()
     }, [currentSport])
 
-    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats, error, setError, loadingStats, getTeamGames, teamGames, loadingTeamGames, limit, newsLimit}
+    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats, error, setError, loadingStats, getTeamGames, teamGames, loadingTeamGames, limit, newsLimit, requestLimit}
 
     return(
         <HomeContext.Provider value = {homeValue}>

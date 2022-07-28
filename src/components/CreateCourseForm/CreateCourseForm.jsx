@@ -22,7 +22,7 @@ export default function CreateCourseForm() {
 
 
     const sportName = useParams();
-
+    
 
 
     //global var
@@ -36,6 +36,7 @@ export default function CreateCourseForm() {
     const [error, setError] = useState(null)
     const [isOpen, setIsOpen] = useState(false)
     const [previewIsOpen, setPreviewIsOpen] = useState(false)
+    const [tipsIsOpen, setTipsIsOpen] = useState(false)
 
 
     //handlers for opening and closing our markdown help modal
@@ -48,7 +49,7 @@ export default function CreateCourseForm() {
         setIsOpen(false)
     }
 
-    //handlers for opening and closing our markdown preview modal
+    //handlers for opening and closing our Long description preview modal
     function openPreviewModal (event) {
         event.preventDefault()
         setPreviewIsOpen(true)
@@ -56,6 +57,16 @@ export default function CreateCourseForm() {
 
     function closePreviewModal (event) {
         setPreviewIsOpen(false)
+    }
+
+    //handlers for opening and closing our Tips and Tricks preview modal
+    function openTipsPreviewModal (event) {
+        event.preventDefault()
+        setTipsIsOpen(true)
+    }
+
+    function closeTipsPreviewModal (event) {
+        setTipsIsOpen(false)
     }
 
 
@@ -97,7 +108,7 @@ export default function CreateCourseForm() {
     autoComplete="off">
         <div className="create-course-form">
             <div className="create-course-title-container">
-                <h1 className="create-course-title"><em>Create a New Course</em></h1>
+                { sportName? <h1 className="create-course-title"><em>Create a New Course for {sportName.sportsName}</em></h1> : null}
             </div>
             <div className="create-course-form-container">
                 <div className="input-container">
@@ -110,6 +121,7 @@ export default function CreateCourseForm() {
                     onChange = {handleOnInputChange}
                     sx={{backgroundColor : 'white'}}
                     variant="filled"
+                    inputProps={{ maxLength: 250 }}
                     />
                 </div>
                 <div className="input-container">
@@ -124,6 +136,7 @@ export default function CreateCourseForm() {
                     onChange = {handleOnInputChange}
                     sx={{backgroundColor : 'white'}}
                     variant="filled"
+                    inputProps={{ maxLength: 500 }}
                     />
                 </div>
 
@@ -146,11 +159,13 @@ export default function CreateCourseForm() {
                         type="text"
                         name="detailedDescription"
                         multiline={true}
-                        rows={4}
+                        minRows={4}
+                        maxRows={20}
                         value = {courseForm.detailedDescription}
                         onChange = {handleOnInputChange}
                         sx={{backgroundColor : 'white'}}
                         variant="filled"
+                        inputProps={{ maxLength: 5000 }}
                         />
                     </div>
                 </div>
@@ -158,13 +173,14 @@ export default function CreateCourseForm() {
                     <div className="media-input-container">
                         <TextField
                             className="tutorial-video-input-field"
-                            label="Tutorial Video URL"
+                            label="YouTube Video URL"
                             type="text"
                             name="tutorialVideoURL"
                             value = {courseForm.tutorialVideoURL}
                             onChange = {handleOnInputChange}
                             sx={{backgroundColor : 'white'}}
                             variant="filled"
+                            inputProps={{ maxLength: 500 }}
                             />
                             <TextField
                             className="cover-image-input-field"
@@ -175,6 +191,7 @@ export default function CreateCourseForm() {
                             onChange = {handleOnInputChange}
                             sx={{backgroundColor : 'white'}}
                             variant="filled"
+                            inputProps={{ maxLength: 500 }}
                             />
                         <FormControl variant="filled" sx={{ m: 1, height: "6.5ch", minWidth: "15ch", width: "100ch", textAlign:"left", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
                             <InputLabel>DIFFICULTY</InputLabel>
@@ -193,6 +210,15 @@ export default function CreateCourseForm() {
                         </FormControl>
                     </div>
                 </div>
+
+                {/* Open and close modal buttons */}
+                <div className='open-modals'>
+                    <p className='modal-button' onClick={openTipsPreviewModal}><u>Preview Markdown</u></p>
+                </div>
+
+                {/* render components for modals */}
+                <MarkdownPreviewModal content={courseForm.tipsAndTricks} open={tipsIsOpen} onClose={closeTipsPreviewModal} />
+
                 <div className="input-container">
                     <TextField
                     className="input-field"
@@ -205,6 +231,7 @@ export default function CreateCourseForm() {
                     onChange = {handleOnInputChange}
                     sx={{backgroundColor : 'white'}}
                     variant="filled"
+                    inputProps={{ maxLength: 2500 }}
                     />
                 </div>
             </div>

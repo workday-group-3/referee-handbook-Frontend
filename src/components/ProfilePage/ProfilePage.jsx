@@ -64,6 +64,13 @@ export default function ProfilePage() {
     let profilePicture;
     {user.profileImageUrl === null ? profilePicture = profilePicturePlaceholder : profilePicture = user.profileImageUrl}
 
+
+
+
+    //function to set the current course in local storage
+    async function setCourseHandler(userCourse) {
+    localStorage.setItem("current_user_course", JSON.stringify(userCourse)) 
+  }
     
 
   return (
@@ -158,21 +165,22 @@ export default function ProfilePage() {
                 <div className ="user-courses-cards">
                     {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
                         return (
-                            <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.id}`}>
-                            <div className ="user-course-card-container">
-                                <div className="thumbnail-container">
-                                    <div className="cover-image-category">
-                                        <img className ="course-card-cover-image" src={course.course_cover_image_url} alt={`Cover image for ${course.course_title}`}></img>
+                            // when a user clicks on a course, it sets it to local storage and redirects them to that course page properly
+                            <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
+                                <div onClick={setCourseHandler(course)} className ="user-course-card-container">
+                                    <div className="thumbnail-container">
+                                        <div className="cover-image-category">
+                                            <img className ="course-card-cover-image" src={course.course_cover_image_url} alt={`Cover image for ${course.course_title}`}></img>
+                                        </div>
+                                        <div className="category-and-date">
+                                            <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                                        </div>
                                     </div>
-                                    <div className="category-and-date">
-                                        <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                                    <div className="title-description-container">
+                                        <h1 className="user-course-card-title">{course.course_title}</h1>
+                                        <p className="user-course-card-description">{course.course_short_description}</p>
                                     </div>
                                 </div>
-                                <div className="title-description-container">
-                                    <h1 className="user-course-card-title">{course.course_title}</h1>
-                                    <p className="user-course-card-description">{course.course_short_description}</p>
-                                </div>
-                            </div>
                             </Link>
                         )
                     }) : <h1 className="no-user-courses-message">No courses created, get started <Link  className ="learning-redirect" to ="/learning">here!</Link></h1>}
@@ -190,11 +198,11 @@ export default function ProfilePage() {
 
                 <div className="user-followed-team-cards">
                     {userTeams[0] ? userTeams.map((team) => { 
-                
                        return(
+                        <Link className="followed-team-redirect"to= {`/sports/${team.team_sport_name}/${team.team_id}`}>
                             <div className="user-followed-team-card">
                                 <div className="team-logo-container">
-                                    <img src ={team.team_logo}></img>
+                                    <img src ={team.team_logo} className="profile-team-logo"></img>
                                 </div>
                                 <div className="team-information">
                                     <div className="team-name-container">
@@ -205,11 +213,11 @@ export default function ProfilePage() {
                                     </div>
                                 </div>
                             </div>
-
+                        </Link>
 
                        ) 
 
-                    }) : <h1 className="no-teams-error-msg"> Not following any teams currently</h1>}
+                    }) : <h1 className="no-teams-error-msg"> Not following any teams currently, browse different sports teams <Link  className ="learning-redirect" to ="/sports">here.</Link></h1>}
 
                 </div>
 
