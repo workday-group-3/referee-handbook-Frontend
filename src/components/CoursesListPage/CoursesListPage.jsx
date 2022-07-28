@@ -75,10 +75,12 @@ function CoursesListPage(props) {
   return (
     
     <div className='courses-list'>
+      
+      { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name} showButtons="false"/> : null}
+      
       <div className='beginner-course-list'>
       {/* Once the promise to add the current course to our currentCourse context variable has been
           fulfilled, render the LearningBanner component */}
-      { currentCourse ? <LearningSubBanner courseName={currentCourse.sport_name} showButtons="false"/> : null}
 
       <div className="beginner-course-title-container">
             <h1 className="beginner-course-title">Start Your Journey Here</h1>

@@ -39,9 +39,9 @@ function UserCreatedCoursePage() {
         <div className='user-create-course'>
             
             {/* Conditionally render Learning sub banner if the current course is stored locally (purpose: user persistance) */}
-            <div className='sub-banner'>
-                { currentCourse ? <LearningSubBanner courseName={currentSport.sport_name} showButtons="true"/> : null} 
-            </div>
+            
+            { currentSport ? <LearningSubBanner courseName={currentSport.sport_name} showButtons="true"/> : null} 
+            
 
             <div className='user-content'>
                 {/* Render chunk of user created course content  */}
@@ -72,14 +72,17 @@ function UserCreatedCoursePage() {
                 </div>
 
                 {/* Renders youtube video onto the screen IF it contains a video code */}
-                <div className='video-container'>
-                    {acceptableFormat ? <iframe
-                        src={ourUrl}
-                        width="750"
-                        height="400"
-                        allowFullScreen
-                    /> : <h2>Please input an appropriate youtube link</h2>}
-                </div>
+                {currentCourse.course_tutorial_video_url ? 
+                    <div className='video-container'>
+                        <iframe
+                            src={ourUrl}
+                            width="750"
+                            height="400"
+                            allowFullScreen
+                        />
+                    </div> : 
+                    <div className='empty-space'></div>
+                    }
                 
                 {/* Renders tips and tricks section  */}
                 <div className='tips-and-tricks'>
