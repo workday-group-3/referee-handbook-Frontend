@@ -217,7 +217,7 @@ export default function ProfilePage() {
 
                        ) 
 
-                    }) : <h1 className="no-teams-error-msg"> Not following any teams currently</h1>}
+                    }) : <h1 className="no-teams-error-msg"> Not following any teams currently, browse different sports teams <Link  className ="learning-redirect" to ="/sports">here.</Link></h1>}
 
                 </div>
 
