@@ -35,8 +35,7 @@ function CoursesListPage(props) {
 
   //function to set the current beginner course in local storage
   async function setCourseHandler(userCourse) {
-    localStorage.setItem("current_user_course", JSON.stringify(userCourse))
-    
+    localStorage.setItem("current_user_course", JSON.stringify(userCourse)) 
   }
 
   // pulling current course from local storage, parsing the string into json
@@ -46,7 +45,7 @@ function CoursesListPage(props) {
     setDifficulty(evt.target.value)
   }
 
-
+  
   //pulling list of all user made courses to render in components below
   useEffect(() => {
     const fetchUserCourses = async () => {
@@ -110,7 +109,7 @@ function CoursesListPage(props) {
 
               <Box sx={{colorScheme: "white"}}>
                 <FormControl variant="filled" sx={{ m: 1, minWidth: "10ch", width: "15ch", borderRadius: "6px", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
-                    <InputLabel>DIFFICULTY</InputLabel>
+                    <InputLabel>FILTER BY</InputLabel>
                     <Select
 
                       value={difficulty}
