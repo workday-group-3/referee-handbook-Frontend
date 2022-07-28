@@ -76,6 +76,7 @@ function UserCreatedCoursePage() {
                 {/* Renders youtube video onto the screen IF it contains a video code */}
                 {currentCourse.course_tutorial_video_url ? 
                     <div className='video-container'>
+                        <h2>Supplementary Youtube video</h2>
                         <iframe
                             src={ourUrl}
                             width="750"

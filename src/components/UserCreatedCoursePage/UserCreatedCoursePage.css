@@ -73,6 +73,7 @@
     white-space: pre-wrap;
     font-size: 1.5em;
     max-width: 80vw;
+    padding-bottom: 5vh;
 }
 
 .long-description img, .tips-and-tricks-text img {
@@ -102,14 +103,29 @@
     justify-content: center;
     background-color: #F8F8F8;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 90vw;
     justify-content: center;
     border-radius: 30%;
+
+    font-size: 2em;
+    font-family: 'Montserrat';
+    font-weight: 800;
+
+    
     
     margin-top: 10vh;
     margin-bottom: 10vh;
     padding-top: 5vh;
     padding-bottom: 5vh;
+}
+
+.video-container h2 {
+    padding-bottom: 5vh;
+    overflow-wrap: break-word;
+    max-width: 50vw;
+    text-align: center;
 }
 
 .video-container iframe {
@@ -143,4 +159,5 @@
     white-space: pre-line;
     max-width: 80vw;
     margin-left: 4vw;
+    padding-top: 2vw;
 }
