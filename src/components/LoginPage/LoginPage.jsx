@@ -55,6 +55,7 @@ export default function LoginPage({ message }) {
               variant="filled"
               value = {userLoginForm.email}
               onChange={handleOnInputChange}
+              inputProps={{ maxLength: 250 }}
               />
           </div>
           <div className="password-input-container">
@@ -71,6 +72,7 @@ export default function LoginPage({ message }) {
               onChange={handleOnInputChange}
               variant="filled"
               autoComplete="current-password"
+              inputProps={{ maxLength: 250 }}
               />
           </div>
           </Box>
