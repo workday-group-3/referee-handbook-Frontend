@@ -12,7 +12,7 @@ const requestParams = {"basketball": {"league": 12, "season": "2021-2022", "leag
                     "rugby": {"league": 44, "season": "2022", "leagueName": "Major League Rugby"}}
 
 export const HomeContextProvider = ({ children }) => {
-    const [currentSport, setCurrentSport] = useState("rugby")
+    const [currentSport, setCurrentSport] = useState("soccer")
     const [league, setLeague] = useState("Major League Soccer")
 
     const [news, setNews] = useState([])
@@ -29,6 +29,7 @@ export const HomeContextProvider = ({ children }) => {
     const [teamGames, setTeamGames] = useState([])
     const [limit, setLimit] = useState(false)
     const [newsLimit, setNewsLimit] = useState(false)
+    const [requestLimit, setRequestLimit] = useState(false)
 
     const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY
     const SPORTS_API_KEY = import.meta.env.VITE_SPORTS_API_KEY
@@ -69,7 +70,10 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
-            console.log(json.data)
+            if(json.data.errors.request){
+                setLimit(true)
+                return
+            }
             
             if(json.data.errors.rateLimit){
                 setLimit(true)
@@ -383,7 +387,7 @@ export const HomeContextProvider = ({ children }) => {
         getGame()
     }, [currentSport])
 
-    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats, error, setError, loadingStats, getTeamGames, teamGames, loadingTeamGames, limit, newsLimit}
+    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats, error, setError, loadingStats, getTeamGames, teamGames, loadingTeamGames, limit, newsLimit, requestLimit}
 
     return(
         <HomeContext.Provider value = {homeValue}>

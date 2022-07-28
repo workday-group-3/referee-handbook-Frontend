@@ -5,7 +5,7 @@ import moment from 'moment'
 
 function HomeRecentGames() {
 
-  const {league, game, loadingGame, currentSport, limit} = useHomeContext()
+  const {league, game, loadingGame, currentSport, limit, requestLimit} = useHomeContext()
 
   return (
     // sets the classname as the current sport to conditionally render background
