@@ -3,6 +3,7 @@
     color: whitesmoke;
     height: auto;
     padding-top: 10px;
+
 }
 
 .footer-logo{
@@ -12,6 +13,7 @@
 
 .logo-container {
     margin: 2%;
+
 }
 
 
@@ -21,6 +23,11 @@
 
     
 }
+
+.bottom-half-container {
+    padding-bottom: 1%;
+}
+
 
 .footer-header {
     text-align: center;
@@ -43,6 +50,22 @@
     width: 200px;
 }
 
+#mui-logo {
+    width: 100px;
+    height: 100px;
+}
+
+#api-sports-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+#news-api-logo {
+    width: 150px;
+    height: 90px;
+}
+
 
 
 .icon-list {
@@ -57,7 +80,8 @@
     margin-right: 1%;
 }
 
-.github-anchor {
+.icon-anchor {
     text-decoration: none;
     color: white;
 }
+

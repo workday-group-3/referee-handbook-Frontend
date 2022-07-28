@@ -190,8 +190,9 @@ export default function ProfilePage() {
 
                 <div className="user-followed-team-cards">
                     {userTeams[0] ? userTeams.map((team) => { 
-                
+                        console.log(team)
                        return(
+                        <Link className="followed-team-redirect"to= {`/home/${team.team_sport_name}/${team.team_id}`}>
                             <div className="user-followed-team-card">
                                 <div className="team-logo-container">
                                     <img src ={team.team_logo} className="profile-team-logo"></img>
@@ -205,7 +206,7 @@ export default function ProfilePage() {
                                     </div>
                                 </div>
                             </div>
-
+                        </Link>
 
                        ) 
 
