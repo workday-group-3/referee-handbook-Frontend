@@ -12,6 +12,8 @@ function UserCreatedCoursePage() {
 
     let currentCourse = JSON.parse(localStorage.getItem("current_user_course"))
 
+    
+
 
     //Regular expressions for video code section (dependent on inclusion of ampersand)
     const containsVideoCode = /watch\?v\=(.*)/
