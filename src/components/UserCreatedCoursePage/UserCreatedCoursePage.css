@@ -119,6 +119,12 @@
     max-width: 80%;
 }
 
+/* in case a video is not provided, this will ensure appropriate spacing between divs */
+.empty-space {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
 /* ---------------------------------- Further Tips and tricks styling ------------------------------------ */
 .tips-and-tricks {
     margin-bottom: 5vh;

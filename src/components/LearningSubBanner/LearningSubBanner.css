@@ -3,7 +3,10 @@
     background-color: #252525;
     font-size: 22px;
 
-    top: 0;
+    position: sticky;
+    top: 8vh;
+    z-index: 99;
+    
     padding-top: 1vh;
     padding-bottom: 2vh;
     align-items: center;
