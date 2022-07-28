@@ -70,8 +70,9 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
+
             if(json.data.errors.request){
-                setLimit(true)
+                setRequestLimit(true)
                 return
             }
             
