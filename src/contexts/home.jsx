@@ -13,7 +13,7 @@ const requestParams = {"basketball": {"league": 12, "season": "2021-2022", "leag
 
 export const HomeContextProvider = ({ children }) => {
     const [currentSport, setCurrentSport] = useState("rugby")
-    const [league, setLeague] = useState("NVA")
+    const [league, setLeague] = useState("Major League Soccer")
 
     const [news, setNews] = useState([])
     const [teams, setTeams] = useState([])
@@ -69,6 +69,7 @@ export const HomeContextProvider = ({ children }) => {
                     "x-rapidapi-key": SPORTS_API_KEY
                 }
             })
+            console.log(json.data)
             
             if(json.data.errors.rateLimit){
                 setLimit(true)
