@@ -1,13 +1,13 @@
 .learning-sub-banner {
     text-align: center;
     background-color: #252525;
-    position: sticky;
     font-size: 22px;
+
     top: 0;
-    z-index: 100;
     padding-top: 1vh;
     padding-bottom: 2vh;
     align-items: center;
+    width: 98.8vw;
 }
 /* --------------------------- Text --------------------------- */
 .learning-sub-banner {
