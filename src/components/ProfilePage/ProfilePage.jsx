@@ -2,6 +2,8 @@ import React from 'react'
 import './ProfilePage.css'
 import profilePicturePlaceholder from '../../assets/profile-picture-placeholder.jpg'
 
+import DropDownCreate from '../DropDownCreate/DropDownCreate';
+
 
 //importing mui components to render throughout the page
 import Box from '@mui/material/Box';
@@ -183,7 +185,14 @@ export default function ProfilePage() {
                                 </div>
                             </Link>
                         )
-                    }) : <h1 className="no-user-courses-message">No courses created, get started <Link  className ="learning-redirect" to ="/learning">here!</Link></h1>}
+                    }) : 
+                        <div className='drop-down'> 
+                            {/* <h1 className="no-user-courses-message">No courses created, get started <Link  className ="learning-redirect" to ="/learning">here!</Link></h1> */}
+                            <h1 className="no-user-courses-message">No courses created. <br/> Create one below!</h1>
+                            <DropDownCreate/>
+                        </div>
+                    
+                }
                 </div>
             </div>
 

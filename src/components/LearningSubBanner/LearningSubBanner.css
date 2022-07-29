@@ -3,14 +3,14 @@
     background-color: #252525;
     font-size: 22px;
 
-    position: sticky;
-    top: 8vh;
+    position: fixed;
+    top: 0;
     z-index: 99;
     
-    padding-top: 1vh;
-    padding-bottom: 2vh;
+    padding-top: 80px;
+    padding-bottom: 1%;
     align-items: center;
-    width: 98.8vw;
+    width: 100%;
 }
 /* --------------------------- Text --------------------------- */
 .learning-sub-banner {
