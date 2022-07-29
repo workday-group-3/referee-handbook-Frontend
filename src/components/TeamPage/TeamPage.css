@@ -45,6 +45,11 @@
     justify-content: space-between;
 }
 
+.follow-success {
+    color: lightgreen;
+    
+}
+
 /*----------------------- recent games section  --------------------------- */
 .recent-games-title{
     padding: 1vw;

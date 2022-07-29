@@ -82,14 +82,16 @@ class ApiClient {
 
 
     async followTeam(team, sportName, teamId) {
-        return await this.request({endpoint: `home/${sportName}/${teamId}`, method: `POST`, data: team})
+        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `POST`, data: team})
     }
 
-
-
+    async listFollowedTeamByUser(sportName, teamId) {
+        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `GET`})
+    }
+    
 
 
 
 }
 
-export default new ApiClient("https://refereeshandbook.herokuapp.com")
+export default new ApiClient("http://localhost:3001")

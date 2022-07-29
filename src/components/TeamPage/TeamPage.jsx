@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useHomeContext } from '../../contexts/home'
+import LoginPage from "../LoginPage/LoginPage";
 import "./TeamPage.css"
 
 //MUI imports to save time on components, i.e button for user's to follow teams
@@ -13,45 +14,82 @@ import TeamGamesGrid from '../TeamGamesGrid/TeamGamesGrid';
 import { ArrowBack } from '@mui/icons-material';
 
 
-
+//importing auth context to check if user is signed in
+import { useAuthContext } from "../../contexts/auth"
 
 function TeamPage() {
 
   // uncomment this line to use api
-  const {league, team, loadingTeam, getTeam, loadingStats, getStats, stats, error, setError, getTeamGames, limit} = useHomeContext()
+  // const {league, team, loadingTeam, getTeam, loadingStats, getStats, stats, error, setError, getTeamGames, limit} = useHomeContext()
 
   // temporary hardcode data for testing
-//   const loadingTeam = false;
-//   const team = {"name": "Golden State Warriors", "logo": "https://logos-download.com/wp-content/uploads/2016/04/Golden_State_Warriors_logo_logotype.png"}
-//   let league = "NBA"
-//   const stats = {"played": {
-//     "home": 1,
-//     "away": 1,
-//     "all": 2
-//   },
-// "wins":{
-//   "all":{
-//     "total": 2
-//   }
-// },
-// "loses":{
-//   "all":{
-//     "total": 0
-//   }
-// }}
+  const loadingTeam = false;
+  const limit = false;
+  const team = {"name": "Golden State Warriors", "logo": "https://logos-download.com/wp-content/uploads/2016/04/Golden_State_Warriors_logo_logotype.png"}
+  let league = "NBA"
+  const stats = {"played": {
+    "home": 1,
+    "away": 1,
+    "all": 2
+  },
+"wins":{
+  "all":{
+    "total": 2
+  }
+},
+"loses":{
+  "all":{
+    "total": 0
+  }
+}}
   const {sportName, teamId} = useParams()
   const [followSuccess, setFollowSuccess] = useState(false)
+  const [error, setError] = useState()
+  const [followedTeam, setFollowedTeam] = useState([])
+  const [currentlyFollowing, setCurrentlyFollowing] = useState(false)
+  
   const navigate = useNavigate()
 
+  const { user } = useAuthContext()
+
   useEffect(() => {
-    getTeam(sportName, teamId)
-    getStats(sportName, teamId)
-    getTeamGames(sportName, teamId)
+    // getTeam(sportName, teamId)
+    // getStats(sportName, teamId)
+    // getTeamGames(sportName, teamId)
   }, [])
+
+
+
+
+  //fetching if user is currently following selected team
+  useEffect(() => {
+    const fetchUserOwnedObjects = async () => {
+      const {data, error} = await apiClient.listFollowedTeamByUser(sportName, teamId)
+      if(data){
+        setFollowedTeam(data.followedTeam)
+        console.log(followedTeam[0])
+      }
+      if(error){
+        setError(error)
+      }
+    }
+  
+    fetchUserOwnedObjects()
+  }, [])
+
+
+
+
+
 
 
   //create onsubmit handler to call apiClient and post new user following entry
   const handleOnFollow = async () => {
+    setFollowSuccess(false)
+    console.log("user", user)
+    if(!user?.username){
+      navigate("/login")
+    } 
 
     if (!loadingTeam) {
       let followTeam = {teamName: team?.name, teamLogo: team?.logo, teamLeague: league}
@@ -61,13 +99,16 @@ function TeamPage() {
       }
       if(data){
           setFollowSuccess(true)
+          setCurrentlyFollowing(true)
       }
     }
-
   }
 
+
+
+
+
   const handleOnReturn = async() => {
-    
     navigate("/sports")
   }
 
@@ -75,8 +116,11 @@ function TeamPage() {
     <div className='team-page'>
       <div className='team-page-buttons'>
         <Button className="create-course-btn"  variant="contained" size="large"  endIcon={<ArrowBack/>} onClick={handleOnReturn} shrink="false" sx={{ color: 'black',  height:"6ch", fontSize:"16px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >Return</Button>
-      <Button className="create-course-btn"  variant="contained" size="large"  endIcon={<BookmarkIcon/>} onClick={handleOnFollow} shrink="false" sx={{ color: 'black',  height:"6ch", fontSize:"16px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >Follow</Button>
+        {followedTeam[0] ? <Button className="create-course-btn"  variant="contained" size="large"  endIcon={<BookmarkIcon/>} onClick={handleOnFollow} shrink="false" sx={{ color: 'black',  height:"6ch", fontSize:"16px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >Follow</Button>
+        : <Button className="create-course-btn"  variant="contained" size="large"  endIcon={<BookmarkIcon/>} onClick={handleOnFollow} shrink="false" sx={{ color: 'black',  height:"6ch", fontSize:"16px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >Unfollow</Button>}
+        
       </div>
+      {followSuccess ? <p className="follow-success">Success!</p> : null}
       {limit ? (<h3>Uh oh! The sports API is at its limit. Try refreshing or come back in a minute.</h3>) : (
       <>
       {team == null ? <h3>Loading team...</h3> : <div className='team-page-header'>

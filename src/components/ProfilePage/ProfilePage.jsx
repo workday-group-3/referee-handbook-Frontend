@@ -44,6 +44,7 @@ export default function ProfilePage() {
           const {data, error} = await apiClient.listUserOwnedObjectsByUser()
           if(data){
             setUserOwnedCourses(data.userCourses)
+            console.log(data.userTeams)
             setUserTeams(data.userTeams)
           }
           if(error){
