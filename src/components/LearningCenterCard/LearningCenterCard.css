@@ -1,5 +1,5 @@
 .sport-card { 
-    margin-bottom: 20px;
+    margin-bottom: 6vh;
     
     color: white;
     
@@ -8,9 +8,9 @@
     align-items: stretch;
     
     /* New css */
-    width: 380px;
+    width: 24vw;
     overflow: hidden;
-    height: 315px;
+    height: 45vh;
 
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
@@ -24,14 +24,13 @@
 
 .sport-card:hover {
     
-    height: 585px;
+    height: 80vh;
     color: yellow;
     margin-bottom: 50px;
 }
 
 .sport-img {
-    width: 340px;
-    height: 225px;
+    width: 23vw;
     border-radius: 50px;
     object-fit: cover;
 
@@ -47,17 +46,16 @@
 }
 
 .sport-img:hover {
-    /* New new css */
     border-radius: 100%;
 }
 
 
 .sport-description {
-    padding-top: 5px;
-    width: 350px;
+    padding-top: 0.5vh;
+    width: 23.3vw;
     margin: auto;
     overflow: hidden;
-    height: 22px;
+    height: 4vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
