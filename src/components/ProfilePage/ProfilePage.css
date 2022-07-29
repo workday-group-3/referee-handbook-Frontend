@@ -252,3 +252,19 @@
 .team-name {
     font-size: 4.5ch;
 }
+
+/* ------------------------------ Drop down section ------------------------ */
+.drop-down {
+    padding-top: 5vh;
+    display: flex;
+    height: 2vh;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 15vh;
+    align-items: center;
+}
+
+.drop-down h1 {
+    padding-bottom: 3vh;
+}
