@@ -15,7 +15,6 @@ import Select from '@mui/material/Select';
 import apiClient from '../../services/apiClient';
 
 import MarkdownModal from '../MarkdownModal/MarkdownModal';
-import MarkdownPreviewModal from '../MarkdownPreviewModal/MarkdownPreviewModal';
 import FullScreenPreview from '../FullScreenPreview/FullScreenPreview';
 
 export default function CreateCourseForm() {
@@ -143,18 +142,15 @@ export default function CreateCourseForm() {
 
                 {/* Open and close modal buttons */}
                 <div className='open-modals'>
-                    <p className='modal-button' onClick={openModal}><u>Markdown cheat-sheet</u></p>
                     <div className='preview-markdown'><FullScreenPreview content={courseForm.detailedDescription}/></div>
+                    <p className='modal-button' onClick={openModal}>Markdown cheat-sheet</p>
                 </div>
                 
                 <div className='main-content-input'>
 
                     {/* render components for modals */}
                     <MarkdownModal open={isOpen} onClose={closeModal}/>
-                    <MarkdownPreviewModal content={courseForm.detailedDescription} open={previewIsOpen} onClose={closePreviewModal} />
-                    
-
-
+                   
                     <div className="input-container">
                         <TextField
                         className="input-field"
@@ -216,11 +212,11 @@ export default function CreateCourseForm() {
 
                 {/* Open and close modal buttons */}
                 <div className='open-modals'>
-                    <p className='modal-button' onClick={openTipsPreviewModal}><u>Preview Markdown</u></p>
+                    <div className='preview-markdown'><FullScreenPreview content={courseForm.tipsAndTricks}/></div>
                 </div>
 
                 {/* render components for modals */}
-                <MarkdownPreviewModal content={courseForm.tipsAndTricks} open={tipsIsOpen} onClose={closeTipsPreviewModal} />
+                
 
                 <div className="input-container">
                     <TextField

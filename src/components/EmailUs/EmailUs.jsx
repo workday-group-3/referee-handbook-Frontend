@@ -34,7 +34,7 @@ export default function FormDialog() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="contained" sx={{ backgroundColor: "#F1D433"}} onClick={handleClickOpen}>
         Wish to add a sport?
       </Button>
       <Dialog open={open} onClose={handleClose}>
