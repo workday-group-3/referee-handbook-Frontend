@@ -89,7 +89,9 @@ class ApiClient {
         return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `GET`})
     }
     
-
+    async unfollowTeam(sportName, teamId) {
+        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `DELETE`})
+    }
 
 
 }
