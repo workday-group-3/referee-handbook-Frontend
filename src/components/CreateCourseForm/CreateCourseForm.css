@@ -58,14 +58,13 @@
 /* ----------------------------------- open Modal popup buttons --------------------------------  */
 .open-modals {
     display: flex;
+    
+    margin-left: 14.5vw;
 }
 
 .modal-button {
     color: grey;
     font-size: 20px;
     cursor: pointer;
-    object-fit: cover;
-    position: relative;
-    left: 14.7%;
-    margin-right: 20px;
+    margin-right: 2vw;
 }
