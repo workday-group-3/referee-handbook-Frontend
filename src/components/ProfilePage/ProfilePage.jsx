@@ -3,6 +3,7 @@ import './ProfilePage.css'
 import profilePicturePlaceholder from '../../assets/profile-picture-placeholder.jpg'
 
 import DropDownCreate from '../DropDownCreate/DropDownCreate';
+import ConfirmDelete from '../ConfirmDelete/ConfirmDelete';
 
 //importing mui components to render throughout the page
 import Box from '@mui/material/Box';
@@ -54,7 +55,7 @@ export default function ProfilePage() {
         }
       
         fetchUserOwnedObjects()
-      }, [])
+      }, [userOwnedCourses])
 
 
 
@@ -72,22 +73,6 @@ export default function ProfilePage() {
     }
     
     
-
-    //create onsubmit handler to call apiClient and post new user created course 
-    
-    async function handleDeleteCourse (course) {
-        setError(null)
-        console.log('clicked')
-        console.log(course)
-        const { data, error } = await apiClient.deleteCourse(course.sport_name, course.courseId)
-        if (error) {
-            setError(error)
-            console.log("Everything sucks, Error: ", error)
-        } 
-        if (data) {
-            console.log("Everything is awesome, Data: ", data)
-        }
-    }
 
   return (
     <div className="profile-page">
@@ -203,7 +188,7 @@ export default function ProfilePage() {
                                 </Link>
 
                                         <div className='delete-course-container'>
-                                            <Button variant="outlined" onClick={() => handleDeleteCourse(course)} color="error">{`Delete ${course.course_title}`}</Button>
+                                            <ConfirmDelete course={course}/>
                                         </div>
                             </>
                         )

@@ -28,7 +28,7 @@ export default function FormDialog() {
   //handlers for form components
   function handleOnInputChange (evt) {
     setSportForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
-    }
+  }
 
 
 
