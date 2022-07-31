@@ -19,25 +19,18 @@ import FullScreenPreview from '../FullScreenPreview/FullScreenPreview';
 
 export default function CreateCourseForm() {
 
-
-
     const sportName = useParams();
     
-
-
     //global var
     let emptyCourseForm = {sportName: sportName.sportsName}
-
 
     //state variables
     const [courseForm, setCourseForm] = useState(emptyCourseForm)
     const [difficulty, setDifficulty] = useState('')
-    const navigate = useNavigate()
     const [error, setError] = useState(null)
     const [isOpen, setIsOpen] = useState(false)
-    const [previewIsOpen, setPreviewIsOpen] = useState(false)
-    const [tipsIsOpen, setTipsIsOpen] = useState(false)
-
+    
+    const navigate = useNavigate()
 
     //handlers for opening and closing our markdown help modal
     function openModal (event) {
@@ -47,26 +40,6 @@ export default function CreateCourseForm() {
 
     function closeModal (event) {
         setIsOpen(false)
-    }
-
-    //handlers for opening and closing our Long description preview modal
-    function openPreviewModal (event) {
-        event.preventDefault()
-        setPreviewIsOpen(true)
-    }
-
-    function closePreviewModal (event) {
-        setPreviewIsOpen(false)
-    }
-
-    //handlers for opening and closing our Tips and Tricks preview modal
-    function openTipsPreviewModal (event) {
-        event.preventDefault()
-        setTipsIsOpen(true)
-    }
-
-    function closeTipsPreviewModal (event) {
-        setTipsIsOpen(false)
     }
 
 
@@ -91,10 +64,9 @@ export default function CreateCourseForm() {
         }
         if(data){
             navigate(`/learning/${sportName}`)
-          // navigate to the newly created user course
-          // reset frontend form data
         }
-      }
+    }
+    
 
     
 

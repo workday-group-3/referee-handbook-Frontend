@@ -112,9 +112,6 @@
 }
 
 
-
-
-
 .user-courses-title-container {
 
     margin: 1%;
@@ -178,6 +175,16 @@
 }
 .followed-team-redirect {
     color: black;
+}
+
+.delete-course-container {
+    display: flex;
+    position: relative;
+    right: 4%;
+    bottom: 8%;
+    height: 5%;
+    justify-content: right;
+
 }
 
 /* ----------------------------- MY TEAMS SECTION  ---------------------------------------*/
@@ -268,3 +275,4 @@
 .drop-down h1 {
     padding-bottom: 3vh;
 }
+

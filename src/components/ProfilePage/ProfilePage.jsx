@@ -4,13 +4,13 @@ import profilePicturePlaceholder from '../../assets/profile-picture-placeholder.
 
 import DropDownCreate from '../DropDownCreate/DropDownCreate';
 
-
 //importing mui components to render throughout the page
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 import ScheduleSharpIcon from '@mui/icons-material/ScheduleSharp';
+import Button from '@mui/material/Button';
 
 //importing auth context to render components with user data and check for profile picture placeholder requirements
 import { useAuthContext } from "../../contexts/auth"
@@ -66,14 +66,25 @@ export default function ProfilePage() {
     let profilePicture;
     {user.profileImageUrl === null ? profilePicture = profilePicturePlaceholder : profilePicture = user.profileImageUrl}
 
-
-
-
     //function to set the current course in local storage
     async function setCourseHandler(userCourse) {
-    localStorage.setItem("current_user_course", JSON.stringify(userCourse)) 
-  }
+        localStorage.setItem("current_user_course", JSON.stringify(userCourse)) 
+    }
     
+    
+
+    //create onsubmit handler to call apiClient and post new user created course 
+    const handleDeleteCourse = async () => {
+        setError(null)
+        console.log('clicked')
+        // const {data, error} = await apiClient.deleteCourse(courseForm, sportName.sportsName)
+        // if (error) {
+        //   setError(error)
+        // }
+        // if(data){
+        //     navigate(`/learning/${sportName}`)
+        // }
+    }
 
   return (
     <div className="profile-page">
@@ -167,25 +178,31 @@ export default function ProfilePage() {
                 <div className ="user-courses-cards">
                     {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
                         return (
-                            // when a user clicks on a course, it sets it to local storage and redirects them to that course page properly
-                            <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
-                                
-                                <div onClick={setCourseHandler(course)} className ="user-course-card-container">
-                                    <div className="thumbnail-container">
-                                        <div className="cover-image-category">
-                                            <img className ="course-card-cover-image" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }} alt={`Cover image for ${course.course_title}`}></img>
+                            <>
+                                {/* when a user clicks on a course, it sets it to local storage and redirects them to that course page properly */}
+                                <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
+                                    
+                                    <div onClick={setCourseHandler(course)} className ="user-course-card-container">
+                                        <div className="thumbnail-container">
+                                            <div className="cover-image-category">
+                                                <img className ="course-card-cover-image" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }} alt={`Cover image for ${course.course_title}`}></img>
+                                            </div>
+                                            <div className="category-and-date">
+                                                <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                                            </div>
                                         </div>
-                                        <div className="category-and-date">
-                                            <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                                        <div className="title-description-container">
+                                            <h1 className="user-course-card-title">{course.course_title}</h1>
+                                            <p className="user-course-card-description">{course.course_short_description}</p>
                                         </div>
                                     </div>
-                                    <div className="title-description-container">
-                                        <h1 className="user-course-card-title">{course.course_title}</h1>
-                                        <p className="user-course-card-description">{course.course_short_description}</p>
-                                    </div>
-                                </div>
 
-                            </Link>
+                                </Link>
+
+                                        <div className='delete-course-container'>
+                                            <Button variant="outlined" onClick={handleDeleteCourse} color="error">{`Delete ${course.course_title}`}</Button>
+                                        </div>
+                            </>
                         )
                     }) : 
                         <div className='drop-down'> 
