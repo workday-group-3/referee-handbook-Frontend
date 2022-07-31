@@ -168,9 +168,10 @@
 }
 
 .course-card-date-category {
-    margin-left: 5%;
     font-size: 13px;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .user-created-course-redirect-link, .followed-team-redirect {
@@ -192,7 +193,7 @@
     margin: 1%;
     border-radius: 10px;
     width: 60vw;
-    text-align: center;
+    
 
     padding-top: 10px;
 }
@@ -204,7 +205,7 @@
     display: flex;
     justify-content: center;
     margin: 1%;
-    padding-bottom: 25px;
+
 }
 
 .user-teams-title, .user-courses-title, .details-title {
@@ -218,26 +219,42 @@
     justify-content: center;
     font-size: 2.2ch;
     margin-top: 6vh;
-    font-weight: 500;
+    font-weight: 400;
 }
 
+
+
+.user-followed-team-cards {
+
+    align-items: center;
+}
+
+
+
+
 .user-followed-team-card{
+
     display: inline-flex;
     justify-content: center;
     align-items: center;
     margin: 1%;
     width: auto;
-    
-    
+    text-align: center;
+    margin-right: 50px;
 }
 
+
+
+
 .profile-team-logo{
-    width: 10vw;
+    width: auto;
+    height: 100px;
+    margin-right: 10px;
+    border-radius: 10px;
 }
 
 .team-name-container{
     display: flex;
-    margin-left: 1vh;
 }
 
 
@@ -266,5 +283,5 @@
 }
 
 .drop-down h1 {
-    padding-bottom: 3vh;
+    padding-bottom: 2vh;
 }

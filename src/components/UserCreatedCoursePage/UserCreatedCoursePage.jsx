@@ -52,8 +52,7 @@ function UserCreatedCoursePage() {
                     {/* Title and date */}
                     <span className='course-information'>
                         <h3 className='cb-title'>{currentCourse.course_title}</h3>
-                        <h3 className='cb-username'>Created by {currentCourse.username}</h3>
-                        <h3 className='cb-date'>Created on {condensedDate}</h3>
+                        <h4 className='cb-username'>Created by {currentCourse.username} on {condensedDate}</h4>
                     </span>
 
                     {/* Line separator */}
@@ -76,7 +75,7 @@ function UserCreatedCoursePage() {
                 {/* Renders youtube video onto the screen IF it contains a video code */}
                 {currentCourse.course_tutorial_video_url ? 
                     <div className='video-container'>
-                        <h2>Supplementary Youtube video</h2>
+                        <h2>YouTube Tutorial</h2>
                         <iframe
                             src={ourUrl}
                             width="750"
