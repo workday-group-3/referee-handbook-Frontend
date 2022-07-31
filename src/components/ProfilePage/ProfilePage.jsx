@@ -74,16 +74,19 @@ export default function ProfilePage() {
     
 
     //create onsubmit handler to call apiClient and post new user created course 
-    const handleDeleteCourse = async () => {
+    
+    async function handleDeleteCourse (course) {
         setError(null)
         console.log('clicked')
-        // const {data, error} = await apiClient.deleteCourse(courseForm, sportName.sportsName)
-        // if (error) {
-        //   setError(error)
-        // }
-        // if(data){
-        //     navigate(`/learning/${sportName}`)
-        // }
+        console.log(course)
+        const { data, error } = await apiClient.deleteCourse(course.sport_name, course.courseId)
+        if (error) {
+            setError(error)
+            console.log("Everything sucks, Error: ", error)
+        } 
+        if (data) {
+            console.log("Everything is awesome, Data: ", data)
+        }
     }
 
   return (
@@ -200,7 +203,7 @@ export default function ProfilePage() {
                                 </Link>
 
                                         <div className='delete-course-container'>
-                                            <Button variant="outlined" onClick={handleDeleteCourse} color="error">{`Delete ${course.course_title}`}</Button>
+                                            <Button variant="outlined" onClick={() => handleDeleteCourse(course)} color="error">{`Delete ${course.course_title}`}</Button>
                                         </div>
                             </>
                         )

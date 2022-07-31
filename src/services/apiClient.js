@@ -80,13 +80,13 @@ class ApiClient {
     }
 
 
-    async deleteCourse(user, courseId) {
-        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}/delete`, method: `DELETE`})
+    async deleteCourse(sportName, courseId) {
+        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `DELETE`})
     }
 
-    async editCourse(user, courseId) {
-        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}/edit`, method: `PUT`})
-    }
+    // async editCourse(user, courseId) {
+    //     return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}/edit`, method: `PUT`})
+    // }
 
     async followTeam(team, sportName, teamId) {
         return await this.request({endpoint: `home/${sportName}/${teamId}`, method: `POST`, data: team})
