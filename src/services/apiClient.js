@@ -116,6 +116,13 @@ class ApiClient {
         return await this.request({endpoint: `sports/${sportName}/${teamId}/games`, method: `GET`})
     }
 
+    async deleteCourse(sportName, courseId) {
+        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `DELETE`})
+    }
+    
+    async editCourse(sportName, courseId, course) {
+        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `PUT`, data: course})
+    }
 }
 
 export default new ApiClient("http://localhost:3001")
