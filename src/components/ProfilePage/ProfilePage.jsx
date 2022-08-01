@@ -2,8 +2,8 @@ import React from 'react'
 import './ProfilePage.css'
 import profilePicturePlaceholder from '../../assets/profile-picture-placeholder.jpg'
 
-
-
+import ConfirmDelete from '../ConfirmDelete/ConfirmDelete';
+import DropDownCreate from '../DropDownCreate/DropDownCreate';
 
 //importing mui components to render throughout the page
 import Box from '@mui/material/Box';
@@ -11,8 +11,9 @@ import TextField from '@mui/material/TextField';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 import ScheduleSharpIcon from '@mui/icons-material/ScheduleSharp';
+import Button from '@mui/material/Button';
 import CreateIcon from '@mui/icons-material/Create';
-import DropDownCreate from '../DropDownCreate/DropDownCreate';
+
 
 //importing auth context to render components with user data and check for profile picture placeholder requirements
 import { useAuthContext } from "../../contexts/auth"
@@ -56,10 +57,18 @@ export default function ProfilePage() {
         }
       
         fetchUserOwnedObjects()
-      }, [])
+      }, [userOwnedCourses])
 
 
 
+    //function to set the current beginner course in local storage
+    async function setCourseHandler(userCourse) {
+        const includeUsername = {
+            ...userCourse,
+            username: user.username
+        }
+        localStorage.setItem("current_user_course", JSON.stringify(includeUsername)) 
+    }
 
     const { user } = useAuthContext()
 
@@ -68,13 +77,8 @@ export default function ProfilePage() {
     let profilePicture;
     {user.profileImageUrl === null ? profilePicture = profilePicturePlaceholder : profilePicture = user.profileImageUrl}
 
-
-
-
-    //function to set the current course in local storage
-    async function setCourseHandler(userCourse) {
-    localStorage.setItem("current_user_course", JSON.stringify(userCourse)) 
-  }
+    
+    
     
 
   return (
@@ -170,23 +174,26 @@ export default function ProfilePage() {
                 <div className ="user-courses-cards">
                     {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
                         return (
-                            // when a user clicks on a course, it sets it to local storage and redirects them to that course page properly
-                            <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
-                                <div onClick={setCourseHandler(course)} className ="user-course-card-container">
-                                    <div className="thumbnail-container">
-                                        <div className="cover-image-category">
-                                            <img className ="course-card-cover-image" src={course.course_cover_image_url} alt={`Cover image for ${course.course_title}`} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }}></img>
-                                        </div>
-                                        <div className="category-and-date">
-                                            <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                            <>
+                                {/* when a user clicks on a course, it sets it to local storage and redirects them to that course page properly */}
+                                <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
+                                    <div onClick={setCourseHandler(course)} className ="user-course-card-container">
+                                        <div className="thumbnail-container">
+                                            <div className="cover-image-category">
+                                                <img className ="course-card-cover-image" src={course.course_cover_image_url} alt={`Cover image for ${course.course_title}`} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }}></img>
+                                            </div>
+                                            <div className="title-description-container">
+                                                <h1 className="user-course-card-title">{course.course_title}</h1>
+                                                <p className="user-course-card-description">{course.course_short_description}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="title-description-container">
-                                        <h1 className="user-course-card-title">{course.course_title}</h1>
-                                        <p className="user-course-card-description">{course.course_short_description}</p>
-                                    </div>
+                                </Link>
+
+                                <div className='delete-course-container'>
+                                    <ConfirmDelete course={course}/>
                                 </div>
-                            </Link>
+                            </>
                         )
                     }) : 
                         <div className='drop-down'> 

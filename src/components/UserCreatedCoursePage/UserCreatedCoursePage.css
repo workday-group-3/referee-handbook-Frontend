@@ -13,18 +13,31 @@
     padding-bottom: 150px;
 }
 
+/* ---------------------------------- Headers section ------------------------------------ */
+.main-user-content, .tips-and-tricks {
+    background: #F8F8F8;
+    word-wrap: break-word;
+
+    position: relative;
+
+    width: 90vw;
+    border-radius: 10px;
+}
+
+.edit-section  {
+    z-index: 5;
+
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    display: flex;
+}
+
 
 /* ---------------------------------- Main content section ------------------------------------ */
 
 
 
-.main-user-content, .tips-and-tricks {
-    background: #F8F8F8;
-    word-wrap: break-word;
-
-    width: 90vw;
-    border-radius: 10px;
-}
 
 /* Beginning of course specific information  */
 .created-by {

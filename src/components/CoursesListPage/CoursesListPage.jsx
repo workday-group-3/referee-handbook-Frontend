@@ -27,6 +27,7 @@ import Select from '@mui/material/Select';
 
 function CoursesListPage(props) {
 
+  const { setCurrentlyEditing } = useLearningContext();
 
   //creating useState variables to store list of userCreated courses, so that we can easily render from each page, along with variable for error handling
   const [userCourses, setUserCourses] = useState([])
@@ -127,7 +128,7 @@ function CoursesListPage(props) {
                 </Box>
             </div>
           <div className="create-course-btn-container">
-            <Link className ="create-course-link" to = {`/learning/${currentCourse.sport_name}/create`}><Button className="create-course-btn"  variant="contained" size="large"   shrink="false" sx={{ color: 'black',  height:"6ch", fontSize:"16px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >Create a Course</Button></Link>
+            <Link className ="create-course-link" to = {`/learning/${currentCourse.sport_name}/create`}><Button className="create-course-btn"  onClick={() => setCurrentlyEditing({})} variant="contained" size="large"   shrink="false" sx={{ color: 'black',  height:"6ch", fontSize:"16px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >Create a Course</Button></Link>
           </div>
         </div> 
         </div>
