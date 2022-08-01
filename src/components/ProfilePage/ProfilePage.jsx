@@ -59,6 +59,15 @@ export default function ProfilePage() {
 
 
 
+    //function to set the current beginner course in local storage
+    async function setCourseHandler(userCourse) {
+        const includeUsername = {
+            ...userCourse,
+            username: user.username
+        }
+        console.log("setting to local storage: ", includeUsername)
+        localStorage.setItem("current_user_course", JSON.stringify(includeUsername)) 
+    }
 
     const { user } = useAuthContext()
 
@@ -67,10 +76,7 @@ export default function ProfilePage() {
     let profilePicture;
     {user.profileImageUrl === null ? profilePicture = profilePicturePlaceholder : profilePicture = user.profileImageUrl}
 
-    //function to set the current course in local storage
-    async function setCourseHandler(userCourse) {
-        localStorage.setItem("current_user_course", JSON.stringify(userCourse)) 
-    }
+    
     
     
 
@@ -168,9 +174,9 @@ export default function ProfilePage() {
                         return (
                             <>
                                 {/* when a user clicks on a course, it sets it to local storage and redirects them to that course page properly */}
-                                <Link onClick={event => event.preventDefault()} className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
+                                <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
                                     
-                                    <div onClick={setCourseHandler(course)} className ="user-course-card-container">
+                                    <div onClick={() => setCourseHandler(course)} className ="user-course-card-container">
                                         <div className="thumbnail-container">
                                             <div className="cover-image-category">
                                                 <img className ="course-card-cover-image" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }} alt={`Cover image for ${course.course_title}`}></img>

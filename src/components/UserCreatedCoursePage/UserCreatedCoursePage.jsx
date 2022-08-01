@@ -27,6 +27,7 @@ function UserCreatedCoursePage() {
     let currentSport = JSON.parse(localStorage.getItem("current_course"))
 
     let currentCourse = JSON.parse(localStorage.getItem("current_user_course"))
+    console.log("current user course is: ", currentCourse)
 
     //get the currently signed in user's information via api client
     useEffect(() => {
@@ -39,6 +40,8 @@ function UserCreatedCoursePage() {
           } else {
             setUserOwned(false)
           }
+
+          console.log("retrieved: ", data)
 
           if(error){
             console.error("error is: ", error)
