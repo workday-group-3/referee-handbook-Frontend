@@ -27,7 +27,6 @@ function UserCreatedCoursePage() {
     let currentSport = JSON.parse(localStorage.getItem("current_course"))
 
     let currentCourse = JSON.parse(localStorage.getItem("current_user_course"))
-    console.log("current user course is: ", currentCourse)
 
     //get the currently signed in user's information via api client
     useEffect(() => {
@@ -35,7 +34,7 @@ function UserCreatedCoursePage() {
           const {data, error} = await apiClient.fetchUserFromToken()
           
           //checks that a user owns the course signed in.
-          if(data && data.user.username === currentCourse.username){
+          if(data.user.username === currentCourse.username){
             setUserOwned(true)
           } else {
             setUserOwned(false)
