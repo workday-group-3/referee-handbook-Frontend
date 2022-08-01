@@ -22,9 +22,6 @@ export default function CreateCourseForm() {
 
     const { currentlyEditing, setCurrentlyEditing } = useLearningContext();
 
-    // Object.keys(currentlyEditing).length === 0 ? 
-    //     console.log("Not currently editing") : console.log("Currently editing")
-
     let currentSport = JSON.parse(localStorage.getItem("current_course"))
 
     const sportName = useParams();
@@ -89,7 +86,7 @@ export default function CreateCourseForm() {
             await apiClient.editCourse(sportName.sportsName, currentlyEditing.courseId , courseForm) :
             await apiClient.createUserCourse(courseForm, sportName.sportsName)
        
-        console.log("Edit complete? ", !isEdit)
+        
 
         if (error) {
           setError(error)

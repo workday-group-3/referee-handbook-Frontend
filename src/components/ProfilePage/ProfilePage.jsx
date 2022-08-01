@@ -67,7 +67,6 @@ export default function ProfilePage() {
             ...userCourse,
             username: user.username
         }
-        console.log("setting to local storage: ", includeUsername)
         localStorage.setItem("current_user_course", JSON.stringify(includeUsername)) 
     }
 

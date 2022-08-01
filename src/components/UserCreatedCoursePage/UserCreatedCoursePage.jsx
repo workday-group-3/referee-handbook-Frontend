@@ -40,7 +40,7 @@ function UserCreatedCoursePage() {
             setUserOwned(false)
           }
 
-          console.log("retrieved: ", data)
+          
 
           if(error){
             console.error("error is: ", error)
@@ -56,7 +56,7 @@ function UserCreatedCoursePage() {
 
         // set the current user course in local storage
 
-        console.log("sport is: ", currentSport.sport_name)
+        
         //set the currently editing global state variable to the current course
         setCurrentlyEditing(currentCourse)
 
