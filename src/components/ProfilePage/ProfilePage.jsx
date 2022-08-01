@@ -2,8 +2,8 @@ import React from 'react'
 import './ProfilePage.css'
 import profilePicturePlaceholder from '../../assets/profile-picture-placeholder.jpg'
 
-import DropDownCreate from '../DropDownCreate/DropDownCreate';
 import ConfirmDelete from '../ConfirmDelete/ConfirmDelete';
+import DropDownCreate from '../DropDownCreate/DropDownCreate';
 
 //importing mui components to render throughout the page
 import Box from '@mui/material/Box';
@@ -12,6 +12,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 import ScheduleSharpIcon from '@mui/icons-material/ScheduleSharp';
 import Button from '@mui/material/Button';
+import CreateIcon from '@mui/icons-material/Create';
+
 
 //importing auth context to render components with user data and check for profile picture placeholder requirements
 import { useAuthContext } from "../../contexts/auth"
@@ -85,7 +87,8 @@ export default function ProfilePage() {
         <div className="profile-page-user">
             <div className="profile-page-header">
                 <div className ="profile-picture-container">
-                    <img className="profile-picture" src= {profilePicture} alt="User profile picture"/>
+                    <img className="profile-picture" src= {profilePicture} onError={evt => { evt.currentTarget.src = "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" }} alt="User profile picture"/>
+                    
                 </div>
                 <div className="user-section">
                     <div className="profile-user-info">
@@ -175,32 +178,28 @@ export default function ProfilePage() {
                             <>
                                 {/* when a user clicks on a course, it sets it to local storage and redirects them to that course page properly */}
                                 <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
-                                    
-                                    <div onClick={() => setCourseHandler(course)} className ="user-course-card-container">
+                                    <div onClick={setCourseHandler(course)} className ="user-course-card-container">
                                         <div className="thumbnail-container">
                                             <div className="cover-image-category">
-                                                <img className ="course-card-cover-image" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }} alt={`Cover image for ${course.course_title}`}></img>
+                                                <img className ="course-card-cover-image" src={course.course_cover_image_url} alt={`Cover image for ${course.course_title}`} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }}></img>
                                             </div>
-                                            <div className="category-and-date">
-                                                <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                                            <div className="title-description-container">
+                                                <h1 className="user-course-card-title">{course.course_title}</h1>
+                                                <p className="user-course-card-description">{course.course_short_description}</p>
                                             </div>
-                                        </div>
-                                        <div className="title-description-container">
-                                            <h1 className="user-course-card-title">{course.course_title}</h1>
-                                            <p className="user-course-card-description">{course.course_short_description}</p>
                                         </div>
                                     </div>
-
                                 </Link>
-                                        <div className='delete-course-container'>
-                                            <ConfirmDelete course={course}/>
-                                        </div>
+
+                                <div className='delete-course-container'>
+                                    <ConfirmDelete course={course}/>
+                                </div>
                             </>
                         )
                     }) : 
                         <div className='drop-down'> 
                             {/* <h1 className="no-user-courses-message">No courses created, get started <Link  className ="learning-redirect" to ="/learning">here!</Link></h1> */}
-                            <h1 className="no-user-courses-message">No courses created. <br/> Create one below!</h1>
+                            <h1 className="no-user-courses-message">No courses created yet. Create one below!</h1>
                             <DropDownCreate/>
                         </div>
                     

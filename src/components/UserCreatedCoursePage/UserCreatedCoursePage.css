@@ -1,5 +1,7 @@
 
-
+.user-create-course {
+    height: 100%;
+}
 
 .user-content {
     background-color: #1F1F1F;
@@ -7,7 +9,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 11.5vh;
+    padding-top: 150px;
+    padding-bottom: 150px;
 }
 
 /* ---------------------------------- Headers section ------------------------------------ */
@@ -56,10 +59,13 @@
     font-size: 3em;
     font-family: 'Montserrat';
     font-weight: 800;
+    margin-top: 1%;
 }
 .cb-username {
     font-family: 'Cormorant';
-    font-size: 2em;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    
 }
 
 .cb-date {
@@ -72,6 +78,7 @@
 .short-description, .long-description {
     font-family: 'Cormorant';
     margin-left: 4vw;
+    font-weight: 600;
 }
 
 .short-description {
@@ -144,7 +151,7 @@
 
 .video-container iframe {
     border: 10px solid ;
-    border-color: rgba(240, 240, 206, 0.686);
+    border-color: rgb(2, 2, 2);
     border-radius: 5%;
     max-width: 80%;
 }
@@ -162,6 +169,7 @@
     overflow-y: auto;
 }
 .tips-and-tricks-title {
+    margin-top: 1%;
     margin-left: 4vw;
     font-size: 3em;
     font-family: 'Montserrat';
@@ -174,4 +182,5 @@
     max-width: 80vw;
     margin-left: 4vw;
     padding-top: 2vw;
+    font-weight: 600;
 }
