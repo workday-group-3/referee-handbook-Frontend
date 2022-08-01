@@ -82,7 +82,7 @@ class ApiClient {
 
 
     async followTeam(team, sportName, teamId) {
-        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `POST`, data: team})
+        return await this.request({endpoint: `home/${sportName}/${teamId}`, method: `POST`, data: team})
     }
 
     async getTeams(sportName) {
@@ -101,11 +101,11 @@ class ApiClient {
         return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `GET`})
     }
     async listFollowedTeamByUser(sportName, teamId) {
-        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `GET`})
+        return await this.request({endpoint: `home/${sportName}/${teamId}`, method: `GET`})
     }
     
     async unfollowTeam(sportName, teamId) {
-        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `DELETE`})
+        return await this.request({endpoint: `home/${sportName}/${teamId}`, method: `DELETE`})
     }
 
     async getTeamStats(sportName, teamId){
@@ -125,4 +125,4 @@ class ApiClient {
     }
 }
 
-export default new ApiClient("https://cacherh.herokuapp.com")
+export default new ApiClient("http://localhost:3001")

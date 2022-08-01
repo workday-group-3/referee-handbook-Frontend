@@ -40,9 +40,6 @@ export const HomeContextProvider = ({ children }) => {
           setNews(json.data.json)
         } catch (error) {
           setError(error)
-          if(error.response.status == 402){
-            setNewsLimit(true)
-          }
         }
         setLoading(false)
     }
