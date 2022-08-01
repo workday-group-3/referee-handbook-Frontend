@@ -84,16 +84,13 @@ class ApiClient {
         return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `DELETE`})
     }
 
-    // async editCourse(user, courseId) {
-    //     return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}/edit`, method: `PUT`})
-    // }
+    async editCourse(sportName, courseId, course) {
+        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `PUT`, data: course})
+    }
 
     async followTeam(team, sportName, teamId) {
         return await this.request({endpoint: `home/${sportName}/${teamId}`, method: `POST`, data: team})
     }
-
-
-
 
 
 }

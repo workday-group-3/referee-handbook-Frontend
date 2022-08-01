@@ -16,10 +16,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 
 export default function ConfirmDelete( props ) {
-    const [open, setOpen] = useState(false)
-    const [error, setError] = useState(null)
-    const [confirmText, setConfirmText] = useState(null)
-
+  const [open, setOpen] = useState(false)
+  const [error, setError] = useState(null)
+  const [confirmText, setConfirmText] = useState(null)
+  
+    
     const handleClickOpen = () => {
       setOpen(true);
     };
@@ -35,15 +36,16 @@ export default function ConfirmDelete( props ) {
 
     async function handleDeleteCourse (course) {
         
-        setError(null)
-        console.log(confirmText.confirmMessage)
 
-        if(confirmText.confirmMessage === course.sport_name) {
-            const { data, error } = await apiClient.deleteCourse(course.sport_name, course.courseId)
-            handleClose();
-        } else {
-            setError("Please input the appropriate text or hit cancel to return")
-        }
+      setError(null)
+      console.log(confirmText.confirmMessage)
+
+      if(confirmText.confirmMessage === (`${props.course.email}/${props.course.course_title}`)) {
+          const { data, error } = await apiClient.deleteCourse(course.sport_name, course.courseId)
+          handleClose();
+      } else {
+          setError("Please input the appropriate text or hit cancel to return")
+      }
 
 
     }
@@ -57,10 +59,14 @@ export default function ConfirmDelete( props ) {
           <DialogTitle>Delete Course</DialogTitle>
           <DialogContent>
             <DialogContentText>
-                <b className='warning-msg'>
+              <div className="warning-msg">
                 ATTENTION! There is no going back once a course has been deleted. <br />
-                {`Please type ${props.course.sport_name} to confirm.`}
+                Please type 
+                <b>
+                {` ${props.course.email}/${props.course.course_title} `} 
                 </b>
+                to confirm.
+              </div>
             </DialogContentText>
             <TextField
               autoFocus

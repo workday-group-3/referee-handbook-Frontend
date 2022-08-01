@@ -186,7 +186,6 @@ export default function ProfilePage() {
                                     </div>
 
                                 </Link>
-
                                         <div className='delete-course-container'>
                                             <ConfirmDelete course={course}/>
                                         </div>
