@@ -42,7 +42,6 @@ export const AuthContextProvider = ({ children }) => {
   const handleOnLogout = async () => {
     setUser({})
     await apiClient.logoutUser()
-    console.log("Logged out")
   }
 
 

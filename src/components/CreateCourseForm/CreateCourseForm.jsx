@@ -22,7 +22,7 @@ export default function CreateCourseForm() {
 
 
     const sportName = useParams();
-
+    
 
 
     //global var
@@ -108,7 +108,7 @@ export default function CreateCourseForm() {
     autoComplete="off">
         <div className="create-course-form">
             <div className="create-course-title-container">
-                <h1 className="create-course-title"><em>Create a New Course</em></h1>
+                { sportName? <h1 className="create-course-title"><em>Create a New Course for {sportName.sportsName}</em></h1> : null}
             </div>
             <div className="create-course-form-container">
                 <div className="input-container">
@@ -121,6 +121,7 @@ export default function CreateCourseForm() {
                     onChange = {handleOnInputChange}
                     sx={{backgroundColor : 'white'}}
                     variant="filled"
+                    inputProps={{ maxLength: 250 }}
                     />
                 </div>
                 <div className="input-container">
@@ -135,6 +136,7 @@ export default function CreateCourseForm() {
                     onChange = {handleOnInputChange}
                     sx={{backgroundColor : 'white'}}
                     variant="filled"
+                    inputProps={{ maxLength: 500 }}
                     />
                 </div>
 
@@ -157,11 +159,13 @@ export default function CreateCourseForm() {
                         type="text"
                         name="detailedDescription"
                         multiline={true}
-                        rows={4}
+                        minRows={4}
+                        maxRows={20}
                         value = {courseForm.detailedDescription}
                         onChange = {handleOnInputChange}
                         sx={{backgroundColor : 'white'}}
                         variant="filled"
+                        inputProps={{ maxLength: 5000 }}
                         />
                     </div>
                 </div>
@@ -169,13 +173,14 @@ export default function CreateCourseForm() {
                     <div className="media-input-container">
                         <TextField
                             className="tutorial-video-input-field"
-                            label="Tutorial Video URL"
+                            label="YouTube Video URL"
                             type="text"
                             name="tutorialVideoURL"
                             value = {courseForm.tutorialVideoURL}
                             onChange = {handleOnInputChange}
                             sx={{backgroundColor : 'white'}}
                             variant="filled"
+                            inputProps={{ maxLength: 500 }}
                             />
                             <TextField
                             className="cover-image-input-field"
@@ -186,6 +191,7 @@ export default function CreateCourseForm() {
                             onChange = {handleOnInputChange}
                             sx={{backgroundColor : 'white'}}
                             variant="filled"
+                            inputProps={{ maxLength: 500 }}
                             />
                         <FormControl variant="filled" sx={{ m: 1, height: "6.5ch", minWidth: "15ch", width: "100ch", textAlign:"left", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
                             <InputLabel>DIFFICULTY</InputLabel>
@@ -225,6 +231,7 @@ export default function CreateCourseForm() {
                     onChange = {handleOnInputChange}
                     sx={{backgroundColor : 'white'}}
                     variant="filled"
+                    inputProps={{ maxLength: 2500 }}
                     />
                 </div>
             </div>

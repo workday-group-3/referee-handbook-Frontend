@@ -82,7 +82,7 @@ class ApiClient {
 
 
     async followTeam(team, sportName, teamId) {
-        return await this.request({endpoint: `home/${sportName}/${teamId}`, method: `POST`, data: team})
+        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `POST`, data: team})
     }
 
     async getTeams(sportName) {
@@ -99,6 +99,13 @@ class ApiClient {
 
     async getTeamDetail(sportName, teamId){
         return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `GET`})
+    }
+    async listFollowedTeamByUser(sportName, teamId) {
+        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `GET`})
+    }
+    
+    async unfollowTeam(sportName, teamId) {
+        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `DELETE`})
     }
 
     async getTeamStats(sportName, teamId){

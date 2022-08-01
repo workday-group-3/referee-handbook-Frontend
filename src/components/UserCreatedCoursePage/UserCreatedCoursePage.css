@@ -1,5 +1,7 @@
 
-
+.user-create-course {
+    height: 100%;
+}
 
 .user-content {
     background-color: #1F1F1F;
@@ -7,6 +9,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 150px;
+    padding-bottom: 150px;
 }
 
 
@@ -42,10 +46,13 @@
     font-size: 3em;
     font-family: 'Montserrat';
     font-weight: 800;
+    margin-top: 1%;
 }
 .cb-username {
     font-family: 'Cormorant';
-    font-size: 2em;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    
 }
 
 .cb-date {
@@ -58,6 +65,7 @@
 .short-description, .long-description {
     font-family: 'Cormorant';
     margin-left: 4vw;
+    font-weight: 600;
 }
 
 .short-description {
@@ -73,6 +81,7 @@
     white-space: pre-wrap;
     font-size: 1.5em;
     max-width: 80vw;
+    padding-bottom: 5vh;
 }
 
 .long-description img, .tips-and-tricks-text img {
@@ -102,9 +111,17 @@
     justify-content: center;
     background-color: #F8F8F8;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 90vw;
     justify-content: center;
     border-radius: 30%;
+
+    font-size: 2em;
+    font-family: 'Montserrat';
+    font-weight: 800;
+
+    
     
     margin-top: 10vh;
     margin-bottom: 10vh;
@@ -112,11 +129,24 @@
     padding-bottom: 5vh;
 }
 
+.video-container h2 {
+    padding-bottom: 5vh;
+    overflow-wrap: break-word;
+    max-width: 50vw;
+    text-align: center;
+}
+
 .video-container iframe {
     border: 10px solid ;
-    border-color: rgba(240, 240, 206, 0.686);
+    border-color: rgb(2, 2, 2);
     border-radius: 5%;
     max-width: 80%;
+}
+
+/* in case a video is not provided, this will ensure appropriate spacing between divs */
+.empty-space {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 }
 
 /* ---------------------------------- Further Tips and tricks styling ------------------------------------ */
@@ -126,6 +156,7 @@
     overflow-y: auto;
 }
 .tips-and-tricks-title {
+    margin-top: 1%;
     margin-left: 4vw;
     font-size: 3em;
     font-family: 'Montserrat';
@@ -137,4 +168,6 @@
     white-space: pre-line;
     max-width: 80vw;
     margin-left: 4vw;
+    padding-top: 2vw;
+    font-weight: 600;
 }
