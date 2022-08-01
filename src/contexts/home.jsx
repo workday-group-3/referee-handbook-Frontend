@@ -32,9 +32,6 @@ export const HomeContextProvider = ({ children }) => {
     const [newsLimit, setNewsLimit] = useState(false)
     const [requestLimit, setRequestLimit] = useState(false)
 
-    const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY
-    const SPORTS_API_KEY = import.meta.env.VITE_SPORTS_API_KEY
-
     // fetches the news by sport
     async function getNews(){
         try{
@@ -147,7 +144,6 @@ export const HomeContextProvider = ({ children }) => {
             setLoadingTeam(true)
             // fetch team information using sportName and teamId
             let json = await apiClient.getTeamDetail(sportName, teamId)
-
             if(json.data.limit){
                 setLimit(true)
                 return
