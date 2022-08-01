@@ -13,7 +13,7 @@ function HomeRecentGames() {
         <div className='section-title'><h2 className='title-name'>Latest game in {league}</h2></div>
         {/* if is still loading, render a message */}
         {requestLimit ? <h3>At request limit for {currentSport}. Try navigating to a different sport!</h3> : null}
-        {limit ? (<><h3>Uh oh! The Sports API is at its limit. Try refreshing or come back in a minute!</h3></>):(game == null ? (<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>) : (<div className='section-content'> 
+        {limit ? (<><h3>Uh oh! The Sports API is at its limit. Try refreshing or come back in a minute!</h3></>):((game == null || loadingGame) ? (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>) : (<div className='section-content'> 
 
         <p className='game-date'>{moment(game.date).format("MMM DD YYYY HH:mm")}</p>
         <div className='game-grid'>
