@@ -168,7 +168,7 @@ export default function ProfilePage() {
                         return (
                             <>
                                 {/* when a user clicks on a course, it sets it to local storage and redirects them to that course page properly */}
-                                <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
+                                <Link onClick={event => event.preventDefault()} className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
                                     
                                     <div onClick={setCourseHandler(course)} className ="user-course-card-container">
                                         <div className="thumbnail-container">

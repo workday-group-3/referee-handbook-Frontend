@@ -1,7 +1,7 @@
 import React from 'react'
 import './CreateCourseForm.css'
 import { useState } from "react"
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -13,22 +13,48 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 import apiClient from '../../services/apiClient';
+import { useLearningContext } from '../../contexts/learning'
 
 import MarkdownModal from '../MarkdownModal/MarkdownModal';
 import FullScreenPreview from '../FullScreenPreview/FullScreenPreview';
 
 export default function CreateCourseForm() {
 
+    const { currentlyEditing, setCurrentlyEditing } = useLearningContext();
+
+    // Object.keys(currentlyEditing).length === 0 ? 
+    //     console.log("Not currently editing") : console.log("Currently editing")
+
+    let currentSport = JSON.parse(localStorage.getItem("current_course"))
+
     const sportName = useParams();
     
+    const filledCourseForm = {
+        sportName: sportName.sportsName,
+        courseName: currentlyEditing.course_title,
+        coverImageURL: currentlyEditing.course_cover_image_url,
+        shortDescription: currentlyEditing.course_short_description,
+        difficulty: currentlyEditing.difficulty,
+        detailedDescription: currentlyEditing.course_content,
+        tipsAndTricks: currentlyEditing.course_tips_tricks,
+        tutorialVideoURL: currentlyEditing.course_tutorial_video_url
+    }
+
+    
+    const editing = Object.keys(currentlyEditing).length === 0 
+
     //global var
-    let emptyCourseForm = {sportName: sportName.sportsName}
+    let startingCourseForm = Object.keys(currentlyEditing).length === 0 ?
+        {sportName: sportName.sportsName} :
+        filledCourseForm
 
     //state variables
-    const [courseForm, setCourseForm] = useState(emptyCourseForm)
-    const [difficulty, setDifficulty] = useState('')
+    const [courseForm, setCourseForm] = useState(startingCourseForm)
+    const [isEdit, setIsEdit] = useState(editing) //currently editing the course form? 
+    const [difficulty, setDifficulty] = useState(isEdit ? '' : filledCourseForm.difficulty)
     const [error, setError] = useState(null)
     const [isOpen, setIsOpen] = useState(false)
+
     
     const navigate = useNavigate()
 
@@ -53,18 +79,25 @@ export default function CreateCourseForm() {
         setCourseForm((form) => ({ ...form, ["difficulty"]: evt.target.value }))
     }
 
-
-
     //create onsubmit handler to call apiClient and post new user created course 
     const handleOnSubmitCourseForm = async () => {
+
         setError(null)
-        const {data, error} = await apiClient.createUserCourse(courseForm, sportName.sportsName)
+        // if it is an edit, then make the api client update the entry
+
+        const {data, error} = !isEdit ? 
+            await apiClient.editCourse(sportName.sportsName, currentlyEditing.courseId , courseForm) :
+            await apiClient.createUserCourse(courseForm, sportName.sportsName)
+       
+        console.log("Edit complete? ", !isEdit)
+
         if (error) {
           setError(error)
         }
-        if(data){
-            navigate(`/learning/${sportName}`)
+        if(data || !isEdit){
+            navigate(`/learning/${sportName.sportName}`)
         }
+
     }
     
 
@@ -80,7 +113,7 @@ export default function CreateCourseForm() {
     autoComplete="off">
         <div className="create-course-form">
             <div className="create-course-title-container">
-                { sportName? <h1 className="create-course-title"><em>Create a New Course for {sportName.sportsName}</em></h1> : null}
+                { sportName? <h1 className="create-course-title"><em>Create a New Course for {currentSport.sport_name}</em></h1> : null}
             </div>
             <div className="create-course-form-container">
                 <div className="input-container">
