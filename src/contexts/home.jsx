@@ -143,32 +143,20 @@ export const HomeContextProvider = ({ children }) => {
 
     // fetches detailed information for one team
     async function getTeam(sportName, teamId) {
-        let apiSportString = 'v1.'+sportName
-        // the api version for soccer is v3, different from the rest
-        if(sportName == "soccer"){
-            apiSportString = "v3.football"
-        }
-
         try{
             setLoadingTeam(true)
             // fetch team information using sportName and teamId
-            let json = await axios.get("https://"+apiSportString+".api-sports.io/teams?id="+teamId, {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": apiSportString+".api-sports.io",
-                    "x-rapidapi-key": SPORTS_API_KEY
-                }
-            })
+            let json = await apiClient.getTeamDetail(sportName, teamId)
 
-            if(json.data.errors.rateLimit){
+            if(json.data.limit){
                 setLimit(true)
                 return
               }
             // format soccer json data so it matches the others
             if(sportName === "soccer"){
-                json.data.response[0] = json.data.response[0].team
+                json.data.json[0] = json.data.json[0].team
             }
-            setTeam(json.data.response[0])
+            setTeam(json.data.json[0])
         } catch(error){
             setError(error)
         }
@@ -177,44 +165,26 @@ export const HomeContextProvider = ({ children }) => {
 
     // fetches basic stats for a team
     async function getStats(sportName, teamId) {
-        let apiSportString = 'v1.'+sportName
-        let endpoint = "/teams/statistics"
-        // the api version for soccer is v3, different from the rest
-        if(sportName === "soccer"){
-            apiSportString = "v3.football"
-        }
-        // endpoint for basketball is different
-        if(sportName === "basketball"){
-            endpoint = "/statistics"
-        }
-
-        try{
+    try {
             setLoadingStats(true)
-            let json = await axios.get("https://"+apiSportString+".api-sports.io"+endpoint+"?team="+teamId+"&league="+requestParams[sportName].league+"&season="+requestParams[sportName].season, {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": apiSportString+".api-sports.io",
-                    "x-rapidapi-key": SPORTS_API_KEY
-                }
-            })
-
-            if(json.data.errors.rateLimit){
+            let json = await apiClient.getTeamStats(sportName, teamId)
+            if(json.data.limit){
                 setLimit(true)
                 return
               }
             // soccer has a fixtures header unlike the others, change it to games
             if(sportName === "soccer"){
-                json.data.response.games = json.data.response.fixtures
-                delete json.data.response.fixtures
+                json.data.json.games = json.data.json.fixtures
+                delete json.data.json.fixtures
                 // soccer has total instead of all, format the json
-                json.data.response.games.played.all = json.data.response.games.played.all.total
-                delete json.data.response.games.played.total
-                json.data.response.games.wins.all.total = json.data.response.games.wins.total
-                delete json.data.response.games.wins.total
-                json.data.response.games.loses.all.total = json.data.response.games.loses.total
-                delete json.data.response.games.loses.total
+                json.data.json.games.played.all = json.data.json.games.played.all.total
+                delete json.data.json.games.played.total
+                json.data.json.games.wins.all.total = json.data.json.games.wins.total
+                delete json.data.json.games.wins.total
+                json.data.json.games.loses.all.total = json.data.json.games.loses.total
+                delete json.data.json.games.loses.total
             }
-            setStats(json.data.response.games)
+            setStats(json.data.json.games)
         } catch(error) {
             setError(error)
         }
@@ -223,26 +193,11 @@ export const HomeContextProvider = ({ children }) => {
 
     // get the three most recent games for that team
     async function getTeamGames(sportName, teamId){
-        let apiSportString = 'v1.'+sportName
-        let endpoint = "/games"
-        // the api version for soccer is v3, endpoint is fixtures, different from the rest
-        if(sportName == "soccer"){
-            apiSportString = "v3.football"
-            endpoint = "/fixtures"
-        }
-
         try{
             setLoadingTeamGames(true)
             // conditionally fetches by the league and season of the specific sport
-            let json = await axios.get("https://"+apiSportString+".api-sports.io"+endpoint+"?league="+requestParams[currentSport].league+"&season="+requestParams[currentSport].season+"&team="+teamId, {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": apiSportString+".api-sports.io",
-                    "x-rapidapi-key": SPORTS_API_KEY
-                }
-            })
-
-            if(json.data.errors.rateLimit){
+            let json = await apiClient.getTeamGames(sportName, teamId)
+            if(json.data.limit){
                 setLimit(true)
                 return
               }
@@ -281,7 +236,7 @@ export const HomeContextProvider = ({ children }) => {
             }
             // data filtering for all the other sports
             else{
-                let filtered_games_others = json.data.response.filter((item)=>item.date < new Date().toISOString())
+                let filtered_games_others = json.data.json.filter((item)=>item.date < new Date().toISOString())
                 let selected_games = []
 
                 // select the 3 most recent games

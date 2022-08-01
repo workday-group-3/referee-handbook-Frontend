@@ -97,6 +97,18 @@ class ApiClient {
         return await this.request({endpoint: `sports/${sportName}/news`, method: `GET`})
     }
 
+    async getTeamDetail(sportName, teamId){
+        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `GET`})
+    }
+
+    async getTeamStats(sportName, teamId){
+        return await this.request({endpoint: `sports/${sportName}/${teamId}/stats`, method: `GET`})
+    }
+
+    async getTeamGames(sportName, teamId){
+        return await this.request({endpoint: `sports/${sportName}/${teamId}/games`, method: `GET`})
+    }
+
 }
 
 export default new ApiClient("http://localhost:3001")
