@@ -80,19 +80,49 @@ class ApiClient {
     }
 
 
+
+    async followTeam(team, sportName, teamId) {
+        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `POST`, data: team})
+    }
+
+    async getTeams(sportName) {
+        return await this.request({endpoint: `sports/${sportName}/teams`, method: `GET`})
+    }
+
+    async getRecentGame(sportName){
+        return await this.request({endpoint: `sports/${sportName}/recentGame`, method: `GET`})
+    }
+
+    async getNews(sportName){
+        return await this.request({endpoint: `sports/${sportName}/news`, method: `GET`})
+    }
+
+    async getTeamDetail(sportName, teamId){
+        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `GET`})
+    }
+    async listFollowedTeamByUser(sportName, teamId) {
+        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `GET`})
+    }
+    
+    async unfollowTeam(sportName, teamId) {
+        return await this.request({endpoint: `sports/${sportName}/${teamId}`, method: `DELETE`})
+    }
+
+    async getTeamStats(sportName, teamId){
+        return await this.request({endpoint: `sports/${sportName}/${teamId}/stats`, method: `GET`})
+    }
+
+    async getTeamGames(sportName, teamId){
+        return await this.request({endpoint: `sports/${sportName}/${teamId}/games`, method: `GET`})
+    }
+
     async deleteCourse(sportName, courseId) {
         return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `DELETE`})
     }
-
+    
     async editCourse(sportName, courseId, course) {
         return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `PUT`, data: course})
     }
-
-    async followTeam(team, sportName, teamId) {
-        return await this.request({endpoint: `home/${sportName}/${teamId}`, method: `POST`, data: team})
-    }
-
-
 }
 
 export default new ApiClient("https://cacherh.herokuapp.com")
