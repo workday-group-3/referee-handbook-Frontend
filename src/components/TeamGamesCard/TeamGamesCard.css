@@ -70,4 +70,21 @@
 }
 
 
+@media (max-width: 700px){
+    .team-games-card{
+        font-size: 20px;
+        width: 60vw;
+        display: flex;
+    }
 
+    .WDL{
+        border-top-right-radius: 0;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        font-size: 30px;
+    }
+
+    .team-page-stats{
+        font-size: 25px;
+    }
+}

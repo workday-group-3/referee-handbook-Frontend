@@ -16,3 +16,9 @@
 .home-teams-card .team-name{
     font-size: 1.5vw;
 }
+
+@media (max-width: 700px){
+    .home-teams-card .team-name{
+        font-size: 20px;
+    }
+}
