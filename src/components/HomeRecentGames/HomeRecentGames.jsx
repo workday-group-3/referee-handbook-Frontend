@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHomeContext } from '../../contexts/home'
+import {Link} from "react-router-dom"
 import "./HomeRecentGames.css"
 import moment from 'moment'
 
@@ -18,11 +19,11 @@ function HomeRecentGames() {
         <p className='game-date'>{moment(game.date).format("MMM DD YYYY HH:mm")}</p>
         <div className='game-grid'>
           <div className='home-col game-col'>
-            <img src={game.teams.home.logo} className="games-team-logo"></img>
+          <Link to={`${currentSport}/${game.teams.home.id}`}><img src={game.teams.home.logo} className="games-team-logo"></img></Link>
             <p className='games-team-score'>{game.scores.home}</p>
           </div>
           <div className='away-col game-col'>
-            <img src={game.teams.away.logo} className="games-team-logo"></img>
+          <Link to={`${currentSport}/${game.teams.away.id}`}><img src={game.teams.away.logo} className="games-team-logo"></img></Link>
             <p className='games-team-score'>{game.scores.away}</p>
           </div>
         </div>
