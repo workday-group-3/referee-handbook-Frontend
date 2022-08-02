@@ -116,6 +116,16 @@ class ApiClient {
         return await this.request({endpoint: `sports/${sportName}/${teamId}/games`, method: `GET`})
     }
 
+
+    async recoverAccount(email) {
+        return await this.request({endpoint: `auth/recover`, method: `POST`, data: { email }})
+    }
+
+    async resetPassword({token, newPassword}) {
+        return await this.request({endpoint: `auth/password-reset?token=${token}`, method: `POST`, data: { newPassword }})
+    }
+
+
     async deleteCourse(sportName, courseId) {
         return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `DELETE`})
     }
@@ -123,6 +133,7 @@ class ApiClient {
     async editCourse(sportName, courseId, course) {
         return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `PUT`, data: course})
     }
+
 }
 
 export default new ApiClient("http://localhost:3001")
