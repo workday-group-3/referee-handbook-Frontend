@@ -98,3 +98,13 @@
     display: flex;
     align-items: center;
 }
+
+@media (max-width: 700px){
+    .footer-body-bottom{
+        flex-direction: column;
+    }
+
+    .footer-body-top{
+        flex-direction: column;
+    }
+}
