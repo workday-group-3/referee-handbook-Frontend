@@ -56,3 +56,13 @@
     font-size: 1.7vw;
     font-weight: 400;
 }
+
+@media (max-width: 700px){
+    .recent-games-title{
+        font-size: 20px;
+    }
+
+    .team-page-title{
+        font-size: 20px;
+    }
+}

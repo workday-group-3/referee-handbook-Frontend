@@ -46,3 +46,17 @@
     text-decoration: none;
 }
 
+@media (max-width: 700px) {
+    .card-grid{
+        grid-template-columns: 30vw 30vw 30vw;
+        column-gap: 3vw;
+    }
+
+    .news-img{
+        width: 30vw;
+    }
+
+    .news-title{
+        font-size: 20px;
+    }
+}
