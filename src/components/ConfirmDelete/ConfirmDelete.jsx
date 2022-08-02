@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 import apiClient from '../../services/apiClient';
 
@@ -40,12 +41,27 @@ export default function ConfirmDelete( props ) {
       setError(null)
 
       if(confirmText.confirmMessage === (`${props.course.email}/${props.course.course_title}`)) {
+
           const { data, error } = await apiClient.deleteCourse(course.sport_name, course.courseId)
-          handleClose();
+
+          handleFetchNewData();
+
+          if (data) {
+            handleClose();
+          }
       } else {
           setError("Please input the appropriate text or hit cancel to return")
       }
 
+    async function handleFetchNewData() {
+      //fetching user owned courses to display
+      
+      const {data, error} = await apiClient.listUserOwnedObjectsByUser()
+      if(data){
+        props.setUserOwnedCourses(data.userCourses)
+      }
+
+    }
 
     }
   

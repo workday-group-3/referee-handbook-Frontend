@@ -63,7 +63,7 @@ export default function ProfilePage() {
 
     //function to set the current beginner course in local storage
     async function setCourseHandler(userCourse) {
-        console.log("testing")
+        
         const includeUsername = {
             ...userCourse,
             username: user.username
@@ -175,7 +175,7 @@ export default function ProfilePage() {
                 <div className ="user-courses-cards">
                     {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
                         return (
-                            <>
+                            <div className="individual-course" key={course}>
                                 {/* when a user clicks on a course, it sets it to local storage and redirects them to that course page properly */}
                                 <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
                                     <div onClick={() => setCourseHandler(course)} className ="user-course-card-container">
@@ -192,9 +192,9 @@ export default function ProfilePage() {
                                 </Link>
 
                                 <div className='delete-course-container'>
-                                    <ConfirmDelete course={course}/>
+                                    <ConfirmDelete setUserOwnedCourses={setUserOwnedCourses} course={course}/>
                                 </div>
-                            </>
+                            </div>
                         )
                     }) : 
                         <div className='drop-down'> 
