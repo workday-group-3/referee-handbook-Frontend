@@ -189,9 +189,9 @@
 
 .user-created-profile-picture {
 
-    max-width: 1.2vw;
+    width: 35px;
     margin-right: 2.5px;
-    
+    height: 35px;
     border-radius: 50%;
 }
 

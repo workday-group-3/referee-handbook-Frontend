@@ -20,7 +20,7 @@ import { useLoginForm } from '../../hooks/useLoginForm'
 export default function LoginPage({ message }) {
 
 
-  const { userLoginForm, error, handleOnInputChange, handleOnSubmitLogin } = useLoginForm()    
+  const { userLoginForm, error, handleOnInputChange, handleOnSubmitLogin, isProcessing } = useLoginForm()    
 
 
 
@@ -78,7 +78,7 @@ export default function LoginPage({ message }) {
           </div>
           </Box>
           <div className="submit-login-btn-container">
-            <Button className="submit-login-btn"  onClick={handleOnSubmitLogin} variant="contained" size="large" endIcon={<SendIcon/>}  shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >LOGIN</Button>
+            <Button className="submit-login-btn"  onClick={handleOnSubmitLogin} variant="contained" size="large" endIcon={<SendIcon/>}  shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >{isProcessing ? "Loading..." : "LOGIN"}</Button>
             {error? <p className ="login-error">{error}</p>: null}
           </div>
         </div>
