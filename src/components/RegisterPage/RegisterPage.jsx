@@ -49,8 +49,7 @@ export default function RegisterPage() {
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
               variant="filled"
-              inputProps={{ maxLength: 250 }}
-              
+              inputProps={{ maxLength: 250 }} 
               />
           </div>
           <div className="username-input-container">

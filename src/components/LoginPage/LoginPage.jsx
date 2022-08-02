@@ -74,6 +74,7 @@ export default function LoginPage({ message }) {
               autoComplete="current-password"
               inputProps={{ maxLength: 250 }}
               />
+
           </div>
           </Box>
           <div className="submit-login-btn-container">
@@ -83,8 +84,10 @@ export default function LoginPage({ message }) {
         </div>
 
 
+
         {/* Link tag here to redirect to register page for routes established in App.jsx */}
         <div className="register-redirect">
+          <p className="forgot-password-redirect-text"><Link className="redirect-link2" to = "/recover">Forgot your password? </Link></p>
           <p className="register-redirect-text">Don't have an account? Sign up <Link className="redirect-link" to ="/register">here</Link></p>
         </div>
       </div>

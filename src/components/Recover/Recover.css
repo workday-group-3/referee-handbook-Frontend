@@ -1,0 +1,67 @@
+.recover {
+    background-color: #363232;
+    height: 100%;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15%;
+}
+
+
+.recover-account-form-container {
+    margin-top: 10%;
+    text-align: center;
+    background-color: #383838;
+    height: 550px;
+    width: 550px;
+    border-radius: 25px;
+
+}
+
+.recover-account-form-title {
+    font-size: 2.5rem;
+    margin-top: 5%;
+
+
+}
+
+.recovery-email-input-container{
+    margin-bottom: 1%;
+}
+
+.recover-account-form-input {
+    margin-top: 15%;
+}
+
+.recover-account-btn-container{
+    margin-top: 20%;
+    margin-bottom: 3%;
+}
+
+.recover-account-error{
+    margin-top: 1%;
+    color: red;
+}
+
+.recover-footer {
+    margin-top: 5%;
+}
+
+.message-container {
+    font-size: 2.75ch;
+    margin-top: 25%;
+    color: white;
+}
+
+.home-redirect {
+
+    margin-top: 5%;
+}
+
+.home-redirect-link, .recover-login-redirect-link {
+    color:#F1D433;
+
+}
+
+
