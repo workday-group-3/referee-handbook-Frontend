@@ -24,10 +24,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useHomeContext } from '../../contexts/home'
 
 function CoursesListPage(props) {
 
   const { setCurrentlyEditing } = useLearningContext();
+  const {learningTeams, getLearningTeams, loading} = useHomeContext()
 
   //creating useState variables to store list of userCreated courses, so that we can easily render from each page, along with variable for error handling
   const [userCourses, setUserCourses] = useState([])
@@ -60,6 +62,12 @@ function CoursesListPage(props) {
     }
   
     fetchUserCourses()
+    
+  }, [])
+
+  useEffect(() => {
+      getLearningTeams(currentCourse.sport_name)
+      console.log(learningTeams)
   }, [])
 
 
@@ -169,7 +177,9 @@ function CoursesListPage(props) {
       </div>
       
 
-
+      <div className='team-list'>
+        {learningTeams == null?<h3>Loading teams...</h3>:learningTeams.map((item)=>{return <img src={item.logo}></img>})}
+      </div>
 
 
 

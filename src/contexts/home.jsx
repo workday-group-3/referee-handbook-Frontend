@@ -31,6 +31,7 @@ export const HomeContextProvider = ({ children }) => {
     const [limit, setLimit] = useState(false)
     const [newsLimit, setNewsLimit] = useState(false)
     const [requestLimit, setRequestLimit] = useState(false)
+    const [learningTeams, setLearningTeams] = useState([])
 
     // fetches the news by sport
     async function getNews(){
@@ -296,7 +297,39 @@ export const HomeContextProvider = ({ children }) => {
     }
 
     
+    async function getLearningTeams(sportName){
+        try{
+            sportName = sportName.toLowerCase()
+            setLeague(requestParams[sportName].leagueName)
+            const json = await apiClient.getTeams(sportName)
+            // error check
+            if(json.error){
+                setError(json.error)
+                console.error(json.error)
+            }
+            // soccer data is formatted differently, change json formatting here to avoid complications
+            if(sportName == "soccer"){
+                for(let i = 0; i < json.data.json.length; i++){
+                    json.data.json[i] = json.data.json[i].team
+                }
+            }
+            // delete the league from the list of baseball teams
+            if(sportName == "baseball"){
+                delete json.data.json[0]
+            }
 
+            //delete the divisions from the list of hockey teams
+            if(sportName == "hockey"){
+                delete json.data.json[2]
+                delete json.data.json[7]
+            }
+            setLearningTeams(json.data.json)
+            console.log(json.data.json)
+            
+        } catch(error){
+            setError(error)
+        }
+    }
     
 
     // renders different info as the currentSport changes
@@ -306,7 +339,7 @@ export const HomeContextProvider = ({ children }) => {
         getGame()
     }, [currentSport])
 
-    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats, error, setError, loadingStats, getTeamGames, teamGames, loadingTeamGames, limit, newsLimit, requestLimit}
+    const homeValue = {currentSport, setCurrentSport, news, loading, getNews, teams, league, game, loadingGame, getTeam, team, loadingTeam, getStats, stats, error, setError, loadingStats, getTeamGames, teamGames, loadingTeamGames, limit, newsLimit, requestLimit, getLearningTeams, learningTeams}
 
     return(
         <HomeContext.Provider value = {homeValue}>

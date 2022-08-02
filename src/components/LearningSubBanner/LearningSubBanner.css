@@ -12,6 +12,8 @@
     align-items: center;
     width: 100%;
 }
+
+
 /* --------------------------- Text --------------------------- */
 .learning-sub-banner {
     font-family: 'Montserrat';
@@ -26,4 +28,10 @@
 .button-icon{
     padding: 5px;
     color: #F5F5DC;
+}
+@media (max-width: 700px){
+    .learning-sub-banner{
+        padding-top: 34vh;
+        font-size: 30px;
+    }
 }
