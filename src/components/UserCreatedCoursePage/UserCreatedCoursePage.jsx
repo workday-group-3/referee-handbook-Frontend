@@ -55,7 +55,7 @@ function UserCreatedCoursePage() {
     function handleEditCourse () {
 
         // set the current user course in local storage
-
+        
         
         //set the currently editing global state variable to the current course
         setCurrentlyEditing(currentCourse)
