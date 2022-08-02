@@ -57,12 +57,13 @@ export default function ProfilePage() {
         }
       
         fetchUserOwnedObjects()
-      }, [userOwnedCourses])
+      }, [ ])
 
 
 
     //function to set the current beginner course in local storage
     async function setCourseHandler(userCourse) {
+        
         const includeUsername = {
             ...userCourse,
             username: user.username
@@ -174,10 +175,10 @@ export default function ProfilePage() {
                 <div className ="user-courses-cards">
                     {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
                         return (
-                            <>
+                            <div className="individual-course" key={course}>
                                 {/* when a user clicks on a course, it sets it to local storage and redirects them to that course page properly */}
                                 <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
-                                    <div onClick={setCourseHandler(course)} className ="user-course-card-container">
+                                    <div onClick={() => setCourseHandler(course)} className ="user-course-card-container">
                                         <div className="thumbnail-container">
                                             <div className="cover-image-category">
                                                 <img className ="course-card-cover-image" src={course.course_cover_image_url} alt={`Cover image for ${course.course_title}`} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }}></img>
@@ -191,9 +192,9 @@ export default function ProfilePage() {
                                 </Link>
 
                                 <div className='delete-course-container'>
-                                    <ConfirmDelete course={course}/>
+                                    <ConfirmDelete setUserOwnedCourses={setUserOwnedCourses} course={course}/>
                                 </div>
-                            </>
+                            </div>
                         )
                     }) : 
                         <div className='drop-down'> 

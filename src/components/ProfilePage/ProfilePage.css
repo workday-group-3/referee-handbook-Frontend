@@ -113,7 +113,6 @@
 
 
 .user-courses-title-container {
-
     margin: 1%;
 }
 
@@ -123,7 +122,6 @@
     justify-content: center;
     margin: 1%;
     padding-bottom: 25px;
-
 }
 
 
@@ -136,33 +134,38 @@
 
 .thumbnail-container {
     margin: 1%;
-    padding-left: 5px;
-    justify-content: center;
+    
+    display: flex;
+}
+
+.cover-image-category {
+    padding-bottom: 2vh;
 }
 
 .course-card-cover-image {
     width: 10vw;
-    height: 10vh;
     object-fit: cover;
-    object-position: center center;
     border-radius: 25px;
-
 }
 
 .user-course-card-container {
     display: flex;
+    
     margin: 2%;
     background-color: #363232;
     border-radius: 25px;
     color: whitesmoke;
-    padding-left: 2px;
+
     
 }
 
 
 .title-description-container {
-    margin: 2%;
+    margin-left: 1vw;
+    width: 55%;
+    word-wrap: break-word
 }
+
 
 .course-card-date-category {
     font-size: 13px;
@@ -181,9 +184,8 @@
 .delete-course-container {
     display: flex;
     position: relative;
-    right: 4%;
-    bottom: 8%;
-    height: 5%;
+    margin-right: 1vw;
+    margin-left: 1vw;
     justify-content: right;
 
 }
