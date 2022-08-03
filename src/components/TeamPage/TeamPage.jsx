@@ -167,7 +167,7 @@ function TeamPage() {
         <p>Home: {stats.played.home} •&nbsp;</p>  
         <p>Away: {stats.played.away} •&nbsp;</p>
         <p>Total: {stats.played.all} •&nbsp;</p>
-        <p>{stats.wins.all.total}W {stats.loses.all.total}L </p>    
+        <p>{stats.wins.all}W {stats.loses.all}L </p>    
       </div>}
       <TeamGamesGrid />
       </>)}

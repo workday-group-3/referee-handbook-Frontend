@@ -68,7 +68,6 @@ export default function DropDownCreate() {
   const [selectedValue, setSelectedValue] = useState('None');
 
   const { beginnerCourses, setCurrentlyEditing } = useLearningContext()
-  
 
   const navigate = useNavigate();
 
@@ -92,7 +91,7 @@ export default function DropDownCreate() {
 
     const pickedCourse = beginnerCourses.find(course => course.sport_name === selectedValue)
     localStorage.setItem("current_course", JSON.stringify(pickedCourse))
-
+    setCurrentlyEditing({})
     navigate(`/learning/${pickedCourse.sport_name}/create`)
   }
 

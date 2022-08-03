@@ -24,6 +24,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
+import StarIcon from '@mui/icons-material/Star';
 
 function CoursesListPage(props) {
 
@@ -140,7 +143,6 @@ function CoursesListPage(props) {
       <div className="user-courses-list">
           {filterByDifficulty[0] ?
           filterByDifficulty.map((course) => {
-
             
             //checking if user has a profile picture, if not use placeholder
             let profilePicture;
@@ -149,6 +151,11 @@ function CoursesListPage(props) {
             return(
               <Link className="user-course-redirect" to={`/learning/${currentCourse.sport_name}/userCreated/${course.courseId}`}>
                 <div className="user-created-course" onClick={() => setCourseHandler(course)}>
+                            <span className ="user-course-ratings-container">
+                                <Stack spacing={1}>
+                                    <Rating name="half-rating" defaultValue={course.rating ? course.rating : 0} precision={0.5} readOnly="true" emptyIcon={<StarIcon style={{ opacity: 1, color: "white" }}   />} />
+                                </Stack>
+                            </span>
                     <div className="user-created-course-img-container">
                       <Link to={`/profile/${course.username}`}>
                         <img className="user-created-course-img" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }}/>

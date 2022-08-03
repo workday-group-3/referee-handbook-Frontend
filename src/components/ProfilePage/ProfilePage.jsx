@@ -54,7 +54,6 @@ export default function ProfilePage(props) {
                 setError(error)
             }
         }
-      
         fetchUserOwnedObjects()
       }, [ ])
 
@@ -196,15 +195,19 @@ export default function ProfilePage(props) {
                             <div className="individual-course" key={course}>
                                 {/* when a user clicks on a course, it sets it to local storage and redirects them to that course page properly */}
                                 <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
+                                    
                                     <div onClick={() => setCourseHandler(course)} className ="user-course-card-container">
                                         <div className="thumbnail-container">
                                             <div className="cover-image-category">
-                                                <img className ="course-card-cover-image" src={course.course_cover_image_url} alt={`Cover image for ${course.course_title}`} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }}></img>
+                                            <img className ="course-card-cover-image" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }} alt={`Cover image for ${course.course_title}`}></img>
+                                            <div className="category-and-date">
+                                                <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
                                             </div>
-                                            <div className="title-description-container">
-                                                <h1 className="user-course-card-title">{course.course_title}</h1>
-                                                <p className="user-course-card-description">{course.course_short_description}</p>
-                                            </div>
+                                        </div>      
+                                    </div>
+                                    <div className="title-description-container">
+                                            <h1 className="user-course-card-title">{course.course_title}</h1>
+                                            <p className="user-course-card-description">{course.course_short_description}</p>
                                         </div>
                                     </div>
                                 </Link>
@@ -268,5 +271,3 @@ export default function ProfilePage(props) {
     </div>
   )
 }
-
-

@@ -19,23 +19,32 @@ class ApiClient {
         localStorage.setItem(this.currCourseName, currCourse)
     }
 
-    async request({ endpoint, method = `GET`, data = {}}) {
+    async request({endpoint, method = `GET`, data = {}}) {
         const url = `${this.remoteHostUrl}/${endpoint}`
 
         const headers = {
-            "Content-Type": "application/json",
-            Authorization: this.token ? `Bearer ${this.token}` : "",
+            "Content-Type": "application/json"
         }
 
-        try {
-            const res = await axios({ url, method, data, headers })
-            return { data: res.data, error: null }
-        } catch (error) {
-            console.error({ errorResponse: error.response })
-            const message = error?.response?.data?.error?.message
-            return { data: null, error: message || String(error) }
+
+        if(this.token) {
+            headers["Authorization"] = `Bearer ${this.token}`
         }
+
+
+
+        try{
+            const res = await axios({ url, method, data, headers })
+            return {data: res.data, error: null}
+        }
+        catch (error) {
+            console.error({errorResponse: error.response})
+            const message = error?.response?.data?.error?.message
+            return {data: null, error: message || String(error)}
+        }
+
     }
+
 
     async loginUser(credentials) {
         return await this.request({ endpoint: `auth/login`, method: `POST`, data: credentials })
@@ -135,6 +144,23 @@ class ApiClient {
         return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `PUT`, data: course})
     }
 
+
+    async fetchRatingForCourseByUser(sportName, courseId) {
+        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}/user`, method: `GET`})
+    }
+
+
+    async createRatingForCourse(rating, sportName, courseId) {
+        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}/ratings`, method: `POST`, data: rating})
+    }
+
+    async updateRatingForCourse(rating, sportName, courseId) {
+        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}/ratings`, method: `PUT`, data: rating})
+    }
+
+
 }
 
-export default new ApiClient("http://localhost:3001")
+
+export default new ApiClient("https://handbookpodsync.herokuapp.com")
+
