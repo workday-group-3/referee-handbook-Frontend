@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import { useState, useEffect } from 'react'
 
 import { useLearningContext } from '../../contexts/learning'
+import { useAuthContext } from "../../contexts/auth"
 
 import apiClient from '../../services/apiClient'
 import { useNavigate } from 'react-router-dom'
@@ -11,6 +12,9 @@ import { useNavigate } from 'react-router-dom'
 import "./UserCreatedCoursePage.css"
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 import LearningSubBanner from '../LearningSubBanner/LearningSubBanner'
 
@@ -23,10 +27,99 @@ function UserCreatedCoursePage() {
 
     //local state variables
     const [userOwned, setUserOwned] = useState(false);
+    const [rating, setRating] = useState({})
+    const [error, setError] = useState(null)
+    const [isProcessing, setIsProcessing] = useState(null)
 
     let currentSport = JSON.parse(localStorage.getItem("current_course"))
-
     let currentCourse = JSON.parse(localStorage.getItem("current_user_course"))
+
+
+    const { user } = useAuthContext()
+
+  
+
+
+    //fetching currently signed in user's rating for current course that they're viewing
+    useEffect(() => {
+        const fetchUserRatingForCourse = async () => {
+            setIsProcessing(true)
+            setError(null)
+
+           if(!user?.email){
+            setError("You must be logged in to rate courses.")
+            setIsProcessing(false)
+            return
+           } 
+           else {
+            const {data, error} = await apiClient.fetchRatingForCourseByUser(currentSport.sport_name, currentCourse.courseId)
+            if(data){
+              // console.log("fetched data", data.rating)
+              console.log("user rating", data.rating.rating)
+              setRating(data.rating)
+              // console.log("rating", rating)
+            }
+            if(error){
+              setError(error)
+            }
+            setIsProcessing(false)
+
+           }
+
+
+
+        }
+        fetchUserRatingForCourse()
+      }, [])
+
+      //handler to submit
+    const handleOnRatingSubmit = async (evt) => {
+        setError(null)
+        setIsProcessing(true)
+
+
+        //if user doesn't already have a rating for this course, then create one
+        if(!rating) {
+            const {data, error} = await apiClient.createRatingForCourse({["rating"]: evt.target.value }, currentSport.sport_name, currentCourse.courseId)
+            if (error) {
+              setError(error)
+            }
+            if(data){
+                setRating(data.rating)
+            }
+        }
+        //user already has a rating for this course created, so update their current rating
+        else {
+
+            
+            const {data, error} = await apiClient.updateRatingForCourse({["rating"]: evt.target.value }, currentSport.sport_name, currentCourse.courseId)
+            if (error) {
+                setError(error)
+            }
+            if(data){
+                setRating(data.rating)
+                console.log("submitted data", data)
+            }
+        }
+
+        setIsProcessing(false)
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //get the currently signed in user's information via api client
     useEffect(() => {
@@ -34,14 +127,11 @@ function UserCreatedCoursePage() {
           const {data, error} = await apiClient.fetchUserFromToken()
           
           //checks that a user owns the course signed in.
-          if(data.user.username === currentCourse.username){
+          if(data?.user?.username === currentCourse.username){
             setUserOwned(true)
           } else {
             setUserOwned(false)
           }
-
-          
-
           if(error){
             console.error("error is: ", error)
           }
@@ -100,16 +190,24 @@ function UserCreatedCoursePage() {
                     {/* If the user owns the course, they can edit the course via courseform */}
                     {userOwned && 
                         <div className='edit-section'>
-                            <Button className="edit-course-button" onClick={handleEditCourse} variant="contained" size="large" endIcon={<SendIcon/>}  shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >Edit course</Button>
+                            <Button className="edit-course-button" onClick={handleEditCourse} variant="contained" size="large" endIcon={<SendIcon/>}  shrink="false" sx={{ color: 'white', backgroundColor: 'gray', ':hover' :{ bgcolor: '#1F1F1F', color: 'white'} }} >Edit course</Button>
                         </div>
                     }
 
                     {/* Title and date */}
                     <span className='course-information'>
+                            <span className ="ratings-container">
+                                <Stack spacing={1}>
+                                    <Typography sx={{ fontSize: "14px", margin: "0" }} component="legend"><em>{userOwned ? "Cannot rate your own course :( " : user?.username ? "Rate this course below!" : "Sign in to rate this course!"}</em></Typography>
+                                    <Rating name="half-rating" onChange={(evt) => {handleOnRatingSubmit(evt)}} value={rating?.rating ? rating.rating : 0} precision={0.5} defaultValue={rating?.rating ? rating.rating : 0}  size="large" disabled={!user?.email || userOwned}/>
+                                </Stack>
+                            </span>
                         <h3 className='cb-title'>{currentCourse.course_title}</h3>
-                        <h4 className='cb-username'>Created by {currentCourse.username} on {condensedDate}</h4>
-                    </span>
+                        <span className="cb-subtitle">
+                            <h4 className='cb-username'>Created by {currentCourse.username} on {condensedDate}</h4>
 
+                        </span>
+                    </span>
 
                     {/* Line separator */}
                     <span className='line-break'>

@@ -55,9 +55,8 @@ export default function ProfilePage() {
             setError(error)
           }
         }
-      
         fetchUserOwnedObjects()
-      }, [ ])
+      }, [])
 
 
 

@@ -134,6 +134,21 @@ class ApiClient {
         return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `PUT`, data: course})
     }
 
+
+    async fetchRatingForCourseByUser(sportName, courseId) {
+        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}/user`, method: `GET`})
+    }
+
+
+    async createRatingForCourse(rating, sportName, courseId) {
+        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}/ratings`, method: `POST`, data: rating})
+    }
+
+    async updateRatingForCourse(rating, sportName, courseId) {
+        return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}/ratings`, method: `PUT`, data: rating})
+    }
+
+
 }
 
 export default new ApiClient("http://localhost:3001")

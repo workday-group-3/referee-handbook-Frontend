@@ -28,8 +28,8 @@
     z-index: 5;
 
     position: absolute;
-    right: 3%;
-    top: 3%;
+    right: 0.5%;
+    margin-top: 0.5%;
     display: flex;
 }
 
@@ -67,6 +67,18 @@
     margin-bottom: 10px;
     
 }
+.cb-subtitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ratings-container {
+    position: absolute;
+    right: 0;
+    margin-right: 4%;
+    margin-top: 2%;
+}
+
 
 .cb-date {
     font-size: 1em;
