@@ -24,6 +24,8 @@ import CreateIcon from '@mui/icons-material/Create';
 function SimpleDialog(props) {
   const { onClose, selectedValue, open } = props;
 
+  
+
   const handleClose = () => {
     onClose(selectedValue);
   };
@@ -83,6 +85,9 @@ export default function DropDownCreate() {
 
   // Set the current sport in local storage and redirect to the appropriate course form 
   const handleNavigate = () => {
+
+    //resets course form
+    setCurrentlyEditing({})
 
     const pickedCourse = beginnerCourses.find(course => course.sport_name === selectedValue)
     localStorage.setItem("current_course", JSON.stringify(pickedCourse))

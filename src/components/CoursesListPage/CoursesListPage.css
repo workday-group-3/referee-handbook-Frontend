@@ -154,7 +154,13 @@
 }
 
 
-
+.user-created-course .to-profile-link {
+    text-decoration: none;
+    color: white;
+}
+.user-created-course .to-profile-link:hover {
+    color: yellow;
+}
 
 .user-created-course-img {
     height: 200px;

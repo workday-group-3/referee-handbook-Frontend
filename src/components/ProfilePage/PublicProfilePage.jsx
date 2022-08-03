@@ -26,7 +26,7 @@ import apiClient from '../../services/apiClient';
 
 import { Link, useParams } from "react-router-dom"
 
-export default function ProfilePage(props) {
+export default function PublicProfilePage(props) {
 
     
     //creating state variables to store user created courses after they're pulled from the useEffect hook below
@@ -42,9 +42,7 @@ export default function ProfilePage(props) {
         const fetchUserOwnedObjects = async () => {
             
             //Renders favorites and courses based on whose profile page is being viewed
-            const {data, error} = username == undefined ? 
-                await apiClient.listUserOwnedObjectsByUser() :
-                await apiClient.listUserOwnedObjectForOtherUsers(username)
+            const {data, error} = await apiClient.listUserOwnedObjectForOtherUsers(username)
             if(data){
                 setUserOwnedCourses(data.userCourses)
                 setUserTeams(data.userTeams)
@@ -55,7 +53,7 @@ export default function ProfilePage(props) {
             }
         }
         fetchUserOwnedObjects()
-      }, [ ])
+      }, [])
 
 
 
@@ -69,29 +67,16 @@ export default function ProfilePage(props) {
         localStorage.setItem("current_user_course", JSON.stringify(includeUsername)) 
     }
 
-    const { user } = useAuthContext()
-    const currentUser = username == undefined ? user : userProfile
+    const currentUser = userProfile
     
-
 
 
     //checking if user has a profile picture, if not use placeholder
     let profilePicture;
-    if (currentUser.first_name != undefined){
-        currentUser["firstName"] = currentUser["first_name"]
-        currentUser["lastName"] = currentUser["last_name"]
-        currentUser["profileImageUrl"] = currentUser["profile_image_url"]
-
-        delete currentUser["first_name"]
-        delete currentUser["last_name"]
-        delete currentUser["profile_image_url"]
-    }
     
     if (username !== undefined) {
-        {currentUser.profileImageUrl === null ? profilePicture = profilePicturePlaceholder : profilePicture = currentUser.profileImageUrl}
-    } else {
-        {user.profileImageUrl === null ? profilePicture = profilePicturePlaceholder : profilePicture = user.profileImageUrl}
-    }
+        {currentUser.profile_image_url === null ? profilePicture = profilePicturePlaceholder : profilePicture = currentUser.profile_image_url}
+    } 
 
     
     
@@ -108,7 +93,7 @@ export default function ProfilePage(props) {
                 <div className="user-section">
                     <div className="profile-user-info">
                         <h1 className="profile-picture-username">@<em>{currentUser.username}</em></h1>
-                        <h3 className="profile-picture-name"><AccountCircleIcon className ="profile-icon" color = "grey" />{currentUser.firstName + " " + currentUser.lastName}</h3>
+                        <h3 className="profile-picture-name"><AccountCircleIcon className ="profile-icon" color = "grey" />{currentUser.first_name + " " + currentUser.last_name}</h3>
                         <h3 className="profile-location"><LocationOnSharpIcon className ="profile-icon" color ="grey" />{currentUser.location}</h3>
                         <h3 className="profile-account-creation-date"><ScheduleSharpIcon className="profile-icon" color ="grey"/> Joined on {Moment(new Date(currentUser.createdAt)).format("MMMM Do, YYYY")}</h3> 
                     </div>
@@ -116,7 +101,7 @@ export default function ProfilePage(props) {
             </div>
             <div className ="profile-page-details-container">
                 <div className= "details-title-container">
-                    <h1 className="details-title"><em>About Me</em></h1>
+                    <h1 className="details-title"><em>{`About ${currentUser.first_name}`}</em></h1>
                 </div>
                 <Box
                 component="form"
@@ -126,54 +111,56 @@ export default function ProfilePage(props) {
                 }}
                 noValidate
                 autoComplete="off">
-                    <div className ="details-container">
-                        <div className ="user-detail">
-                            <TextField
-                            sx={{backgroundColor : 'white'}}
-                            className="detail-field"
-                            label="Username"
-                            type="text"
-                            name = "username"
-                            value = {currentUser.username}
-                            variant="filled"
-                            InputProps={{ readOnly: true }}
-                            />
-                        </div>
-                        <div className ="user-detail-name">
-                            <TextField
-                            sx={{backgroundColor : 'white'}}
-                            className="detail-field"
-                            label="First Name"
-                            type="text"
-                            name = "firstName"
-                            value = {currentUser.firstName}
-                            variant="filled"
-                            InputProps={{ readOnly: true }}
-                            /> 
-                            <TextField
-                            sx={{backgroundColor : 'white'}}
-                            className="detail-field"
-                            label="Last Name"
-                            type="text"
-                            name = "lastName"
-                            value = {currentUser.lastName}
-                            variant="filled"
-                            InputProps={{ readOnly: true }}
-                            />
-                        </div>
-                        <div className ="user-detail">
-                            <TextField
+                    {currentUser.username !== undefined ?
+                        <div className ="details-container">
+                            <div className ="user-detail">
+                                <TextField
                                 sx={{backgroundColor : 'white'}}
                                 className="detail-field"
-                                label="Email"
-                                type="email"
-                                name = "email"
-                                value = {currentUser.email}
+                                label="Username"
+                                type="text"
+                                name = "username"
+                                value = {currentUser.username}
                                 variant="filled"
                                 InputProps={{ readOnly: true }}
-                            />
-                        </div>
-                    </div> 
+                                />
+                            </div>
+                            <div className ="user-detail-name">
+                                <TextField
+                                sx={{backgroundColor : 'white'}}
+                                className="detail-field"
+                                label="First Name"
+                                type="text"
+                                name = "first_name"
+                                value = {currentUser.first_name}
+                                variant="filled"
+                                InputProps={{ readOnly: true }}
+                                /> 
+                                <TextField
+                                sx={{backgroundColor : 'white'}}
+                                className="detail-field"
+                                label="Last Name"
+                                type="text"
+                                name = "last_name"
+                                value = {currentUser.last_name}
+                                variant="filled"
+                                InputProps={{ readOnly: true }}
+                                />
+                            </div>
+                            <div className ="user-detail">
+                                <TextField
+                                    sx={{backgroundColor : 'white'}}
+                                    className="detail-field"
+                                    label="Email"
+                                    type="email"
+                                    name = "email"
+                                    value = {currentUser.email}
+                                    variant="filled"
+                                    InputProps={{ readOnly: true }}
+                                />
+                            </div>
+                        </div> : null}
+
                 </Box>
             </div>
         </div>
@@ -181,13 +168,14 @@ export default function ProfilePage(props) {
             <div className ="user-courses-container">
                 <div className="user-courses-title-container">
                     <div className="title-container">
-                        <h1 className="user-courses-title"><em>My Created Courses</em></h1>
+                        <h1 className="user-courses-title"><em>{`${currentUser.first_name}'s Created Courses`}</em></h1>
                     </div>
                     
                 </div>
 
                 {/* condtional rendering to display either users created courses, or message that no courses created */}
                 <div className ="user-courses-cards">
+                    
                     {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
                         return (
                             <div className="individual-course" key={course}>
@@ -210,9 +198,7 @@ export default function ProfilePage(props) {
                                     </div>
                                 </Link>
 
-                                <div className='delete-course-container'>
-                                    <ConfirmDelete setUserOwnedCourses={setUserOwnedCourses} course={course}/>
-                                </div>
+                                
 
                                 
                                 
@@ -222,8 +208,7 @@ export default function ProfilePage(props) {
                         // Only allow a user to create a course if they're logged in
                         <div className='drop-down'> 
                             {/* <h1 className="no-user-courses-message">No courses created, get started <Link  className ="learning-redirect" to ="/learning">here!</Link></h1> */}
-                            <h1 className="no-user-courses-message">No courses created yet. Create one below!</h1>
-                            <DropDownCreate/>
+                            <h1 className="no-user-courses-message">No courses created yet.</h1>
                         </div>
                     
                 }
@@ -233,7 +218,7 @@ export default function ProfilePage(props) {
 
             <div className="user-teams-container">
                 <div className="user-teams-title-container">
-                    <h1 className="user-teams-title"><em>My Followed Teams</em></h1>
+                    <h1 className="user-teams-title"><em>{`${currentUser.first_name} Followed Teams`}</em></h1>
                 </div>
 
 
