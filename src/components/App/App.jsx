@@ -11,6 +11,7 @@ import LoginPage from '../LoginPage/LoginPage'
 import RegisterPage from '../RegisterPage/RegisterPage'
 import LandingPage from '../LandingPage/LandingPage'
 import ProfilePage from '../ProfilePage/ProfilePage'
+import PublicProfilePage from '../ProfilePage/PublicProfilePage';
 import Navbar from '../Navbar/Navbar'
 import LearningCenterPage from '../LearningCenterPage/LearningCenterPage';
 import NotFound from "../NotFound/NotFound"
@@ -55,7 +56,7 @@ function App() {
             <Route path="/recover" element={<Recover/>} />
             <Route path="/password-reset" element={<PasswordReset/>} />
             <Route path="/profile" element={<ProtectedRoute element = {<ProfilePage/>}/>} />
-            <Route path="/profile/:username" element={<ProtectedRoute element = {<ProfilePage/>}/>} />
+            <Route path="/profile/:username" element={<ProtectedRoute element = {<PublicProfilePage/>}/>} />
             <Route path="/learning" element={<LearningCenterPage/>} />
             <Route path="/learning/:sportsName" element={<CoursesListPage/>} />
             <Route path="/learning/:sportsName/create" element={<ProtectedRoute element = {<CreateCourseForm/>}/>} />

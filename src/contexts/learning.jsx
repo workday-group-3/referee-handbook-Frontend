@@ -13,6 +13,7 @@ export const LearningContextProvider = ({children}) => {
     //state variables to be used/manipulated via useContext
     const [beginnerCourses, setBeginnerCourses] = useState([])
     const [currentlyEditing, setCurrentlyEditing] = useState({})  
+    const [myCourses, setMyCourses] = useState({})
     const [initialized, setInitialized] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -44,7 +45,7 @@ export const LearningContextProvider = ({children}) => {
     
     
     //value to be passed into the child component in the return statement
-    const learningValue = { beginnerCourses, setBeginnerCourses, expandedCourse, setExpandedCourse, currentlyEditing, setCurrentlyEditing }
+    const learningValue = { myCourses, setMyCourses, beginnerCourses, setBeginnerCourses, expandedCourse, setExpandedCourse, currentlyEditing, setCurrentlyEditing }
     
     //renders children propes previosly defined in LearningContextProvider using the values in learningValue
     return (
