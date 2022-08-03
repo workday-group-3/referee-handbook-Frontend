@@ -201,7 +201,6 @@ export const HomeContextProvider = ({ children }) => {
             if(sportName === "soccer"){
                 // filter to find the matches that finished/is in progress
                 let filtered_games = json.data.json.filter((item)=>item.fixture.date < new Date().toISOString())
-                console.log(json)
                 let selected_games = []
 
                 // select the 3 most recent games
