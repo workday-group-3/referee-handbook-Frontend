@@ -154,11 +154,11 @@
 }
 
 
-.to-profile-link {
+.user-created-course .to-profile-link {
     text-decoration: none;
     color: white;
 }
-.to-profile-link:hover {
+.user-created-course .to-profile-link:hover {
     color: yellow;
 }
 

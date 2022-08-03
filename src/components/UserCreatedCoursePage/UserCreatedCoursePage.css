@@ -77,6 +77,14 @@
     align-items: center;
 }
 
+.cb-subtitle .to-profile-link{
+    text-decoration: none;
+    color: #1F1F1F;
+}
+
+.cb-subtitle .to-profile-link:hover{
+    text-decoration: underline;
+}
 .ratings-container {
     position: absolute;
     right: 0;

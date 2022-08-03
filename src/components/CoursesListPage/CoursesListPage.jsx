@@ -151,11 +151,11 @@ function CoursesListPage(props) {
             return(
               <Link className="user-course-redirect" to={`/learning/${currentCourse.sport_name}/userCreated/${course.courseId}`}>
                 <div className="user-created-course" onClick={() => setCourseHandler(course)}>
-                            <span className ="user-course-ratings-container">
-                                <Stack spacing={1}>
-                                    <Rating name="half-rating" defaultValue={course.rating ? course.rating : 0} precision={0.5} readOnly="true" emptyIcon={<StarIcon style={{ opacity: 1, color: "white" }}   />} />
-                                </Stack>
-                            </span>
+                    <span className ="user-course-ratings-container">
+                        <Stack spacing={1}>
+                            <Rating name="half-rating" defaultValue={course.rating ? course.rating : 0} precision={0.5} readOnly="true" emptyIcon={<StarIcon style={{ opacity: 1, color: "white" }}   />} />
+                        </Stack>
+                    </span>
                     <div className="user-created-course-img-container">
                     <img className="user-created-course-img" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }}/>
                     <Link className="to-profile-link" to={`/profile/${course.username}`}>

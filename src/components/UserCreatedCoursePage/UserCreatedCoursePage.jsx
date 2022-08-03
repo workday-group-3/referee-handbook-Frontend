@@ -7,7 +7,8 @@ import { useLearningContext } from '../../contexts/learning'
 import { useAuthContext } from "../../contexts/auth"
 
 import apiClient from '../../services/apiClient'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+
 
 import "./UserCreatedCoursePage.css"
 import Button from '@mui/material/Button';
@@ -198,7 +199,9 @@ function UserCreatedCoursePage() {
                     <span className='course-information'>
                         <h3 className='cb-title'>{currentCourse.course_title}</h3>
                         <span className="cb-subtitle">
-                            <h4 className='cb-username'>Created by {currentCourse.username} on {condensedDate}</h4>
+                            <Link className="to-profile-link" to={`/profile/${currentCourse.username}`}>
+                                <h4 className='cb-username'>Created by {currentCourse.username} on {condensedDate}</h4>
+                            </Link>
                             <span className ="ratings-container">
                                 <Stack spacing={1}>
                                     <Typography sx={{ fontSize: "14px", margin: "0" }} component="legend"><em>{userOwned ? "Cannot rate your own course :( " : user?.username ? "Rate this course below!" : "Sign in to rate this course!"}</em></Typography>
