@@ -201,8 +201,9 @@
     margin: 1%;
     border-radius: 10px;
     width: 60vw;
+    height: fit-content;
     
-
+    padding-bottom: 5%;
     padding-top: 10px;
 }
 

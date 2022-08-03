@@ -213,3 +213,10 @@
 .user-course-redirect {
     text-decoration: none;
 }
+
+
+.user-course-ratings-container {
+    position: absolute;
+    margin: 1%;
+    right: 0;
+}
