@@ -11,6 +11,7 @@ import LoginPage from '../LoginPage/LoginPage'
 import RegisterPage from '../RegisterPage/RegisterPage'
 import LandingPage from '../LandingPage/LandingPage'
 import ProfilePage from '../ProfilePage/ProfilePage'
+import PublicProfilePage from '../ProfilePage/PublicProfilePage';
 import Navbar from '../Navbar/Navbar'
 import LearningCenterPage from '../LearningCenterPage/LearningCenterPage';
 import NotFound from "../NotFound/NotFound"
@@ -23,6 +24,8 @@ import CreateCourseForm from '../CreateCourseForm/CreateCourseForm';
 import UserCreatedCoursePage from '../UserCreatedCoursePage/UserCreatedCoursePage'
 import TeamPage from '../TeamPage/TeamPage';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
+import Recover from '../Recover/Recover'
+import PasswordReset from '../PasswordReset/PasswordReset';
 
 
 //returns our context providers with our App component nested inside.
@@ -50,14 +53,17 @@ function App() {
             <Route path="/" element={<LandingPage/>} />
             <Route path="/login" element={<LoginPage/>} />
             <Route path="/register" element={<RegisterPage/>} />
+            <Route path="/recover" element={<Recover/>} />
+            <Route path="/password-reset" element={<PasswordReset/>} />
             <Route path="/profile" element={<ProtectedRoute element = {<ProfilePage/>}/>} />
+            <Route path="/profile/:username" element={<ProtectedRoute element = {<PublicProfilePage/>}/>} />
             <Route path="/learning" element={<LearningCenterPage/>} />
             <Route path="/learning/:sportsName" element={<CoursesListPage/>} />
             <Route path="/learning/:sportsName/create" element={<ProtectedRoute element = {<CreateCourseForm/>}/>} />
             <Route path="/learning/:sportsName/beginner" element={<BeginnerCoursePage/>} />
             <Route path="/learning/:sportsName/userCreated/:sportsId" element={<UserCreatedCoursePage/>} />
-            <Route path="/home" element={<HomePage/>}/>
-            <Route path="/home/:sportName/:teamId" element={<TeamPage/>}/>
+            <Route path="/sports" element={<HomePage/>}/>
+            <Route path="/sports/:sportName/:teamId" element={<TeamPage/>}/>
             <Route path="*" element={<NotFound/>} />
           </Routes>
           <Footer/>

@@ -1,22 +1,22 @@
 .card-grid{
     width: 98%;
-    height: 12.5vh;
+    height: 12vh;
     display: grid;
     grid-template-areas:
-        'image image time time time'
-        'image image title title title';
-    grid-template-columns: 20vh 12vh 12vh 20vh 10vh;
-
+        'image time time'
+        'image title title';
+    grid-template-columns: 14vw 11vw 11vw;
+    grid-template-rows: 30% 80%;
     column-gap: 1vh;
     padding: 3px;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: clip;
 }
 
 .news-img{
-    width: 27vh;
-    height: 12vh;
+    width: 13vw;
+    height: 90%;
     object-fit: cover;
     grid-area: image;
     padding: 5px;
@@ -24,20 +24,21 @@
 
 .news-time{
     grid-area: time;
-    font-size: 1vw;
+    font-size: 15px;
     text-decoration: underline;
 }
 
 .news-title{
     grid-area: title;
     font-weight: 500;
+    font-size: 1vw;
     background-color: white;
     padding: 2px;
+    height: 10vh;
 }
 
 .home-news-card{
-    padding: 0.5vh;
-    
+    padding: 0.5vw
 }
 
 .home-news-card a{
@@ -45,3 +46,23 @@
     text-decoration: none;
 }
 
+.home-news-card:hover{
+    background-color: white;
+    color: white;
+    transition: all 0.5s ease;
+}
+
+@media (max-width: 700px) {
+    .card-grid{
+        grid-template-columns: 30vw 30vw 30vw;
+        column-gap: 3vw;
+    }
+
+    .news-img{
+        width: 30vw;
+    }
+
+    .news-title{
+        font-size: 20px;
+    }
+}

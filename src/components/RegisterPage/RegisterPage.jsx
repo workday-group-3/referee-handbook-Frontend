@@ -19,7 +19,7 @@ import { useRegistrationForm } from '../../hooks/useRegistrationForm'
 
 export default function RegisterPage() {
             
-  const { userRegisterForm, error, handleOnInputChange, handleOnSubmitRegisterForm } = useRegistrationForm()                  
+  const { userRegisterForm, error, handleOnInputChange, handleOnSubmitRegisterForm, isProcessing } = useRegistrationForm()                  
 
 
 
@@ -27,7 +27,7 @@ export default function RegisterPage() {
     <Box
     component="form"
     sx={{
-      '& .MuiTextField-root': { m: 1.25, width: '50ch' },
+      '& .MuiTextField-root': { m: 1.25, width: '50ch', },
     }}
     noValidate
     autoComplete="off">
@@ -49,6 +49,7 @@ export default function RegisterPage() {
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
               variant="filled"
+              inputProps={{ maxLength: 250 }} 
               />
           </div>
           <div className="username-input-container">
@@ -62,6 +63,7 @@ export default function RegisterPage() {
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
               variant="filled"
+              inputProps={{ maxLength: 250 }}
               />
           </div>
           <div className="location-input-container">
@@ -75,6 +77,7 @@ export default function RegisterPage() {
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
               variant="filled"
+              inputProps={{ maxLength: 250 }}
               />
           </div>
             <div className="name-input-container">
@@ -88,6 +91,7 @@ export default function RegisterPage() {
                 onChange={handleOnInputChange}
                 sx={{backgroundColor : 'white'}}
                 variant="filled"
+                inputProps={{ maxLength: 250 }}
                 />
                 <TextField
                 className="last-name-input-field"
@@ -99,6 +103,7 @@ export default function RegisterPage() {
                 onChange={handleOnInputChange}
                 sx={{backgroundColor : 'white'}}
                 variant="filled"
+                inputProps={{ maxLength: 250 }}
                 />
             </div>
           <div className="profile-picture-url-input-container">
@@ -111,7 +116,10 @@ export default function RegisterPage() {
               value={userRegisterForm.profileImageURL}
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
-              variant="filled"/>
+              variant="filled"
+              inputProps={{ maxLength: 250 }}
+              />
+              
             </div>
           <div className="password-input-container">
             <TextField
@@ -124,7 +132,9 @@ export default function RegisterPage() {
               onChange={handleOnInputChange}
               sx={{backgroundColor : 'white'}}
               variant="filled"
-              autoComplete="current-password"/>
+              autoComplete="current-password"
+              inputProps={{ maxLength: 250 }}
+              />
             </div>
             <div className="confirm-password-input-container">
               <TextField
@@ -137,10 +147,12 @@ export default function RegisterPage() {
                 onChange={handleOnInputChange}
                 sx={{backgroundColor : 'white'}}
                 variant="filled"
-                autoComplete="current-password"/>
+                autoComplete="current-password"
+                inputProps={{ maxLength: 250 }}
+                />
             </div>
             <div className="submit-register-btn-container">
-              <Button className="submit-register-btn" variant="contained" size="large" endIcon={<SendIcon/>}  onClick={handleOnSubmitRegisterForm} shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >REGISTER</Button>
+              <Button className="submit-register-btn" variant="contained" size="large" endIcon={<SendIcon/>}  onClick={handleOnSubmitRegisterForm} shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >{isProcessing ? "Loading..." : "REGISTER"}</Button>
               {error? <p className ="register-error">{error}</p>: null}
             </div>
           <div className="login-redirect">
