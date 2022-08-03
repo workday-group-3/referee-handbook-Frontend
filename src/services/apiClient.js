@@ -162,5 +162,6 @@ class ApiClient {
 }
 
 
-export default new ApiClient("https://handbookpodsync.herokuapp.com")
+export default new ApiClient("http://localhost:3001")
+
 

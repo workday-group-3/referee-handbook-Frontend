@@ -157,10 +157,10 @@ function CoursesListPage(props) {
                                 </Stack>
                             </span>
                     <div className="user-created-course-img-container">
-                      <Link to={`/profile/${course.username}`}>
-                        <img className="user-created-course-img" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }}/>
-                        <p className="user-created-course-creation-date"><img className="user-created-profile-picture" src = {profilePicture} onError={e => { e.currentTarget.src = profilePicturePlaceholder; }} alt={`Profile Picture for ${course.username}`}></img><em className="user-created-course-username"> {course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
-                      </Link>
+                    <img className="user-created-course-img" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }}/>
+                    <Link className="to-profile-link" to={`/profile/${course.username}`}>
+                      <p className="user-created-course-creation-date"><img className="user-created-profile-picture" src = {profilePicture} onError={e => { e.currentTarget.src = profilePicturePlaceholder; }} alt={`Profile Picture for ${course.username}`}></img><em className="user-created-course-username"> {course.username}</em>  |  Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                    </Link>
                     </div>
                     <div className="user-created-course-content">
                       <h1 className="user-created-course-title"><em>{course.course_title}</em></h1>
