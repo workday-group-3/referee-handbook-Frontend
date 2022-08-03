@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import "./TeamGamesCard.css"
 
 function TeamGamesCard(props) {
+  console.log(props)
   const [isLive, setIsLive] = useState(false)
 
   // takes the WDL letter, returns the actual word
