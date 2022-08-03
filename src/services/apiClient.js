@@ -74,12 +74,13 @@ class ApiClient {
         return await this.request({endpoint: `profile`, method: `GET`})
     }
 
+    async listUserOwnedObjectForOtherUsers(username) {
+        return await this.request({endpoint: `profile/${username}`, method: `GET`})
+    }
 
     async listUserCourseById(sportName, courseId) {
         return await this.request({endpoint: `learning/${sportName}/userCreated/${courseId}`, method: `GET`})
     }
-
-
 
     async followTeam(team, sportName, teamId) {
         return await this.request({endpoint: `home/${sportName}/${teamId}`, method: `POST`, data: team})

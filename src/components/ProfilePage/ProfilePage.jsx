@@ -11,49 +11,48 @@ import TextField from '@mui/material/TextField';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 import ScheduleSharpIcon from '@mui/icons-material/ScheduleSharp';
-import Button from '@mui/material/Button';
-import CreateIcon from '@mui/icons-material/Create';
-
 
 //importing auth context to render components with user data and check for profile picture placeholder requirements
 import { useAuthContext } from "../../contexts/auth"
 
-
 //importing to be able to pull data for components and keep it in state variable for storage
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
-
 
 //import for date formatting
 import Moment from "moment"
 
-
 //importing apiClient to call to the backend for retrieving user created courses
 import apiClient from '../../services/apiClient';
 
+import { Link, useParams } from "react-router-dom"
 
+export default function ProfilePage(props) {
 
-export default function ProfilePage() {
-
-
+    
     //creating state variables to store user created courses after they're pulled from the useEffect hook below
     const [userOwnedCourses, setUserOwnedCourses] = useState([]) 
+    const [userProfile, setUserProfile]= useState([])
     const [userTeams, setUserTeams] = useState([])
     const [error, setError] = useState(null)
-
-
+    
+    const { username } = useParams();
 
     //fetching user owned courses to display
     useEffect(() => {
         const fetchUserOwnedObjects = async () => {
-          const {data, error} = await apiClient.listUserOwnedObjectsByUser()
-          if(data){
-            setUserOwnedCourses(data.userCourses)
-            setUserTeams(data.userTeams)
-          }
-          if(error){
-            setError(error)
-          }
+            
+            //Renders favorites and courses based on whose profile page is being viewed
+            const {data, error} = username == undefined ? 
+                await apiClient.listUserOwnedObjectsByUser() :
+                await apiClient.listUserOwnedObjectForOtherUsers(username)
+            if(data){
+                setUserOwnedCourses(data.userCourses)
+                setUserTeams(data.userTeams)
+                setUserProfile(data.userInformation)
+            }
+            if(error){
+                setError(error)
+            }
         }
       
         fetchUserOwnedObjects()
@@ -72,11 +71,30 @@ export default function ProfilePage() {
     }
 
     const { user } = useAuthContext()
+    const currentUser = username == undefined ? user : userProfile
+    
+
+    console.log("logged in user is: ", user)
+    console.log("the other one : ", currentUser)
 
 
     //checking if user has a profile picture, if not use placeholder
     let profilePicture;
-    {user.profileImageUrl === null ? profilePicture = profilePicturePlaceholder : profilePicture = user.profileImageUrl}
+    if (currentUser.first_name != undefined){
+        currentUser["firstName"] = currentUser["first_name"]
+        currentUser["lastName"] = currentUser["last_name"]
+        currentUser["profileImageUrl"] = currentUser["profile_image_url"]
+
+        delete currentUser["first_name"]
+        delete currentUser["last_name"]
+        delete currentUser["profile_image_url"]
+    }
+    
+    if (username !== undefined) {
+        {currentUser.profileImageUrl === null ? profilePicture = profilePicturePlaceholder : profilePicture = currentUser.profileImageUrl}
+    } else {
+        {user.profileImageUrl === null ? profilePicture = profilePicturePlaceholder : profilePicture = user.profileImageUrl}
+    }
 
     
     
@@ -92,10 +110,10 @@ export default function ProfilePage() {
                 </div>
                 <div className="user-section">
                     <div className="profile-user-info">
-                        <h1 className="profile-picture-username">@<em>{user.username}</em></h1>
-                        <h3 className="profile-picture-name"><AccountCircleIcon className ="profile-icon" color = "grey" />{user.firstName + " " + user.lastName}</h3>
-                        <h3 className="profile-location"><LocationOnSharpIcon className ="profile-icon" color ="grey" />{user.location}</h3>
-                        <h3 className="profile-account-creation-date"><ScheduleSharpIcon className="profile-icon" color ="grey"/> Joined on {Moment(new Date(user.createdAt)).format("MMMM Do, YYYY")}</h3> 
+                        <h1 className="profile-picture-username">@<em>{currentUser.username}</em></h1>
+                        <h3 className="profile-picture-name"><AccountCircleIcon className ="profile-icon" color = "grey" />{currentUser.firstName + " " + currentUser.lastName}</h3>
+                        <h3 className="profile-location"><LocationOnSharpIcon className ="profile-icon" color ="grey" />{currentUser.location}</h3>
+                        <h3 className="profile-account-creation-date"><ScheduleSharpIcon className="profile-icon" color ="grey"/> Joined on {Moment(new Date(currentUser.createdAt)).format("MMMM Do, YYYY")}</h3> 
                     </div>
                 </div>
             </div>
@@ -119,7 +137,7 @@ export default function ProfilePage() {
                             label="Username"
                             type="text"
                             name = "username"
-                            value = {user.username}
+                            value = {currentUser.username}
                             variant="filled"
                             InputProps={{ readOnly: true }}
                             />
@@ -131,7 +149,7 @@ export default function ProfilePage() {
                             label="First Name"
                             type="text"
                             name = "firstName"
-                            value = {user.firstName}
+                            value = {currentUser.firstName}
                             variant="filled"
                             InputProps={{ readOnly: true }}
                             /> 
@@ -141,7 +159,7 @@ export default function ProfilePage() {
                             label="Last Name"
                             type="text"
                             name = "lastName"
-                            value = {user.lastName}
+                            value = {currentUser.lastName}
                             variant="filled"
                             InputProps={{ readOnly: true }}
                             />
@@ -153,7 +171,7 @@ export default function ProfilePage() {
                                 label="Email"
                                 type="email"
                                 name = "email"
-                                value = {user.email}
+                                value = {currentUser.email}
                                 variant="filled"
                                 InputProps={{ readOnly: true }}
                             />
@@ -194,9 +212,13 @@ export default function ProfilePage() {
                                 <div className='delete-course-container'>
                                     <ConfirmDelete setUserOwnedCourses={setUserOwnedCourses} course={course}/>
                                 </div>
+
+                                
+                                
                             </div>
                         )
                     }) : 
+                        // Only allow a user to create a course if they're logged in
                         <div className='drop-down'> 
                             {/* <h1 className="no-user-courses-message">No courses created, get started <Link  className ="learning-redirect" to ="/learning">here!</Link></h1> */}
                             <h1 className="no-user-courses-message">No courses created yet. Create one below!</h1>

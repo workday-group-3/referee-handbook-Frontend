@@ -55,6 +55,7 @@ function App() {
             <Route path="/recover" element={<Recover/>} />
             <Route path="/password-reset" element={<PasswordReset/>} />
             <Route path="/profile" element={<ProtectedRoute element = {<ProfilePage/>}/>} />
+            <Route path="/profile/:username" element={<ProtectedRoute element = {<ProfilePage/>}/>} />
             <Route path="/learning" element={<LearningCenterPage/>} />
             <Route path="/learning/:sportsName" element={<CoursesListPage/>} />
             <Route path="/learning/:sportsName/create" element={<ProtectedRoute element = {<CreateCourseForm/>}/>} />
