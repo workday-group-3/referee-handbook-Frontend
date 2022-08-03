@@ -69,7 +69,6 @@ export default function PublicProfilePage(props) {
 
     const currentUser = userProfile
     
-    console.log("the other one : ", currentUser)
 
 
     //checking if user has a profile picture, if not use placeholder
@@ -176,7 +175,7 @@ export default function PublicProfilePage(props) {
 
                 {/* condtional rendering to display either users created courses, or message that no courses created */}
                 <div className ="user-courses-cards">
-                    {console.log("Current courses are: ", userOwnedCourses)}
+                    
                     {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
                         return (
                             <div className="individual-course" key={course}>

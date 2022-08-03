@@ -73,8 +73,6 @@ export default function ProfilePage(props) {
     const currentUser = username == undefined ? user : userProfile
     
 
-    console.log("logged in user is: ", user)
-    console.log("the other one : ", currentUser)
 
 
     //checking if user has a profile picture, if not use placeholder
