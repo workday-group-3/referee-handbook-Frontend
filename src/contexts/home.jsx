@@ -70,6 +70,7 @@ export const HomeContextProvider = ({ children }) => {
             if(currentSport == "hockey"){
                 delete json.data.json[2]
                 delete json.data.json[7]
+                delete json.data.json[24]
             }
             setTeams(json.data.json)
             
