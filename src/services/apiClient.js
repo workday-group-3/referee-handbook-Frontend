@@ -162,6 +162,6 @@ class ApiClient {
 }
 
 
-export default new ApiClient("https://handbookpodsync.herokuapp.com")
+export default new ApiClient("https://referees-handbook-v2.herokuapp.com")
 
 
