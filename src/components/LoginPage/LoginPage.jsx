@@ -1,6 +1,6 @@
 import React from 'react'
 import './LoginPage.css'
-import logo from '../../assets/handbook-logo.png'
+import logo from '../../assets/handbook-logo-v2.png'
 
 
 //MUI imports to reduce time on creating new components

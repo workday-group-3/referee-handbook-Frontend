@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.css'
-import logo from '../../assets/handbook-logo.png'
+import logo from '../../assets/handbook-logo-v2.png'
 
 // mui imports
 import EmailIcon from '@mui/icons-material/Email';
