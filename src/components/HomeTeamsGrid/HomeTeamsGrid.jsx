@@ -9,7 +9,7 @@ function HomeTeamsGrid() {
 
   return (
     <div className='home-teams-grid'>
-        <div className='section-title'><h2 className='title-name'>{league}</h2></div>
+        <div className='section-title'><h2 className='title-name'>&nbsp;{league} Teams</h2></div>
 
         {/* if teams are still loading, render loading */}
         {loading ? (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>) : (
