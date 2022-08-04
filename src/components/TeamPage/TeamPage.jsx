@@ -171,7 +171,7 @@ function TeamPage() {
       {team == null ? <h3>Loading team...</h3> : <div className='team-page-header'>
       <img className='team-page-logo' src={team.logo}></img>
       <div className='team-page-title'><h1 className='team-page-name'>{team.name}</h1>
-      <h2 className='team-page-league'>{league}</h2></div>
+      <h2 className='team-page-league'>{sportName} | {league}</h2></div>
       
       </div>}
       {limit ? (<h3>Uh oh! The sports API is at its limit. Try refreshing or come back in a minute.</h3>) : (

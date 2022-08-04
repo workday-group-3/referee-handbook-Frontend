@@ -13,7 +13,7 @@
 }
 
 .team-page-stats{
-    padding-top: 20px;
+    padding-top: 1vw;
     display: flex;
 }
 
@@ -39,6 +39,10 @@
 .team-page-league{
     font-weight: 400;
 }
+
+.team-page-league:first-letter{
+    text-transform: capitalize
+  }
 
 .team-page-buttons{
     width: 100%;
@@ -70,8 +74,8 @@
 
 .learn-more{
     
-    padding-top: 1vh;
-    padding-bottom: 5vh;
+    padding-top: 1vw;
+    padding-bottom: 3vw;
     font-weight: 400;
 }
 
