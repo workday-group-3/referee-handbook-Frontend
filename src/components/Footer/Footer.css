@@ -6,8 +6,8 @@
 }
 
 .footer-logo{
-    width: 200px;
-    height: 200px;
+    width: 16em;
+    height: 16em;
 }
 
 .logo-container {
@@ -79,8 +79,8 @@
 }
 
 #twilio-sendgrid-logo {
-    width: 200px;
-    height: 100px;
+    width: 250px;
+    height: 60px;
 }
 
 .icon-list {
