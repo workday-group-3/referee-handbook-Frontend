@@ -156,7 +156,7 @@ export default function CreateCourseForm() {
                     <div className="input-container">
                         <TextField
                         className="input-field"
-                        label="Detailed Description"
+                        label="Main Content"
                         type="text"
                         name="detailedDescription"
                         multiline={true}
@@ -174,7 +174,7 @@ export default function CreateCourseForm() {
                     <div className="media-input-container">
                         <TextField
                             className="tutorial-video-input-field"
-                            label="YouTube Video URL"
+                            label="YouTube URL [Optional]"
                             type="text"
                             name="tutorialVideoURL"
                             value = {courseForm.tutorialVideoURL}
