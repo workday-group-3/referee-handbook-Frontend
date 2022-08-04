@@ -14,7 +14,7 @@
     grid-template-columns: 30% 30% 30%;
     column-gap: 5%;
     height: 80vh;
-    overflow: scroll;
+    overflow-y: auto;
     padding-top: 10px;
 }
 

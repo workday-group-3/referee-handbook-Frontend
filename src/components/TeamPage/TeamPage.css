@@ -13,6 +13,7 @@
 }
 
 .team-page-stats{
+    padding-top: 20px;
     display: flex;
 }
 
@@ -65,4 +66,26 @@
     .team-page-title{
         font-size: 20px;
     }
+}
+
+.learn-more{
+    
+    padding-top: 1vh;
+    padding-bottom: 5vh;
+    font-weight: 400;
+}
+
+.learning-link{
+    text-decoration: underline;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.learning-link:hover{
+    color: #F1D433;
+}
+
+.sports-icon{
+    padding: 2vh;
+    color: #F1D433
 }

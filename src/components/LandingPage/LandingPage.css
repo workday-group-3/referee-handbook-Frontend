@@ -35,7 +35,7 @@
 .landing-btn{
     position: absolute;
     z-index: 5;
-    top: 80%;
+    top: 75%;
     text-align: center;
     left: 30%;
     right: 30%;
@@ -43,9 +43,10 @@
 
 .landing-btn button{
     padding: 5px;
-    width: 100px;
+    width: 8vw;
     margin: 20px;
-    font-size: medium;
+    font-size: large;
+    font-weight: 600;
     background: linear-gradient(to right, #ffffff 50%, #F1D433 50%);
     background-size: 200% 100%;
     background-position: 100% 0;

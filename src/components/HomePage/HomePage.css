@@ -17,6 +17,8 @@
 
 .home-recent-games{
     grid-area: game;
+    border-radius: 20px;
+    box-shadow: 0 1px 18px #000000;
 }
 
 .home-banner{
@@ -24,18 +26,25 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    box-shadow: 0 1px 18px #000000;
 }
 
 .home-side-navbar{
     grid-area: sidebar;
+    border-radius: 20px;
+    box-shadow: 1px 1px 18px #000000;
 }
 
 .home-teams-grid{
     grid-area: teams;
+    border-radius: 20px;
+    box-shadow: 0 1px 18px #000000;
 }
 
 .home-news{
     grid-area: news;
+    border-radius: 20px;
+    box-shadow: 0 1px 18px #000000;
 }
 
 
@@ -43,6 +52,9 @@
     width: 100%;
     background-color: #383838;
     color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    
 }
 
 .title-name{
