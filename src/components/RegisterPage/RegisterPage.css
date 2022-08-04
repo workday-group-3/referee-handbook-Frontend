@@ -30,7 +30,7 @@
     z-index: 5;
     background-color: #383838;
     width: 530px;
-    height: 850px;
+    height: 925px;
     border-radius: 25px;
     margin-top: 5%;
 
@@ -43,8 +43,8 @@
 }
 
 .register-logo {
-    width: 150px;
-    height: 150px;
+    width: 14em;
+    height: 14em;;
 }
 
 
