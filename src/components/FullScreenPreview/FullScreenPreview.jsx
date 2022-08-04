@@ -55,15 +55,15 @@ function FullScreenPreview( { content } ) {
                 <Toolbar>
 
                     <IconButton
-                    edge="start"
-                    
-                    onClick={handleClose}
-                    aria-label="close"
-                    >
-                    <CloseIcon />
+                        edge="start"
+                        onClick={handleClose}
+                        aria-label="close"
+                        >
+                        <CloseIcon />
                     </IconButton>
-                    <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-                    Markdown Preview Window
+                    
+                    <Typography sx={{ ml: 2, flex: 1, color:"#000000" }} variant="h6" component="div">
+                        Markdown Preview Window
                     </Typography>
                     
                 </Toolbar>
