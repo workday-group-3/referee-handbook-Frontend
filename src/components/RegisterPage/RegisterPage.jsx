@@ -2,7 +2,7 @@ import React from 'react'
 import './RegisterPage.css'
 
 //asset imports
-import logo from '../../assets/handbook-logo.png'
+import logo from '../../assets/handbook-logo-v3.png'
 
 //MUI imports
 import Box from '@mui/material/Box';

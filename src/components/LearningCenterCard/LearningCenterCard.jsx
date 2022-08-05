@@ -49,7 +49,7 @@ function LearningCenterCard(props) {
           {props.beginnerCourse.beginner_short_description}
         </p>
 
-      {expandedCourse !== props.beginnerCourse.sport_name ? (<KeyboardArrowDownIcon/>) : (<KeyboardArrowUpIcon/>)}
+
       
       {/* {expandedCourse !== props.beginnerCourse.sport_name ? (<KeyboardArrowDownIcon onClick={setExpand}/>) : (<KeyboardArrowUpIcon onClick={setFold}/>)} */}
       

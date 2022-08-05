@@ -14,12 +14,16 @@ import { ArrowBack } from '@mui/icons-material';
 
 //importing auth context to check if user is signed in
 import { useAuthContext } from "../../contexts/auth"
+import { useLearningContext } from '../../contexts/learning';
+
+import SportsIcon from '@mui/icons-material/Sports';
 
 function TeamPage() {
 
   // uncomment this line to use api
   const {league, team, loadingTeam, getTeam, loadingStats, getStats, stats, error, setError, getTeamGames, limit} = useHomeContext()
 
+  const {beginnerCourses} = useLearningContext()
   // temporary hardcode data for testing
 //   const loadingTeam = false;
 //   const limit = false;
@@ -142,6 +146,14 @@ function TeamPage() {
     navigate("/sports")
   }
 
+  const handleOnclick = async() => {
+    for(let i = 0; i < beginnerCourses.length; i++){
+      if(beginnerCourses[i].sport_name.toLowerCase() == sportName){
+        localStorage.setItem("current_course", JSON.stringify(beginnerCourses[i]))
+      }
+    }
+    navigate(`/learning/${sportName}`)
+  }
 
 
 
@@ -149,7 +161,6 @@ function TeamPage() {
     <div className='team-page'>
       <div className='team-page-buttons'>
         <Button className="create-course-btn"  variant="contained" size="large"  endIcon={<ArrowBack/>} onClick={handleOnReturn} shrink="false" sx={{ color: 'black',  height:"6ch", fontSize:"16px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >Return</Button>
-        <Button className="create-course-btn"  variant="contained" size="large"  endIcon={<BookmarkIcon/>} onClick={currentlyFollowing ? handleOnUnfollow : handleOnFollow} shrink="false" sx={{ color: 'black',  height:"6ch", fontSize:"16px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} > {currentlyFollowing ? "UNFOLLOW" : "FOLLOW"} </Button>
 
         
       </div>
@@ -159,7 +170,11 @@ function TeamPage() {
       {team == null ? <h3>Loading team...</h3> : <div className='team-page-header'>
       <img className='team-page-logo' src={team.logo}></img>
       <div className='team-page-title'><h1 className='team-page-name'>{team.name}</h1>
-      <h2 className='team-page-league'>{league}</h2></div>
+
+      <h2 className='team-page-league'>{sportName} | {league}</h2>
+      <Button className="create-course-btn"  variant="contained" size="large"  endIcon={<BookmarkIcon/>} onClick={currentlyFollowing ? handleOnUnfollow : handleOnFollow} shrink="false" sx={{ color: 'black',  height:"5ch", width:"28ch", fontSize:"16px", margin:"5px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} > {currentlyFollowing ? "UNFOLLOW" : "FOLLOW"} </Button>
+
+      </div>
       
       </div>}
       {limit ? (<h3>Uh oh! The sports API is at its limit. Try refreshing or come back in a minute.</h3>) : (
@@ -171,7 +186,8 @@ function TeamPage() {
       </div>
       <TeamGamesGrid />
       </>)}
-      
+      <SportsIcon fontSize="large" className='sports-icon'/>
+      <h2 className='learn-more'>Want to learn more about {sportName}? Check out our <a className="learning-link" onClick={handleOnclick}>Learning Center</a>.</h2>
     </div>
   )
 }

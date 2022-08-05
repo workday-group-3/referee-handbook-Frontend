@@ -7,14 +7,14 @@ const HomeContext = createContext(null)
 // storing all the information for leagues, leagueName and seasons of each respective sport
 const requestParams = {"basketball": {"league": 12, "season": "2021-2022", "leagueName": "NBA"},
                     "baseball": {"league": 1, "season": "2022", "leagueName": "MLB"},
-                    "soccer": {"league": 253, "season": "2022", "leagueName": "Major League Soccer"},
+                    "soccer": {"league": 253, "season": "2022", "leagueName": "MLS"},
                     "hockey": {"league": 57, "season": "2021", "leagueName": "NHL"},
                     "volleyball": {"league": 180, "season": "2022", "leagueName": "NVA"},
-                    "rugby": {"league": 44, "season": "2022", "leagueName": "Major League Rugby"}}
+                    "rugby": {"league": 44, "season": "2022", "leagueName": "MLR"}}
 
 export const HomeContextProvider = ({ children }) => {
-    const [currentSport, setCurrentSport] = useState("baseball")
-    const [league, setLeague] = useState("Major League Soccer")
+    const [currentSport, setCurrentSport] = useState("soccer")
+    const [league, setLeague] = useState("MLS")
 
     const [news, setNews] = useState([])
     const [teams, setTeams] = useState([])

@@ -13,6 +13,11 @@
 }
 
 .team-page-stats{
+    padding-top: 1vw;
+    display: flex;
+}
+
+.temp{
     display: flex;
 }
 
@@ -24,7 +29,7 @@
 }
 
 .team-page-logo{
-    height: 20vh;
+    height: 22vh;
 }
 
 .team-page-title{
@@ -38,6 +43,10 @@
 .team-page-league{
     font-weight: 400;
 }
+
+.team-page-league:first-letter{
+    text-transform: capitalize
+  }
 
 .team-page-buttons{
     width: 100%;
@@ -65,4 +74,26 @@
     .team-page-title{
         font-size: 20px;
     }
+}
+
+.learn-more{
+    
+    padding-top: 1vw;
+    padding-bottom: 3vw;
+    font-weight: 400;
+}
+
+.learning-link{
+    text-decoration: underline;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.learning-link:hover{
+    color: #F1D433;
+}
+
+.sports-icon{
+    padding: 2vh;
+    color: #F1D433
 }
