@@ -13,8 +13,8 @@ const requestParams = {"basketball": {"league": 12, "season": "2021-2022", "leag
                     "rugby": {"league": 44, "season": "2022", "leagueName": "MLR"}}
 
 export const HomeContextProvider = ({ children }) => {
-    const [currentSport, setCurrentSport] = useState("rugby")
-    const [league, setLeague] = useState("Major League Rugby")
+    const [currentSport, setCurrentSport] = useState("soccer")
+    const [league, setLeague] = useState("MLS")
 
     const [news, setNews] = useState([])
     const [teams, setTeams] = useState([])

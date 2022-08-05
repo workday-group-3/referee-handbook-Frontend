@@ -7,15 +7,21 @@ import HomeSideNavbar from '../HomeSideNavbar/HomeSideNavbar'
 import HomeRecentGames from '../HomeRecentGames/HomeRecentGames'
 import HomeTeamsGrid from '../HomeTeamsGrid/HomeTeamsGrid'
 import HomeNews from '../HomeNews/HomeNews'
+import { useHomeContext } from '../../contexts/home'
 
 function HomePage() {
+  const {currentSport} = useHomeContext()
   return (
-    <div className='home-page'>
+    <div className={`home-page ${currentSport}-home`}>
+      
         <HomeBanner/>
-        <HomeSideNavbar/>
+        <div className={`home-content`}>
+          <HomeSideNavbar/>
         <HomeTeamsGrid/>
         <HomeRecentGames/>
         <HomeNews/>
+        </div>
+        
     </div>
   )
 }

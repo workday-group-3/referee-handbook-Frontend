@@ -18,7 +18,8 @@ function HomeBanner() {
 
   return (
     <div className='home-banner'>
-        <img className="banner-img" src={bannerUrls[currentSport]} alt="Home page banner"></img>
+      <h1 className="home-title">{currentSport}</h1>
+        {/* <img className="banner-img" src={bannerUrls[currentSport]} alt="Home page banner"></img> */}
     </div>
   )
 }

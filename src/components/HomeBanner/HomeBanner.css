@@ -3,3 +3,10 @@
     height: 12vh;
     object-fit: cover;
 }
+
+.home-title{
+    font-family: 'Frijole', "Arial Black", cursive;
+    font-size: 5vw;
+    font-weight: 200;
+    color: white;
+}

@@ -1,12 +1,12 @@
 .card-grid{
     width: 98%;
-    height: 12vh;
+    height: 11vh;
     display: grid;
     grid-template-areas:
         'image time time'
         'image title title';
-    grid-template-columns: 14vw 11vw 11vw;
-    grid-template-rows: 30% 80%;
+    grid-template-columns: 9vw 8vw 8vw;
+    grid-template-rows: 20% 80%;
     column-gap: 1vh;
     padding: 3px;
     justify-content: center;
@@ -15,7 +15,7 @@
 }
 
 .news-img{
-    width: 13vw;
+    width: 8.5vw;
     height: 90%;
     object-fit: cover;
     grid-area: image;
@@ -32,9 +32,8 @@
     grid-area: title;
     font-weight: 500;
     font-size: 1vw;
-    background-color: white;
-    padding: 2px;
-    height: 10vh;
+    padding-bottom: 2px;
+    height: 8vh;
 }
 
 .home-news-card{
@@ -50,6 +49,7 @@
     background-color: white;
     color: white;
     transition: all 0.5s ease;
+    border-radius: 20px;
 }
 
 @media (max-width: 700px) {
