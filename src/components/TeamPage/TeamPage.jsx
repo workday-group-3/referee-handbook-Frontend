@@ -161,7 +161,6 @@ function TeamPage() {
     <div className='team-page'>
       <div className='team-page-buttons'>
         <Button className="create-course-btn"  variant="contained" size="large"  endIcon={<ArrowBack/>} onClick={handleOnReturn} shrink="false" sx={{ color: 'black',  height:"6ch", fontSize:"16px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >Return</Button>
-        <Button className="create-course-btn"  variant="contained" size="large"  endIcon={<BookmarkIcon/>} onClick={currentlyFollowing ? handleOnUnfollow : handleOnFollow} shrink="false" sx={{ color: 'black',  height:"6ch", fontSize:"16px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} > {currentlyFollowing ? "UNFOLLOW" : "FOLLOW"} </Button>
 
         
       </div>
@@ -171,7 +170,11 @@ function TeamPage() {
       {team == null ? <h3>Loading team...</h3> : <div className='team-page-header'>
       <img className='team-page-logo' src={team.logo}></img>
       <div className='team-page-title'><h1 className='team-page-name'>{team.name}</h1>
-      <h2 className='team-page-league'>{sportName} | {league}</h2></div>
+
+      <h2 className='team-page-league'>{sportName} | {league}</h2>
+      <Button className="create-course-btn"  variant="contained" size="large"  endIcon={<BookmarkIcon/>} onClick={currentlyFollowing ? handleOnUnfollow : handleOnFollow} shrink="false" sx={{ color: 'black',  height:"5ch", width:"28ch", fontSize:"16px", margin:"5px", backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} > {currentlyFollowing ? "UNFOLLOW" : "FOLLOW"} </Button>
+
+      </div>
       
       </div>}
       {limit ? (<h3>Uh oh! The sports API is at its limit. Try refreshing or come back in a minute.</h3>) : (
