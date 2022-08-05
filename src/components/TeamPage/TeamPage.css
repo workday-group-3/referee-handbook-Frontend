@@ -17,6 +17,10 @@
     display: flex;
 }
 
+.temp{
+    display: flex;
+}
+
 /*----------------------- component header section --------------------------- */
 .team-page-header{
     display: grid;
@@ -25,7 +29,7 @@
 }
 
 .team-page-logo{
-    height: 20vh;
+    height: 22vh;
 }
 
 .team-page-title{
