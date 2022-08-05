@@ -34,9 +34,7 @@ export default function FormDialog() {
 
   return (
     <div>
-      <Button variant="contained" sx={{ backgroundColor: "#F1D433"}} onClick={handleClickOpen}>
-        Wish to add a sport?
-      </Button>
+      <Button onClick={handleClickOpen} variant="contained" size="large" shrink="false" sx={{ color: 'black', fontSize: '17px', backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} > Wish to add a sport? </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Email us!</DialogTitle>
         <DialogContent>
