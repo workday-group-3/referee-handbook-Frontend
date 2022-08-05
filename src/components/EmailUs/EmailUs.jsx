@@ -55,7 +55,7 @@ export default function FormDialog() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <a className ="icon-anchor" href = {`mailto: ernesto.enriquez.site@codepath.org; travis.navarro.site@codepath.org; aileen.ji.site@codepath.org?subject=NEW SPORT REQUEST&body=Greetings, I would like to add the following sport: ${sportForm ? sportForm.sportname : null} `} ><Button onClick={handleOpenEmail}>Send</Button></a>
+          <a className ="icon-anchor" href = {`mailto: referees.handbook.app@gmail.com;?subject=NEW SPORT REQUEST&body=Greetings, I would like to add the following sport: ${sportForm ? sportForm.sportname : null} `} ><Button onClick={handleOpenEmail}>Send</Button></a>
         </DialogActions>
       </Dialog>
     </div>
