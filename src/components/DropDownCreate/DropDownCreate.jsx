@@ -101,7 +101,7 @@ export default function DropDownCreate() {
         <h4 className="selected-text">Selected:</h4> <span>{selectedValue}</span>
       </Typography>
       <br />
-      <Button variant="contained" onClick={handleClickOpen} sx={{ height: "40px", backgroundColor: "#383838"}}>
+      <Button variant="contained" onClick={handleClickOpen} sx={{ height: "40px", backgroundColor: "#383838", ':hover' :{ bgcolor: 'gray', color: 'white'}}}>
         Choose a sport
       </Button>
       <SimpleDialog
@@ -110,7 +110,7 @@ export default function DropDownCreate() {
         open={open}
         onClose={handleClose}
       />
-      <Button variant="contained" sx={{height: "40px", backgroundColor: "#F1D433"}} onClick={handleNavigate} endIcon={<CreateIcon  />}>
+      <Button variant="contained" sx={{height: "40px", backgroundColor: "#F1D433", ':hover' :{ bgcolor: 'gray', color: 'white'}}} onClick={handleNavigate} endIcon={<CreateIcon  />}>
       </Button>
     </div>
   );
