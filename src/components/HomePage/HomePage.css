@@ -11,6 +11,8 @@
     align-items: center;
 }
 
+/* ----------------------------------- different background according to sport ------------------------------------------------- */
+
 .basketball-home{
     background: rgba(0, 0, 0, 0.5) url("https://images.pexels.com/photos/1293265/pexels-photo-1293265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     background-size:cover;
@@ -47,6 +49,8 @@
     background-position: center;
 }
 
+/*----------------------------------------------home page components ------------------------------------------------------*/
+
 .home-content{
     display: grid;
     grid-template-areas:
@@ -67,7 +71,6 @@
 }
 
 .home-banner{
-    grid-area: banner;
     width: 100%;
     display: flex;
     justify-content: center;
