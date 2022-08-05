@@ -20,12 +20,12 @@ function HomeSideNavbar() {
 
   return (
     <div className='home-side-navbar'>
-        <button onClick={()=>handleSetSport("soccer")} className={currentSport == "soccer" ? "active" : null}><SportsSoccerIcon fontSize="large" className="sport-icon"/></button>
+        <button onClick={()=>handleSetSport("soccer")} className={currentSport == "soccer" ? "active" : null} id="soccer-button"><SportsSoccerIcon fontSize="large" className="sport-icon"/></button>
         <button onClick={()=>handleSetSport("basketball")} className={currentSport == "basketball" ? "active" : null}><SportsBasketballIcon fontSize="large" className="sport-icon" /></button>
         <button onClick={()=>handleSetSport("baseball")} className={currentSport == "baseball" ? "active" : null}><SportsBaseballIcon fontSize="large" className="sport-icon"/></button>
         <button onClick={()=>handleSetSport("hockey")} className={currentSport == "hockey" ? "active" : null}><SportsHockeyIcon fontSize="large" className="sport-icon"/></button>
         <button onClick={()=>handleSetSport("volleyball")} className={currentSport == "volleyball" ? "active" : null}><SportsVolleyballIcon fontSize="large" className="sport-icon"/></button>
-        <button onClick={()=>handleSetSport("rugby")} className={currentSport == "rugby" ? "active" : null}><SportsRugbyIcon fontSize="large" className="sport-icon"/></button>
+        <button onClick={()=>handleSetSport("rugby")} className={currentSport == "rugby" ? "active" : null} id="rugby-button"><SportsRugbyIcon fontSize="large" className="sport-icon"/></button>
     </div>
   )
 }
