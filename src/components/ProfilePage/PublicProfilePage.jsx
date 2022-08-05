@@ -95,7 +95,7 @@ export default function PublicProfilePage(props) {
                         <h1 className="profile-picture-username">@<em>{currentUser.username}</em></h1>
                         <h3 className="profile-picture-name"><AccountCircleIcon className ="profile-icon" color = "grey" />{currentUser.first_name + " " + currentUser.last_name}</h3>
                         <h3 className="profile-location"><LocationOnSharpIcon className ="profile-icon" color ="grey" />{currentUser.location}</h3>
-                        <h3 className="profile-account-creation-date"><ScheduleSharpIcon className="profile-icon" color ="grey"/> Joined on {Moment(new Date(currentUser.createdAt)).format("MMMM Do, YYYY")}</h3> 
+                        <h3 className="profile-account-creation-date"><ScheduleSharpIcon className="profile-icon" color ="grey"/> Joined on {Moment(new Date(currentUser.created_at)).format("MMMM Do, YYYY")}</h3> 
                     </div>
                 </div>
             </div>
@@ -218,7 +218,7 @@ export default function PublicProfilePage(props) {
 
             <div className="user-teams-container">
                 <div className="user-teams-title-container">
-                    <h1 className="user-teams-title"><em>{`${currentUser.first_name} Followed Teams`}</em></h1>
+                    <h1 className="user-teams-title"><em>{`${currentUser.first_name}'s Followed Teams`}</em></h1>
                 </div>
 
 
