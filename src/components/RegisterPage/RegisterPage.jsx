@@ -47,9 +47,14 @@ export default function RegisterPage() {
               name="email"
               value={userRegisterForm.email}
               onChange={handleOnInputChange}
-              sx={{backgroundColor : 'white'}}
+              sx={{backgroundColor : 'white', borderRadius: '12px'}}
               variant="filled"
-              inputProps={{ maxLength: 250 }} 
+              inputProps={{ maxLength: 250 }}
+              InputProps={{ disableUnderline: true }}
+              InputLabelProps={{
+                style: { color: 'black' },
+              }}
+               
               />
           </div>
           <div className="username-input-container">
@@ -61,10 +66,32 @@ export default function RegisterPage() {
               name="username"
               value={userRegisterForm.username}
               onChange={handleOnInputChange}
-              sx={{backgroundColor : 'white'}}
+              sx={{backgroundColor : 'white', borderRadius: '12px'}}
               variant="filled"
               inputProps={{ maxLength: 250 }}
+              InputProps={{ disableUnderline: true }}
+              InputLabelProps={{
+                style: { color: 'black' },
+              }}
               />
+          </div>
+          <div className="name-input-container">
+              <TextField
+                className="first-name-input-field"
+                id="outlined-first-name-input"
+                label="Full Name"
+                type="text"
+                name="fullName"
+                value={userRegisterForm.fullName}
+                onChange={handleOnInputChange}
+                sx={{backgroundColor : 'white', borderRadius: '12px'}}
+                variant="filled"
+                inputProps={{ maxLength: 250 }}
+                InputProps={{ disableUnderline: true }}
+                InputLabelProps={{
+                  style: { color: 'black' },
+                }}
+                />
           </div>
           <div className="location-input-container">
             <TextField
@@ -75,37 +102,15 @@ export default function RegisterPage() {
               name="location"
               value={userRegisterForm.location}
               onChange={handleOnInputChange}
-              sx={{backgroundColor : 'white'}}
+              sx={{backgroundColor : 'white', borderRadius: '12px'}}
               variant="filled"
               inputProps={{ maxLength: 250 }}
+              InputProps={{ disableUnderline: true }}
+              InputLabelProps={{
+                style: { color: 'black' },
+              }}
               />
           </div>
-            <div className="name-input-container">
-              <TextField
-                className="first-name-input-field"
-                id="outlined-first-name-input"
-                label="First Name"
-                type="text"
-                name="firstName"
-                value={userRegisterForm.firstName}
-                onChange={handleOnInputChange}
-                sx={{backgroundColor : 'white'}}
-                variant="filled"
-                inputProps={{ maxLength: 250 }}
-                />
-                <TextField
-                className="last-name-input-field"
-                id="outlined-last-name-input"
-                label="Last Name"
-                type="text"
-                name="lastName"
-                value={userRegisterForm.lastName}
-                onChange={handleOnInputChange}
-                sx={{backgroundColor : 'white'}}
-                variant="filled"
-                inputProps={{ maxLength: 250 }}
-                />
-            </div>
           <div className="profile-picture-url-input-container">
             <TextField
               className="input-field"
@@ -115,12 +120,15 @@ export default function RegisterPage() {
               name="profileImageURL"
               value={userRegisterForm.profileImageURL}
               onChange={handleOnInputChange}
-              sx={{backgroundColor : 'white'}}
+              sx={{backgroundColor : 'white', borderRadius: '12px'}}
               variant="filled"
               inputProps={{ maxLength: 250 }}
+              InputProps={{ disableUnderline: true }}
+              InputLabelProps={{
+                style: { color: 'black' },
+              }}
               />
-              
-            </div>
+          </div>
           <div className="password-input-container">
             <TextField
               className="input-field"
@@ -130,10 +138,14 @@ export default function RegisterPage() {
               name="password"
               value={userRegisterForm.password}
               onChange={handleOnInputChange}
-              sx={{backgroundColor : 'white'}}
+              sx={{backgroundColor : 'white', borderRadius: '12px'}}
               variant="filled"
               autoComplete="current-password"
               inputProps={{ maxLength: 250 }}
+              InputProps={{ disableUnderline: true }}
+              InputLabelProps={{
+                style: { color: 'black' },
+              }}
               />
             </div>
             <div className="confirm-password-input-container">
@@ -145,14 +157,18 @@ export default function RegisterPage() {
                 name="confirmPassword"
                 value={userRegisterForm.confirmPassword}
                 onChange={handleOnInputChange}
-                sx={{backgroundColor : 'white'}}
+                sx={{backgroundColor : 'white', borderRadius: '12px'}}
                 variant="filled"
                 autoComplete="current-password"
                 inputProps={{ maxLength: 250 }}
+                InputProps={{ disableUnderline: true }}
+                InputLabelProps={{
+                  style: { color: 'black' },
+                }}
                 />
             </div>
             <div className="submit-register-btn-container">
-              <Button className="submit-register-btn" variant="contained" size="large" endIcon={<SendIcon/>}  onClick={handleOnSubmitRegisterForm} shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >{isProcessing ? "Loading..." : "REGISTER"}</Button>
+              <Button className="submit-register-btn" variant="contained" size="large" endIcon={<SendIcon/>}  onClick={handleOnSubmitRegisterForm} shrink="false" sx={{ color: 'black', backgroundColor: 'white', borderRadius:'12px', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >{isProcessing ? "Loading..." : "REGISTER"}</Button>
               {error? <p className ="register-error">{error}</p>: null}
             </div>
           <div className="login-redirect">
