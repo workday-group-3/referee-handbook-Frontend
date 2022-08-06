@@ -103,12 +103,11 @@ export default function ProfilePage(props) {
             <div className="profile-page-header">
                 <div className ="profile-picture-container">
                     <img className="profile-picture" src= {profilePicture} onError={evt => { evt.currentTarget.src = "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" }} alt="User profile picture"/>
-                    
                 </div>
                 <div className="user-section">
                     <div className="profile-user-info">
                         <h1 className="profile-picture-username">@<em>{currentUser.username}</em></h1>
-                        <h3 className="profile-picture-name"><AccountCircleIcon className ="profile-icon" color = "grey" />{currentUser.firstName + " " + currentUser.lastName}</h3>
+                        <h3 className="profile-picture-name"><AccountCircleIcon className ="profile-icon" color = "grey" />{currentUser.fullName}</h3>
                         <h3 className="profile-location"><LocationOnSharpIcon className ="profile-icon" color ="grey" />{currentUser.location}</h3>
                         <h3 className="profile-account-creation-date"><ScheduleSharpIcon className="profile-icon" color ="grey"/> Joined on {Moment(new Date(currentUser.createdAt)).format("MMMM Do, YYYY")}</h3> 
                     </div>
@@ -116,72 +115,53 @@ export default function ProfilePage(props) {
             </div>
             <div className ="profile-page-details-container">
                 <div className= "details-title-container">
-                    <h1 className="details-title"><em>About Me</em></h1>
+                    <h1 className="details-title">Stat Sheet</h1>
                 </div>
-                <Box
-                component="form"
-                sx={{
-                '& .MuiTextField-root': { m: 2, width: '45ch', color: 'white' },
-        
-                }}
-                noValidate
-                autoComplete="off">
-                    <div className ="details-container">
-                        <div className ="user-detail">
-                            <TextField
-                            sx={{backgroundColor : 'white'}}
-                            className="detail-field"
-                            label="Username"
-                            type="text"
-                            name = "username"
-                            value = {currentUser.username}
-                            variant="filled"
-                            InputProps={{ readOnly: true }}
-                            />
-                        </div>
-                        <div className ="user-detail-name">
-                            <TextField
-                            sx={{backgroundColor : 'white'}}
-                            className="detail-field"
-                            label="First Name"
-                            type="text"
-                            name = "firstName"
-                            value = {currentUser.firstName}
-                            variant="filled"
-                            InputProps={{ readOnly: true }}
-                            /> 
-                            <TextField
-                            sx={{backgroundColor : 'white'}}
-                            className="detail-field"
-                            label="Last Name"
-                            type="text"
-                            name = "lastName"
-                            value = {currentUser.lastName}
-                            variant="filled"
-                            InputProps={{ readOnly: true }}
-                            />
-                        </div>
-                        <div className ="user-detail">
-                            <TextField
-                                sx={{backgroundColor : 'white'}}
-                                className="detail-field"
-                                label="Email"
-                                type="email"
-                                name = "email"
-                                value = {currentUser.email}
-                                variant="filled"
-                                InputProps={{ readOnly: true }}
-                            />
-                        </div>
-                    </div> 
-                </Box>
+                <div className="stats-container">
+
+                </div>
+            </div>
+
+            <div className="user-teams-container">
+                <div className="user-teams-title-container">
+                    <h1 className="user-teams-title">My Followed Teams</h1>
+                </div>
+
+
+            {/* condtional rendering to display either user's followed teams, or message that user is not following any teams */}
+
+                <div className="user-followed-team-cards">
+                    {userTeams[0] ? userTeams.map((team) => { 
+                       return(
+                        <Link className="followed-team-redirect"to= {`/sports/${team.team_sport_name}/${team.team_id}`}>
+                            <div className="user-followed-team-card">
+                                <div className="team-logo-container">
+                                    <img src ={team.team_logo} className="profile-team-logo"></img>
+                                </div>
+                                <div className="team-information">
+                                    <div className="team-name-container">
+                                        <h1 className="team-name">{team.team_name}</h1>
+                                    </div>
+                                    <div className="team-content-container">
+                                        <p className="team-content">{team.team_sport_name} | {team.team_league} | Following since {Moment(new Date(team.following_at)).format("MMMM Do, YYYY")}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Link>
+
+                       ) 
+
+                    }) : <h1 className="no-teams-error-msg"> Not following any teams currently, browse different sports teams <Link  className ="learning-redirect" to ="/sports">here.</Link></h1>}
+
+                </div>
+
             </div>
         </div>
         <div className="courses-teams-container">
             <div className ="user-courses-container">
                 <div className="user-courses-title-container">
                     <div className="title-container">
-                        <h1 className="user-courses-title"><em>My Created Courses</em></h1>
+                        <h1 className="user-courses-title">My Created Courses</h1>
                     </div>
                     
                 </div>
@@ -231,40 +211,7 @@ export default function ProfilePage(props) {
             </div>
 
 
-            <div className="user-teams-container">
-                <div className="user-teams-title-container">
-                    <h1 className="user-teams-title"><em>My Followed Teams</em></h1>
-                </div>
 
-
-            {/* condtional rendering to display either user's followed teams, or message that user is not following any teams */}
-
-                <div className="user-followed-team-cards">
-                    {userTeams[0] ? userTeams.map((team) => { 
-                       return(
-                        <Link className="followed-team-redirect"to= {`/sports/${team.team_sport_name}/${team.team_id}`}>
-                            <div className="user-followed-team-card">
-                                <div className="team-logo-container">
-                                    <img src ={team.team_logo} className="profile-team-logo"></img>
-                                </div>
-                                <div className="team-information">
-                                    <div className="team-name-container">
-                                        <h1 className="team-name">{team.team_name}</h1>
-                                    </div>
-                                    <div className="team-content-container">
-                                        <p className="team-content">{team.team_sport_name} | {team.team_league} | Following since {Moment(new Date(team.following_at)).format("MMMM Do, YYYY")}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </Link>
-
-                       ) 
-
-                    }) : <h1 className="no-teams-error-msg"> Not following any teams currently, browse different sports teams <Link  className ="learning-redirect" to ="/sports">here.</Link></h1>}
-
-                </div>
-
-            </div>
         </div>
     </div>
   )
