@@ -46,6 +46,7 @@ export default function LoginPage({ message }) {
           autoComplete="off">
           <div className="email-input-container">
             <TextField
+              sx={{backgroundColor : 'white', borderRadius: "12px"}}
               className="input-field"
               id="outlined-email-input"
               label="Email"
@@ -56,13 +57,17 @@ export default function LoginPage({ message }) {
               value = {userLoginForm.email}
               onChange={handleOnInputChange}
               inputProps={{ maxLength: 250 }}
+              InputProps={{ disableUnderline: true }}
+              InputLabelProps={{
+                style: { color: 'black' },
+              }}
               />
           </div>
           <div className="password-input-container">
 
             
             <TextField
-              sx={{backgroundColor : 'white'}}
+              sx={{backgroundColor : 'white', borderRadius: "12px"}}
               className="input-field"
               id="outlined-password-input"
               label="Password"
@@ -73,12 +78,17 @@ export default function LoginPage({ message }) {
               variant="filled"
               autoComplete="current-password"
               inputProps={{ maxLength: 250 }}
+              InputProps={{ disableUnderline: true }}
+              InputLabelProps={{
+                style: { color: 'black' },
+              }}
+
               />
 
           </div>
           </Box>
           <div className="submit-login-btn-container">
-            <Button className="submit-login-btn"  onClick={handleOnSubmitLogin} variant="contained" size="large" endIcon={<SendIcon/>}  shrink="false" sx={{ color: 'black', backgroundColor: 'white', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >{isProcessing ? "Loading..." : "LOGIN"}</Button>
+            <Button className="submit-login-btn"  onClick={handleOnSubmitLogin} variant="contained" size="large" endIcon={<SendIcon/>}  shrink="false" sx={{ color: 'black', backgroundColor: 'white', borderRadius: "12px", ':hover' :{ bgcolor: 'gray', color: 'white'} }} >{isProcessing ? "Loading..." : "LOGIN"}</Button>
             {error? <p className ="login-error">{error}</p>: null}
           </div>
         </div>
