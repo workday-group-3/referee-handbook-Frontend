@@ -86,15 +86,19 @@ export default function Recover() {
                             name="email"
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
-                            sx={{backgroundColor : 'white', width: "75%"}}
+                            sx={{backgroundColor : 'white', width: "75%", borderRadius: '12px'}}
                             variant="filled"
                             inputProps={{ maxLength: 250 }}
+                            InputProps={{ disableUnderline: true }}
+                            InputLabelProps={{
+                              style: { color: 'black' },
+                            }}
                             />
                         </div>
 
              
                         <div className="recover-account-btn-container">
-                            <Button className="recover-account-btn" disabled={isProcessing} onClick={handleOnSubmit} variant="contained" size="large"   shrink="false" sx={{ color: 'black', width: "50%", fontSize: '17px', backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} > {isProcessing ? "Loading..." : "Recover Account"}</Button>
+                            <Button className="recover-account-btn" disabled={isProcessing} onClick={handleOnSubmit} variant="contained" size="large"   shrink="false" sx={{ color: 'black', borderRadius: '12px', width: "50%", fontSize: '17px', backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} > {isProcessing ? "Loading..." : "Recover Account"}</Button>
                         </div>
                         {error && <span className="recover-account-error">{error}</span>}
                         <div className="recover-footer">

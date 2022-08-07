@@ -173,7 +173,7 @@ function CoursesListPage(props) {
             )
           }) 
           
-          : <h1 className="no-courses-message"><em>No user courses created yet</em></h1>}
+          : <h1 className="no-courses-message"><em>No {difficulty.toLowerCase()} courses created yet</em></h1>}
       </div>
       
 

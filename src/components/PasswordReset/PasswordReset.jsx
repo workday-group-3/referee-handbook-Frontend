@@ -53,9 +53,13 @@ export default function PasswordReset() {
                         name="password"
                         value={form.password}
                         onChange={handleOnInputChange}
-                        sx={{backgroundColor : 'white', width: "75%"}}
+                        sx={{backgroundColor : 'white', width: "75%", borderRadius: '12px'}}
                         variant="filled"
                         inputProps={{ maxLength: 250 }}
+                        InputProps={{ disableUnderline: true }}
+                        InputLabelProps={{
+                          style: { color: 'black' },
+                        }}
                         />
                     </div>
                     <div className="confirm-password-input-container">
@@ -67,15 +71,19 @@ export default function PasswordReset() {
                             name="confirmPassword"
                             value={form.confirmPassword}
                             onChange={handleOnInputChange}
-                            sx={{backgroundColor : 'white', width: "75%"}}
+                            sx={{backgroundColor : 'white', width: "75%", borderRadius: '12px'}}
                             variant="filled"
                             inputProps={{ maxLength: 250 }}
+                            InputProps={{ disableUnderline: true }}
+                            InputLabelProps={{
+                              style: { color: 'black' },
+                            }}
                             />
                     </div>
 
 
                     <div className="password-reset-btn-container">
-                            <Button className="password-reset-btn" disabled={isProcessing} onClick={handleOnSubmit} variant="contained" size="large"   shrink="false" sx={{ color: 'black', width: "50%", fontSize: '17px', backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >{isProcessing ? "Loading..." : "Save Password"}</Button>
+                            <Button className="password-reset-btn" disabled={isProcessing} onClick={handleOnSubmit} variant="contained" size="large"   shrink="false" sx={{ color: 'black', width: "50%", borderRadius: '12px', fontSize: '17px', backgroundColor: 'whitesmoke', ':hover' :{ bgcolor: 'gray', color: 'white'} }} >{isProcessing ? "Loading..." : "Save Password"}</Button>
                     </div>
                 </div>
             )}

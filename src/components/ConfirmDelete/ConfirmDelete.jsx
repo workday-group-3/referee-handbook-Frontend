@@ -65,7 +65,7 @@ export default function ConfirmDelete( props ) {
     return (
       <div>
         <div className="delete-btn-container">
-        <Button variant="outlined" color="error" onClick={handleClickOpen} sx={{ width: "200px", overflowX: "auto" }} >
+        <Button variant="outlined" color="error" onClick={handleClickOpen} sx={{ width: "200px", fontSize: "12px", overflowX: "auto" }} >
             {`Delete ${props.course.course_title}`}
         </Button>
         </div>
