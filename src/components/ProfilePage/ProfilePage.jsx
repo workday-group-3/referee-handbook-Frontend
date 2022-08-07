@@ -230,7 +230,7 @@ export default function ProfilePage(props) {
    
             <div className ="user-courses-container">
 
-                <div className="title-container">
+                <div className="user-course-title-container">
                     <h1 className="user-courses-title">My Created Courses</h1>
                 </div>
 
