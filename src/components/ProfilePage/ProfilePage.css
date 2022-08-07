@@ -138,14 +138,19 @@
     margin: 1%;
 }
 
-.user-courses-title-container {
+.user-course-title-container {
+    display: flex;
+    justify-content: center;
     margin: 1%;
+
 }
+
 
 .user-courses-title {
     display: flex;
     justify-content: center;
-    margin-right: 3.5%;
+    margin-right: 2.5%;
+    margin-top: 1%;
 }
 
 .title-container {
@@ -155,9 +160,6 @@
 
 }
 
-.user-course-title-container {
-    margin: 1%;
-}
 
 
 

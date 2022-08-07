@@ -231,7 +231,9 @@ export default function ProfilePage(props) {
             <div className ="user-courses-container">
 
                 <div className="user-course-title-container">
-                    <h1 className="user-courses-title">My Created Courses</h1>
+
+                        <h1 className="user-courses-title">My Created Courses</h1>
+
                 </div>
 
                 {/* condtional rendering to display either users created courses, or message that no courses created */}
