@@ -25,7 +25,7 @@
 .sport-card:hover {
     
 
-    color: yellow;
+    color: #F1D433;
 
 }
 
@@ -45,9 +45,7 @@
     
 }
 
-.sport-img:hover {
-    border-radius: 100%;
-}
+
 
 
 .sport-description {
@@ -55,7 +53,7 @@
     width: 23.3vw;
     margin: auto;
     overflow: hidden;
-
+    font-size: 16px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

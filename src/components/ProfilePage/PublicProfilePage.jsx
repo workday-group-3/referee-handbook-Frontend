@@ -11,6 +11,13 @@ import TextField from '@mui/material/TextField';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 import ScheduleSharpIcon from '@mui/icons-material/ScheduleSharp';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 //importing auth context to render components with user data and check for profile picture placeholder requirements
 import { useAuthContext } from "../../contexts/auth"
@@ -20,6 +27,7 @@ import { useState, useEffect } from "react"
 
 //import for date formatting
 import Moment from "moment"
+import moment from 'moment';
 
 //importing apiClient to call to the backend for retrieving user created courses
 import apiClient from '../../services/apiClient';
@@ -33,8 +41,9 @@ export default function PublicProfilePage(props) {
     const [userOwnedCourses, setUserOwnedCourses] = useState([]) 
     const [userProfile, setUserProfile]= useState([])
     const [userTeams, setUserTeams] = useState([])
+    const [userRatings, setUserRatings] = useState([])
     const [error, setError] = useState(null)
-    
+    let avgRatingReceived = 0;
     const { username } = useParams();
 
     //fetching user owned courses to display
@@ -44,9 +53,11 @@ export default function PublicProfilePage(props) {
             //Renders favorites and courses based on whose profile page is being viewed
             const {data, error} = await apiClient.listUserOwnedObjectForOtherUsers(username)
             if(data){
+                console.log("public data", data)
                 setUserOwnedCourses(data.userCourses)
                 setUserTeams(data.userTeams)
                 setUserProfile(data.userInformation)
+                setUserRatings(data.userReceivedRatings)
             }
             if(error){
                 setError(error)
@@ -78,8 +89,58 @@ export default function PublicProfilePage(props) {
         {currentUser.profile_image_url === null ? profilePicture = profilePicturePlaceholder : profilePicture = currentUser.profile_image_url}
     } 
 
+
+
+
+
+
+    var today = new Date();
+    let startAccountDate = Moment(new Date(currentUser.created_at)).format("YYYY-MM-DD")
+    var todaysDate = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear()
+     
+
+    const currentDate = moment(new Date(todaysDate));
+    const returnDate = moment(new Date(startAccountDate));
+    var days_diff = currentDate.diff(returnDate,'days');
     
-    
+    console.log(days_diff)
+
+
+
+
+
+    userRatings?.map((rating) => {
+        avgRatingReceived = avgRatingReceived + rating.rating
+    })
+
+
+
+    function createData(name, value) {
+        return { name, value };
+      }
+      
+      const rows = [
+        createData('Courses Made', userOwnedCourses?.length),
+        createData('Ratings Received', userRatings?.length),
+        createData('Average Rating Received', avgRatingReceived === 0 && userRatings?.length === 0 ? `0/5` : `${avgRatingReceived / userRatings?.length}/5`),
+        createData('Followed Teams', userTeams?.length),
+        createData('Account Lifespan', days_diff + (days_diff === 1 ? " Day" : " Days")),
+      ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 
   return (
@@ -93,7 +154,7 @@ export default function PublicProfilePage(props) {
                 <div className="user-section">
                     <div className="profile-user-info">
                         <h1 className="profile-picture-username">@<em>{currentUser.username}</em></h1>
-                        <h3 className="profile-picture-name"><AccountCircleIcon className ="profile-icon" color = "grey" />{currentUser.first_name + " " + currentUser.last_name}</h3>
+                        <h3 className="profile-picture-name"><AccountCircleIcon className ="profile-icon" color = "grey" />{currentUser.full_name}</h3>
                         <h3 className="profile-location"><LocationOnSharpIcon className ="profile-icon" color ="grey" />{currentUser.location}</h3>
                         <h3 className="profile-account-creation-date"><ScheduleSharpIcon className="profile-icon" color ="grey"/> Joined on {Moment(new Date(currentUser.created_at)).format("MMMM Do, YYYY")}</h3> 
                     </div>
@@ -101,124 +162,39 @@ export default function PublicProfilePage(props) {
             </div>
             <div className ="profile-page-details-container">
                 <div className= "details-title-container">
-                    <h1 className="details-title"><em>{`About ${currentUser.first_name}`}</em></h1>
+                    <h1 className="details-title">Stat Sheet</h1>
                 </div>
-                <Box
-                component="form"
-                sx={{
-                '& .MuiTextField-root': { m: 2, width: '45ch', color: 'white' },
-        
-                }}
-                noValidate
-                autoComplete="off">
-                    {currentUser.username !== undefined ?
-                        <div className ="details-container">
-                            <div className ="user-detail">
-                                <TextField
-                                sx={{backgroundColor : 'white'}}
-                                className="detail-field"
-                                label="Username"
-                                type="text"
-                                name = "username"
-                                value = {currentUser.username}
-                                variant="filled"
-                                InputProps={{ readOnly: true }}
-                                />
-                            </div>
-                            <div className ="user-detail-name">
-                                <TextField
-                                sx={{backgroundColor : 'white'}}
-                                className="detail-field"
-                                label="First Name"
-                                type="text"
-                                name = "first_name"
-                                value = {currentUser.first_name}
-                                variant="filled"
-                                InputProps={{ readOnly: true }}
-                                /> 
-                                <TextField
-                                sx={{backgroundColor : 'white'}}
-                                className="detail-field"
-                                label="Last Name"
-                                type="text"
-                                name = "last_name"
-                                value = {currentUser.last_name}
-                                variant="filled"
-                                InputProps={{ readOnly: true }}
-                                />
-                            </div>
-                            <div className ="user-detail">
-                                <TextField
-                                    sx={{backgroundColor : 'white'}}
-                                    className="detail-field"
-                                    label="Email"
-                                    type="email"
-                                    name = "email"
-                                    value = {currentUser.email}
-                                    variant="filled"
-                                    InputProps={{ readOnly: true }}
-                                />
-                            </div>
-                        </div> : null}
+                <div className="stats-container">
+                    <TableContainer sx={{ width: "100%"}} component={Paper}>
+                        <Table sx={{  backgroundColor: "#D9D9D9" }} aria-label="simple table">
+                            <TableHead>
+                            <TableRow>
 
-                </Box>
-            </div>
-        </div>
-        <div className="courses-teams-container">
-            <div className ="user-courses-container">
-                <div className="user-courses-title-container">
-                    <div className="title-container">
-                        <h1 className="user-courses-title"><em>{`${currentUser.first_name}'s Created Courses`}</em></h1>
-                    </div>
-                    
-                </div>
-
-                {/* condtional rendering to display either users created courses, or message that no courses created */}
-                <div className ="user-courses-cards">
-                    
-                    {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
-                        return (
-                            <div className="individual-course" key={course}>
-                                {/* when a user clicks on a course, it sets it to local storage and redirects them to that course page properly */}
-                                <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
-                                    
-                                    <div onClick={() => setCourseHandler(course)} className ="user-course-card-container">
-                                        <div className="thumbnail-container">
-                                            <div className="cover-image-category">
-                                            <img className ="course-card-cover-image" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }} alt={`Cover image for ${course.course_title}`}></img>
-                                            <div className="category-and-date">
-                                                <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
-                                            </div>
-                                        </div>      
-                                    </div>
-                                    <div className="title-description-container">
-                                            <h1 className="user-course-card-title">{course.course_title}</h1>
-                                            <p className="user-course-card-description">{course.course_short_description}</p>
-                                        </div>
-                                    </div>
-                                </Link>
-
+                            </TableRow>
+                            </TableHead>
+                            <TableBody>
+                            {rows.map((row) => (
+                                <TableRow
+                                key={row.name}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                <TableCell component="th" scope="row">
+                                    {row.name}
+                                </TableCell>
                                 
-
-                                
-                                
-                            </div>
-                        )
-                    }) : 
-                        // Only allow a user to create a course if they're logged in
-                        <div className='drop-down'> 
-                            {/* <h1 className="no-user-courses-message">No courses created, get started <Link  className ="learning-redirect" to ="/learning">here!</Link></h1> */}
-                            <h1 className="no-user-courses-message">No courses created yet.</h1>
-                        </div>
-                    
-                }
+                                <TableCell align="right">{row.value}</TableCell>
+                                </TableRow>
+                            ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                 </div>
             </div>
 
 
             <div className="user-teams-container">
                 <div className="user-teams-title-container">
-                    <h1 className="user-teams-title"><em>{`${currentUser.first_name}'s Followed Teams`}</em></h1>
+                    <h1 className="user-teams-title">{`${currentUser?.full_name?.split(" ")[0]}'s Followed Teams`}</h1>
                 </div>
 
 
@@ -245,12 +221,68 @@ export default function PublicProfilePage(props) {
 
                        ) 
 
-                    }) : <h1 className="no-teams-error-msg"> Not following any teams currently, browse different sports teams <Link  className ="learning-redirect" to ="/sports">here.</Link></h1>}
+                    }) : <h1 className="no-teams-error-msg"> Not following any teams currently, browse different sports teams <Link  className ="learning-redirect" to ="/sports">here</Link></h1>}
 
                 </div>
 
             </div>
+
+
+
+
         </div>
+
+            <div className ="user-courses-container">
+
+                    <div className="title-container">
+                        <h1 className="user-courses-title">{`${currentUser?.full_name?.split(" ")[0]}'s Created Courses`}</h1>
+                    </div>
+       
+
+                {/* condtional rendering to display either users created courses, or message that no courses created */}
+                <div className ="user-courses-cards">
+                    
+                    {userOwnedCourses[0] ? userOwnedCourses.map((course) => {
+                        return (
+                            <div className="individual-course" key={course}>
+                                {/* when a user clicks on a course, it sets it to local storage and redirects them to that course page properly */}
+                                <Link className ="user-created-course-redirect-link" to={`/learning/${course.sport_name}/userCreated/${course.courseId}`}>
+                                    
+                                    <div onClick={() => setCourseHandler(course)} className ="user-course-card-container">
+                                        <div className="thumbnail-container">
+                                            <div className="cover-image-category">
+                                            <img className ="course-card-cover-image" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }} alt={`Cover image for ${course.course_title}`}></img>
+                                            <div className="category-and-date">
+                                                <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                                            </div>
+                                        </div>      
+                                    </div>
+                                    <div className="title-description-container">
+                                            <div className="user-course-card-title-container"><h1 className="user-course-card-title">{course.course_title}</h1></div>
+                                            <div className="user-course-card-description-container"><p className="user-course-card-description">{course.course_short_description}</p></div>
+                                        </div>
+                                    </div>
+                                </Link>
+
+                                
+
+                                
+                                
+                            </div>
+                        )
+                    }) : 
+                        // Only allow a user to create a course if they're logged in
+                        <div className='drop-down'> 
+                            {/* <h1 className="no-user-courses-message">No courses created, get started <Link  className ="learning-redirect" to ="/learning">here!</Link></h1> */}
+                            <h1 className="no-user-courses-message">No courses created yet.</h1>
+                        </div>
+                    
+                }
+                </div>
+            </div>
+
+
+
     </div>
   )
 }
