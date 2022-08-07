@@ -61,14 +61,10 @@ export default function ProfilePage(props) {
                 await apiClient.listUserOwnedObjectsByUser() :
                 await apiClient.listUserOwnedObjectForOtherUsers(username)
             if(data){
-                console.log("data received", data)
                 setUserOwnedCourses(data.userCourses)
                 setUserTeams(data.userTeams)
                 setUserProfile(data.userInformation)
                 setUserRatings(data.userReceivedRatings)
-
-
-                console.log(data.userCourses.length)
             }
             if(error){
                 setError(error)
@@ -81,7 +77,7 @@ export default function ProfilePage(props) {
 
     //function to set the current beginner course in local storage
     async function setCourseHandler(userCourse) {
-        
+
         const includeUsername = {
             ...userCourse,
             username: user.username
@@ -92,7 +88,7 @@ export default function ProfilePage(props) {
     const { user } = useAuthContext()
     const currentUser = username == undefined ? user : userProfile
     
-
+    // summing up all of user's received ratings to display in stat table
     userRatings?.map((rating) => {
         avgRatingReceived = avgRatingReceived + rating.rating
     })
@@ -137,7 +133,8 @@ export default function ProfilePage(props) {
       const rows = [
         createData('Courses Made', userOwnedCourses?.length),
         createData('Ratings Received', userRatings?.length),
-        createData('Average Rating Received', avgRatingReceived / userRatings?.length),
+        // error handling for scenario where both variables are zero, cannot divide by 0
+        createData('Average Rating Received',  avgRatingReceived === 0 && userRatings?.length === 0 ? `0/5` : `${avgRatingReceived / userRatings?.length}/5`),
         createData('Followed Teams', userTeams?.length),
         createData('Account Lifespan', days_diff + (days_diff === 1 ? " Day" : " Days")),
       ];
@@ -224,7 +221,7 @@ export default function ProfilePage(props) {
 
                        ) 
 
-                    }) : <h1 className="no-teams-error-msg"> Not following any teams currently, browse different sports teams <Link  className ="learning-redirect" to ="/sports">here.</Link></h1>}
+                    }) : <h1 className="no-teams-error-msg"> Not following any teams currently, browse different sports teams <Link  className ="learning-redirect" to ="/sports">here</Link></h1>}
 
                 </div>
 
