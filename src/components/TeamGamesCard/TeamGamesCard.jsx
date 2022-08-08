@@ -35,7 +35,7 @@ function TeamGamesCard(props) {
       {props.team ? <>{isLive ? <p className='WDL G'>LIVE</p> : <p className={`WDL ${props.team.WDL}`}>{props.team.WDL}</p>}
       <div className='teams-card-body'>
         <img className='opponent-logo' src={props.team.location == "HOME" ? props.team.teams.away.logo : props.team.teams.home.logo} alt="opponent-logo"></img>
-        {props.team.status.short !="FT" ? 
+        {props.team.status.short !="FT" && props.team.status.short != "CANC" && props.team.status.short != "AOT" && props.team.status.short != "POST" && props.team.status.short != "SUSP" ? 
         <div className='teams-card-content'>
         <div className='header-line'>
           <p className='teams-card-scores'>{props.team.scores.home} - {props.team.scores.away}&nbsp;</p>
