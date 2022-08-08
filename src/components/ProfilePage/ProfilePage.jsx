@@ -249,7 +249,7 @@ export default function ProfilePage(props) {
                                             <div className="cover-image-category">
                                             <img className ="course-card-cover-image" src={course.course_cover_image_url} onError={e => { e.currentTarget.src = "https://ca.ingrammicro.com/_layouts/images/CSDefaultSite/common/no-image-lg.png"; }} alt={`Cover image for ${course.course_title}`}></img>
                                             <div className="category-and-date">
-                                                <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MMMM Do, YYYY")}</p>
+                                                <p className="course-card-date-category">{course.sport_name} | Created on {Moment(new Date(course.created_at)).format("MM/DD/YYYY")}</p>
                                             </div>
                                         </div>      
                                     </div>
