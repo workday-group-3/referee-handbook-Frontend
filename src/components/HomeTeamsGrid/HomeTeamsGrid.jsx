@@ -15,7 +15,7 @@ function HomeTeamsGrid() {
         {loading ? (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>) : (
 
         // for each team, render a team card
-        <div className='grid-teams'>
+        <div className={`grid-teams`}>
             {teams.map((item) => {return <HomeTeamsCard teamId={item.id} name={item.name} logo={item.logo} id={item.id}/>})}
         </div>)}
     </div>

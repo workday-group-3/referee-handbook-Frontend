@@ -10,12 +10,13 @@
   border-radius: 50px;
   opacity: 80%;
   overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 .landing-carousel .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: rgba(201, 199, 199, 0.7);
+  background: rgba(201, 199, 199, 0.897);
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -55,7 +56,10 @@
     border-radius: 50px;
 }
 
-
+.swiper-slide h4{
+  width: 40%;
+  font-size: 22px;
+}
 
 
 /* ----------------------------------- Bounce feature on hover ----------------------------------------  */
