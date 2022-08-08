@@ -29,13 +29,15 @@
 .cta h2{
     color: white;
     font-size: 2vw;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 
 .landing-btn{
     position: absolute;
     z-index: 5;
-    top: 75%;
+    top: 70%;
     text-align: center;
     left: 30%;
     right: 30%;
@@ -46,11 +48,12 @@
     width: 8vw;
     margin: 20px;
     font-size: large;
-    font-weight: 600;
+    font-weight: 700;
     background: linear-gradient(to right, #ffffff 50%, #F1D433 50%);
     background-size: 200% 100%;
     background-position: 100% 0;
     transition: background-position 0.3s;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 .landing-btn a{
