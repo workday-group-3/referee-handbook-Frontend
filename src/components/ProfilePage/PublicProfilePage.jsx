@@ -122,7 +122,7 @@ export default function PublicProfilePage(props) {
       const rows = [
         createData('Courses Made', userOwnedCourses?.length),
         createData('Ratings Received', userRatings?.length),
-        createData('Average Rating Received', avgRatingReceived === 0 && userRatings?.length === 0 ? `0/5` : `${avgRatingReceived / userRatings?.length}/5`),
+        createData('Average Rating Received', avgRatingReceived === 0 && userRatings?.length === 0 ? `0/5` : `${(avgRatingReceived / userRatings?.length).toFixed(2)}/5`),
         createData('Followed Teams', userTeams?.length),
         createData('Account Lifespan', days_diff + (days_diff === 1 ? " Day" : " Days")),
       ];
