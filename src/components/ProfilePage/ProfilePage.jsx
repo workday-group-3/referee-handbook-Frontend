@@ -134,7 +134,7 @@ export default function ProfilePage(props) {
         createData('Courses Made', userOwnedCourses?.length),
         createData('Ratings Received', userRatings?.length),
         // error handling for scenario where both variables are zero, cannot divide by 0
-        createData('Average Rating Received',  avgRatingReceived === 0 && userRatings?.length === 0 ? `0/5` : `${avgRatingReceived / userRatings?.length}/5`),
+        createData('Average Rating Received',  avgRatingReceived === 0 && userRatings?.length === 0 ? `0/5` : `${(avgRatingReceived / userRatings?.length).toFixed(2)}/5`),
         createData('Followed Teams', userTeams?.length),
         createData('Account Lifespan', days_diff + (days_diff === 1 ? " Day" : " Days")),
       ];
