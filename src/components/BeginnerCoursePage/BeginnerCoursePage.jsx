@@ -78,7 +78,7 @@ function BeginnerCoursePage() {
                                 rule ? 
                                 <SwiperSlide>
                                     <div className='flag'><img src={flagImg} alt="flag image" className='flag-img'></img></div>
-                                    <p>{rule}</p>
+                                    <div className="rule-container"><p className="beginner-course-rule">{rule}</p></div>
                                 </SwiperSlide> : null
                             )
                         })}
