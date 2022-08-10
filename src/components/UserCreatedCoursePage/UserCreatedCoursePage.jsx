@@ -206,7 +206,7 @@ function UserCreatedCoursePage() {
                             <span className ="ratings-container">
                                 <Stack spacing={1}>
                                     <Typography sx={{ fontSize: "14px", margin: "0" }} component="legend"><em>{userOwned ? "Cannot rate your own course :( " : user?.username ? "Rate this course below!" : "Sign in to rate this course!"}</em></Typography>
-                                    <Rating emptyIcon={<StarIcon style={{ color: 'white' }} fontSize="inherit" />} name="half-rating" onChange={(evt) => {handleOnRatingSubmit(evt)}} value={rating?.rating ? rating.rating : 0} precision={0.5} defaultValue={rating?.rating ? rating.rating : 0}  size="large" disabled={!user?.email || userOwned}/>
+                                    <Rating emptyIcon={<StarIcon style={{ color: 'grey' }} fontSize="inherit" />} name="half-rating" onChange={(evt) => {handleOnRatingSubmit(evt)}} value={rating?.rating ? rating.rating : 0} precision={0.5} defaultValue={rating?.rating ? rating.rating : 0}  size="large" disabled={!user?.email || userOwned}/>
                                 </Stack>
                             </span>
 
