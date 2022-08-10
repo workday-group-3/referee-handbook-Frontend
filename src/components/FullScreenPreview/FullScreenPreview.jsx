@@ -49,7 +49,7 @@ function FullScreenPreview( { content } ) {
             onClose={handleClose}
             TransitionComponent={Transition}
         >
-            <AppBar sx={{ position: 'relative', backgroundColor: "#F1D433"}}>
+            <AppBar sx={{ position: 'relative', backgroundColor: "#383838"}}>
 
                 {/* Bar on top of fullscreen popup which allows users to close window  */}
                 <Toolbar>
@@ -62,7 +62,7 @@ function FullScreenPreview( { content } ) {
                         <CloseIcon />
                     </IconButton>
                     
-                    <Typography sx={{ ml: 2, flex: 1, color:"#000000" }} variant="h6" component="div">
+                    <Typography sx={{ ml: 2, flex: 1, color:"white" }} variant="h6" component="div">
                         Markdown Preview Window
                     </Typography>
                     
@@ -71,7 +71,9 @@ function FullScreenPreview( { content } ) {
             
             {/* Render the markdown unto the fullscreen popup */}
             <div className='markdown-content'>
-                <ReactMarkdown>{content}</ReactMarkdown>
+                <div className='markdown-text'>
+                    <ReactMarkdown>{content}</ReactMarkdown>
+                </div>
             </div>
 
 

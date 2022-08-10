@@ -1,8 +1,21 @@
 .markdown-content {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: auto;
+    
+    background-color: #201E1E;
+}
+
+
+
+.markdown-text {
     white-space: pre-wrap;
-    margin: 3rem;
     font-size: 1.5rem;
+    margin-left: 2vw;
+    margin-top: 3vh;
     word-break: break-all;
+    color: white;
 }
 
 .markdown-content img {

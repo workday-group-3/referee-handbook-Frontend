@@ -110,7 +110,7 @@ export default function CreateCourseForm() {
     autoComplete="off">
         <div className="create-course-form">
             <div className="create-course-title-container">
-                { sportName? <h1 className="create-course-title"><em>Create a New Course for {currentSport.sport_name}</em></h1> : null}
+                { sportName? <h1 className="create-course-title">Create a New Course for {currentSport.sport_name}</h1> : null}
             </div>
             <div className="create-course-form-container">
                 <div className="input-container">
@@ -119,11 +119,16 @@ export default function CreateCourseForm() {
                     label="Course Name"
                     type="text"
                     name="courseName"
+                    color="primary"
+                    variant="filled"
                     value = {courseForm.courseName}
                     onChange = {handleOnInputChange}
-                    sx={{backgroundColor : 'white'}}
-                    variant="filled"
+                    sx={{backgroundColor : 'white', borderRadius: "12px"}}
+                    InputProps={{ disableUnderline: true }}
                     inputProps={{ maxLength: 250 }}
+                    InputLabelProps={{
+                        style: { color: 'black' },
+                      }}
                     />
                 </div>
                 <div className="input-container">
@@ -133,12 +138,18 @@ export default function CreateCourseForm() {
                     type="text"
                     name="shortDescription"
                     multiline={true}
-                    rows={2}
+                    minRows={4}
+                    maxRows={8}
                     value = {courseForm.shortDescription}
                     onChange = {handleOnInputChange}
-                    sx={{backgroundColor : 'white'}}
                     variant="filled"
                     inputProps={{ maxLength: 500 }}
+                    color="primary"
+                    InputProps={{ disableUnderline: true }}
+                    sx={{backgroundColor : 'white', borderRadius: "12px"}}
+                    InputLabelProps={{
+                        style: { color: 'black' },
+                      }}
                     />
                 </div>
 
@@ -164,9 +175,13 @@ export default function CreateCourseForm() {
                         maxRows={20}
                         value = {courseForm.detailedDescription}
                         onChange = {handleOnInputChange}
-                        sx={{backgroundColor : 'white'}}
                         variant="filled"
-                        inputProps={{ maxLength: 5000 }}
+                        color="primary"
+                        InputProps={{ disableUnderline: true }}
+                        sx={{backgroundColor : 'white', borderRadius: "12px"}}
+                        InputLabelProps={{
+                            style: { color: 'black' },
+                        }}
                         />
                     </div>
                 </div>
@@ -179,9 +194,14 @@ export default function CreateCourseForm() {
                             name="tutorialVideoURL"
                             value = {courseForm.tutorialVideoURL}
                             onChange = {handleOnInputChange}
-                            sx={{backgroundColor : 'white'}}
                             variant="filled"
                             inputProps={{ maxLength: 500 }}
+                            color="primary"
+                            InputProps={{ disableUnderline: true }}
+                            sx={{backgroundColor : 'white', borderRadius: "12px"}}
+                            InputLabelProps={{
+                                style: { color: 'black' },
+                            }}
                             />
                             <TextField
                             className="cover-image-input-field"
@@ -190,17 +210,43 @@ export default function CreateCourseForm() {
                             name="coverImageURL"
                             value = {courseForm.coverImageURL}
                             onChange = {handleOnInputChange}
-                            sx={{backgroundColor : 'white'}}
                             variant="filled"
                             inputProps={{ maxLength: 500 }}
+                            color="primary"
+                            InputProps={{ disableUnderline: true }}
+                            sx={{backgroundColor : 'white', borderRadius: "12px"}}
+                            InputLabelProps={{
+                                style: { color: 'black' },
+                            }}
                             />
-                        <FormControl variant="filled" sx={{ m: 1, height: "6.5ch", minWidth: "15ch", width: "100ch", textAlign:"left", backgroundColor: "whitesmoke", color: "whitesmoke"}}>
-                            <InputLabel>DIFFICULTY</InputLabel>
+                        <FormControl 
+                            disableUnderline={true} 
+                            variant="filled" 
+                            color="primary"
+                            
+                            
+                            sx={
+                                {borderRadius: "12px", 
+                                border: "0px",
+                                backgroundColor: 'white',
+                                m: 1, height: "6.5ch", 
+                                minWidth: "15ch", 
+                                width: "100ch", 
+                                textAlign:"left", 
+                                backgroundColor: "whitesmoke"}
+                        }>
+                            <InputLabel >DIFFICULTY</InputLabel>
                             <Select
+                            
+                            color='primary'
+                            sx={{
+                                color:"black"
+                            }}
+                            disableUnderline={true}
                             value={difficulty}
                             onChange={handleDropdownChange}>
                             <MenuItem value="">
-                                <em>None</em>
+                                None
                             </MenuItem>
                             <MenuItem value={"Beginner"}>Beginner</MenuItem>
                             <MenuItem value={"High School"}>High School</MenuItem>
@@ -230,9 +276,15 @@ export default function CreateCourseForm() {
                     rows={3}
                     value = {courseForm.tipsAndTricks}
                     onChange = {handleOnInputChange}
-                    sx={{backgroundColor : 'white'}}
+                    
                     variant="filled"
                     inputProps={{ maxLength: 2500 }}
+                    color="primary"
+                    InputProps={{ disableUnderline: true }}
+                    sx={{backgroundColor : 'white', borderRadius: "12px"}}
+                    InputLabelProps={{
+                        style: { color: 'black' },
+                    }}
                     />
                 </div>
             </div>
