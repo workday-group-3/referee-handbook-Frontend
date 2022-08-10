@@ -27,10 +27,13 @@ export default function Footer() {
                     <div className="footer-body-top">
                         <p className ="footer-body"><a target="_blank" href="https://mui.com/"><img id ="mui-logo" src="https://mui.com/static/logo.png"></img></a></p>
                         <p className ="footer-body"><a target="_blank" href="https://www.thenewsapi.com/"><img id ="news-api-logo" src="https://www.thenewsapi.com/website_assets/img/thenewsapi-logo.svg"></img></a></p>  
-                        <p className ="footer-body"><a target="_blank" href="https://timeline.knightlab.com/"><img id ="knightlabs-logo" src="https://cdn.knightlab.com/libs/orangeline/latest/assets/knightlab-dark.png"></img></a></p>
+                        
+                    </div>
+                    <div className='footer-body-top'>
+                       <p className ="footer-body"><a target="_blank" href="https://api-sports.io/"><img id = "api-sports-logo" src="https://pbs.twimg.com/profile_images/1248589572730044423/bdT7f7ig_400x400.jpg"></img></a></p>      
+                       <p className ="footer-body"><a target="_blank" href="https://timeline.knightlab.com/"><img id ="knightlabs-logo" src="https://cdn.knightlab.com/libs/orangeline/latest/assets/knightlab-dark.png"></img></a></p>
                     </div>
                     <div className="footer-body-bottom">
-                        <p className ="footer-body"><a target="_blank" href="https://api-sports.io/"><img id = "api-sports-logo" src="https://pbs.twimg.com/profile_images/1248589572730044423/bdT7f7ig_400x400.jpg"></img></a></p>     
                         <p className ="footer-body"><a target="_blank" href="https://loading.io/"><img id ="loading-io-logo" src="https://images.saasworthy.com/loadingio_7824_logo_1623317995_uydrp.jpg"></img></a></p>
                         <p className ="footer-body"><a target="_blank" href="https://www.twilio.com/sendgrid/email-api"><img id ="twilio-sendgrid-logo" src="https://sendgrid.com/brand/sg-twilio/SG_Twilio_Lockup_RGB-WHT-Textx2.png"></img></a></p>
                     </div>

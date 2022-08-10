@@ -3,6 +3,7 @@
     color: whitesmoke;
     height: auto;
     padding-top: 10px;
+
 }
 
 .footer-logo{
@@ -19,7 +20,7 @@
 .top-half-container {
     display: flex;
     justify-content: center;
-
+    margin-right: 60px;
     
 }
 
@@ -52,25 +53,25 @@
 }
 
 #mui-logo {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
 }
 
 #api-sports-logo {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
 #news-api-logo {
     width: 150px;
-    height: 90px;
+    height: 50px;
 }
 
 #loading-io-logo {
     border-radius: 5%;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
 }
 
 #knightlabs-logo {
@@ -79,8 +80,8 @@
 }
 
 #twilio-sendgrid-logo {
-    width: 250px;
-    height: 60px;
+    width: 220px;
+    height: 50px;
 }
 
 .icon-list {
