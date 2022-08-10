@@ -15,13 +15,13 @@
 
 /* ---------------------------------- Headers section ------------------------------------ */
 .main-user-content, .tips-and-tricks {
-    background: #F8F8F8;
+    background: #383838;
     word-wrap: break-word;
 
     position: relative;
-
+    color:white;
     width: 90vw;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .edit-section  {
@@ -59,14 +59,16 @@
 
 .cb-title {
     font-size: 3em;
-    font-weight: 800;
+    font-weight: 600;
     margin-top: 1%;
     width: 80%;
     overflow-x: auto;
 }
 .cb-username {
     font-size: 1.5em;
-    margin-bottom: 10px;
+    font-weight: 500;
+    padding-top: 10px;
+    margin-bottom: 20px;
     
 }
 .cb-subtitle {
@@ -77,7 +79,7 @@
 
 .cb-subtitle .to-profile-link{
     text-decoration: none;
-    color: #1F1F1F;
+    color: #ffffff;
 }
 
 .cb-subtitle .to-profile-link:hover{
@@ -86,7 +88,7 @@
 .ratings-container {
     position: absolute;
     right: 0;
-    margin-bottom: 1.5%;
+    margin-bottom: 30px;
     margin-right: 4%;
 
 }
@@ -105,8 +107,8 @@
 }
 
 .short-description {
-    font-size: 2em;
-    font-weight: 100;
+    font-size: 1.5em;
+    font-weight: 400;
     margin-top: 4vh;
     max-width: 80vw;
     margin-bottom: 4vh;
@@ -139,30 +141,30 @@
 }
 
 .line-break hr {
-    background-color: black;
+    background-color: #ffffff;
     width: 91%;
 }
 
 /* ---------------------------------- Video section ------------------------------------ */
 .video-container {
     justify-content: center;
-    background-color: #F8F8F8;
+    background-color: #383838;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 90vw;
     justify-content: center;
-    border-radius: 30%;
+    border-radius: 20px;
 
     font-size: 2em;
-    font-weight: 800;
+    font-weight: 600;
 
     
     
     margin-top: 10vh;
     margin-bottom: 10vh;
     padding-top: 5vh;
-    padding-bottom: 5vh;
+    padding-bottom: 10vh;
 }
 
 .video-container h2 {
@@ -170,12 +172,15 @@
     overflow-wrap: break-word;
     max-width: 50vw;
     text-align: center;
+    color: white;
+    font-weight: 600;
+    padding-bottom: 20px;
 }
 
 .video-container iframe {
     border: 10px solid ;
     border-color: rgb(2, 2, 2);
-    border-radius: 5%;
+    border-radius: 20px;
     max-width: 80%;
 }
 
@@ -195,6 +200,8 @@
     margin-top: 1%;
     margin-left: 4vw;
     font-size: 3em;
+    font-weight: 600;
+    padding-bottom: 20px;
 }
 
 .tips-and-tricks-text {
