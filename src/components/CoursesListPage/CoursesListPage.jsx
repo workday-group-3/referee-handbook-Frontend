@@ -54,6 +54,7 @@ function CoursesListPage(props) {
   useEffect(() => {
     const fetchUserCourses = async () => {
       const {data, error} = await apiClient.listUserCoursesBySport(currentCourse.sport_name)
+      console.log("data", data)
       if(data){
         setUserCourses(data.userCourses)
       }
@@ -63,7 +64,7 @@ function CoursesListPage(props) {
     }
   
     fetchUserCourses()
-  }, [])
+  }, [difficulty])
 
 
   //filter through current courses in state variable, only if user has selected a difficulty level
@@ -143,7 +144,6 @@ function CoursesListPage(props) {
       <div className="user-courses-list">
           {filterByDifficulty[0] ?
           filterByDifficulty.map((course) => {
-            
             //checking if user has a profile picture, if not use placeholder
             let profilePicture;
             {course.profile_image_url === null ? profilePicture = profilePicturePlaceholder : profilePicture = course.profile_image_url}

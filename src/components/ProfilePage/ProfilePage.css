@@ -189,6 +189,7 @@
 .user-course-card-container {
     display: flex;
     width: 100%;
+    max-width: 600px;
     height: 160px;
     overflow-y: hidden;
     overflow-x: auto;
