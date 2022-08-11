@@ -95,7 +95,7 @@ function CoursesListPage(props) {
             <img className='course-image' src={currentCourse.beginner_cover_image_url} alt={`${currentCourse.sport_name} image`} ></img>
           </div>
           <div className='course-text'>
-            <h1 className="course-text-title"><em>Beginner Course</em></h1>
+            <h1 className="course-text-title">Beginner Course</h1>
             <p className="course-text-body">Our beginner {currentCourse.sport_name} course offers an indepth as well as a big picture overview of the sport. Learn about it's history, rules and regulations, and objectives. To aid in your educational journey, we've included a how-to video as well as a diagram of the field to aid in visualization!</p>
           </div>
         </div>
@@ -163,7 +163,7 @@ function CoursesListPage(props) {
                     </Link>
                     </div>
                     <div className="user-created-course-content">
-                      <h1 className="user-created-course-title"><em>{course.course_title}</em></h1>
+                      <h1 className="user-created-course-title">{course.course_title}</h1>
                       <p className="user-created-course-short-description">{course.course_short_description}</p>
                       <p className="user-created-course-difficulty"><em>{course.difficulty}</em></p>
                     </div>  
